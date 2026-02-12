@@ -25,6 +25,10 @@ router.post('/create-checkout-session', authenticateUser, async (req, res) => {
       return res.status(404).json({ error: 'Course not found' });
     }
 
+    if (!stripe) {
+      return res.status(503).json({ error: 'Stripe is not configured on this server' });
+    }
+
     let baseUrl = env.FRONTEND_URL || 'http://localhost:5173';
     try {
       if (req.headers.referer) {
@@ -76,6 +80,10 @@ router.post('/verify-payment', authenticateUser, async (req, res) => {
 
     if (!sessionId) {
       return res.status(400).json({ error: 'Missing sessionId' });
+    }
+
+    if (!stripe) {
+      return res.status(503).json({ error: 'Stripe is not configured on this server' });
     }
 
     const session = await stripe.checkout.sessions.retrieve(sessionId);
