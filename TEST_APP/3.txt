@@ -1,0 +1,195 @@
+# STEP 03 — ARCHITECTURE & MODULARITY STRESS TEST
+VERSION: 1.0
+PRIORITY: VERY HIGH
+GOAL: Evaluate if the system can grow, be modified, and survive team scaling.
+
+A system that cannot evolve is already dead.
+
+---
+
+## 🎯 OBJECTIVES OF STEP 03
+
+You must determine:
+
+1. How components are separated.
+2. If responsibilities are clear.
+3. If modules are independent.
+4. If changes propagate dangerously.
+5. If architecture supports future features.
+
+---
+
+## 🚨 MINDSET
+
+You are a Staff Engineer hired to prepare the system for:
+
+- new team members
+- rapid feature growth
+- investor due diligence
+- scaling traffic
+- long-term maintenance
+
+You must think:
+"What will break first when we grow?"
+
+---
+
+## 📂 TASKS TO EXECUTE
+
+---
+
+### 1) IDENTIFY ARCHITECTURE STYLE
+Determine what exists in reality (not what developers say).
+
+Examples:
+- layered
+- domain driven
+- feature modular
+- service oriented
+- chaotic mixture
+
+Explain with proof.
+
+---
+
+### 2) MODULE BOUNDARIES
+Where does one responsibility end and another begin?
+
+Find violations like:
+- UI doing domain work
+- controllers with business logic
+- services touching database + formatting
+- utilities doing everything
+
+---
+
+### 3) DEPENDENCY HEALTH
+Analyze import/usage direction.
+
+Danger signs:
+- circular dependencies
+- high coupling
+- everything imports everything
+- global god modules
+
+---
+
+### 4) CHANGE IMPACT TEST
+If we change:
+
+- data model
+- API response
+- rule
+
+How many files must change?
+
+Large spread = bad architecture.
+
+---
+
+### 5) SINGLE RESPONSIBILITY CHECK
+Big files doing many jobs → risky.
+
+---
+
+### 6) ABSTRACTION QUALITY
+Are there:
+- interfaces?
+- contracts?
+- boundaries?
+
+Or direct access everywhere?
+
+---
+
+### 7) FEATURE ISOLATION
+Can you remove one feature easily?
+
+If no → tight coupling.
+
+---
+
+### 8) DUPLICATION OF STRUCTURE
+Same logic repeated in multiple modules?
+
+Future nightmare.
+
+---
+
+### 9) EXTENSION SIMULATION
+Imagine adding a major feature.
+
+Would it:
+- plug nicely?
+- or require rewriting core?
+
+---
+
+### 10) OWNERSHIP CLARITY
+If bug happens, is it obvious where to look?
+
+If not → architecture failure.
+
+---
+
+## 🧠 ADVANCED DETECTIONS
+
+Find:
+
+- hidden coupling
+- anti-patterns
+- god services
+- fat controllers
+- leaking abstractions
+- cross-layer violations
+
+---
+
+## 📝 OUTPUT FILES YOU MUST WRITE
+
+AUDIT_RESULTS/01_ARCHITECTURE/STEP_03_ARCHITECTURE_STRESS.md  
+AUDIT_RESULTS/11_DEBT_BACKLOG/STEP_03_ISSUES.csv  
+
+Update:
+AUDIT_RESULTS/00_INDEX/MASTER_INDEX.md  
+AUDIT_RESULTS/12_SCORE/SCORECARD.md
+
+---
+
+## 📊 SCORING IMPACT
+
+This heavily affects:
+
+- scalability
+- dev speed
+- bug probability
+- onboarding cost
+
+Weak architecture = major score drop.
+
+---
+
+## ❌ WHAT YOU MUST NOT DO
+
+Do not redesign.
+
+Do not propose refactor yet.
+
+Only expose structural truth.
+
+---
+
+## ✅ DEFINITION OF DONE
+
+You can predict future pain points.
+
+If yes → done.
+
+---
+
+After finishing:
+STOP.
+
+Output ONLY:
+
+Gata cu partea (3)

@@ -1,0 +1,216 @@
+# STEP 11 — MAINTAINABILITY & DEVELOPER EXPERIENCE AUDIT
+VERSION: 1.0
+PRIORITY: HIGH
+GOAL: Determine how easy it is for engineers to understand, modify, and extend the system safely.
+
+If only original authors can work on the code, the system cannot scale.
+
+---
+
+## 🎯 OBJECTIVES OF STEP 11
+
+You must determine:
+
+1. How fast a new developer can understand the project.
+2. Where confusion will happen.
+3. Where mistakes are likely.
+4. How expensive changes will be.
+5. If standards are consistent.
+6. If documentation helps or not.
+7. If technical debt is accumulating.
+
+---
+
+## 🚨 MINDSET
+
+You are a new senior developer hired tomorrow.
+
+You want to ship a feature in week one.
+
+What slows you down?
+
+---
+
+## 📂 TASKS TO EXECUTE
+
+---
+
+### 1) STRUCTURE CLARITY
+Check:
+- folder organization
+- naming predictability
+- separation of responsibilities
+- discoverability of logic
+
+Can you guess where code lives?
+
+---
+
+### 2) NAMING QUALITY
+Evaluate:
+- file names
+- class names
+- function names
+- variables
+
+Do names explain intention?
+Or require reading entire file?
+
+Bad naming = long onboarding.
+
+---
+
+### 3) FILE SIZE & COMPLEXITY
+Detect:
+- huge files
+- multi-thousand line modules
+- deeply nested logic
+- long functions
+
+These slow everyone.
+
+---
+
+### 4) READABILITY
+Check:
+- formatting
+- comments where needed
+- clarity of intent
+- obvious vs confusing flows
+
+Messy code = slower fixes = more bugs.
+
+---
+
+### 5) DEAD CODE & GHOST PATHS
+Find:
+- unused functions
+- commented blocks
+- legacy alternatives
+- unclear which version is active
+
+This destroys confidence.
+
+---
+
+### 6) CONFIGURATION & SETUP SIMPLICITY
+Check if new developer can:
+- run project easily
+- know required env vars
+- set up DB
+- understand dependencies
+
+If setup takes days → major problem.
+
+---
+
+### 7) ABSTRACTION DISCIPLINE
+Are patterns consistent?
+
+Or each module reinvents approach?
+
+Inconsistency increases cognitive load.
+
+---
+
+### 8) SIDE EFFECT VISIBILITY
+When you change something:
+- is impact predictable?
+- or surprising breakages appear?
+
+Hidden effects = dangerous.
+
+---
+
+### 9) REFACTOR SAFETY
+Would engineers be afraid to refactor?
+
+If yes → technical debt too high.
+
+---
+
+### 10) INTERNAL DOCUMENTATION
+Check existence and quality of:
+- README
+- architecture explanation
+- contribution guidelines
+- coding rules
+- API contracts
+
+Missing → onboarding pain.
+
+---
+
+### 11) KNOWLEDGE CENTRALIZATION RISK
+If only 1 person understands critical modules → risk.
+
+---
+
+### 12) COPY-PASTE ENGINEERING
+Detect repeated patterns instead of reuse.
+
+Future divergence risk.
+
+---
+
+## 🧠 ADVANCED DETECTIONS
+
+Find:
+- magic constants everywhere
+- inconsistent error handling
+- hidden dependencies
+- lack of type discipline (if typed language)
+- global mutable states
+- unclear ownership
+
+---
+
+## 📝 OUTPUT FILES YOU MUST WRITE
+
+AUDIT_RESULTS/07_MAINTAINABILITY/STEP_11_DEV_EXPERIENCE.md
+AUDIT_RESULTS/07_MAINTAINABILITY/STEP_11_TECH_DEBT.md
+AUDIT_RESULTS/11_DEBT_BACKLOG/STEP_11_ISSUES.csv
+
+Update:
+AUDIT_RESULTS/00_INDEX/MASTER_INDEX.md
+AUDIT_RESULTS/12_SCORE/SCORECARD.md
+
+---
+
+## 📊 SCORING IMPACT
+
+This affects:
+
+- hiring speed
+- productivity
+- bug introduction rate
+- team morale
+- future rewrite probability
+
+Bad maintainability = heavy long-term penalty.
+
+---
+
+## ❌ WHAT YOU MUST NOT DO
+
+Do not rewrite.
+Do not enforce style.
+Only measure and report.
+
+---
+
+## ✅ DEFINITION OF DONE
+
+You can answer:
+"A new developer can become effective quickly."
+
+If not → list exact blockers.
+
+---
+
+After finishing:
+STOP.
+
+Output ONLY:
+
+Gata cu partea (11)

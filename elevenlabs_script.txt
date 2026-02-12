@@ -1,0 +1,85 @@
+# ElevenLabs v3.0 Narration Script - Python OS/IO Lesson
+# Voice Recommendation: "George" or "Callum" (Warm, Instructional, slightly playful) for Narrator
+# "Fin" (Energetic) for "Agent" parts if using multi-voice, otherwise single voice with tone shifts.
+
+---
+[SECTION: INTRO - Fundamentele Sistemului de Fișiere]
+[Tone: Excited, Welcoming]
+Salutare, detectivule digital! [pause] Bine ai venit în "Creierul" calculatorului. 
+[Tone: Mysterious, slightly lower pitch]
+Astăzi nu mai scriem doar cod care calculează numere. Astăzi învățăm să controlăm sistemul de operare. 
+[Tone: Normal, Instructional]
+Vom folosi modulele "built-in" din Python: O.S., SYS și I.O. [pause] Gândește-te la ele ca la trusa ta de scule pentru a manipula fișiere, a naviga prin directoare și a da comenzi secrete sistemului. 
+[Tone: Encouraging]
+Ești gata? Hai să începem!
+
+---
+[SECTION: 1. IMPORT - Echiparea]
+[Tone: Curious]
+Prima regulă a unui explorator bun? [pause] Echiparea! 
+[Tone: Explanatory]
+În Python, nu cărăm toate uneltele după noi tot timpul. Ar fi... [hesitation] ...prea greu! 
+[Tone: Playful]
+Imaginează-ți că mergi la magazin și iei cu tine ciocanul, fierăstrăul, microscopul și o rachetă spațială. [laughs] Absurd, nu?
+[Tone: Instructional]
+Python este rapid pentru că pornește "gol". Tu decizi exact ce unelte pui în rucsac folosind comanda "import". 
+[Tone: Emphatic]
+Recomandarea mea? [pause] Folosește metoda "Rucsacului Organizat". Importă tot modulul, ca de exemplu "import os", și apoi cere unealta specifică, "os punct getcwd". Așa nu vei pierde niciodată șurubelnița prin buzunare!
+
+---
+[SECTION: 2. OS BASICS - Navigare]
+[Tone: Adventurous]
+Bun, avem rucsacul. Acum... [pause] Unde suntem?
+[Tone: Instructional]
+Modulul O.S. este GPS-ul tău. Fără el, ești orb în sistemul de fișiere.
+[Tone: Narrating code action]
+Comanda "os punct getcwd" îți spune exact coordonatele: "Get Current Working Directory". 
+[Tone: Curious]
+Dar ce se află în jurul nostru? 
+[Tone: Answer]
+Folosește "os punct listdir". E ca un radar care scanează zona și îți arată toate fișierele și folderele din apropiere. 
+[Tone: Warning, serious]
+Atenție însă! Acest radar vede doar numele, nu și drumul complet până la ele. Pentru asta, avem nevoie de un translator special.
+
+---
+[SECTION: 3. OS PATH - Translatorul Universal]
+[Tone: Dramatic]
+Aici intervine marea problemă a programatorilor. [pause] Războiul dintre Windows și Linux.
+[Tone: Explanatory]
+Windows folosește backslash. Linux și Mac folosesc slash normal. Dacă scrii manual calea către un fișier... [sound:error_buzz] ...codul tău va crăpa pe celălalt sistem.
+[Tone: Relieved, Happy]
+Dar stai! Avem soluția: "os punct path punct join". 
+[Tone: Instructional]
+Acesta este translatorul tău universal. Tu îi dai cuvintele – folderul "data", folderul "users", fișierul "ana punct txt" – iar el construiește automat calea corectă, indiferent dacă ești pe un PC sau pe un server Linux. 
+[Tone: Whispering]
+Este ca o piesă de Lego care se potrivește perfect, oricum ai pune-o.
+
+---
+[SECTION: 4. FILE IO - Frigiderul cu Date]
+[Tone: Serious]
+Acum ajungem la partea delicată. Lucrul cu fișierele.
+[Tone: Metaphorical]
+Gândește-te la un fișier ca la un frigider. Dacă îl deschizi, iei laptele și uiți ușa deschisă... [pause] ...se strică totul!
+[Tone: Instructional]
+În Python, avem o regulă de aur: folosim "with open". 
+[Tone: Reassuring]
+Blocul "with" este ca un arc la ușa frigiderului. Indiferent ce se întâmplă – chiar dacă programul tău dă eroare și explodează – "with" se asigură că fișierul este închis corect și datele sunt salvate.
+[Tone: Rapid fire listing]
+Modul "r" pentru citire. Modul "w" pentru scriere – atenție, șterge tot ce era înainte! Și modul "a" pentru a adăuga la final. 
+[Tone: Gentle warning]
+Alege cu grijă!
+
+---
+[SECTION: 5. SYS - Agentul Secret]
+[Tone: Whispering, Secretive]
+Șșșt! [pause] Intrăm în zona "Top Secret". Modulul SYS.
+[Tone: Explanatory]
+Acesta este panoul de control al interpretorului Python. Cel mai puternic instrument de aici este "sys punct argv".
+[Tone: Storytelling]
+Imaginează-ți scriptul tău ca pe un agent secret care pleacă în misiune. Tu ești generalul. Îi poți striga ordinele direct din linia de comandă, înainte ca el să plece.
+[Tone: Acting out command]
+"Python, agent punct py, distruge baza, acum!"
+[Tone: Instructional]
+Aceste cuvinte – "distruge baza", "acum" – intră în lista "sys punct argv". Scriptul le citește și știe exact ce are de făcut, fără să te întrebe nimic pe parcurs.
+[Tone: Final, Motivational]
+Acum ai puterea. Ai rucsacul, ai harta, ai translatorul și ai ordinele secrete. [pause] Ești gata să scrii cod adevărat? Succes, detectivule!

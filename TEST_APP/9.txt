@@ -1,0 +1,210 @@
+# STEP 09 — RELIABILITY & OBSERVABILITY AUDIT
+VERSION: 1.0
+PRIORITY: HIGH
+GOAL: Determine whether the system can be monitored, debugged, and recovered in production.
+
+If you cannot see what is happening, you are blind.
+
+---
+
+## 🎯 OBJECTIVES OF STEP 09
+
+You must determine:
+
+1. If errors are visible.
+2. If important actions are logged.
+3. If incidents can be diagnosed.
+4. If crashes can be traced.
+5. If behavior can be measured.
+6. If operations team could manage the system.
+7. If outages would be detected quickly.
+
+---
+
+## 🚨 MINDSET
+
+You are SRE / Production Engineer.
+
+Ask:
+"What happens when something breaks in real life?"
+
+---
+
+## 📂 TASKS TO EXECUTE
+
+---
+
+### 1) LOGGING STRATEGY
+Check:
+- where logs are written
+- levels (info/warn/error/debug)
+- contextual data (user id, request id)
+- structured vs random logs
+- correlation between services
+- important events logged or not
+
+If errors happen but no logs → critical operational risk.
+
+---
+
+### 2) ERROR VISIBILITY
+Check:
+- global error handling
+- uncaught exception handling
+- promise rejection handling
+- frontend crash capture
+- silent failures
+
+If failures can disappear → High risk.
+
+---
+
+### 3) AUDIT TRAIL FOR IMPORTANT ACTIONS
+For business critical operations check:
+
+Examples:
+- payments
+- order submission
+- exam submission
+- account changes
+- permission changes
+
+Is it logged who did what and when?
+
+If not → forensic nightmare.
+
+---
+
+### 4) METRICS & MEASUREMENT
+Look for signals like:
+- request durations
+- error rate
+- throughput
+- queue size
+- retries
+- failed jobs
+
+If no metrics → cannot manage growth.
+
+---
+
+### 5) HEALTH CHECKS
+Check existence of:
+- health endpoints
+- readiness/liveness
+- DB connectivity checks
+- dependency checks
+
+Without this, orchestration and uptime suffer.
+
+---
+
+### 6) ALERTING POSSIBILITY (IF CONFIGS EXIST)
+If project hints at monitoring:
+- what would trigger alerts?
+- would anyone know in minutes?
+
+If outage lasts hours unnoticed → major risk.
+
+---
+
+### 7) DEBUGGABILITY
+Imagine production bug.
+
+Can engineer quickly:
+- find request
+- find user
+- replay scenario
+- trace operations
+
+If not → slow incident recovery.
+
+---
+
+### 8) DATA FOR SUPPORT TEAM
+Check:
+- can support see status?
+- can they explain failure to user?
+- or they guess blindly?
+
+---
+
+### 9) BACKGROUND JOB VISIBILITY (if present)
+If queues/cron:
+- logging
+- retries
+- dead letter handling
+- monitoring
+
+Silent background failure = huge hidden risk.
+
+---
+
+### 10) CONFIGURATION VISIBILITY
+Can team know:
+- what version runs?
+- what config active?
+- what env variables loaded?
+
+---
+
+## 🧠 ADVANCED DETECTIONS
+
+Detect:
+- logs without identifiers
+- inconsistent log formats
+- catching errors but ignoring them
+- retry loops without tracking
+- operations with no traceability
+- inability to link frontend issue to backend request
+
+---
+
+## 📝 OUTPUT FILES YOU MUST WRITE
+
+AUDIT_RESULTS/09_DEVOPS_CICD/STEP_09_OBSERVABILITY.md (logs, metrics, tracing)
+AUDIT_RESULTS/10_UX_PRODUCT/STEP_09_SUPPORTABILITY.md (support/team visibility)
+AUDIT_RESULTS/11_DEBT_BACKLOG/STEP_09_ISSUES.csv
+
+Update:
+AUDIT_RESULTS/00_INDEX/MASTER_INDEX.md
+AUDIT_RESULTS/12_SCORE/SCORECARD.md
+
+---
+
+## 📊 SCORING IMPACT
+
+This affects:
+
+- downtime cost
+- recovery speed
+- support efficiency
+- enterprise readiness
+
+Bad observability = serious penalty.
+
+---
+
+## ❌ WHAT YOU MUST NOT DO
+
+Do not implement monitoring.
+Do not add tools.
+Only assess readiness.
+
+---
+
+## ✅ DEFINITION OF DONE
+
+You can answer:
+"If production breaks, we will know fast and know why."
+
+If not → list top fixes.
+
+---
+
+After finishing:
+STOP.
+
+Output ONLY:
+
+Gata cu partea (9)

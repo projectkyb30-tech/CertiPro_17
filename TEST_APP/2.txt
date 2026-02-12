@@ -1,0 +1,231 @@
+# STEP 02 — BUSINESS LOGIC & DOMAIN UNDERSTANDING
+VERSION: 1.0
+PRIORITY: CRITICAL
+GOAL: Extract and understand the real brain of the application.
+
+If you fail to understand business logic, all technical conclusions will be fake.
+
+---
+
+## 🎯 OBJECTIVES OF STEP 02
+
+You must:
+
+1. Understand what the system really does.
+2. Understand who are the actors.
+3. Understand main workflows.
+4. Understand rules & validations.
+5. Detect logic holes.
+6. Detect contradictions.
+7. Detect missing protections.
+8. Detect over-complications.
+
+---
+
+## 🚨 MINDSET
+
+You are:
+Senior Engineer + Product Owner + Auditor.
+
+After this step you must be able to explain:
+
+- what problem the app solves
+- how users move through it
+- what must ALWAYS be true
+- where decisions are made
+- what can break business
+
+---
+
+## 📂 TASKS TO EXECUTE
+
+---
+
+### 1) IDENTIFY ACTORS
+Who interacts with the system?
+
+Examples:
+- guest
+- user
+- admin
+- operator
+- system
+- external service
+
+For each actor:
+- what can they do?
+- where?
+- how?
+
+---
+
+### 2) MAIN BUSINESS FLOWS
+Find top flows.
+
+Examples:
+- registration
+- purchase
+- booking
+- order processing
+- exam start / finish
+- payment
+- approval
+
+For each flow describe:
+
+- start point
+- steps
+- validations
+- state changes
+- final result
+
+---
+
+### 3) DOMAIN ENTITIES
+Find core models.
+
+Examples:
+- user
+- order
+- exam
+- booking
+- product
+
+For each entity:
+- what defines it?
+- what changes it?
+- lifecycle
+- who can modify it?
+
+---
+
+### 4) BUSINESS RULES
+Find hidden laws.
+
+Examples:
+- cannot pay twice
+- must be logged in
+- must pass validation
+- cannot edit after submit
+- stock must exist
+
+If rule is not enforced → CRITICAL.
+
+---
+
+### 5) DECISION POINTS
+Where system makes choices.
+
+Examples:
+- price calculation
+- access control
+- result computation
+- availability
+- status transitions
+
+Mark complexity level.
+
+---
+
+### 6) VALIDATION LOGIC
+Where and how inputs are verified.
+
+Missing validation = danger.
+
+---
+
+### 7) STATE MACHINE
+Understand transitions.
+
+Example:
+draft → submitted → approved → archived
+
+If unclear → big risk.
+
+---
+
+### 8) EDGE CASE DETECTION
+Think like attacker or idiot user.
+
+What if:
+- double click?
+- network drop?
+- refresh?
+- invalid input?
+- race condition?
+
+---
+
+### 9) BUSINESS DEPENDENCY GRAPH
+Who depends on what.
+
+If changing one thing breaks 20 → problem.
+
+---
+
+### 10) SIMPLICITY TEST
+Could logic be simpler?
+
+If yes → mark improvement.
+
+---
+
+## 🧠 ADVANCED ANALYSIS
+
+You must detect:
+
+- duplicated business logic in multiple places
+- logic inside UI instead of domain
+- fat controllers
+- magic numbers
+- inconsistent validations
+- contradictory rules
+
+---
+
+## 📝 OUTPUT FILES YOU MUST WRITE
+
+AUDIT_RESULTS/02_BUSINESS_LOGIC/STEP_02_DOMAIN_FLOW.md  
+AUDIT_RESULTS/11_DEBT_BACKLOG/STEP_02_ISSUES.csv  
+
+Update:
+AUDIT_RESULTS/00_INDEX/MASTER_INDEX.md  
+AUDIT_RESULTS/12_SCORE/SCORECARD.md
+
+---
+
+## 📊 SCORING IMPACT
+
+Huge.
+
+This is the brain of the product.
+
+Weak business logic = investor panic.
+
+---
+
+## ❌ WHAT YOU MUST NOT DO
+
+Do not:
+- rewrite logic
+- redesign system
+- invent missing intentions
+
+Only analyze what exists.
+
+---
+
+## ✅ DEFINITION OF DONE
+
+You can explain product behavior without reading code again.
+
+If yes → complete.
+
+---
+
+After finishing:
+STOP.
+
+Output ONLY:
+
+Gata cu partea (2)

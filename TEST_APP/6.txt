@@ -1,0 +1,235 @@
+# STEP 06 — FRONTEND FLOW, STATE & UX CORRECTNESS AUDIT
+VERSION: 1.0
+PRIORITY: HIGH
+GOAL: Verify frontend correctness, state management, edge cases, and user-flow reliability.
+
+A backend can be perfect. If UI flow is broken, the product fails.
+
+---
+
+## 🎯 OBJECTIVES OF STEP 06
+
+You must determine:
+
+1. If user flows match business logic from Step 02.
+2. If frontend state is consistent and predictable.
+3. If API integration is safe (loading, error, retry).
+4. If UI handles edge cases (refresh, back button, offline).
+5. If UX avoids user mistakes and prevents invalid actions.
+6. If sensitive logic is incorrectly implemented on frontend.
+
+---
+
+## 🚨 MINDSET
+
+You are a Senior Frontend Engineer + UX Auditor.
+
+After this step you must answer:
+
+- What are the main pages/screens?
+- What are the main flows?
+- Where does UI store state?
+- How does it fetch data?
+- What happens on errors?
+- What happens when user refreshes?
+- Can user bypass restrictions?
+
+---
+
+## 📂 TASKS TO EXECUTE
+
+---
+
+### 1) FRONTEND SURFACE MAP
+List:
+- routes/pages/screens
+- key components
+- shared UI libraries
+- forms and wizards
+- navigation structure
+
+Identify entry points and routing structure.
+
+---
+
+### 2) FLOW MATCH CHECK (VS BUSINESS LOGIC)
+Pick the top 3–5 important business flows from Step 02 and verify:
+
+- does UI implement the flow correctly?
+- does it allow forbidden transitions?
+- does it miss mandatory steps?
+- does it rely on frontend-only validation?
+
+Mismatch = High/Critical.
+
+---
+
+### 3) STATE MANAGEMENT AUDIT
+Identify:
+- where state lives (local state, global store, context, redux, etc.)
+- how it is updated
+- if state can become inconsistent
+- if there are “hidden globals”
+- if state is duplicated (same thing stored in multiple places)
+
+Common problems:
+- race conditions
+- stale data
+- double submits
+- inconsistent cache
+
+---
+
+### 4) FORMS & VALIDATION
+For major forms:
+- required fields
+- type checks
+- UI-level constraints
+- consistent error messages
+- input sanitization (basic)
+
+IMPORTANT:
+- Frontend validation is only UX.
+- Backend validation must exist (verify mismatch and report).
+
+---
+
+### 5) API INTEGRATION RELIABILITY
+Check:
+- loading states
+- error states
+- empty states
+- retries
+- cancellation on navigation
+- abort controllers (if applicable)
+- timeouts (if applicable)
+- handling of partial failures
+
+If user sees frozen UI or silent fail → High UX risk.
+
+---
+
+### 6) EDGE CASES (MUST TEST LOGICALLY)
+Think about:
+
+- refresh during a critical flow
+- back button
+- opening same action in 2 tabs
+- double click submit
+- slow network
+- offline
+- partial API failure
+- user changes account/session mid-flow
+
+If UI can break flow and corrupt user actions → High/Critical.
+
+---
+
+### 7) AUTH & PERMISSIONS ON UI
+Check:
+- route guards
+- hidden admin pages
+- UI access control
+
+IMPORTANT:
+UI checks are not security.
+Backend must enforce.
+But UI should not leak admin tools to normal users.
+
+---
+
+### 8) SECRET/LOGIC LEAKS
+Check if frontend contains:
+- secrets
+- API keys
+- “correct answers”
+- pricing rules that should be server-side
+- any logic that enables bypass
+
+If yes → Critical security/business risk.
+
+---
+
+### 9) UX QUALITY (PRACTICAL, NOT BEAUTY)
+Evaluate:
+- clarity of actions
+- preventing user mistakes
+- clear success/failure feedback
+- consistency of messages
+- is it obvious what to do next?
+
+Focus on correctness and reducing support tickets.
+
+---
+
+### 10) ACCESSIBILITY & BASIC USABILITY (LIGHT)
+Quick check:
+- keyboard navigation for critical actions (if relevant)
+- focus management for modals/forms
+- readable error messages
+
+This is not a full A11Y audit, only critical blockers.
+
+---
+
+## 🧠 ADVANCED DETECTIONS
+
+Detect:
+- business rules enforced only in UI
+- multiple “sources of truth” for the same state
+- inconsistent caching
+- hardcoded API endpoints without environment handling
+- fragile routing hacks
+- missing optimistic UI rollback (if used)
+
+---
+
+## 📝 OUTPUT FILES YOU MUST WRITE
+
+AUDIT_RESULTS/10_UX_PRODUCT/STEP_06_USER_FLOWS.md (flows + UX correctness findings)
+AUDIT_RESULTS/03_CODE_QUALITY/STEP_06_FRONTEND_STATE.md (state architecture, anti-patterns)
+AUDIT_RESULTS/04_SECURITY/STEP_06_FRONTEND_LEAKS.md (secrets, leaks, bypass risks)
+AUDIT_RESULTS/11_DEBT_BACKLOG/STEP_06_ISSUES.csv
+
+Update:
+AUDIT_RESULTS/00_INDEX/MASTER_INDEX.md
+AUDIT_RESULTS/12_SCORE/SCORECARD.md
+
+---
+
+## 📊 SCORING IMPACT
+
+This affects:
+
+- Business correctness (user can bypass)
+- UX reliability
+- Support burden
+- Conversion metrics
+
+Broken flow = major penalty.
+
+---
+
+## ❌ WHAT YOU MUST NOT DO
+
+Do not redesign UI.
+Do not rewrite components.
+Only analyze and report.
+
+---
+
+## ✅ DEFINITION OF DONE
+
+You can confidently say:
+"UI flow matches business logic, handles errors, and does not leak sensitive logic."
+
+If not, list exact fixes in priority order.
+
+---
+
+After finishing:
+STOP.
+
+Output ONLY:
+
+Gata cu partea (6)

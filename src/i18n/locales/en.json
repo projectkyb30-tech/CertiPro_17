@@ -1,0 +1,63 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "back": "Back",
+    "next": "Next",
+    "finish": "Finish"
+  },
+  "course": {
+    "lessons": "Lessons",
+    "locked": "This course is locked",
+    "start": "Start Course",
+    "continue": "Continue Course",
+    "completed": "Completed"
+  },
+  "lesson": {
+    "locked_message": "Complete the previous lesson to unlock."
+  },
+  "profile_wizard": {
+    "step1": {
+      "title": "Nice to meet you! 👋",
+      "subtitle": "Please use your full real name. It is important for course certification.",
+      "label": "Student Name",
+      "placeholder": "First and Last Name",
+      "error_required": "Please enter your full name."
+    },
+    "step2": {
+      "title": "How do we contact you? 📱",
+      "subtitle": "We need your number for account security and important notifications.",
+      "label": "Phone Number",
+      "error_short": "Phone number is too short."
+    },
+    "step3": {
+      "title": "When is your birthday? 🎂",
+      "subtitle": "Happy birthday in advance!",
+      "label": "Birth Date",
+      "error_required": "Please select your full birth date.",
+      "day": "Day",
+      "month": "Month",
+      "year": "Year"
+    },
+    "step4": {
+      "title": "Tell us about yourself 📝",
+      "subtitle": "A few words about your goals. (Optional)",
+      "placeholder": "I want to learn because...",
+      "skip": "Skip"
+    },
+    "step5": {
+      "title": "Choose your Avatar 👾",
+      "subtitle": "This will be your visual identity in the app.",
+      "regenerate": "Generate another",
+      "confirm": "Confirm and Finish"
+    },
+    "step6": {
+      "title": "All set!",
+      "subtitle": "Loading application..."
+    },
+    "nav": {
+      "next": "Next",
+      "back": "Back"
+    }
+  }
+}

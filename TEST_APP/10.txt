@@ -1,0 +1,208 @@
+# STEP 10 — TESTING & QA MATURITY AUDIT
+VERSION: 1.0
+PRIORITY: CRITICAL
+GOAL: Determine if changes can be made safely without breaking the system.
+
+If you cannot change code with confidence, you cannot scale.
+
+---
+
+## 🎯 OBJECTIVES OF STEP 10
+
+You must determine:
+
+1. What types of tests exist.
+2. What parts of system are protected.
+3. What is completely untested.
+4. How easy regressions can appear.
+5. If CI enforces quality gates.
+6. If releases are risky.
+
+---
+
+## 🚨 MINDSET
+
+You are QA Lead + Senior Engineer.
+
+Ask:
+"If we change something important today, what will fail tomorrow?"
+
+---
+
+## 📂 TASKS TO EXECUTE
+
+---
+
+### 1) TEST INVENTORY
+Identify:
+- unit tests
+- integration tests
+- e2e tests
+- API tests
+- contract tests
+- migration tests
+
+Count approximate coverage areas.
+
+---
+
+### 2) CRITICAL PATH COVERAGE
+Take major flows from Step 02 and verify:
+
+Are they covered by tests?
+
+Examples:
+- registration/login
+- payment
+- order submit
+- exam submit
+- permission checks
+
+If critical flows lack tests → High/Critical.
+
+---
+
+### 3) ASSERTION QUALITY
+Check:
+- do tests verify real outcomes?
+- or just status code 200?
+- do they verify DB state?
+- side effects?
+
+Weak assertions = false safety.
+
+---
+
+### 4) MOCKING STRATEGY
+Check:
+- what is mocked
+- are mocks realistic
+- do tests hide real problems
+
+Too much mocking = fragile safety.
+
+---
+
+### 5) EDGE CASE TESTS
+Look for tests covering:
+- invalid inputs
+- concurrency
+- retries
+- timeouts
+- duplicates
+- unauthorized access
+
+Missing → risk.
+
+---
+
+### 6) TEST MAINTAINABILITY
+Check:
+- are tests readable
+- stable
+- deterministic
+- or flaky/random
+
+Flaky tests destroy trust.
+
+---
+
+### 7) SPEED & AUTOMATION
+Check:
+- can tests run in CI?
+- how long would they take
+- do people skip them
+
+If tests are slow → they get ignored.
+
+---
+
+### 8) CI QUALITY GATES (if configs exist)
+Check if pipeline:
+- runs tests automatically
+- blocks merge on failure
+- measures coverage
+
+If not enforced → dangerous.
+
+---
+
+### 9) REGRESSION RISK MAP
+Identify areas with:
+- frequent change
+- high complexity
+- low or zero testing
+
+These are ticking bombs.
+
+---
+
+### 10) MANUAL QA DEPENDENCY
+Is quality depending on:
+- manual clicking
+- hope
+- memory
+
+If yes → not scalable.
+
+---
+
+## 🧠 ADVANCED DETECTIONS
+
+Detect:
+- tests tightly coupled to implementation
+- snapshot abuse without logic validation
+- silent failures ignored
+- untested migrations
+- untested background jobs
+
+---
+
+## 📝 OUTPUT FILES YOU MUST WRITE
+
+AUDIT_RESULTS/06_TESTING_QA/STEP_10_TEST_COVERAGE.md
+AUDIT_RESULTS/06_TESTING_QA/STEP_10_REGRESSION_RISK.md
+AUDIT_RESULTS/11_DEBT_BACKLOG/STEP_10_ISSUES.csv
+
+Update:
+AUDIT_RESULTS/00_INDEX/MASTER_INDEX.md
+AUDIT_RESULTS/12_SCORE/SCORECARD.md
+
+---
+
+## 📊 SCORING IMPACT
+
+Testing heavily affects:
+
+- speed of innovation
+- stability
+- bug frequency
+- investor trust
+
+Weak testing = heavy penalty.
+
+---
+
+## ❌ WHAT YOU MUST NOT DO
+
+Do not write tests.
+Do not change pipeline.
+Only evaluate.
+
+---
+
+## ✅ DEFINITION OF DONE
+
+You can answer:
+"Can we safely change the system tomorrow?"
+
+If not → define exact protection gaps.
+
+---
+
+After finishing:
+STOP.
+
+Output ONLY:
+
+Gata cu partea (10)

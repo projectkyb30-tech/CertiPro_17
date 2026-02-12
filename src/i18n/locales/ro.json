@@ -1,0 +1,63 @@
+{
+  "common": {
+    "loading": "Se încarcă...",
+    "error": "A apărut o eroare",
+    "back": "Înapoi",
+    "next": "Următorul",
+    "finish": "Finalizează"
+  },
+  "course": {
+    "lessons": "Lecții",
+    "locked": "Acest curs este blocat",
+    "start": "Începe Cursul",
+    "continue": "Continuă Cursul",
+    "completed": "Completat"
+  },
+  "lesson": {
+    "locked_message": "Completează lecția anterioară pentru a debloca."
+  },
+  "profile_wizard": {
+    "step1": {
+      "title": "Să facem cunoștință! 👋",
+      "subtitle": "Te rugăm să folosești numele real complet. Este important pentru certificarea cursurilor.",
+      "label": "Numele elevului",
+      "placeholder": "Nume și Prenume",
+      "error_required": "Te rugăm să introduci numele complet."
+    },
+    "step2": {
+      "title": "Cum luăm legătura? 📱",
+      "subtitle": "Avem nevoie de numărul tău pentru securitatea contului și notificări importante.",
+      "label": "Număr de Telefon",
+      "error_short": "Numărul de telefon este prea scurt."
+    },
+    "step3": {
+      "title": "Când este ziua ta? 🎂",
+      "subtitle": "La mulți ani anticipat!",
+      "label": "Data Nașterii",
+      "error_required": "Te rugăm să selectezi data nașterii completă.",
+      "day": "Zi",
+      "month": "Lună",
+      "year": "An"
+    },
+    "step4": {
+      "title": "Spune-ne despre tine 📝",
+      "subtitle": "Câteva cuvinte despre obiectivele tale. (Opțional)",
+      "placeholder": "Vreau să învăț pentru...",
+      "skip": "Sari peste"
+    },
+    "step5": {
+      "title": "Alege-ți Avatarul 👾",
+      "subtitle": "Acesta va fi identitatea ta vizuală în aplicație.",
+      "regenerate": "Generează altul",
+      "confirm": "Confirmă și Finalizează"
+    },
+    "step6": {
+      "title": "Totul este gata!",
+      "subtitle": "Se încarcă aplicația..."
+    },
+    "nav": {
+      "next": "Mai departe",
+      "back": "Înapoi"
+    }
+  }
+}

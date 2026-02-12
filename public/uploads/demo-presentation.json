@@ -1,0 +1,36 @@
+{
+  "title": "Introduction to Python",
+  "slides": [
+    {
+      "id": "s1",
+      "type": "title",
+      "title": "Welcome to Python",
+      "subtitle": "A Powerful Language",
+      "content": "Python is an interpreted, high-level, general-purpose programming language."
+    },
+    {
+      "id": "s2",
+      "type": "code",
+      "title": "Hello World",
+      "content": "print('Hello, World!')",
+      "language": "python"
+    },
+    {
+      "id": "s3",
+      "type": "bullets",
+      "title": "Key Features",
+      "items": [
+        "Easy to read and write",
+        "Dynamically typed",
+        "Huge ecosystem of libraries",
+        "Cross-platform"
+      ]
+    },
+    {
+      "id": "s4",
+      "type": "content",
+      "title": "Why Learn Python?",
+      "content": "Python is used in web development, data science, AI, machine learning, automation, and more. It is beginner-friendly yet powerful enough for experts."
+    }
+  ]
+}

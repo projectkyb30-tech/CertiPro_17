@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Debug Client (Frontend)",
+            "url": "http://localhost:5174",
+            "webRoot": "${workspaceFolder}/src"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Debug Admin Panel",
+            "url": "http://localhost:5175",
+            "webRoot": "${workspaceFolder}/admin-panel/src"
+        }
+    ]
+}

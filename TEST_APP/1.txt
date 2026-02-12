@@ -1,0 +1,209 @@
+# STEP 01 — PROJECT MAP & INVENTORY
+VERSION: 1.0
+PRIORITY: CRITICAL
+GOAL: Understand the entire application structure before deep analysis.
+
+You are NOT allowed to jump to conclusions.
+You must first build a complete mental map of the system.
+
+If this step is weak, all other steps will be wrong.
+
+---
+
+## 🎯 OBJECTIVES OF STEP 01
+
+1. Discover how the application is organized.
+2. Identify main technologies.
+3. Identify entry points.
+4. Understand module boundaries.
+5. Detect dangerous areas early.
+6. Prepare foundation for all next steps.
+
+---
+
+## 🚨 CRITICAL MINDSET
+
+You are a senior engineer entering a new company.
+
+You must be able to answer after this step:
+
+- Where does the app start?
+- How data flows?
+- What are the core modules?
+- Where is business logic?
+- Where are integrations?
+- What is configuration?
+- What parts are risky?
+- What looks messy or unclear?
+
+If you cannot answer these → you failed step 01.
+
+---
+
+## 📂 TASKS TO EXECUTE
+
+### 1) FULL PROJECT SCAN
+Read the entire repository structure.
+
+Produce:
+- high level tree
+- important folders
+- suspicious folders
+- dead-looking zones
+- duplicated areas
+
+---
+
+### 2) DETECT TECHNOLOGY STACK
+You must identify:
+
+Backend:
+- language
+- framework
+- ORM
+- auth system
+- API style
+
+Frontend:
+- framework
+- routing
+- state management
+- API layer
+
+Other:
+- cache
+- queue
+- cron
+- file storage
+- external APIs
+
+---
+
+### 3) FIND ENTRY POINTS
+Where does execution start?
+
+Examples:
+- server bootstrap
+- app.ts
+- main.py
+- index.js
+- router root
+- CLI start
+
+---
+
+### 4) CONFIGURATION & ENVIRONMENT
+Find:
+- env files
+- secrets risks
+- hardcoded credentials
+- environment switching logic
+
+---
+
+### 5) IDENTIFY ARCHITECTURE STYLE
+Try to understand:
+
+Is it:
+- layered?
+- feature based?
+- monolith?
+- modular?
+- chaotic?
+
+Explain WHY.
+
+---
+
+### 6) LOCATE BUSINESS LOGIC
+Where is REAL value implemented?
+
+Not routing.
+Not UI.
+
+Where decisions happen.
+
+---
+
+### 7) RISK HEATMAP
+Mark areas likely to explode in future:
+
+Examples:
+- huge files
+- mixed responsibilities
+- deep nesting
+- unclear naming
+- magic constants
+- global states
+
+---
+
+### 8) DEPENDENCY DIRECTION
+Check:
+
+Does UI depend on domain?
+Does domain depend on infra?
+Are there circular imports?
+
+---
+
+### 9) ONBOARDING SIMULATION
+Imagine a new developer comes tomorrow.
+
+Explain:
+- where he will be confused
+- what is not obvious
+- what is missing
+
+---
+
+## 📝 OUTPUT FILES YOU MUST WRITE
+
+You MUST create:
+
+AUDIT_RESULTS/01_ARCHITECTURE/STEP_01_PROJECT_MAP.md  
+AUDIT_RESULTS/11_DEBT_BACKLOG/STEP_01_ISSUES.csv  
+Update:
+AUDIT_RESULTS/00_INDEX/MASTER_INDEX.md  
+AUDIT_RESULTS/12_SCORE/SCORECARD.md
+
+---
+
+## 📊 SCORING IMPACT
+
+This step influences:
+
+- Architecture
+- Maintainability
+- Scalability
+- Developer Experience
+
+Bad structure = heavy penalty.
+
+---
+
+## ❌ WHAT YOU MUST NOT DO
+
+Do not:
+- propose refactor yet
+- change files
+- guess business purpose
+- jump to security deep dive
+
+Only mapping.
+
+---
+
+## ✅ DEFINITION OF DONE
+
+You can visually explain system structure to CTO.
+
+If yes → step complete.
+
+---
+
+After finishing:
+STOP.
+Output ONLY:
+
+Gata cu partea (1)

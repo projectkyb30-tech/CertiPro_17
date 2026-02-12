@@ -1,0 +1,205 @@
+# STEP 08 — PERFORMANCE & SCALABILITY AUDIT (HOT PATHS, DB, CACHING)
+VERSION: 1.0
+PRIORITY: HIGH
+GOAL: Identify performance bottlenecks and scaling risks before they become outages.
+
+If it works only for 10 users, it doesn't work.
+
+---
+
+## 🎯 OBJECTIVES OF STEP 08
+
+You must determine:
+
+1. Where the app will be slow first.
+2. Which endpoints/flows are heavy.
+3. Which DB queries are risky.
+4. Where N+1 exists.
+5. Where payloads are too large.
+6. Where caching is missing or wrong.
+7. Where concurrency creates problems.
+8. Where memory/cpu will spike.
+
+---
+
+## 🚨 MINDSET
+
+You are a Performance Engineer.
+
+You must produce:
+- hotspot list
+- root causes
+- fixes with biggest ROI
+- quick wins
+
+---
+
+## 📂 TASKS TO EXECUTE
+
+---
+
+### 1) IDENTIFY HOT PATHS
+Find most likely frequent operations:
+- list pages
+- search
+- dashboards
+- “my account”
+- checkout / submit / confirm flows
+- exam start/submit flows (if applicable)
+
+Map them to code paths.
+
+---
+
+### 2) DATABASE PERFORMANCE RISKS
+Check:
+- missing indexes for filtering/joining
+- full table scans likely
+- heavy aggregations
+- sorting without indexes
+- large OFFSET pagination (slow)
+- poor key choices (string keys everywhere)
+- unbounded queries (no LIMIT)
+
+Mark: file path + query location.
+
+---
+
+### 3) N+1 PATTERNS
+Find typical patterns:
+- loop over results and query DB again
+- repeated API calls in frontend for each item
+- ORM lazy loading loops
+
+N+1 is a classic scaling killer.
+
+---
+
+### 4) PAYLOAD & SERIALIZATION COST
+Check:
+- endpoints returning too much data
+- returning whole objects instead of minimal DTOs
+- including heavy nested relations
+- sending large JSON without compression hints
+
+If large payloads are common → user experience suffers.
+
+---
+
+### 5) CACHING STRATEGY
+Check:
+- is caching used? (redis/memory/http cache)
+- are cache keys safe?
+- cache invalidation strategy exists?
+- stale data risks
+
+If no caching and heavy reads exist → mark improvement.
+
+---
+
+### 6) CONCURRENCY & RACE CONDITIONS (PERF + CORRECTNESS)
+Identify:
+- double submit issues
+- multiple writes without transaction
+- lock contention risks
+- optimistic concurrency control missing (if needed)
+
+---
+
+### 7) FRONTEND PERFORMANCE (LIGHT)
+Check:
+- huge bundles
+- heavy rendering lists without virtualization
+- repeated refetching
+- missing memoization (only where obvious)
+- blocking operations on main thread (if SPA)
+
+---
+
+### 8) TIMEOUTS & RETRIES
+For external services:
+- timeouts defined?
+- retries controlled?
+- exponential backoff?
+- will retries amplify load under outage?
+
+If retries are naive → risk of cascading failure.
+
+---
+
+### 9) RESOURCE USAGE
+Check for:
+- reading large files into memory
+- no streaming
+- huge images processing without limits
+- unbounded loops
+- memory leaks patterns (listeners, global caches)
+
+---
+
+### 10) SCALABILITY MODEL (PRACTICAL)
+Based on code structure, estimate:
+- what breaks at 1k users/day
+- what breaks at 10k users/day
+- what breaks at 100k users/day
+
+This is not exact math; it’s engineering judgment with evidence.
+
+---
+
+## 🧠 REQUIRED OUTPUT STYLE
+
+For each hotspot include:
+- where it is (file path/symbol)
+- why it is slow
+- what symptom user sees
+- fix options (best + simplest)
+- estimated effort (S/M/L)
+- expected gain (Low/Med/High)
+
+---
+
+## 📝 OUTPUT FILES YOU MUST WRITE
+
+AUDIT_RESULTS/05_PERFORMANCE/STEP_08_PERF_HOTSPOTS.md (main performance report)
+AUDIT_RESULTS/05_PERFORMANCE/STEP_08_DB_QUERY_RISKS.md (DB-specific findings)
+AUDIT_RESULTS/11_DEBT_BACKLOG/STEP_08_ISSUES.csv
+
+Update:
+AUDIT_RESULTS/00_INDEX/MASTER_INDEX.md
+AUDIT_RESULTS/12_SCORE/SCORECARD.md
+
+---
+
+## 📊 SCORING IMPACT
+
+Performance affects:
+- reliability
+- UX
+- scaling cost
+- investor confidence
+
+Severe hotspots = big penalty.
+
+---
+
+## ❌ WHAT YOU MUST NOT DO
+
+Do not micro-optimize style.
+Do not rewrite for performance now.
+Only report with high ROI improvements.
+
+---
+
+## ✅ DEFINITION OF DONE
+
+You can list top bottlenecks and fixes that unlock 10x scale.
+
+---
+
+After finishing:
+STOP.
+
+Output ONLY:
+
+Gata cu partea (8)

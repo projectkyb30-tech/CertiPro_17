@@ -1,0 +1,234 @@
+# STEP 04 — DATA LAYER & PERSISTENCE INTEGRITY AUDIT
+VERSION: 1.0
+PRIORITY: CRITICAL
+GOAL: Verify data correctness, integrity, constraints, migrations, and transaction safety.
+
+If the data layer is weak, the product will fail no matter how good the UI is.
+
+---
+
+## 🎯 OBJECTIVES OF STEP 04
+
+You must determine:
+
+1. What data is stored and why.
+2. Whether the schema enforces business rules.
+3. Whether migrations are safe and consistent.
+4. Whether queries and transactions are correct.
+5. Whether data can become inconsistent or duplicated.
+6. Whether deletion/update strategy is safe.
+7. Whether data security and privacy are respected.
+
+---
+
+## 🚨 MINDSET
+
+You are a Database Architect + Auditor.
+
+After this step you must answer:
+
+- What are the core tables/collections?
+- What are the primary keys?
+- What are the foreign keys / relations?
+- What constraints enforce correctness?
+- What rules are missing from DB level?
+- How is data migrated and versioned?
+- What can break or corrupt data?
+
+---
+
+## 📂 TASKS TO EXECUTE
+
+---
+
+### 1) IDENTIFY STORAGE TYPES
+List all persistence mechanisms used:
+
+- SQL database (which one?)
+- NoSQL
+- files
+- Firebase/Supabase
+- caches
+- external storage (S3 etc.)
+
+For each: what is stored there and why.
+
+---
+
+### 2) SCHEMA INVENTORY
+If SQL:
+- list tables
+- list PKs
+- list FKs
+- list indexes
+- list UNIQUE constraints
+- list CHECK constraints
+- defaults and NOT NULL rules
+
+If NoSQL:
+- identify collections/documents shapes
+- required fields
+- consistency strategies
+- denormalization risks
+
+---
+
+### 3) BUSINESS RULE ENFORCEMENT
+Very important:
+
+Find business rules from Step 02 and verify where they are enforced:
+
+- DB constraint?
+- app validation only?
+- not enforced at all?
+
+If a critical rule is not enforced anywhere → CRITICAL issue.
+
+---
+
+### 4) MIGRATIONS & VERSIONING
+Check:
+
+- Are migrations present?
+- Are they ordered and reproducible?
+- Any manual SQL steps that are undocumented?
+- Any destructive migrations without safeguards?
+
+If schema can’t be rebuilt reliably from scratch → major issue.
+
+---
+
+### 5) TRANSACTION SAFETY
+Find operations that should be atomic:
+
+Examples:
+- payment + order update
+- submit exam + lock answers
+- stock decrement + purchase
+- reservation + confirmation
+
+Verify if they use transactions correctly.
+
+If not → risk of inconsistent data.
+
+---
+
+### 6) DELETE / UPDATE STRATEGY
+Check:
+
+- DELETE vs soft delete
+- cascade rules
+- orphan records
+- referential integrity
+
+If deleting one thing breaks relations → severe risk.
+
+---
+
+### 7) INDEX & PERFORMANCE BASELINE
+Identify:
+
+- missing indexes on frequently used filters/joins
+- large tables without indexes
+- N+1 query patterns
+- heavy aggregations
+
+Mark hotspots.
+
+---
+
+### 8) DATA QUALITY RISKS
+Find:
+
+- nullable fields that should not be nullable
+- inconsistent field naming/types
+- duplicated records possible
+- lack of uniqueness
+- timestamps missing (created_at, updated_at)
+- missing audit trail for critical entities
+
+---
+
+### 9) PRIVACY & SENSITIVE DATA
+Identify:
+
+- PII (emails, phones, addresses)
+- passwords handling
+- tokens
+- payment data
+- logs leaking sensitive data
+
+If sensitive data is stored insecurely → CRITICAL.
+
+---
+
+### 10) BACKUP & RECOVERY (if configs exist)
+If the project includes any backup strategy or scripts:
+- validate existence
+- detect missing plan
+
+No recovery plan in serious product = big red flag.
+
+---
+
+## 🧠 ADVANCED DETECTIONS (IMPORTANT)
+
+Detect:
+
+- business logic stored in DB in unsafe ways (triggers/procs) without tests
+- inconsistent type usage across layers (string vs int IDs)
+- weak ID strategy (predictable IDs when sensitive)
+- lack of constraints relying only on frontend
+- race condition risks around data writes
+
+---
+
+## 📝 OUTPUT FILES YOU MUST WRITE
+
+AUDIT_RESULTS/04_SECURITY/STEP_04_DATA_PRIVACY.md   (privacy + sensitive data findings)
+AUDIT_RESULTS/05_PERFORMANCE/STEP_04_DB_PERFORMANCE.md (indexes, query risks)
+AUDIT_RESULTS/07_MAINTAINABILITY/STEP_04_SCHEMA_HEALTH.md (constraints, migrations, integrity)
+AUDIT_RESULTS/11_DEBT_BACKLOG/STEP_04_ISSUES.csv
+
+Update:
+AUDIT_RESULTS/00_INDEX/MASTER_INDEX.md
+AUDIT_RESULTS/12_SCORE/SCORECARD.md
+
+---
+
+## 📊 SCORING IMPACT
+
+This affects strongly:
+
+- Business correctness
+- Security & privacy
+- Performance
+- Reliability
+
+Weak data layer = huge score penalty.
+
+---
+
+## ❌ WHAT YOU MUST NOT DO
+
+Do not redesign schema yet.
+Do not write migrations.
+Only analyze and report with evidence.
+
+---
+
+## ✅ DEFINITION OF DONE
+
+You can confidently say:
+"Data will remain correct even under stress."
+
+If not, list exactly what must be improved.
+
+---
+
+After finishing:
+STOP.
+
+Output ONLY:
+
+Gata cu partea (4)

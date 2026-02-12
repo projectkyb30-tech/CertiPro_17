@@ -1,0 +1,228 @@
+# STEP 05 — API / BACKEND CORRECTNESS & CONTRACT AUDIT
+VERSION: 1.0
+PRIORITY: CRITICAL
+GOAL: Verify correctness of backend logic, API contracts, validation, errors, and reliability.
+
+A backend that returns inconsistent data or accepts invalid input will kill the product.
+
+---
+
+## 🎯 OBJECTIVES OF STEP 05
+
+You must determine:
+
+1. If API contracts are clear and consistent.
+2. If inputs are validated correctly (server-side).
+3. If errors are handled safely and predictably.
+4. If auth/authorization rules are enforced at backend.
+5. If state changes are correct and safe (idempotency, retries).
+6. If backend is structured for long-term evolution.
+
+---
+
+## 🚨 MINDSET
+
+You are Senior Backend Engineer + Reliability Engineer.
+
+After this step you must answer:
+
+- What are the main endpoints/routes?
+- What do they accept and return?
+- Where validation happens?
+- How errors look?
+- Where authorization is enforced?
+- Which operations must be idempotent?
+- What breaks under retries/timeouts?
+
+---
+
+## 📂 TASKS TO EXECUTE
+
+---
+
+### 1) API SURFACE INVENTORY
+List all API entry points:
+- routes/controllers/handlers
+- RPC endpoints (if any)
+- webhooks
+- internal APIs
+
+For each endpoint capture:
+- method (GET/POST/PUT/PATCH/DELETE)
+- path
+- purpose
+- input fields (required/optional)
+- output shape
+- auth requirement
+
+---
+
+### 2) CONTRACT CONSISTENCY CHECK
+Verify:
+- consistent status codes
+- consistent response wrapper format
+- consistent naming conventions (snake/camel)
+- consistent pagination format
+- consistent error format
+
+If every endpoint returns different structure → major maintainability issue.
+
+---
+
+### 3) INPUT VALIDATION (SERVER-SIDE)
+For each major endpoint:
+- check required fields
+- type validation
+- range validation
+- format validation (email, phone, ids)
+- unknown field handling
+- payload size constraints (if relevant)
+
+If validation exists only in frontend → CRITICAL.
+
+---
+
+### 4) AUTHENTICATION & AUTHORIZATION ENFORCEMENT
+Check:
+- where auth is implemented (middleware/guard)
+- role-based access control rules
+- permission checks per resource (owner checks)
+- admin-only endpoints
+
+If endpoints can be called without proper checks → CRITICAL.
+
+---
+
+### 5) ERROR HANDLING & SAFE FAILURES
+Check:
+- try/catch boundaries
+- global error handler
+- sanitized error messages (no stack traces to user)
+- logging of errors with context
+- mapping of errors to status codes
+
+If errors leak internal info → security risk.
+
+---
+
+### 6) IDEMPOTENCY & RETRY SAFETY
+Identify operations that must be safe under retry:
+- payment create
+- order submit
+- reservation confirm
+- exam submit
+- inventory decrement
+
+Verify if:
+- unique request ids exist
+- deduplication exists
+- transactions protect duplicates
+- replays create duplicate records
+
+If duplicates are possible → High/Critical depending on impact.
+
+---
+
+### 7) DATA ACCESS PATTERNS
+Check:
+- how DB/ORM is called
+- N+1 patterns
+- query building safety (SQL injection risk)
+- repository/service separation
+- transaction usage for multi-write operations
+
+---
+
+### 8) RATE LIMITING & ABUSE PROTECTION (if applicable)
+Check if there is:
+- rate limiting
+- brute-force protection
+- request throttling
+- captcha / lockouts
+If missing on auth endpoints → High risk.
+
+---
+
+### 9) API VERSIONING & EVOLUTION
+Check:
+- any versioning strategy
+- backward compatibility concerns
+- breaking changes risk
+
+If no strategy but fast product growth expected → Medium/High risk.
+
+---
+
+### 10) DEPENDENCY INTEGRATIONS
+Check external services calls:
+- timeouts
+- retries
+- circuit breaker patterns (if any)
+- error mapping
+- fallback behavior
+
+If external failure crashes whole request chain → reliability risk.
+
+---
+
+## 🧠 ADVANCED DETECTIONS (IMPORTANT)
+
+Detect:
+- business logic inside controllers (fat controllers)
+- inconsistent validation rules vs business rules from Step 02
+- missing authorization on “indirect access” endpoints
+- insecure deserialization / unsafe parsing
+- missing input sanitization for file uploads
+- hidden “admin” endpoints without protection
+
+---
+
+## 📝 OUTPUT FILES YOU MUST WRITE
+
+AUDIT_RESULTS/03_CODE_QUALITY/STEP_05_API_CONTRACTS.md (endpoints, contracts, consistency)
+AUDIT_RESULTS/04_SECURITY/STEP_05_AUTHZ_SECURITY.md (auth/authz issues + leaks)
+AUDIT_RESULTS/07_MAINTAINABILITY/STEP_05_BACKEND_STRUCTURE.md (layers, services, boundaries)
+AUDIT_RESULTS/11_DEBT_BACKLOG/STEP_05_ISSUES.csv
+
+Update:
+AUDIT_RESULTS/00_INDEX/MASTER_INDEX.md
+AUDIT_RESULTS/12_SCORE/SCORECARD.md
+
+---
+
+## 📊 SCORING IMPACT
+
+This affects strongly:
+
+- Business correctness
+- Security
+- Reliability
+- Maintainability
+
+Broken API contracts = high penalty.
+
+---
+
+## ❌ WHAT YOU MUST NOT DO
+
+Do not rewrite endpoints.
+Do not implement new auth.
+Only analyze and report.
+
+---
+
+## ✅ DEFINITION OF DONE
+
+You can confidently say:
+"Backend rejects invalid input, enforces permissions, and returns consistent results."
+
+If not, list exactly what to fix first.
+
+---
+
+After finishing:
+STOP.
+
+Output ONLY:
+
+Gata cu partea (5)

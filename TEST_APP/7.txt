@@ -1,0 +1,227 @@
+# STEP 07 — SECURITY REVIEW (AUTH, ACCESS, INJECTION, SECRETS)
+VERSION: 1.0
+PRIORITY: CRITICAL
+GOAL: Identify exploitable weaknesses and privacy risks across the entire project.
+
+Assume attackers exist.
+Assume users are careless.
+Assume mistakes will happen.
+
+---
+
+## 🎯 OBJECTIVES OF STEP 07
+
+You must determine:
+
+1. Authentication correctness (sessions/tokens).
+2. Authorization correctness (RBAC, ownership checks).
+3. Secrets handling (keys, tokens, env).
+4. Injection vulnerabilities (SQL/NoSQL/command/template).
+5. XSS/CSRF/CORS weaknesses.
+6. File upload and parsing risks.
+7. Sensitive data exposure (logs, responses, client bundle).
+8. Dependency & supply chain risks (if visible).
+9. Security headers and transport security.
+
+---
+
+## 🚨 MINDSET
+
+You are a Security Engineer performing an audit for production release.
+
+You must output:
+- attack surface map
+- critical vulnerabilities
+- exploit scenarios
+- fixes with priority
+
+You must be strict.
+
+---
+
+## 📂 TASKS TO EXECUTE
+
+---
+
+### 1) ATTACK SURFACE MAP
+List all entry points attackers can hit:
+
+- public endpoints
+- auth endpoints
+- admin endpoints
+- file upload endpoints
+- webhooks
+- third-party callbacks
+
+For each:
+- what data comes in?
+- what data goes out?
+- what protection exists?
+
+---
+
+### 2) AUTHENTICATION AUDIT
+Check:
+- JWT/session handling
+- token expiration/refresh
+- password storage (hashing)
+- login rate limiting
+- brute-force protections
+- reset password flow (tokens, expiry)
+- MFA if present
+
+If password handling is weak → CRITICAL.
+
+---
+
+### 3) AUTHORIZATION AUDIT (MOST IMPORTANT)
+Check:
+- role checks
+- resource ownership checks
+- IDOR risks (changing ID in URL to access other user data)
+- admin routes protection
+- “hidden admin” flags in request
+
+If an attacker can access other users’ data → CRITICAL.
+
+---
+
+### 4) SECRETS & CONFIG LEAKS
+Search for:
+- hardcoded API keys
+- secret tokens
+- database credentials
+- .env committed
+- keys in frontend bundle
+- secrets in logs
+
+If secrets exist in repo → CRITICAL.
+
+---
+
+### 5) INJECTION RISKS
+Check for:
+- SQL injection (string concatenation queries)
+- NoSQL injection (unsanitized query objects)
+- command injection (shell exec)
+- template injection
+- path traversal
+
+Mark exact file path and code locations.
+
+---
+
+### 6) XSS / CSRF / CORS
+Frontend:
+- unsafe innerHTML
+- unescaped rendering
+- user content display
+
+Backend:
+- CSRF protection (if cookies)
+- CORS configuration too permissive
+- cookie flags (HttpOnly, Secure, SameSite)
+
+If cookies used without CSRF → High/Critical depending on context.
+
+---
+
+### 7) FILE UPLOAD & PARSING
+If app handles uploads:
+- file type validation
+- size limits
+- storage path safety
+- virus scan (if any)
+- image parsing risks
+- PDF parsing risks
+- zip bomb protection
+
+Missing controls on uploads → High/Critical.
+
+---
+
+### 8) SENSITIVE DATA & PRIVACY
+Identify:
+- PII stored and returned
+- token leakage in responses
+- logs with passwords, tokens, emails
+- exposure of internal IDs
+- GDPR-like concerns (even if not EU, still best practice)
+
+If logs contain secrets → Critical.
+
+---
+
+### 9) DEPENDENCIES & SUPPLY CHAIN (LIGHT)
+If lockfiles exist (package-lock/yarn.lock/pip/poetry):
+- note that SCA scan is required (Snyk etc.)
+- detect obviously outdated/abandoned packages (if visible)
+- check for direct downloads from random URLs in scripts
+
+---
+
+### 10) SECURITY HEADERS & TRANSPORT
+Check:
+- HTTPS enforcement (if configs exist)
+- HSTS (if relevant)
+- CSP (if relevant)
+- X-Frame-Options / frame-ancestors
+- X-Content-Type-Options
+- Referrer-Policy
+
+---
+
+## 🧠 REQUIRED OUTPUT STYLE (IMPORTANT)
+
+For each critical issue include:
+
+- Vulnerability type
+- Exploit scenario (how attacker abuses it)
+- Impact (data theft? account takeover? money loss?)
+- Proof location (file path, symbol)
+- Fix steps (exact)
+- Priority: P0/P1/P2
+
+---
+
+## 📝 OUTPUT FILES YOU MUST WRITE
+
+AUDIT_RESULTS/04_SECURITY/STEP_07_SECURITY_REPORT.md (main security report)
+AUDIT_RESULTS/04_SECURITY/STEP_07_ATTACK_SURFACE.md (entry points map)
+AUDIT_RESULTS/11_DEBT_BACKLOG/STEP_07_ISSUES.csv
+
+Update:
+AUDIT_RESULTS/00_INDEX/MASTER_INDEX.md
+AUDIT_RESULTS/12_SCORE/SCORECARD.md
+
+---
+
+## 📊 SCORING IMPACT
+
+Security issues are heavy penalties.
+
+Any Critical vulnerability can cap total score.
+
+---
+
+## ❌ WHAT YOU MUST NOT DO
+
+Do not exploit the system.
+Do not run dangerous commands.
+Only analyze and propose fixes.
+
+---
+
+## ✅ DEFINITION OF DONE
+
+You can say:
+"No obvious critical vulnerabilities remain unreported."
+
+---
+
+After finishing:
+STOP.
+
+Output ONLY:
+
+Gata cu partea (7)

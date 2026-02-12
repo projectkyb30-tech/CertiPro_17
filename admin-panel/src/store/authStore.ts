@@ -1,0 +1,23 @@
+import { create } from 'zustand';
+
+interface UserState {
+  token: string | null;
+  user: any | null;
+  setAuth: (token: string, user: any) => void;
+  logout: () => void;
+}
+
+export const useAuthStore = create<UserState>((set) => ({
+  token: localStorage.getItem('admin_token'),
+  user: JSON.parse(localStorage.getItem('admin_user') || 'null'),
+  setAuth: (token, user) => {
+    localStorage.setItem('admin_token', token);
+    localStorage.setItem('admin_user', JSON.stringify(user));
+    set({ token, user });
+  },
+  logout: () => {
+    localStorage.removeItem('admin_token');
+    localStorage.removeItem('admin_user');
+    set({ token: null, user: null });
+  },
+}));
