@@ -11,9 +11,6 @@ export const authService = {
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
-      options: {
-        redirectTo: 'https://certi-pro-seven.vercel.app/auth/callback',
-      }
     });
 
     if (error) throw error;
@@ -31,7 +28,7 @@ export const authService = {
       email,
       password,
       options: {
-        emailRedirectTo: 'https://certi-pro-seven.vercel.app/auth/callback',
+        emailRedirectTo: `${window.location.origin}/auth/callback`,
         data: {
           full_name: fullName,
         },
