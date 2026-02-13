@@ -21,6 +21,7 @@ const Terms = React.lazy(() => import('../pages/Terms'));
 const CompleteProfile = React.lazy(() => import('../pages/CompleteProfile'));
 const Success = React.lazy(() => import('../pages/Success'));
 const AdminDashboard = React.lazy(() => import('../pages/AdminDashboard'));
+const AuthCallback = React.lazy(() => import('../pages/AuthCallback'));
 
 import { AdminDevTools } from '../shared/components/AdminDevTools';
 
@@ -112,11 +113,7 @@ const AppRoutes = () => {
         <Route 
           path="/auth/callback" 
           element={
-            <PublicRoute>
-              <div className="min-h-screen flex items-center justify-center bg-surface dark:bg-background-dark">
-                <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
-              </div>
-            </PublicRoute>
+            <AuthCallback />
           } 
         />
 
