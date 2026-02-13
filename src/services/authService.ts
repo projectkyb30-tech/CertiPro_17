@@ -90,7 +90,7 @@ export const authService = {
     const isNative = Capacitor.isNativePlatform();
     const redirectTo = isNative 
       ? 'com.certipro.app://auth/callback' 
-      : `${window.location.origin}/auth/callback`;
+      : 'https://certi-pro-skfa.vercel.app/auth/callback';
 
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
