@@ -86,6 +86,7 @@ export const authService = {
     if (error) throw error;
   },
 
+  // Method to login with Google using a fixed redirect URL for Vercel
   async loginWithGoogle(): Promise<void> {
     const isNative = Capacitor.isNativePlatform();
     const redirectTo = isNative 
