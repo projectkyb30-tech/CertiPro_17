@@ -172,8 +172,13 @@ export const useDashboardStats = () => {
 
       } catch (err) {
         console.error('Error fetching dashboard stats:', err);
-        setError('Failed to load stats');
-        // Keep existing stats on error for better UX (if revalidating)
+
+        const isAbortError =
+          err instanceof DOMException && err.name === 'AbortError';
+
+        if (!isAbortError) {
+          setError('Failed to load stats');
+        }
       } finally {
         setLoading(false);
       }

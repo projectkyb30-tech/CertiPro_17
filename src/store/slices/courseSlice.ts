@@ -78,6 +78,15 @@ export const createCourseSlice: StateCreator<CourseSlice> = (set, get) => ({
       });
     } catch (error) {
       console.error('Failed to fetch courses', error);
+
+      const isAbortError =
+        error instanceof DOMException && error.name === 'AbortError';
+
+      if (isAbortError) {
+        set({ isCourseLoading: false });
+        return;
+      }
+
       set({
         courseError: error instanceof Error ? error.message : 'Failed to fetch courses',
         isCourseLoading: false
