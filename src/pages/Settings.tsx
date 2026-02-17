@@ -39,7 +39,6 @@ const Settings: React.FC = () => {
   const { theme, toggleTheme } = useThemeStore();
   const { 
     user, 
-    logout, 
     setHasSeenAppTutorial,
     setTutorialStepIndex,
     setTutorialRunning 
