@@ -54,44 +54,47 @@ export class SupabaseCourseAdapter implements CourseAdapter {
    */
   async getAllCourses(): Promise<Course[]> {
     try {
-      // 1. Fetch all published courses
-      const { data: coursesData, error: coursesError } = await supabase
-        .from('courses')
-        .select('id, title, description, icon, total_lessons, duration_hours, price, is_published')
-        .eq('is_published', true)
-        .order('price', { ascending: true });
+      // 1. Parallelize initial data fetching
+      const [coursesRes, userRes] = await Promise.all([
+        supabase
+          .from('courses')
+          .select('id, title, description, icon, total_lessons, duration_hours, price, is_published')
+          .eq('is_published', true)
+          .order('price', { ascending: true }),
+        supabase.auth.getUser()
+      ]);
+
+      const { data: coursesData, error: coursesError } = coursesRes;
+      const { data: { user } } = userRes;
 
       if (coursesError) throw coursesError;
       if (!coursesData) return [];
 
-      // 2. Fetch user enrollments AND purchases to determine lock status and progress
-      const { data: { user } } = await supabase.auth.getUser();
       const enrollmentMap = new Map<string, { progress: number }>();
       const purchaseSet = new Set<string>();
 
+      // 2. If user exists, fetch secondary data in parallel
       if (user) {
-        // Fetch Enrollments
-        const { data: enrollments } = await supabase
-          .from('enrollments')
-          .select('course_id, progress_percent')
-          .eq('user_id', user.id);
+        const [enrollmentsRes, purchasesRes] = await Promise.all([
+          supabase
+            .from('enrollments')
+            .select('course_id, progress_percent')
+            .eq('user_id', user.id),
+          supabase
+            .from('user_purchases')
+            .select('course_id')
+            .eq('user_id', user.id)
+            .eq('status', 'paid')
+        ]);
         
-        if (enrollments) {
-          enrollments.forEach(e => {
+        if (enrollmentsRes.data) {
+          enrollmentsRes.data.forEach((e: { course_id: string; progress_percent: number }) => {
             enrollmentMap.set(e.course_id, { progress: e.progress_percent });
           });
         }
 
-        // Fetch Purchases (Source of Truth for Access)
-        // Direct Supabase query (RLS allows reading own purchases)
-        const { data: purchases } = await supabase
-          .from('user_purchases')
-          .select('course_id')
-          .eq('user_id', user.id)
-          .eq('status', 'paid');
-          
-        if (purchases) {
-          purchases.forEach(p => {
+        if (purchasesRes.data) {
+          purchasesRes.data.forEach((p: { course_id: string }) => {
             purchaseSet.add(p.course_id);
           });
         }
@@ -137,82 +140,72 @@ export class SupabaseCourseAdapter implements CourseAdapter {
    */
   async getCourseById(courseId: string): Promise<Course | undefined> {
     try {
-      // 1. Fetch course details
-      const { data: courseData, error: courseError } = await supabase
-        .from('courses')
-        .select('*')
-        .eq('id', courseId)
-        .single();
+      // 1. Fetch course details, modules, and user in parallel
+      const [courseRes, modulesRes, userRes] = await Promise.all([
+        supabase
+          .from('courses')
+          .select('*')
+          .eq('id', courseId)
+          .single(),
+        supabase
+          .from('modules')
+          .select('id, course_id, title, order, lessons (id, module_id, title, type, duration, summary, is_free, order)')
+          .eq('course_id', courseId)
+          .order('order', { ascending: true }),
+        supabase.auth.getUser()
+      ]);
+
+      const { data: courseData, error: courseError } = courseRes;
+      const { data: modulesData, error: modulesError } = modulesRes;
+      const { data: { user } } = userRes;
 
       if (courseError || !courseData) return undefined;
-
-      // 2. Fetch modules and lessons
-      // Using Supabase deep join syntax to get modules and their lessons
-      const { data: modulesData, error: modulesError } = await supabase
-        .from('modules')
-        .select('id, course_id, title, order, lessons (id, module_id, title, type, duration, summary, is_free, order)')
-        .eq('course_id', courseId)
-        .order('order', { ascending: true });
-
       if (modulesError) throw modulesError;
+
       const modulesRows = (modulesData || []) as ModuleRow[];
 
-      // 3. Check enrollment status and progress
-      const { data: { user } } = await supabase.auth.getUser();
+      // 2. Check enrollment status, progress, and purchase in parallel
       let isEnrolled = false;
       let isProcessing = false;
       let currentProgress = 0;
       const completedLessonIds = new Set<string>();
 
       if (user) {
-        // Fetch enrollment
-        const { data: enrollment } = await supabase
-          .from('enrollments')
-          .select('progress_percent')
-          .eq('user_id', user.id)
-          .eq('course_id', courseId)
-          .single();
-        
-        if (enrollment) {
-          isEnrolled = true;
-          currentProgress = enrollment.progress_percent;
-        } else {
-          // Check for purchase (processing state)
-           const { data: purchase } = await supabase
+        const lessonIds = modulesRows.flatMap((m) => (m.lessons || []).map((l) => l.id));
+
+        const [enrollmentRes, purchaseRes, progressRes] = await Promise.all([
+          supabase
+            .from('enrollments')
+            .select('progress_percent')
+            .eq('user_id', user.id)
+            .eq('course_id', courseId)
+            .maybeSingle(),
+          supabase
             .from('user_purchases')
             .select('id')
             .eq('user_id', user.id)
             .eq('course_id', courseId)
             .eq('status', 'paid')
-            .maybeSingle();
-            
-           if (purchase) {
-             isProcessing = true;
-           }
+            .maybeSingle(),
+          lessonIds.length > 0 
+            ? supabase
+                .from('user_progress')
+                .select('lesson_id')
+                .eq('user_id', user.id)
+                .eq('is_completed', true)
+                .in('lesson_id', lessonIds)
+            : Promise.resolve({ data: [] })
+        ]);
+        
+        if (enrollmentRes.data) {
+          isEnrolled = true;
+          currentProgress = enrollmentRes.data.progress_percent;
+        } else if (purchaseRes.data) {
+          isProcessing = true;
         }
 
-        // Fetch completed lessons for this user (we could filter by course via join, 
-        // but fetching all completed lessons for the user is also fine if not too many, 
-        // or we can just filter by the lessons we have).
-        // A better approach is to filter by the lesson IDs we just fetched.
-        // But for simplicity/speed in this step, we fetch all completed lessons for this user 
-        // or we can optimize if needed.
-        // Let's rely on RLS (user sees own progress) and maybe filter by the lesson IDs if possible, 
-        // but Supabase 'in' query is easy.
-        
-        const lessonIds = modulesRows.flatMap((m) => (m.lessons || []).map((l) => l.id));
-        
-        if (lessonIds.length > 0) {
-           const { data: progressData } = await supabase
-            .from('user_progress')
-            .select('lesson_id')
-            .eq('user_id', user.id)
-            .eq('is_completed', true)
-            .in('lesson_id', lessonIds);
-
-           if (progressData) {
-             (progressData as { lesson_id: string }[]).forEach((p) => completedLessonIds.add(p.lesson_id));
-           }
+        if (progressRes.data) {
+          (progressRes.data as { lesson_id: string }[]).forEach((p) => completedLessonIds.add(p.lesson_id));
         }
       }
 

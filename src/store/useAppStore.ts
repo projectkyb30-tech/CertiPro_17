@@ -54,8 +54,6 @@ export const useAppStore = create<AppState>()(
         tutorialStepIndex: state.tutorialStepIndex,
         // Theme
         theme: state.theme,
-        // Course
-        courses: state.courses,
       }),
     }
   )

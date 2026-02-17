@@ -10,11 +10,12 @@ const Onboarding = React.lazy(() => import('../pages/Onboarding'));
 const Auth = React.lazy(() => import('../pages/Auth'));
 const OTPVerification = React.lazy(() => import('../pages/OTPVerification'));
 const Home = React.lazy(() => import('../pages/Home'));
+const Courses = React.lazy(() => import('../pages/Courses'));
 const Checkout = React.lazy(() => import('../pages/Checkout'));
 const Lessons = React.lazy(() => import('../pages/Lessons'));
 const CoursePlayer = React.lazy(() => import('../pages/CoursePlayer'));
 const ExamCenter = React.lazy(() => import('../pages/ExamCenter'));
-const ExamRunner = React.lazy(() => import('@/pages/ExamRunner'));
+const ExamRunner = React.lazy(() => import('../pages/ExamRunner'));
 const Settings = React.lazy(() => import('../pages/Settings'));
 const Profile = React.lazy(() => import('../pages/Profile'));
 const Terms = React.lazy(() => import('../pages/Terms'));
@@ -30,8 +31,9 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated, user } = useUserStore();
   const location = useLocation();
   
-  // Admin bypass
-  const isAdmin = user?.email === 'admin@certipro.com' || user?.email?.toLowerCase().includes('admin') || user?.email === 'daniilchifeac@gmail.com';
+  // SECURE Admin check: Using role from user object
+  const isAdmin = user?.role === 'admin';
+  
   if (isAdmin) {
     return <>{children}</>;
   }
@@ -50,7 +52,7 @@ const RequireProfileComplete = ({ children }: { children: React.ReactNode }) => 
   if (!user) return null;
 
   // Admin bypass
-  const isAdmin = user.email === 'admin@certipro.com' || user.email?.includes('admin');
+  const isAdmin = user.role === 'admin';
   if (isAdmin) {
     return <>{children}</>;
   }
@@ -168,6 +170,7 @@ const AppRoutes = () => {
           </ProtectedRoute>
         }>
           <Route path={ROUTES.HOME} element={<Home />} />
+          <Route path={ROUTES.COURSES} element={<Courses />} />
           <Route path={ROUTES.LESSONS} element={<Lessons />} />
           <Route path={ROUTES.EXAM_CENTER} element={<ExamCenter />} />
           <Route path={ROUTES.SETTINGS} element={<Settings />} />

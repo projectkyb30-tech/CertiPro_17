@@ -55,27 +55,25 @@ export const examService = {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return []; // Should handle no user better, but for now empty
 
-      // 2. Fetch user attempts (best score)
+      // 2. Fetch user attempts
       const { data: attempts } = await supabase
         .from('exam_attempts')
-        .select('exam_id, score, passed')
+        .select('exam_id, score, passed, started_at')
         .eq('user_id', user.id)
-        .order('score', { ascending: false }); // Get highest score first if multiple
+        .order('started_at', { ascending: false });
 
-      // Map attempts by exam_id
-      const attemptMap = new Map<string, { score: number, passed: boolean }>();
-      const attemptRows = (attempts || []) as ExamAttemptRow[];
+      // Map attempts by exam_id (latest attempt)
+      const latestAttemptMap = new Map<string, { score: number, passed: boolean, started_at: string }>();
+      const attemptRows = (attempts || []) as (ExamAttemptRow & { started_at: string })[];
       if (attemptRows.length) {
         attemptRows.forEach((a) => {
-          if (!attemptMap.has(a.exam_id)) {
-            attemptMap.set(a.exam_id, { score: a.score, passed: a.passed });
+          if (!latestAttemptMap.has(a.exam_id)) {
+            latestAttemptMap.set(a.exam_id, { score: a.score, passed: a.passed, started_at: a.started_at });
           }
         });
       }
 
-      // 3. Fetch course completion status (to unlock exams)
-      // An exam is unlocked if the related course is completed (progress >= 100 or is_completed = true)
-      // OR if it has no course_id (general exam)
+      // 3. Fetch course completion status
       const { data: enrollments } = await supabase
         .from('enrollments')
         .select('course_id, is_completed, progress_percent')
@@ -93,26 +91,36 @@ export const examService = {
 
       // 4. Map to frontend Exam interface
       const exams = (examsData || []) as ExamRow[];
+      const COOLDOWN_HOURS = 24;
+
       return exams.map((e) => {
-        const attempt = attemptMap.get(e.id);
+        const latest = latestAttemptMap.get(e.id);
         const isCourseCompleted = e.course_id ? completedCourses.has(e.course_id) : true;
         
-        // Determine status
-        let status: ExamStatus = 'locked';
-        if (attempt?.passed) {
-          status = 'passed';
-        } else if (attempt && !attempt.passed) {
-          status = 'failed'; // Or 'pending' if we want to allow retries immediately
-        } else if (isCourseCompleted) {
-          status = 'pending'; // Ready to take
+        // Cooldown logic
+        let canRetry = true;
+        let cooldownRemaining = 0;
+        if (latest && !latest.passed) {
+          const lastAttemptTime = new Date(latest.started_at).getTime();
+          const now = new Date().getTime();
+          const diff = now - lastAttemptTime;
+          const cooldownMs = COOLDOWN_HOURS * 3600000;
+          
+          if (diff < cooldownMs) {
+            canRetry = false;
+            cooldownRemaining = Math.ceil((cooldownMs - diff) / 3600000);
+          }
         }
 
-        // Override: if unlocked but not attempted, it is 'pending' (unless we strictly mean 'pending' = started?)
-        // Let's align with UI:
-        // locked: cannot take
-        // pending: can take (unlocked)
-        // passed: passed
-        // failed: failed
+        // Determine status
+        let status: ExamStatus = 'locked';
+        if (latest?.passed) {
+          status = 'passed';
+        } else if (latest && !latest.passed) {
+          status = canRetry ? 'pending' : 'failed';
+        } else if (isCourseCompleted) {
+          status = 'pending';
+        }
 
         return {
           id: e.id,
@@ -123,8 +131,9 @@ export const examService = {
           durationMinutes: e.time_limit_minutes,
           passingScore: e.passing_score,
           status: status,
-          lastScore: attempt?.score || null,
-          isUnlocked: isCourseCompleted || status === 'passed' || status === 'failed'
+          lastScore: latest?.score || null,
+          isUnlocked: isCourseCompleted || status === 'passed' || status === 'failed',
+          cooldownHours: !canRetry ? cooldownRemaining : null
         };
       });
 
@@ -138,26 +147,56 @@ export const examService = {
    * Securely fetches exam questions.
    */
   async getExamQuestions(examId: string): Promise<Question[]> {
-    // 1. Get Course ID from Exam
+    // 1. Get Course ID and Duration from Exam
     const { data: exam, error: examError } = await supabase
       .from('exams')
-      .select('course_id')
+      .select('course_id, time_limit_minutes')
       .eq('id', examId)
       .single();
 
     if (examError || !exam) throw new Error('Exam not found');
 
-    // 2. Fetch Questions
+    const courseId = exam.course_id;
+
+    // 2. CHECK FOR ACTIVE ATTEMPT
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error('Not authenticated');
+
+    const { data: activeAttempt, error: attemptError } = await supabase
+      .from('exam_attempts')
+      .select('id, started_at')
+      .eq('user_id', user.id)
+      .eq('course_id', courseId)
+      .is('completed_at', null)
+      .order('started_at', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (attemptError || !activeAttempt) {
+      throw new Error('No active exam attempt found. Start the exam first.');
+    }
+
+    // 3. CHECK EXPIRY
+    const duration = exam.time_limit_minutes || 60;
+    const startedAt = new Date(activeAttempt.started_at);
+    const now = new Date();
+    const expiry = new Date(startedAt.getTime() + (duration + 1) * 60000); // +1 min buffer
+
+    if (now > expiry) {
+      throw new Error('Exam attempt expired.');
+    }
+
+    // 4. Fetch Questions
     const { data: questions, error: qError } = await supabase
       .from('questions')
       .select('id, text, points')
-      .eq('course_id', exam.course_id);
+      .eq('course_id', courseId);
 
     if (qError) throw qError;
     if (!questions) return [];
 
-    // 3. Fetch Answers (Options) via Secure View
-      const questionIds = (questions as QuestionRow[]).map((q) => q.id);
+    // 5. Fetch Answers (Options) via Secure View
+    const questionIds = (questions as QuestionRow[]).map((q) => q.id);
     const { data: answers, error: aError } = await supabase
       .from('exam_answers_public')
       .select('id, question_id, text')
@@ -166,23 +205,39 @@ export const examService = {
 
     if (aError) throw aError;
 
-    // 4. Map to Question Interface
+    // 6. Map to Question Interface
     return (questions as QuestionRow[]).map((q) => {
-        const qAnswers = ((answers || []) as AnswerRow[])
-            .filter((a) => a.question_id === q.id)
-            .map((a) => ({
-                id: a.id,
-                text: a.text
-            }));
-        
-        return {
-            id: q.id,
-            text: q.text,
-            points: q.points,
-            type: 'single_choice', // Defaulting as DB lacks this column
-            options: qAnswers
-        };
+      const qAnswers = ((answers || []) as AnswerRow[])
+        .filter((a) => a.question_id === q.id)
+        .map((a) => ({
+          id: a.id,
+          text: a.text
+        }));
+
+      return {
+        id: q.id,
+        text: q.text,
+        points: q.points,
+        type: 'single_choice',
+        options: qAnswers
+      };
     });
+  },
+
+  /**
+   * Fetch exam metadata (duration and course binding) via service
+   */
+  async getExamMeta(examId: string): Promise<{ timeLimitMinutes: number; courseId: string | null }> {
+    const { data, error } = await supabase
+      .from('exams')
+      .select('time_limit_minutes, course_id')
+      .eq('id', examId)
+      .single();
+    if (error) throw error;
+    return {
+      timeLimitMinutes: data.time_limit_minutes,
+      courseId: data.course_id
+    };
   },
 
   /**
@@ -207,6 +262,16 @@ export const examService = {
    * Returns the result calculated by the server function
    */
   async submitExam(courseId: string, answers: { questionId: string, answerId: string }[]): Promise<{ score: number, passed: boolean }> {
+    // Guard: ensure course has questions to avoid zero-division or invalid scoring
+    const { data: qCount, error: qCountError } = await supabase
+      .from('questions')
+      .select('id', { count: 'exact', head: true })
+      .eq('course_id', courseId);
+    if (qCountError) throw qCountError;
+    if ((qCount as unknown as number) === 0) {
+      throw new Error('Exam not available: course has no questions defined');
+    }
+
     // Transform array to map object for JSONB: { "question_id": "answer_id" }
     const answersMap = answers.reduce((acc, curr) => {
       acc[curr.questionId] = curr.answerId;

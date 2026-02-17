@@ -1,4 +1,15 @@
 const { randomUUID } = require('crypto');
+const fs = require('fs');
+const path = require('path');
+
+// Ensure logs directory exists
+const LOGS_DIR = path.join(__dirname, '..', '..', 'logs');
+if (!fs.existsSync(LOGS_DIR)) {
+  fs.mkdirSync(LOGS_DIR, { recursive: true });
+}
+
+const ERROR_LOG_PATH = path.join(LOGS_DIR, 'error.log');
+const ACCESS_LOG_PATH = path.join(LOGS_DIR, 'access.log');
 
 const createRequestId = () =>
   typeof randomUUID === 'function'
@@ -10,10 +21,27 @@ const formatMeta = (meta) =>
     .map(([key, value]) => `${key}=${value}`)
     .join(' ');
 
+const writeToFile = (filePath, content) => {
+  try {
+    fs.appendFileSync(filePath, content + '\n');
+  } catch (err) {
+    console.error('Failed to write to log file:', err);
+  }
+};
+
 const log = (level, message, meta) => {
   const timestamp = new Date().toISOString();
   const metaText = meta ? ` ${formatMeta(meta)}` : '';
-  console.log(`[${timestamp}] ${level.toUpperCase()} ${message}${metaText}`);
+  const logLine = `[${timestamp}] ${level.toUpperCase()} ${message}${metaText}`;
+  
+  // Always log to console
+  console.log(logLine);
+
+  // Persist to file
+  if (level === 'error' || level === 'warn') {
+    writeToFile(ERROR_LOG_PATH, logLine);
+  }
+  writeToFile(ACCESS_LOG_PATH, logLine);
 };
 
 const logger = (req, res, next) => {

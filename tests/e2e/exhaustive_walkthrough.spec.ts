@@ -66,7 +66,7 @@ test.describe('Exhaustive User Walkthrough', () => {
         console.log(`Navigating to ${link.text}...`);
         await page.click(`nav a[href="${link.href}"]`);
         await expect(page).toHaveURL(new RegExp(link.href));
-        await page.waitForTimeout(500); // Brief pause to let animations settle
+        await expect(page.locator('main, #root')).toBeVisible();
       }
     });
 

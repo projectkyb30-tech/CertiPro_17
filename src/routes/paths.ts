@@ -12,6 +12,7 @@ export const ROUTES = {
   
   // Protected
   HOME: '/home',
+  COURSES: '/courses',
   CHECKOUT: '/checkout', // /checkout/:courseId
   LESSONS: '/lessons',
   COURSE_PLAYER: '/learn', // /learn/:courseId

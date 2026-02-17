@@ -9,11 +9,8 @@ const requireAdmin = async (req, res, next) => {
     }
 
     // Check if user has admin role in metadata
-    // OR if email is in allowed list (fallback)
-    const isAdmin = 
-      user.app_metadata?.role === 'admin' || 
-      user.email?.endsWith('@certipro.com') ||
-      user.email === 'admin@example.com';
+    // DO NOT use email-based checks as they are insecure and easily spoofed
+    const isAdmin = user.app_metadata?.role === 'admin' || user.user_metadata?.is_admin === true;
 
     if (!isAdmin) {
       return res.status(403).json({ error: 'Access denied: Admins only' });

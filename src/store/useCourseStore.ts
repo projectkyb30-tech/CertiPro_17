@@ -13,6 +13,7 @@ export const useCourseStore = () => {
   const completeLesson = useAppStore((state) => state.completeLesson);
   const fetchLessonContent = useAppStore((state) => state.fetchLessonContent);
   const getCourse = useAppStore((state) => state.getCourse);
+  const lessonContentCache = useAppStore((state) => state.lessonContentCache);
 
   return {
     courses,
@@ -23,6 +24,7 @@ export const useCourseStore = () => {
     unlockCourse,
     completeLesson,
     fetchLessonContent,
-    getCourse
+    getCourse,
+    lessonContentCache
   };
 };

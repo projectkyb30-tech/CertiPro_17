@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0",
+    "@sentry/node": "^10.38.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-rate-limit": "^8.2.1",
+    "helmet": "^7.1.0",
     "multer": "^2.0.2",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",

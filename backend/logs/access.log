@@ -1,0 +1,956 @@
+[2026-02-14T16:36:23.287Z] INFO request.start requestId=e933b956-39f6-4958-8481-69cb2015616c method=GET url=/api/admin/stats
+[2026-02-14T16:36:23.297Z] INFO request.finish requestId=e933b956-39f6-4958-8481-69cb2015616c method=GET url=/api/admin/stats status=200 durationMs=9.8
+[2026-02-14T16:36:23.312Z] INFO request.start requestId=b633ecbb-b053-4034-9100-cbcd98f435ab method=POST url=/api/admin/courses
+[2026-02-14T16:36:23.335Z] INFO request.finish requestId=b633ecbb-b053-4034-9100-cbcd98f435ab method=POST url=/api/admin/courses status=201 durationMs=23.2
+[2026-02-14T16:36:23.339Z] INFO request.start requestId=6b72f333-23af-42d2-b263-723f237302c6 method=POST url=/api/admin/courses
+[2026-02-14T16:36:23.342Z] WARN request.finish requestId=6b72f333-23af-42d2-b263-723f237302c6 method=POST url=/api/admin/courses status=400 durationMs=2.5
+[2026-02-14T16:36:23.346Z] INFO request.start requestId=eb186e61-14e4-47b3-8510-707bd8a0b9d4 method=POST url=/api/admin/users/bulk-delete
+[2026-02-14T16:36:23.347Z] WARN request.finish requestId=eb186e61-14e4-47b3-8510-707bd8a0b9d4 method=POST url=/api/admin/users/bulk-delete status=400 durationMs=1.6
+[2026-02-14T16:36:23.352Z] INFO request.start requestId=8dc3f1a0-322f-43bb-a841-881e886029a5 method=POST url=/api/admin/users/bulk-delete
+[2026-02-14T16:36:23.353Z] WARN request.finish requestId=8dc3f1a0-322f-43bb-a841-881e886029a5 method=POST url=/api/admin/users/bulk-delete status=400 durationMs=1.3
+[2026-02-14T16:36:59.624Z] INFO request.start requestId=fa6e0860-83e5-4995-9970-68aafc8a84d0 method=GET url=/api/admin/stats
+[2026-02-14T16:36:59.635Z] INFO request.finish requestId=fa6e0860-83e5-4995-9970-68aafc8a84d0 method=GET url=/api/admin/stats status=200 durationMs=10.6
+[2026-02-14T16:36:59.643Z] INFO request.start requestId=e83bb481-518c-42ec-8289-fdca0785505b method=POST url=/api/admin/courses
+[2026-02-14T16:36:59.660Z] INFO request.finish requestId=e83bb481-518c-42ec-8289-fdca0785505b method=POST url=/api/admin/courses status=201 durationMs=16.7
+[2026-02-14T16:36:59.664Z] INFO request.start requestId=990ce9a6-49a2-4aaa-b7f4-39e6ed6e842d method=POST url=/api/admin/courses
+[2026-02-14T16:36:59.665Z] WARN request.finish requestId=990ce9a6-49a2-4aaa-b7f4-39e6ed6e842d method=POST url=/api/admin/courses status=400 durationMs=1.8
+[2026-02-14T16:36:59.668Z] INFO request.start requestId=2f4b14d3-1159-495b-9633-8a09551f42f4 method=POST url=/api/admin/users/bulk-delete
+[2026-02-14T16:36:59.670Z] WARN request.finish requestId=2f4b14d3-1159-495b-9633-8a09551f42f4 method=POST url=/api/admin/users/bulk-delete status=400 durationMs=1.5
+[2026-02-14T16:36:59.674Z] INFO request.start requestId=8130c32c-e275-4c5b-a7ad-ebb2fec7a7a3 method=POST url=/api/admin/users/bulk-delete
+[2026-02-14T16:36:59.675Z] WARN request.finish requestId=8130c32c-e275-4c5b-a7ad-ebb2fec7a7a3 method=POST url=/api/admin/users/bulk-delete status=400 durationMs=1.2
+[2026-02-14T16:37:31.382Z] INFO request.start requestId=0db24cf2-0118-445a-8a92-78f76d3fe7eb method=GET url=/api/admin/stats
+[2026-02-14T16:37:31.391Z] INFO request.finish requestId=0db24cf2-0118-445a-8a92-78f76d3fe7eb method=GET url=/api/admin/stats status=200 durationMs=9.5
+[2026-02-14T16:37:31.398Z] INFO request.start requestId=0e3b03ac-603b-439b-b4a9-e704c4d04dd4 method=POST url=/api/admin/courses
+[2026-02-14T16:37:31.416Z] INFO request.finish requestId=0e3b03ac-603b-439b-b4a9-e704c4d04dd4 method=POST url=/api/admin/courses status=201 durationMs=17.7
+[2026-02-14T16:37:31.419Z] INFO request.start requestId=15bb2e1f-e716-429b-bacb-93cdaea0d197 method=POST url=/api/admin/courses
+[2026-02-14T16:37:31.421Z] WARN request.finish requestId=15bb2e1f-e716-429b-bacb-93cdaea0d197 method=POST url=/api/admin/courses status=400 durationMs=1.9
+[2026-02-14T16:37:31.424Z] INFO request.start requestId=d1d38acf-4181-4847-87df-4503fb4ffaed method=POST url=/api/admin/users/bulk-delete
+[2026-02-14T16:37:31.425Z] INFO request.finish requestId=d1d38acf-4181-4847-87df-4503fb4ffaed method=POST url=/api/admin/users/bulk-delete status=200 durationMs=1.4
+[2026-02-14T16:37:31.428Z] INFO request.start requestId=4cc39faf-a5ac-4d4e-bb14-cd6668fa61be method=POST url=/api/admin/users/bulk-delete
+[2026-02-14T16:37:31.430Z] WARN request.finish requestId=4cc39faf-a5ac-4d4e-bb14-cd6668fa61be method=POST url=/api/admin/users/bulk-delete status=400 durationMs=1.5
+[2026-02-14T20:25:45.673Z] INFO request.start requestId=872fb1be-f1b9-41e9-96df-9b51fe1e3bbc method=OPTIONS url=/api/admin/stats
+[2026-02-14T20:25:45.678Z] INFO request.finish requestId=872fb1be-f1b9-41e9-96df-9b51fe1e3bbc method=OPTIONS url=/api/admin/stats status=204 durationMs=4.8
+[2026-02-14T20:25:45.680Z] INFO request.start requestId=ccd4f63b-282c-46e4-8d2d-fbc2dfe7c829 method=OPTIONS url=/api/admin/stats
+[2026-02-14T20:25:45.681Z] INFO request.finish requestId=ccd4f63b-282c-46e4-8d2d-fbc2dfe7c829 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.8
+[2026-02-14T20:25:45.681Z] INFO request.start requestId=8d54e938-68f6-49f1-9d21-14d0a100043f method=GET url=/api/admin/stats
+[2026-02-14T20:25:45.965Z] WARN request.finish requestId=8d54e938-68f6-49f1-9d21-14d0a100043f method=GET url=/api/admin/stats status=403 durationMs=283.4
+[2026-02-14T20:25:45.969Z] INFO request.start requestId=f45e53ea-80fe-4ddf-8b41-9303e1c08d49 method=GET url=/api/admin/stats
+[2026-02-14T20:25:45.971Z] WARN request.finish requestId=f45e53ea-80fe-4ddf-8b41-9303e1c08d49 method=GET url=/api/admin/stats status=403 durationMs=2.0
+[2026-02-14T20:32:06.564Z] INFO request.start requestId=699b22a2-c938-4b5e-9fa0-5079973fbb72 method=OPTIONS url=/api/admin/stats
+[2026-02-14T20:32:06.566Z] INFO request.finish requestId=699b22a2-c938-4b5e-9fa0-5079973fbb72 method=OPTIONS url=/api/admin/stats status=204 durationMs=1.2
+[2026-02-14T20:32:06.568Z] INFO request.start requestId=8b013c09-f0f5-4236-b70b-e9d9952dda84 method=OPTIONS url=/api/admin/stats
+[2026-02-14T20:32:06.569Z] INFO request.finish requestId=8b013c09-f0f5-4236-b70b-e9d9952dda84 method=OPTIONS url=/api/admin/stats status=204 durationMs=1.1
+[2026-02-14T20:32:06.570Z] INFO request.start requestId=f6bb1e2c-07f0-42e9-a169-02b9436a48db method=GET url=/api/admin/stats
+[2026-02-14T20:32:06.836Z] WARN request.finish requestId=f6bb1e2c-07f0-42e9-a169-02b9436a48db method=GET url=/api/admin/stats status=403 durationMs=266.0
+[2026-02-14T20:32:06.839Z] INFO request.start requestId=ea014dc1-8a35-4cde-935f-bccb83637517 method=GET url=/api/admin/stats
+[2026-02-14T20:32:06.840Z] WARN request.finish requestId=ea014dc1-8a35-4cde-935f-bccb83637517 method=GET url=/api/admin/stats status=403 durationMs=1.1
+[2026-02-14T20:32:07.833Z] INFO request.start requestId=7ccb7888-22eb-4212-b6c4-66b6afa01d6f method=OPTIONS url=/api/admin/courses
+[2026-02-14T20:32:07.834Z] INFO request.finish requestId=7ccb7888-22eb-4212-b6c4-66b6afa01d6f method=OPTIONS url=/api/admin/courses status=204 durationMs=1.1
+[2026-02-14T20:32:07.835Z] INFO request.start requestId=f1338b5c-39aa-44fc-9e16-e33088f05783 method=OPTIONS url=/api/admin/courses
+[2026-02-14T20:32:07.836Z] INFO request.finish requestId=f1338b5c-39aa-44fc-9e16-e33088f05783 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.9
+[2026-02-14T20:32:07.837Z] INFO request.start requestId=d6034503-7877-4338-93d3-6e09974c600e method=GET url=/api/admin/courses
+[2026-02-14T20:32:07.838Z] WARN request.finish requestId=d6034503-7877-4338-93d3-6e09974c600e method=GET url=/api/admin/courses status=403 durationMs=1.2
+[2026-02-14T20:32:07.839Z] INFO request.start requestId=7c30de2e-1990-4d66-9a18-9624cbfeee7f method=GET url=/api/admin/courses
+[2026-02-14T20:32:07.841Z] WARN request.finish requestId=7c30de2e-1990-4d66-9a18-9624cbfeee7f method=GET url=/api/admin/courses status=403 durationMs=1.2
+[2026-02-14T20:32:36.638Z] INFO request.start requestId=d6193062-41c5-47d4-93e7-59794fbaf0cc method=OPTIONS url=/api/admin/courses/undefined
+[2026-02-14T20:32:36.639Z] INFO request.finish requestId=d6193062-41c5-47d4-93e7-59794fbaf0cc method=OPTIONS url=/api/admin/courses/undefined status=204 durationMs=1.0
+[2026-02-14T20:32:36.642Z] INFO request.start requestId=d24c2176-8ec4-49b4-8e1b-e59db1f170fe method=PUT url=/api/admin/courses/undefined
+[2026-02-14T20:32:36.793Z] WARN request.finish requestId=d24c2176-8ec4-49b4-8e1b-e59db1f170fe method=PUT url=/api/admin/courses/undefined status=403 durationMs=150.5
+[2026-02-14T20:32:40.454Z] INFO request.start requestId=0d20ebd7-5cd4-4d1f-9ed1-870514341139 method=OPTIONS url=/api/admin/stats
+[2026-02-14T20:32:40.455Z] INFO request.finish requestId=0d20ebd7-5cd4-4d1f-9ed1-870514341139 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.9
+[2026-02-14T20:32:40.457Z] INFO request.start requestId=0e169762-ece4-4b7d-bfef-bdedfc764abf method=OPTIONS url=/api/admin/stats
+[2026-02-14T20:32:40.458Z] INFO request.finish requestId=0e169762-ece4-4b7d-bfef-bdedfc764abf method=OPTIONS url=/api/admin/stats status=204 durationMs=0.7
+[2026-02-14T20:32:40.459Z] INFO request.start requestId=9ada59b4-80ae-4b0f-859e-af6e6cd00944 method=GET url=/api/admin/stats
+[2026-02-14T20:32:40.460Z] WARN request.finish requestId=9ada59b4-80ae-4b0f-859e-af6e6cd00944 method=GET url=/api/admin/stats status=403 durationMs=1.3
+[2026-02-14T20:32:40.461Z] INFO request.start requestId=663336c7-fefa-4048-aff9-815a919389fa method=GET url=/api/admin/stats
+[2026-02-14T20:32:40.463Z] WARN request.finish requestId=663336c7-fefa-4048-aff9-815a919389fa method=GET url=/api/admin/stats status=403 durationMs=1.6
+[2026-02-14T20:32:41.014Z] INFO request.start requestId=e4f2b901-ba46-4da1-bec9-4e8203a62575 method=OPTIONS url=/api/admin/courses
+[2026-02-14T20:32:41.016Z] INFO request.finish requestId=e4f2b901-ba46-4da1-bec9-4e8203a62575 method=OPTIONS url=/api/admin/courses status=204 durationMs=2.0
+[2026-02-14T20:32:41.017Z] INFO request.start requestId=80fc9ccd-8397-4dd8-91a0-8128b43d3b98 method=OPTIONS url=/api/admin/courses
+[2026-02-14T20:32:41.018Z] INFO request.finish requestId=80fc9ccd-8397-4dd8-91a0-8128b43d3b98 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.7
+[2026-02-14T20:32:41.019Z] INFO request.start requestId=5400b4f7-de15-4e0a-847f-487b123b1f48 method=GET url=/api/admin/courses
+[2026-02-14T20:32:41.021Z] WARN request.finish requestId=5400b4f7-de15-4e0a-847f-487b123b1f48 method=GET url=/api/admin/courses status=403 durationMs=1.5
+[2026-02-14T20:32:41.022Z] INFO request.start requestId=7cb74967-3c0b-4111-a010-86a3f9568e03 method=GET url=/api/admin/courses
+[2026-02-14T20:32:41.024Z] WARN request.finish requestId=7cb74967-3c0b-4111-a010-86a3f9568e03 method=GET url=/api/admin/courses status=403 durationMs=1.5
+[2026-02-14T20:32:43.754Z] INFO request.start requestId=40f887a6-74d5-4494-ad74-e63ad698ca0b method=GET url=/api/admin/courses
+[2026-02-14T20:32:43.756Z] WARN request.finish requestId=40f887a6-74d5-4494-ad74-e63ad698ca0b method=GET url=/api/admin/courses status=403 durationMs=2.0
+[2026-02-14T20:32:43.759Z] INFO request.start requestId=8719224d-51b2-4ba7-9c41-f2622c1f72a0 method=GET url=/api/admin/courses
+[2026-02-14T20:32:43.761Z] WARN request.finish requestId=8719224d-51b2-4ba7-9c41-f2622c1f72a0 method=GET url=/api/admin/courses status=403 durationMs=1.7
+[2026-02-14T20:33:46.180Z] INFO request.start requestId=0f924cc8-69a6-4e14-994e-4948bf0db003 method=OPTIONS url=/api/admin/courses
+[2026-02-14T20:33:46.181Z] INFO request.finish requestId=0f924cc8-69a6-4e14-994e-4948bf0db003 method=OPTIONS url=/api/admin/courses status=204 durationMs=1.2
+[2026-02-14T20:33:46.182Z] INFO request.start requestId=f695eb2a-38f2-48dc-a676-c12d36864c00 method=OPTIONS url=/api/admin/courses
+[2026-02-14T20:33:46.183Z] INFO request.finish requestId=f695eb2a-38f2-48dc-a676-c12d36864c00 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.9
+[2026-02-14T20:33:46.184Z] INFO request.start requestId=dbbfd1ce-f0e5-4915-a49c-1d25f7caa2f8 method=GET url=/api/admin/courses
+[2026-02-14T20:33:46.490Z] WARN request.finish requestId=dbbfd1ce-f0e5-4915-a49c-1d25f7caa2f8 method=GET url=/api/admin/courses status=403 durationMs=305.7
+[2026-02-14T20:33:46.492Z] INFO request.start requestId=17d7cfb8-61ce-4ed4-a129-1b3f8b226ae8 method=GET url=/api/admin/courses
+[2026-02-14T20:33:46.493Z] WARN request.finish requestId=17d7cfb8-61ce-4ed4-a129-1b3f8b226ae8 method=GET url=/api/admin/courses status=403 durationMs=1.0
+[2026-02-15T15:07:55.191Z] INFO request.start requestId=3e309ae9-152b-4cc7-8d20-41d0b34adef7 method=OPTIONS url=/api/admin/courses
+[2026-02-15T15:07:55.195Z] INFO request.finish requestId=3e309ae9-152b-4cc7-8d20-41d0b34adef7 method=OPTIONS url=/api/admin/courses status=204 durationMs=3.9
+[2026-02-15T15:07:55.197Z] INFO request.start requestId=e9197d9b-e8bb-441a-a5cb-da571dc01e5b method=OPTIONS url=/api/admin/courses
+[2026-02-15T15:07:55.197Z] INFO request.finish requestId=e9197d9b-e8bb-441a-a5cb-da571dc01e5b method=OPTIONS url=/api/admin/courses status=204 durationMs=0.9
+[2026-02-15T15:07:55.198Z] INFO request.start requestId=ee0e04fa-4b40-498d-8374-3c885481df7b method=GET url=/api/admin/courses
+[2026-02-15T15:07:55.543Z] WARN request.finish requestId=ee0e04fa-4b40-498d-8374-3c885481df7b method=GET url=/api/admin/courses status=401 durationMs=344.3
+[2026-02-15T15:07:55.544Z] INFO request.start requestId=163934e1-ef16-4076-ae9d-9510533f3528 method=GET url=/api/admin/courses
+[2026-02-15T15:09:26.755Z] INFO request.start requestId=5adfc1bc-382a-4825-9b48-1b57167c0725 method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:09:26.756Z] INFO request.finish requestId=5adfc1bc-382a-4825-9b48-1b57167c0725 method=OPTIONS url=/api/admin/stats status=204 durationMs=1.0
+[2026-02-15T15:09:26.756Z] INFO request.start requestId=f07334c5-f2ca-4522-afdf-05cf0e13379f method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:09:26.757Z] INFO request.finish requestId=f07334c5-f2ca-4522-afdf-05cf0e13379f method=OPTIONS url=/api/admin/stats status=204 durationMs=0.7
+[2026-02-15T15:09:26.758Z] INFO request.start requestId=70eb0442-ad38-4df2-9a9c-f2c25b7f0890 method=GET url=/api/admin/stats
+[2026-02-15T15:09:26.863Z] WARN request.finish requestId=70eb0442-ad38-4df2-9a9c-f2c25b7f0890 method=GET url=/api/admin/stats status=403 durationMs=105.0
+[2026-02-15T15:09:26.864Z] INFO request.start requestId=bba733d0-df4a-48c7-981b-824eddaa47c1 method=GET url=/api/admin/stats
+[2026-02-15T15:09:26.865Z] WARN request.finish requestId=bba733d0-df4a-48c7-981b-824eddaa47c1 method=GET url=/api/admin/stats status=403 durationMs=1.1
+[2026-02-15T15:09:43.008Z] INFO request.start requestId=26b264f7-a7da-4638-9326-baf49f57c1cb method=OPTIONS url=/api/admin/courses
+[2026-02-15T15:09:43.009Z] INFO request.finish requestId=26b264f7-a7da-4638-9326-baf49f57c1cb method=OPTIONS url=/api/admin/courses status=204 durationMs=1.0
+[2026-02-15T15:09:43.010Z] INFO request.start requestId=6bfce695-245f-49d5-b85e-dd42ff663598 method=OPTIONS url=/api/admin/courses
+[2026-02-15T15:09:43.010Z] INFO request.finish requestId=6bfce695-245f-49d5-b85e-dd42ff663598 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.7
+[2026-02-15T15:09:43.011Z] INFO request.start requestId=a87fc3a0-d99f-42cd-8cfa-75ee94c27fa4 method=GET url=/api/admin/courses
+[2026-02-15T15:09:43.165Z] WARN request.finish requestId=a87fc3a0-d99f-42cd-8cfa-75ee94c27fa4 method=GET url=/api/admin/courses status=403 durationMs=153.6
+[2026-02-15T15:09:43.166Z] INFO request.start requestId=f4e4b835-46d6-4f92-a5f4-bb60d015d084 method=GET url=/api/admin/courses
+[2026-02-15T15:09:43.167Z] WARN request.finish requestId=f4e4b835-46d6-4f92-a5f4-bb60d015d084 method=GET url=/api/admin/courses status=403 durationMs=1.0
+[2026-02-15T15:09:46.126Z] INFO request.start requestId=e43ca57e-e3fe-46f3-a4f5-0f67173862d9 method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:09:46.127Z] INFO request.finish requestId=e43ca57e-e3fe-46f3-a4f5-0f67173862d9 method=OPTIONS url=/api/admin/stats status=204 durationMs=1.0
+[2026-02-15T15:09:46.128Z] INFO request.start requestId=16a920c0-a884-430f-b04c-ea4134ead1df method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:09:46.128Z] INFO request.finish requestId=16a920c0-a884-430f-b04c-ea4134ead1df method=OPTIONS url=/api/admin/stats status=204 durationMs=0.7
+[2026-02-15T15:09:46.129Z] INFO request.start requestId=5957ba1f-0f03-41a4-b998-22b1a14e5826 method=GET url=/api/admin/stats
+[2026-02-15T15:09:46.130Z] WARN request.finish requestId=5957ba1f-0f03-41a4-b998-22b1a14e5826 method=GET url=/api/admin/stats status=403 durationMs=1.1
+[2026-02-15T15:09:46.131Z] INFO request.start requestId=8b1e0bb1-71ec-4484-a50f-74168f203d29 method=GET url=/api/admin/stats
+[2026-02-15T15:09:46.132Z] WARN request.finish requestId=8b1e0bb1-71ec-4484-a50f-74168f203d29 method=GET url=/api/admin/stats status=403 durationMs=1.2
+[2026-02-15T15:10:22.411Z] INFO request.start requestId=745fb643-e6f3-443a-b929-645d22c78e65 method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:10:22.412Z] INFO request.finish requestId=745fb643-e6f3-443a-b929-645d22c78e65 method=OPTIONS url=/api/admin/stats status=204 durationMs=1.0
+[2026-02-15T15:10:22.413Z] INFO request.start requestId=a7d4fb67-1853-4ec3-9b5d-8436e33e1b80 method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:10:22.414Z] INFO request.finish requestId=a7d4fb67-1853-4ec3-9b5d-8436e33e1b80 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.8
+[2026-02-15T15:10:22.415Z] INFO request.start requestId=9d132b0e-14ce-4845-b51a-db225189d923 method=GET url=/api/admin/stats
+[2026-02-15T15:10:22.565Z] WARN request.finish requestId=9d132b0e-14ce-4845-b51a-db225189d923 method=GET url=/api/admin/stats status=403 durationMs=150.2
+[2026-02-15T15:10:22.566Z] INFO request.start requestId=ede67385-dc07-4c2e-bcb9-1091c11db1c1 method=GET url=/api/admin/stats
+[2026-02-15T15:10:22.567Z] WARN request.finish requestId=ede67385-dc07-4c2e-bcb9-1091c11db1c1 method=GET url=/api/admin/stats status=403 durationMs=1.0
+[2026-02-15T15:11:16.884Z] INFO request.start requestId=ffc5bb59-f629-4941-a440-6a3a81531cc4 method=OPTIONS url=/api/admin/courses
+[2026-02-15T15:11:16.885Z] INFO request.finish requestId=ffc5bb59-f629-4941-a440-6a3a81531cc4 method=OPTIONS url=/api/admin/courses status=204 durationMs=1.0
+[2026-02-15T15:11:16.886Z] INFO request.start requestId=bce31d2f-fdfb-44a0-8442-2c63262491d2 method=OPTIONS url=/api/admin/courses
+[2026-02-15T15:11:16.887Z] INFO request.finish requestId=bce31d2f-fdfb-44a0-8442-2c63262491d2 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.9
+[2026-02-15T15:11:16.888Z] INFO request.start requestId=407c9ec3-4cc3-4359-9a47-40c47190283d method=GET url=/api/admin/courses
+[2026-02-15T15:11:17.288Z] WARN request.finish requestId=407c9ec3-4cc3-4359-9a47-40c47190283d method=GET url=/api/admin/courses status=403 durationMs=400.5
+[2026-02-15T15:11:17.290Z] INFO request.start requestId=18e91ae0-a3ef-47b8-8366-a9846f75bef3 method=GET url=/api/admin/courses
+[2026-02-15T15:11:17.291Z] WARN request.finish requestId=18e91ae0-a3ef-47b8-8366-a9846f75bef3 method=GET url=/api/admin/courses status=403 durationMs=1.1
+[2026-02-15T15:11:17.304Z] INFO request.start requestId=2743a014-8985-46b3-9881-e43f07b64c59 method=OPTIONS url=/api/admin/users?page=1&limit=10
+[2026-02-15T15:11:17.305Z] INFO request.finish requestId=2743a014-8985-46b3-9881-e43f07b64c59 method=OPTIONS url=/api/admin/users?page=1&limit=10 status=204 durationMs=1.0
+[2026-02-15T15:11:17.306Z] INFO request.start requestId=910f97dc-a6c7-4421-9e82-1baefa18d734 method=GET url=/api/admin/users?page=1&limit=10
+[2026-02-15T15:11:17.308Z] WARN request.finish requestId=910f97dc-a6c7-4421-9e82-1baefa18d734 method=GET url=/api/admin/users?page=1&limit=10 status=403 durationMs=1.3
+[2026-02-15T15:11:17.308Z] INFO request.start requestId=118f28e0-8f43-481f-9d9c-5974a177db1f method=OPTIONS url=/api/admin/users?page=1&limit=10
+[2026-02-15T15:11:17.309Z] INFO request.finish requestId=118f28e0-8f43-481f-9d9c-5974a177db1f method=OPTIONS url=/api/admin/users?page=1&limit=10 status=204 durationMs=0.6
+[2026-02-15T15:11:17.310Z] INFO request.start requestId=7c37788b-448e-4115-90e2-0a574bd9ee94 method=GET url=/api/admin/users?page=1&limit=10
+[2026-02-15T15:11:17.311Z] WARN request.finish requestId=7c37788b-448e-4115-90e2-0a574bd9ee94 method=GET url=/api/admin/users?page=1&limit=10 status=403 durationMs=1.1
+[2026-02-15T15:11:21.184Z] INFO request.start requestId=edc89147-9f4d-40a0-90d6-b90ab2da7356 method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:11:21.185Z] INFO request.finish requestId=edc89147-9f4d-40a0-90d6-b90ab2da7356 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.9
+[2026-02-15T15:11:21.185Z] INFO request.start requestId=d06382ed-379e-45d3-90db-2ec6aa66aeda method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:11:21.186Z] INFO request.finish requestId=d06382ed-379e-45d3-90db-2ec6aa66aeda method=OPTIONS url=/api/admin/stats status=204 durationMs=0.6
+[2026-02-15T15:11:21.186Z] INFO request.start requestId=6ae4dd21-8a0c-4d44-ba74-df68e88504c9 method=GET url=/api/admin/stats
+[2026-02-15T15:11:21.187Z] WARN request.finish requestId=6ae4dd21-8a0c-4d44-ba74-df68e88504c9 method=GET url=/api/admin/stats status=403 durationMs=0.5
+[2026-02-15T15:11:21.188Z] INFO request.start requestId=0b616677-848d-4004-97d7-98294cc180cb method=GET url=/api/admin/stats
+[2026-02-15T15:11:21.189Z] WARN request.finish requestId=0b616677-848d-4004-97d7-98294cc180cb method=GET url=/api/admin/stats status=403 durationMs=0.8
+[2026-02-15T15:11:22.161Z] INFO request.start requestId=132f3e00-69f4-4c4c-8c68-fb2166f94ecb method=OPTIONS url=/api/admin/courses
+[2026-02-15T15:11:22.162Z] INFO request.finish requestId=132f3e00-69f4-4c4c-8c68-fb2166f94ecb method=OPTIONS url=/api/admin/courses status=204 durationMs=0.9
+[2026-02-15T15:11:22.162Z] INFO request.start requestId=9ea2e986-40ca-44ee-a0f5-d2d2b054fb64 method=OPTIONS url=/api/admin/courses
+[2026-02-15T15:11:22.163Z] INFO request.finish requestId=9ea2e986-40ca-44ee-a0f5-d2d2b054fb64 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.6
+[2026-02-15T15:11:22.163Z] INFO request.start requestId=498c7325-7328-4c7c-be1e-8567270ef20c method=GET url=/api/admin/courses
+[2026-02-15T15:11:22.164Z] WARN request.finish requestId=498c7325-7328-4c7c-be1e-8567270ef20c method=GET url=/api/admin/courses status=403 durationMs=1.1
+[2026-02-15T15:11:22.166Z] INFO request.start requestId=40478968-c318-4eb6-9177-36d8bd92190a method=GET url=/api/admin/courses
+[2026-02-15T15:11:22.167Z] WARN request.finish requestId=40478968-c318-4eb6-9177-36d8bd92190a method=GET url=/api/admin/courses status=403 durationMs=1.6
+[2026-02-15T15:29:09.382Z] INFO request.start requestId=c437271e-d31b-4834-966d-8f44e3bf5510 method=OPTIONS url=/api/admin/courses
+[2026-02-15T15:29:09.383Z] INFO request.finish requestId=c437271e-d31b-4834-966d-8f44e3bf5510 method=OPTIONS url=/api/admin/courses status=204 durationMs=1.0
+[2026-02-15T15:29:09.384Z] INFO request.start requestId=7608b523-ea95-4541-b9a4-90181e241488 method=OPTIONS url=/api/admin/courses
+[2026-02-15T15:29:09.384Z] INFO request.finish requestId=7608b523-ea95-4541-b9a4-90181e241488 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.6
+[2026-02-15T15:29:09.385Z] INFO request.start requestId=d1c5c3cc-42a0-4a9b-9f19-2baa518f5bfe method=GET url=/api/admin/courses
+[2026-02-15T15:29:09.388Z] INFO request.start requestId=8cb449ca-4acb-42f2-87df-d5e7aaad98f9 method=GET url=/api/admin/courses
+[2026-02-15T15:29:09.674Z] WARN request.finish requestId=d1c5c3cc-42a0-4a9b-9f19-2baa518f5bfe method=GET url=/api/admin/courses status=403 durationMs=288.5
+[2026-02-15T15:29:09.776Z] WARN request.finish requestId=8cb449ca-4acb-42f2-87df-d5e7aaad98f9 method=GET url=/api/admin/courses status=403 durationMs=388.2
+[2026-02-15T15:29:43.198Z] INFO request.start requestId=79bb6917-7cd3-47a6-89b8-822d7c3b440d method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:29:43.199Z] INFO request.finish requestId=79bb6917-7cd3-47a6-89b8-822d7c3b440d method=OPTIONS url=/api/admin/stats status=204 durationMs=0.9
+[2026-02-15T15:29:43.199Z] INFO request.start requestId=b293a803-c69e-457c-9a2c-cc2ec2b3dbc9 method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:29:43.200Z] INFO request.finish requestId=b293a803-c69e-457c-9a2c-cc2ec2b3dbc9 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.4
+[2026-02-15T15:29:43.200Z] INFO request.start requestId=21cc8cd8-3cc0-4472-87a0-c552608a66b5 method=GET url=/api/admin/stats
+[2026-02-15T15:29:43.377Z] WARN request.finish requestId=21cc8cd8-3cc0-4472-87a0-c552608a66b5 method=GET url=/api/admin/stats status=403 durationMs=176.6
+[2026-02-15T15:29:43.378Z] INFO request.start requestId=a2c7c4f2-2e32-4a23-82c3-c2d4138da9f6 method=GET url=/api/admin/stats
+[2026-02-15T15:29:43.379Z] WARN request.finish requestId=a2c7c4f2-2e32-4a23-82c3-c2d4138da9f6 method=GET url=/api/admin/stats status=403 durationMs=0.9
+[2026-02-15T15:32:41.961Z] INFO request.start requestId=b30ef0c7-a9a2-4e0a-8f87-0a0b50e1124d method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:32:41.962Z] INFO request.finish requestId=b30ef0c7-a9a2-4e0a-8f87-0a0b50e1124d method=OPTIONS url=/api/admin/stats status=204 durationMs=0.9
+[2026-02-15T15:32:41.963Z] INFO request.start requestId=b2c0c709-0e12-4cec-84da-7c924838f680 method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:32:41.963Z] INFO request.finish requestId=b2c0c709-0e12-4cec-84da-7c924838f680 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.5
+[2026-02-15T15:32:41.964Z] INFO request.start requestId=ef66e4eb-2206-4f72-bc64-2d9bdbc431b3 method=GET url=/api/admin/stats
+[2026-02-15T15:32:42.127Z] WARN request.finish requestId=ef66e4eb-2206-4f72-bc64-2d9bdbc431b3 method=GET url=/api/admin/stats status=403 durationMs=163.0
+[2026-02-15T15:32:42.128Z] INFO request.start requestId=82c5ff8b-ed79-4573-94b8-4295a65b7653 method=GET url=/api/admin/stats
+[2026-02-15T15:32:42.129Z] WARN request.finish requestId=82c5ff8b-ed79-4573-94b8-4295a65b7653 method=GET url=/api/admin/stats status=403 durationMs=1.0
+[2026-02-15T15:41:36.592Z] INFO request.start requestId=15dd644e-0072-4b69-a2e9-91a2e3712e67 method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:41:36.595Z] INFO request.finish requestId=15dd644e-0072-4b69-a2e9-91a2e3712e67 method=OPTIONS url=/api/admin/stats status=204 durationMs=3.3
+[2026-02-15T15:41:36.596Z] INFO request.start requestId=13167c34-e645-4b3b-bdde-8d0c46e4c5aa method=GET url=/api/admin/stats
+[2026-02-15T15:41:36.622Z] INFO request.start requestId=8ad01b5f-e5c3-4aaf-a537-e1429c618174 method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:41:36.623Z] INFO request.finish requestId=8ad01b5f-e5c3-4aaf-a537-e1429c618174 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.7
+[2026-02-15T15:41:36.625Z] INFO request.start requestId=8f974069-672b-4602-b579-5340f0f5a7d0 method=GET url=/api/admin/stats
+[2026-02-15T15:41:37.792Z] ERROR request.finish requestId=8f974069-672b-4602-b579-5340f0f5a7d0 method=GET url=/api/admin/stats status=500 durationMs=1167.5
+[2026-02-15T15:41:37.871Z] ERROR request.finish requestId=13167c34-e645-4b3b-bdde-8d0c46e4c5aa method=GET url=/api/admin/stats status=500 durationMs=1275.1
+[2026-02-15T15:45:37.813Z] INFO request.start requestId=864ef24a-3d5f-422f-850e-dc3f8ec44275 method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:45:37.817Z] INFO request.finish requestId=864ef24a-3d5f-422f-850e-dc3f8ec44275 method=OPTIONS url=/api/admin/stats status=204 durationMs=3.9
+[2026-02-15T15:45:37.818Z] INFO request.start requestId=c30df5e2-d86c-43b0-ae1f-a101c7c0e1eb method=GET url=/api/admin/stats
+[2026-02-15T15:45:37.853Z] INFO request.start requestId=5c97c7d9-cdde-4d98-b4c2-21dcff011395 method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:45:37.853Z] INFO request.finish requestId=5c97c7d9-cdde-4d98-b4c2-21dcff011395 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.6
+[2026-02-15T15:45:37.854Z] INFO request.start requestId=e86d9192-4e1d-40ab-b9b6-955cf60f22ad method=GET url=/api/admin/stats
+[2026-02-15T15:45:38.996Z] ERROR request.finish requestId=e86d9192-4e1d-40ab-b9b6-955cf60f22ad method=GET url=/api/admin/stats status=500 durationMs=1141.6
+[2026-02-15T15:45:39.039Z] ERROR request.finish requestId=c30df5e2-d86c-43b0-ae1f-a101c7c0e1eb method=GET url=/api/admin/stats status=500 durationMs=1220.8
+[2026-02-15T15:49:40.560Z] INFO request.start requestId=f03903e3-83b6-4629-b48e-e4c9e2d52626 method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:49:40.561Z] INFO request.finish requestId=f03903e3-83b6-4629-b48e-e4c9e2d52626 method=OPTIONS url=/api/admin/stats status=204 durationMs=1.6
+[2026-02-15T15:49:40.562Z] INFO request.start requestId=6177257c-6b52-4cd6-bda9-07b74c120d40 method=OPTIONS url=/api/admin/stats
+[2026-02-15T15:49:40.563Z] INFO request.finish requestId=6177257c-6b52-4cd6-bda9-07b74c120d40 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.7
+[2026-02-15T15:49:40.564Z] INFO request.start requestId=41daddb5-34d3-41d6-8339-9edaa7115858 method=GET url=/api/admin/stats
+[2026-02-15T15:49:40.566Z] INFO request.start requestId=68d1b6b3-fe3c-433a-945e-aa12f6297f26 method=GET url=/api/admin/stats
+[2026-02-15T15:49:41.485Z] ERROR request.finish requestId=68d1b6b3-fe3c-433a-945e-aa12f6297f26 method=GET url=/api/admin/stats status=500 durationMs=918.2
+[2026-02-15T15:49:41.525Z] ERROR request.finish requestId=41daddb5-34d3-41d6-8339-9edaa7115858 method=GET url=/api/admin/stats status=500 durationMs=960.9
+[2026-02-15T16:21:22.012Z] INFO request.start requestId=f6869d51-937c-4c14-a42a-911848e7896e method=OPTIONS url=/api/admin/stats
+[2026-02-15T16:21:22.017Z] INFO request.finish requestId=f6869d51-937c-4c14-a42a-911848e7896e method=OPTIONS url=/api/admin/stats status=204 durationMs=4.9
+[2026-02-15T16:21:22.019Z] INFO request.start requestId=dc14816a-b9d1-4c6f-aee1-35601f019043 method=GET url=/api/admin/stats
+[2026-02-15T16:21:22.051Z] INFO request.start requestId=b55d19e9-136d-4c34-9ad0-cc7a674f8148 method=OPTIONS url=/api/admin/stats
+[2026-02-15T16:21:22.052Z] INFO request.finish requestId=b55d19e9-136d-4c34-9ad0-cc7a674f8148 method=OPTIONS url=/api/admin/stats status=204 durationMs=1.1
+[2026-02-15T16:21:23.243Z] INFO request.finish requestId=dc14816a-b9d1-4c6f-aee1-35601f019043 method=GET url=/api/admin/stats status=200 durationMs=1224.5
+[2026-02-15T16:21:23.244Z] INFO request.start requestId=9ba62eba-1562-41bd-8dd4-af16948c6d08 method=GET url=/api/admin/stats
+[2026-02-15T16:21:24.123Z] INFO request.finish requestId=9ba62eba-1562-41bd-8dd4-af16948c6d08 method=GET url=/api/admin/stats status=200 durationMs=878.2
+[2026-02-15T16:21:32.692Z] INFO request.start requestId=cbe75efa-78a7-452e-8908-4e6816a0a3de method=OPTIONS url=/api/admin/courses
+[2026-02-15T16:21:32.693Z] INFO request.finish requestId=cbe75efa-78a7-452e-8908-4e6816a0a3de method=OPTIONS url=/api/admin/courses status=204 durationMs=1.1
+[2026-02-15T16:21:32.694Z] INFO request.start requestId=52a30cfb-b3bd-42c7-a679-02b19627e226 method=OPTIONS url=/api/admin/courses
+[2026-02-15T16:21:32.695Z] INFO request.finish requestId=52a30cfb-b3bd-42c7-a679-02b19627e226 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.8
+[2026-02-15T16:21:32.695Z] INFO request.start requestId=3c085987-3f7f-4483-b5cc-16095ea7764d method=GET url=/api/admin/courses
+[2026-02-15T16:21:32.901Z] INFO request.finish requestId=3c085987-3f7f-4483-b5cc-16095ea7764d method=GET url=/api/admin/courses status=200 durationMs=205.3
+[2026-02-15T16:21:32.902Z] INFO request.start requestId=d3b5646f-1b37-49b7-8508-842313b51829 method=GET url=/api/admin/courses
+[2026-02-15T16:21:33.027Z] INFO request.finish requestId=d3b5646f-1b37-49b7-8508-842313b51829 method=GET url=/api/admin/courses status=304 durationMs=125.6
+[2026-02-15T16:35:07.180Z] INFO request.start requestId=14a2e959-3a44-48ad-b699-b514f3ca68cb method=OPTIONS url=/api/admin/courses/undefined
+[2026-02-15T16:35:07.181Z] INFO request.finish requestId=14a2e959-3a44-48ad-b699-b514f3ca68cb method=OPTIONS url=/api/admin/courses/undefined status=204 durationMs=1.1
+[2026-02-15T16:35:07.182Z] INFO request.start requestId=708e74f3-0ce7-4960-af9a-66d5979ae8b6 method=PUT url=/api/admin/courses/undefined
+[2026-02-15T16:35:08.225Z] ERROR request.finish requestId=708e74f3-0ce7-4960-af9a-66d5979ae8b6 method=PUT url=/api/admin/courses/undefined status=500 durationMs=1043.1
+[2026-02-15T16:35:12.176Z] INFO request.start requestId=8225bca1-865c-4d88-9dab-490a5445a50b method=OPTIONS url=/api/admin/courses
+[2026-02-15T16:35:12.178Z] INFO request.finish requestId=8225bca1-865c-4d88-9dab-490a5445a50b method=OPTIONS url=/api/admin/courses status=204 durationMs=1.6
+[2026-02-15T16:35:12.180Z] INFO request.start requestId=4f951b09-d78d-4623-bd89-42c8663549ae method=GET url=/api/admin/courses
+[2026-02-15T16:35:12.182Z] INFO request.start requestId=1f0cfae6-ce1a-4eaf-803d-c9e8a83b5ffe method=OPTIONS url=/api/admin/courses
+[2026-02-15T16:35:12.183Z] INFO request.finish requestId=1f0cfae6-ce1a-4eaf-803d-c9e8a83b5ffe method=OPTIONS url=/api/admin/courses status=204 durationMs=1.0
+[2026-02-15T16:35:12.400Z] INFO request.finish requestId=4f951b09-d78d-4623-bd89-42c8663549ae method=GET url=/api/admin/courses status=304 durationMs=220.4
+[2026-02-15T16:35:12.402Z] INFO request.start requestId=bc3e5821-5141-49ca-9d7d-08f7363e73d2 method=GET url=/api/admin/courses
+[2026-02-15T16:35:12.536Z] INFO request.finish requestId=bc3e5821-5141-49ca-9d7d-08f7363e73d2 method=GET url=/api/admin/courses status=304 durationMs=134.3
+[2026-02-15T16:37:39.827Z] INFO request.start requestId=e223bd66-fc73-4673-8b37-c89518e0c10e method=OPTIONS url=/api/admin/courses
+[2026-02-15T16:37:39.828Z] INFO request.finish requestId=e223bd66-fc73-4673-8b37-c89518e0c10e method=OPTIONS url=/api/admin/courses status=204 durationMs=0.8
+[2026-02-15T16:37:39.829Z] INFO request.start requestId=7b1b3131-dcd0-43ed-8a91-c72a04127009 method=GET url=/api/admin/courses
+[2026-02-15T16:37:40.181Z] INFO request.finish requestId=7b1b3131-dcd0-43ed-8a91-c72a04127009 method=GET url=/api/admin/courses status=304 durationMs=352.1
+[2026-02-15T16:39:39.314Z] INFO request.start requestId=9cc60231-ade8-46a0-ba12-78e97792bdf1 method=OPTIONS url=/api/admin/courses/networking-fundamentals
+[2026-02-15T16:39:39.316Z] INFO request.finish requestId=9cc60231-ade8-46a0-ba12-78e97792bdf1 method=OPTIONS url=/api/admin/courses/networking-fundamentals status=204 durationMs=1.2
+[2026-02-15T16:39:39.316Z] INFO request.start requestId=8084e4a3-a3b3-4cdf-a63e-ea4400630eda method=DELETE url=/api/admin/courses/networking-fundamentals
+[2026-02-15T16:39:39.785Z] INFO request.finish requestId=8084e4a3-a3b3-4cdf-a63e-ea4400630eda method=DELETE url=/api/admin/courses/networking-fundamentals status=200 durationMs=468.7
+[2026-02-15T16:39:41.964Z] INFO request.start requestId=2757800e-1b6b-4445-837a-760f4c219528 method=OPTIONS url=/api/admin/courses/python-basics
+[2026-02-15T16:39:41.965Z] INFO request.finish requestId=2757800e-1b6b-4445-837a-760f4c219528 method=OPTIONS url=/api/admin/courses/python-basics status=204 durationMs=1.4
+[2026-02-15T16:39:41.966Z] INFO request.start requestId=46877be4-da74-4a85-8ca5-75d2ca735c7f method=DELETE url=/api/admin/courses/python-basics
+[2026-02-15T16:39:42.085Z] INFO request.finish requestId=46877be4-da74-4a85-8ca5-75d2ca735c7f method=DELETE url=/api/admin/courses/python-basics status=200 durationMs=118.6
+[2026-02-15T16:39:44.178Z] INFO request.start requestId=fc5a9cc3-19a8-459b-ba2a-aaf7befd7209 method=OPTIONS url=/api/admin/courses/database-fundamentals
+[2026-02-15T16:39:44.179Z] INFO request.finish requestId=fc5a9cc3-19a8-459b-ba2a-aaf7befd7209 method=OPTIONS url=/api/admin/courses/database-fundamentals status=204 durationMs=1.0
+[2026-02-15T16:39:44.180Z] INFO request.start requestId=bbaed76a-4220-46d1-a977-b4f9ca969ed7 method=DELETE url=/api/admin/courses/database-fundamentals
+[2026-02-15T16:39:44.393Z] INFO request.finish requestId=bbaed76a-4220-46d1-a977-b4f9ca969ed7 method=DELETE url=/api/admin/courses/database-fundamentals status=200 durationMs=213.2
+[2026-02-15T16:40:22.923Z] INFO request.start requestId=9c4571f7-ae9b-4a61-a246-e469a3f0d178 method=OPTIONS url=/api/admin/courses/undefined
+[2026-02-15T16:40:22.924Z] INFO request.finish requestId=9c4571f7-ae9b-4a61-a246-e469a3f0d178 method=OPTIONS url=/api/admin/courses/undefined status=204 durationMs=1.4
+[2026-02-15T16:40:22.925Z] INFO request.start requestId=9c0f3b0c-907d-41cd-a74d-ab12b55e978b method=PUT url=/api/admin/courses/undefined
+[2026-02-15T16:40:23.407Z] ERROR request.finish requestId=9c0f3b0c-907d-41cd-a74d-ab12b55e978b method=PUT url=/api/admin/courses/undefined status=500 durationMs=482.0
+[2026-02-15T16:41:51.506Z] INFO request.start requestId=8d2e0e61-21df-4b5a-9330-bdcc0bc7a72a method=GET url=/api/admin/stats
+[2026-02-15T16:41:51.531Z] INFO request.finish requestId=8d2e0e61-21df-4b5a-9330-bdcc0bc7a72a method=GET url=/api/admin/stats status=200 durationMs=24.2
+[2026-02-15T16:41:51.541Z] INFO request.start requestId=0268f4b5-64de-4ad6-958a-40b80d233f1e method=POST url=/api/admin/courses
+[2026-02-15T16:41:51.557Z] INFO request.finish requestId=0268f4b5-64de-4ad6-958a-40b80d233f1e method=POST url=/api/admin/courses status=201 durationMs=15.9
+[2026-02-15T16:41:51.562Z] INFO request.start requestId=615b70cd-5c07-46b3-8726-1554b7902b2c method=POST url=/api/admin/courses
+[2026-02-15T16:41:51.569Z] WARN request.finish requestId=615b70cd-5c07-46b3-8726-1554b7902b2c method=POST url=/api/admin/courses status=400 durationMs=7.3
+[2026-02-15T16:41:51.574Z] INFO request.start requestId=513c6906-3b70-4781-8d35-4ccc9bd76efa method=POST url=/api/admin/users/bulk-delete
+[2026-02-15T16:41:51.578Z] INFO request.finish requestId=513c6906-3b70-4781-8d35-4ccc9bd76efa method=POST url=/api/admin/users/bulk-delete status=200 durationMs=4.0
+[2026-02-15T16:41:51.583Z] INFO request.start requestId=a4b69f69-daa2-4e9e-944a-71a4a40db62f method=POST url=/api/admin/users/bulk-delete
+[2026-02-15T16:41:51.588Z] WARN request.finish requestId=a4b69f69-daa2-4e9e-944a-71a4a40db62f method=POST url=/api/admin/users/bulk-delete status=400 durationMs=4.9
+[2026-02-15T16:42:16.217Z] INFO request.start requestId=68cc725a-2bb0-4ec5-8b17-d609abfdf2e8 method=GET url=/api/admin/stats
+[2026-02-15T16:42:16.242Z] INFO request.finish requestId=68cc725a-2bb0-4ec5-8b17-d609abfdf2e8 method=GET url=/api/admin/stats status=200 durationMs=25.2
+[2026-02-15T16:42:16.250Z] INFO request.start requestId=e0134eaa-eaa0-4b1d-9634-cac2e64102c8 method=POST url=/api/admin/courses
+[2026-02-15T16:42:16.261Z] INFO request.finish requestId=e0134eaa-eaa0-4b1d-9634-cac2e64102c8 method=POST url=/api/admin/courses status=201 durationMs=10.5
+[2026-02-15T16:42:16.265Z] INFO request.start requestId=272d537b-73d3-4662-b462-8557bdf79c03 method=POST url=/api/admin/courses
+[2026-02-15T16:42:16.271Z] WARN request.finish requestId=272d537b-73d3-4662-b462-8557bdf79c03 method=POST url=/api/admin/courses status=400 durationMs=5.2
+[2026-02-15T16:42:16.275Z] INFO request.start requestId=147b351a-596c-49ad-a15d-cad18457dc67 method=POST url=/api/admin/users/bulk-delete
+[2026-02-15T16:42:16.279Z] INFO request.finish requestId=147b351a-596c-49ad-a15d-cad18457dc67 method=POST url=/api/admin/users/bulk-delete status=200 durationMs=3.4
+[2026-02-15T16:42:16.283Z] INFO request.start requestId=ab276040-d1fd-453e-aa31-945213d1ee83 method=POST url=/api/admin/users/bulk-delete
+[2026-02-15T16:42:16.287Z] WARN request.finish requestId=ab276040-d1fd-453e-aa31-945213d1ee83 method=POST url=/api/admin/users/bulk-delete status=400 durationMs=3.8
+[2026-02-15T16:43:43.362Z] INFO request.start requestId=6dcb5636-a965-4d7c-9d31-0c191bbe3b77 method=OPTIONS url=/api/admin/courses/undefined
+[2026-02-15T16:43:43.364Z] INFO request.finish requestId=6dcb5636-a965-4d7c-9d31-0c191bbe3b77 method=OPTIONS url=/api/admin/courses/undefined status=204 durationMs=1.5
+[2026-02-15T16:43:43.365Z] INFO request.start requestId=8810dd8a-ee1b-4a8f-a8ae-97a083bf638b method=PUT url=/api/admin/courses/undefined
+[2026-02-15T16:43:44.122Z] ERROR request.finish requestId=8810dd8a-ee1b-4a8f-a8ae-97a083bf638b method=PUT url=/api/admin/courses/undefined status=500 durationMs=757.3
+[2026-02-15T16:44:43.204Z] INFO request.start requestId=982497ab-ad45-4caa-a36e-cdf6684421fd method=OPTIONS url=/api/admin/courses
+[2026-02-15T16:44:43.205Z] INFO request.finish requestId=982497ab-ad45-4caa-a36e-cdf6684421fd method=OPTIONS url=/api/admin/courses status=204 durationMs=0.8
+[2026-02-15T16:44:43.205Z] INFO request.start requestId=4512b4df-fac4-4c2f-b340-9dc2cc2da5c5 method=OPTIONS url=/api/admin/courses
+[2026-02-15T16:44:43.206Z] INFO request.finish requestId=4512b4df-fac4-4c2f-b340-9dc2cc2da5c5 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.5
+[2026-02-15T16:44:43.207Z] INFO request.start requestId=56de7226-c992-4da0-812a-ed60ccd04a45 method=GET url=/api/admin/courses
+[2026-02-15T16:44:43.510Z] INFO request.finish requestId=56de7226-c992-4da0-812a-ed60ccd04a45 method=GET url=/api/admin/courses status=200 durationMs=303.7
+[2026-02-15T16:44:43.511Z] INFO request.start requestId=2a14865e-2a3c-408f-a72f-887c6a6e32e8 method=GET url=/api/admin/courses
+[2026-02-15T16:44:43.653Z] INFO request.finish requestId=2a14865e-2a3c-408f-a72f-887c6a6e32e8 method=GET url=/api/admin/courses status=304 durationMs=141.4
+[2026-02-15T16:44:46.150Z] INFO request.start requestId=5fe2ec37-eed7-4251-bc87-944b7bbcadb7 method=OPTIONS url=/api/admin/stats
+[2026-02-15T16:44:46.151Z] INFO request.finish requestId=5fe2ec37-eed7-4251-bc87-944b7bbcadb7 method=OPTIONS url=/api/admin/stats status=204 durationMs=1.2
+[2026-02-15T16:44:46.153Z] INFO request.start requestId=9f52b7d5-55cc-4bb6-a783-0ebed0616027 method=OPTIONS url=/api/admin/stats
+[2026-02-15T16:44:46.154Z] INFO request.finish requestId=9f52b7d5-55cc-4bb6-a783-0ebed0616027 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.6
+[2026-02-15T16:44:46.155Z] INFO request.start requestId=699c6c61-f9bc-4222-a01b-378f5a84a09f method=GET url=/api/admin/stats
+[2026-02-15T16:44:46.774Z] INFO request.finish requestId=699c6c61-f9bc-4222-a01b-378f5a84a09f method=GET url=/api/admin/stats status=200 durationMs=619.3
+[2026-02-15T16:44:46.776Z] INFO request.start requestId=07a45564-b0f5-41f8-85c8-0edbe6fee4de method=GET url=/api/admin/stats
+[2026-02-15T16:44:47.302Z] INFO request.finish requestId=07a45564-b0f5-41f8-85c8-0edbe6fee4de method=GET url=/api/admin/stats status=200 durationMs=526.3
+[2026-02-15T16:44:49.614Z] INFO request.start requestId=b76953cb-dfd7-455c-a925-0fc0ebbdd74c method=OPTIONS url=/api/admin/users?page=1&limit=10
+[2026-02-15T16:44:49.615Z] INFO request.finish requestId=b76953cb-dfd7-455c-a925-0fc0ebbdd74c method=OPTIONS url=/api/admin/users?page=1&limit=10 status=204 durationMs=1.3
+[2026-02-15T16:44:49.616Z] INFO request.start requestId=c427bac4-3c5e-47c0-ad0a-d9f4f518b9e9 method=OPTIONS url=/api/admin/users?page=1&limit=10
+[2026-02-15T16:44:49.616Z] INFO request.finish requestId=c427bac4-3c5e-47c0-ad0a-d9f4f518b9e9 method=OPTIONS url=/api/admin/users?page=1&limit=10 status=204 durationMs=0.5
+[2026-02-15T16:44:49.618Z] INFO request.start requestId=ef3ef6d5-c056-46b2-b09f-95ff0311347a method=GET url=/api/admin/users?page=1&limit=10
+[2026-02-15T16:44:49.790Z] INFO request.finish requestId=ef3ef6d5-c056-46b2-b09f-95ff0311347a method=GET url=/api/admin/users?page=1&limit=10 status=200 durationMs=171.5
+[2026-02-15T16:44:49.791Z] INFO request.start requestId=924815c9-1220-4666-b0f4-1dee605577f8 method=GET url=/api/admin/users?page=1&limit=10
+[2026-02-15T16:44:49.888Z] INFO request.finish requestId=924815c9-1220-4666-b0f4-1dee605577f8 method=GET url=/api/admin/users?page=1&limit=10 status=304 durationMs=97.4
+[2026-02-15T16:44:56.033Z] INFO request.start requestId=d690972c-6a93-441f-bc18-59565ee28eb8 method=OPTIONS url=/api/admin/users/af32ca64-402c-44a3-985d-d9476bd7f430
+[2026-02-15T16:44:56.034Z] INFO request.finish requestId=d690972c-6a93-441f-bc18-59565ee28eb8 method=OPTIONS url=/api/admin/users/af32ca64-402c-44a3-985d-d9476bd7f430 status=204 durationMs=1.0
+[2026-02-15T16:44:56.035Z] INFO request.start requestId=bcf8d0f6-3578-4e82-89e1-8a093301b59b method=PUT url=/api/admin/users/af32ca64-402c-44a3-985d-d9476bd7f430
+[2026-02-15T16:44:56.200Z] INFO request.finish requestId=bcf8d0f6-3578-4e82-89e1-8a093301b59b method=PUT url=/api/admin/users/af32ca64-402c-44a3-985d-d9476bd7f430 status=200 durationMs=165.4
+[2026-02-15T16:44:56.202Z] INFO request.start requestId=f81ba63d-276e-446b-b9b7-9006368f65e0 method=OPTIONS url=/api/admin/users?page=1&limit=10
+[2026-02-15T16:44:56.203Z] INFO request.finish requestId=f81ba63d-276e-446b-b9b7-9006368f65e0 method=OPTIONS url=/api/admin/users?page=1&limit=10 status=204 durationMs=0.7
+[2026-02-15T16:44:56.204Z] INFO request.start requestId=be141f7f-7f07-440e-a442-3dd5b59f8fc9 method=GET url=/api/admin/users?page=1&limit=10
+[2026-02-15T16:44:56.401Z] INFO request.finish requestId=be141f7f-7f07-440e-a442-3dd5b59f8fc9 method=GET url=/api/admin/users?page=1&limit=10 status=200 durationMs=197.1
+[2026-02-15T16:45:02.175Z] INFO request.start requestId=a58f54f4-d7c8-4e22-b14e-a57cef0d1948 method=OPTIONS url=/api/admin/courses
+[2026-02-15T16:45:02.176Z] INFO request.finish requestId=a58f54f4-d7c8-4e22-b14e-a57cef0d1948 method=OPTIONS url=/api/admin/courses status=204 durationMs=1.1
+[2026-02-15T16:45:02.177Z] INFO request.start requestId=d006ff24-a054-401a-9fa8-e0ea55f1ccff method=OPTIONS url=/api/admin/courses
+[2026-02-15T16:45:02.178Z] INFO request.finish requestId=d006ff24-a054-401a-9fa8-e0ea55f1ccff method=OPTIONS url=/api/admin/courses status=204 durationMs=0.7
+[2026-02-15T16:45:02.179Z] INFO request.start requestId=ae22ca67-7912-4801-9b9e-6f35e5b3cb02 method=GET url=/api/admin/courses
+[2026-02-15T16:45:02.433Z] INFO request.finish requestId=ae22ca67-7912-4801-9b9e-6f35e5b3cb02 method=GET url=/api/admin/courses status=304 durationMs=254.8
+[2026-02-15T16:45:02.434Z] INFO request.start requestId=03cb1f6a-1557-416b-884c-df61877b3b39 method=GET url=/api/admin/courses
+[2026-02-15T16:45:02.553Z] INFO request.finish requestId=03cb1f6a-1557-416b-884c-df61877b3b39 method=GET url=/api/admin/courses status=304 durationMs=119.0
+[2026-02-15T16:45:03.146Z] INFO request.start requestId=15c6233e-aa73-4a1e-be6c-d88ad1195edf method=OPTIONS url=/api/admin/users?page=1&limit=10
+[2026-02-15T16:45:03.148Z] INFO request.finish requestId=15c6233e-aa73-4a1e-be6c-d88ad1195edf method=OPTIONS url=/api/admin/users?page=1&limit=10 status=204 durationMs=1.3
+[2026-02-15T16:45:03.149Z] INFO request.start requestId=cf2ca536-469e-412f-8c2f-910358a7fca1 method=OPTIONS url=/api/admin/users?page=1&limit=10
+[2026-02-15T16:45:03.150Z] INFO request.finish requestId=cf2ca536-469e-412f-8c2f-910358a7fca1 method=OPTIONS url=/api/admin/users?page=1&limit=10 status=204 durationMs=1.8
+[2026-02-15T16:45:03.151Z] INFO request.start requestId=f134831d-7288-4c96-80e7-5c550274e467 method=GET url=/api/admin/users?page=1&limit=10
+[2026-02-15T16:45:03.258Z] INFO request.finish requestId=f134831d-7288-4c96-80e7-5c550274e467 method=GET url=/api/admin/users?page=1&limit=10 status=304 durationMs=107.3
+[2026-02-15T16:45:03.259Z] INFO request.start requestId=5d067359-0288-43d6-8282-275418c5df8f method=GET url=/api/admin/users?page=1&limit=10
+[2026-02-15T16:45:03.364Z] INFO request.finish requestId=5d067359-0288-43d6-8282-275418c5df8f method=GET url=/api/admin/users?page=1&limit=10 status=304 durationMs=104.8
+[2026-02-15T16:45:06.083Z] INFO request.start requestId=5ec2694c-9cb6-4814-b463-25de76f78e0e method=GET url=/api/admin/users?page=1&limit=10
+[2026-02-15T16:45:06.234Z] INFO request.finish requestId=5ec2694c-9cb6-4814-b463-25de76f78e0e method=GET url=/api/admin/users?page=1&limit=10 status=304 durationMs=150.2
+[2026-02-15T16:45:06.235Z] INFO request.start requestId=4ef8192f-6c71-4f89-a9b9-ac527b59ca12 method=GET url=/api/admin/users?page=1&limit=10
+[2026-02-15T16:45:06.436Z] INFO request.finish requestId=4ef8192f-6c71-4f89-a9b9-ac527b59ca12 method=GET url=/api/admin/users?page=1&limit=10 status=304 durationMs=201.3
+[2026-02-15T16:45:09.983Z] INFO request.start requestId=51ee8f60-80cc-4fda-bfc4-ca870d7a56e4 method=OPTIONS url=/api/admin/courses
+[2026-02-15T16:45:09.985Z] INFO request.finish requestId=51ee8f60-80cc-4fda-bfc4-ca870d7a56e4 method=OPTIONS url=/api/admin/courses status=204 durationMs=2.0
+[2026-02-15T16:45:09.987Z] INFO request.start requestId=e6c2dc3b-5917-47d4-983b-f76e5cd8f9e8 method=OPTIONS url=/api/admin/courses
+[2026-02-15T16:45:09.987Z] INFO request.finish requestId=e6c2dc3b-5917-47d4-983b-f76e5cd8f9e8 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.7
+[2026-02-15T16:45:09.988Z] INFO request.start requestId=ecd506cb-4c59-4269-97d2-0458beeee4a8 method=GET url=/api/admin/courses
+[2026-02-15T16:45:10.144Z] INFO request.finish requestId=ecd506cb-4c59-4269-97d2-0458beeee4a8 method=GET url=/api/admin/courses status=304 durationMs=155.8
+[2026-02-15T16:45:10.145Z] INFO request.start requestId=b9a307d6-3bbb-4cfe-982a-3ac0266722cc method=GET url=/api/admin/courses
+[2026-02-15T16:45:10.272Z] INFO request.finish requestId=b9a307d6-3bbb-4cfe-982a-3ac0266722cc method=GET url=/api/admin/courses status=304 durationMs=126.5
+[2026-02-15T16:45:11.044Z] INFO request.start requestId=5a700f40-103d-4ab7-9403-5326dc229771 method=OPTIONS url=/api/admin/stats
+[2026-02-15T16:45:11.045Z] INFO request.finish requestId=5a700f40-103d-4ab7-9403-5326dc229771 method=OPTIONS url=/api/admin/stats status=204 durationMs=1.2
+[2026-02-15T16:45:11.046Z] INFO request.start requestId=b3c6e0e9-ee94-4897-9ce7-3e9a1abb6115 method=OPTIONS url=/api/admin/stats
+[2026-02-15T16:45:11.047Z] INFO request.finish requestId=b3c6e0e9-ee94-4897-9ce7-3e9a1abb6115 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.7
+[2026-02-15T16:45:11.049Z] INFO request.start requestId=55abd6d7-8a45-4ffd-8129-1832538d8c31 method=GET url=/api/admin/stats
+[2026-02-15T16:45:11.733Z] INFO request.finish requestId=55abd6d7-8a45-4ffd-8129-1832538d8c31 method=GET url=/api/admin/stats status=200 durationMs=684.7
+[2026-02-15T16:45:11.735Z] INFO request.start requestId=c76d1e87-fe2b-414a-ac0d-99b31e733bd6 method=GET url=/api/admin/stats
+[2026-02-15T16:45:12.410Z] INFO request.finish requestId=c76d1e87-fe2b-414a-ac0d-99b31e733bd6 method=GET url=/api/admin/stats status=200 durationMs=675.8
+[2026-02-15T16:45:20.221Z] INFO request.start requestId=e6c56c9d-be50-4a8f-be56-e317066b4234 method=OPTIONS url=/api/admin/courses
+[2026-02-15T16:45:20.223Z] INFO request.finish requestId=e6c56c9d-be50-4a8f-be56-e317066b4234 method=OPTIONS url=/api/admin/courses status=204 durationMs=1.4
+[2026-02-15T16:45:20.224Z] INFO request.start requestId=3d2bb472-24b5-40ab-a9ae-3e53d8bfb8c2 method=OPTIONS url=/api/admin/courses
+[2026-02-15T16:45:20.225Z] INFO request.finish requestId=3d2bb472-24b5-40ab-a9ae-3e53d8bfb8c2 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.7
+[2026-02-15T16:45:20.225Z] INFO request.start requestId=6d1f1ee7-68e3-4674-8b6d-47c49631f517 method=GET url=/api/admin/courses
+[2026-02-15T16:45:20.569Z] INFO request.finish requestId=6d1f1ee7-68e3-4674-8b6d-47c49631f517 method=GET url=/api/admin/courses status=304 durationMs=344.1
+[2026-02-15T16:45:20.571Z] INFO request.start requestId=62ede2ed-8cc7-45a9-b632-649e75ad4f34 method=GET url=/api/admin/courses
+[2026-02-15T16:45:20.771Z] INFO request.finish requestId=62ede2ed-8cc7-45a9-b632-649e75ad4f34 method=GET url=/api/admin/courses status=304 durationMs=200.3
+[2026-02-15T16:46:02.925Z] INFO request.start requestId=5f80c30a-6395-4a41-8625-86749b1bf0a6 method=GET url=/api/admin/stats
+[2026-02-15T16:46:02.952Z] INFO request.finish requestId=5f80c30a-6395-4a41-8625-86749b1bf0a6 method=GET url=/api/admin/stats status=200 durationMs=26.8
+[2026-02-15T16:46:02.964Z] INFO request.start requestId=68d6eed7-9680-484f-ad57-97ae7b597daf method=POST url=/api/admin/courses
+[2026-02-15T16:46:02.976Z] INFO request.finish requestId=68d6eed7-9680-484f-ad57-97ae7b597daf method=POST url=/api/admin/courses status=201 durationMs=12.2
+[2026-02-15T16:46:02.981Z] INFO request.start requestId=7bcd44a9-e13b-46d9-8101-f3035dbdadbf method=POST url=/api/admin/courses
+[2026-02-15T16:46:02.987Z] WARN request.finish requestId=7bcd44a9-e13b-46d9-8101-f3035dbdadbf method=POST url=/api/admin/courses status=400 durationMs=6.1
+[2026-02-15T16:46:02.992Z] INFO request.start requestId=4ad9942d-7cdf-4b58-a736-4fcda8a80ae6 method=POST url=/api/admin/users/bulk-delete
+[2026-02-15T16:46:02.997Z] INFO request.finish requestId=4ad9942d-7cdf-4b58-a736-4fcda8a80ae6 method=POST url=/api/admin/users/bulk-delete status=200 durationMs=5.3
+[2026-02-15T16:46:03.002Z] INFO request.start requestId=cbac559f-cd61-4ff1-b9dd-c89c5386e078 method=POST url=/api/admin/users/bulk-delete
+[2026-02-15T16:46:03.006Z] WARN request.finish requestId=cbac559f-cd61-4ff1-b9dd-c89c5386e078 method=POST url=/api/admin/users/bulk-delete status=400 durationMs=3.7
+[2026-02-15T16:46:25.762Z] INFO request.start requestId=f1b64866-0edb-4163-98f6-ff43f722e4db method=OPTIONS url=/api/admin/courses
+[2026-02-15T16:46:25.763Z] INFO request.finish requestId=f1b64866-0edb-4163-98f6-ff43f722e4db method=OPTIONS url=/api/admin/courses status=204 durationMs=0.9
+[2026-02-15T16:46:25.764Z] INFO request.start requestId=9184d435-7e8c-44d7-b9f3-fedd7380f7a7 method=OPTIONS url=/api/admin/courses
+[2026-02-15T16:46:25.765Z] INFO request.finish requestId=9184d435-7e8c-44d7-b9f3-fedd7380f7a7 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.8
+[2026-02-15T16:46:25.766Z] INFO request.start requestId=4577f6d7-b7b7-4eb6-b008-f58b3dea37a9 method=GET url=/api/admin/courses
+[2026-02-15T16:46:26.115Z] INFO request.finish requestId=4577f6d7-b7b7-4eb6-b008-f58b3dea37a9 method=GET url=/api/admin/courses status=304 durationMs=349.4
+[2026-02-15T16:46:26.116Z] INFO request.start requestId=2d36988c-f38b-4660-9d9b-1536c285d302 method=GET url=/api/admin/courses
+[2026-02-15T16:46:26.208Z] INFO request.finish requestId=2d36988c-f38b-4660-9d9b-1536c285d302 method=GET url=/api/admin/courses status=304 durationMs=92.1
+[2026-02-15T16:46:44.926Z] INFO request.start requestId=388c7c47-1f77-4982-b1a3-4fb74dce4b3c method=OPTIONS url=/api/admin/courses/undefined
+[2026-02-15T16:46:44.927Z] INFO request.finish requestId=388c7c47-1f77-4982-b1a3-4fb74dce4b3c method=OPTIONS url=/api/admin/courses/undefined status=204 durationMs=1.4
+[2026-02-15T16:46:44.928Z] INFO request.start requestId=318b8c41-e8d8-410d-9d09-6d3b17166265 method=PUT url=/api/admin/courses/undefined
+[2026-02-15T16:46:45.251Z] ERROR request.finish requestId=318b8c41-e8d8-410d-9d09-6d3b17166265 method=PUT url=/api/admin/courses/undefined status=500 durationMs=322.9
+[2026-02-15T16:47:12.748Z] INFO request.start requestId=110a0e3c-f02e-4309-8adc-b94b9f8bc86c method=OPTIONS url=/api/admin/users?page=1&limit=10
+[2026-02-15T16:47:12.749Z] INFO request.finish requestId=110a0e3c-f02e-4309-8adc-b94b9f8bc86c method=OPTIONS url=/api/admin/users?page=1&limit=10 status=204 durationMs=1.0
+[2026-02-15T16:47:12.750Z] INFO request.start requestId=2ae61eec-190f-4a6d-ac0b-ac5bdd426928 method=OPTIONS url=/api/admin/users?page=1&limit=10
+[2026-02-15T16:47:12.751Z] INFO request.finish requestId=2ae61eec-190f-4a6d-ac0b-ac5bdd426928 method=OPTIONS url=/api/admin/users?page=1&limit=10 status=204 durationMs=0.7
+[2026-02-15T16:47:12.753Z] INFO request.start requestId=3010dff5-6f67-434a-8745-fc295fca7eb0 method=GET url=/api/admin/users?page=1&limit=10
+[2026-02-15T16:47:12.988Z] INFO request.finish requestId=3010dff5-6f67-434a-8745-fc295fca7eb0 method=GET url=/api/admin/users?page=1&limit=10 status=304 durationMs=235.6
+[2026-02-15T16:47:12.990Z] INFO request.start requestId=26325685-c7aa-4c25-85d4-980d68f91c41 method=GET url=/api/admin/users?page=1&limit=10
+[2026-02-15T16:47:13.098Z] INFO request.finish requestId=26325685-c7aa-4c25-85d4-980d68f91c41 method=GET url=/api/admin/users?page=1&limit=10 status=304 durationMs=108.5
+[2026-02-15T16:47:22.606Z] INFO request.start requestId=c7f607a4-efe7-41a5-b92f-e8b21243a267 method=OPTIONS url=/api/admin/stats
+[2026-02-15T16:47:22.607Z] INFO request.finish requestId=c7f607a4-efe7-41a5-b92f-e8b21243a267 method=OPTIONS url=/api/admin/stats status=204 durationMs=1.2
+[2026-02-15T16:47:22.608Z] INFO request.start requestId=94d16ade-5c82-4782-a58c-fb2edef0890d method=OPTIONS url=/api/admin/stats
+[2026-02-15T16:47:22.608Z] INFO request.finish requestId=94d16ade-5c82-4782-a58c-fb2edef0890d method=OPTIONS url=/api/admin/stats status=204 durationMs=0.4
+[2026-02-15T16:47:22.609Z] INFO request.start requestId=9dc78297-9755-4d4c-83c1-6664eace0565 method=GET url=/api/admin/stats
+[2026-02-15T16:47:23.755Z] INFO request.finish requestId=9dc78297-9755-4d4c-83c1-6664eace0565 method=GET url=/api/admin/stats status=200 durationMs=1146.1
+[2026-02-15T16:47:23.757Z] INFO request.start requestId=462b9751-9b7f-4c84-812f-98ffb7684696 method=GET url=/api/admin/stats
+[2026-02-15T16:47:24.404Z] INFO request.finish requestId=462b9751-9b7f-4c84-812f-98ffb7684696 method=GET url=/api/admin/stats status=200 durationMs=647.0
+[2026-02-15T16:47:27.228Z] INFO request.start requestId=ec1d3b41-c5d3-4894-9fe3-059e672753ff method=OPTIONS url=/api/admin/courses
+[2026-02-15T16:47:27.229Z] INFO request.finish requestId=ec1d3b41-c5d3-4894-9fe3-059e672753ff method=OPTIONS url=/api/admin/courses status=204 durationMs=0.9
+[2026-02-15T16:47:27.230Z] INFO request.start requestId=f7d91144-9cc4-4207-b9cd-d635d0c0e6b7 method=OPTIONS url=/api/admin/courses
+[2026-02-15T16:47:27.230Z] INFO request.finish requestId=f7d91144-9cc4-4207-b9cd-d635d0c0e6b7 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.6
+[2026-02-15T16:47:27.231Z] INFO request.start requestId=7d7b0078-561f-45e0-863f-bef93eb720f6 method=GET url=/api/admin/courses
+[2026-02-15T16:47:27.391Z] INFO request.finish requestId=7d7b0078-561f-45e0-863f-bef93eb720f6 method=GET url=/api/admin/courses status=200 durationMs=159.7
+[2026-02-15T16:47:27.392Z] INFO request.start requestId=4b4a64f3-59bd-4d76-9d2b-3cb1751dd33e method=GET url=/api/admin/courses
+[2026-02-15T16:47:27.541Z] INFO request.finish requestId=4b4a64f3-59bd-4d76-9d2b-3cb1751dd33e method=GET url=/api/admin/courses status=304 durationMs=148.7
+[2026-02-15T16:47:43.835Z] INFO request.start requestId=a42b3103-b678-458f-ae2e-10380dbcbe28 method=OPTIONS url=/api/admin/courses/undefined
+[2026-02-15T16:47:43.836Z] INFO request.finish requestId=a42b3103-b678-458f-ae2e-10380dbcbe28 method=OPTIONS url=/api/admin/courses/undefined status=204 durationMs=1.0
+[2026-02-15T16:47:43.837Z] INFO request.start requestId=f57d7744-d44c-404e-a743-9a466d8b006f method=PUT url=/api/admin/courses/undefined
+[2026-02-15T16:47:44.130Z] ERROR request.finish requestId=f57d7744-d44c-404e-a743-9a466d8b006f method=PUT url=/api/admin/courses/undefined status=500 durationMs=292.9
+[2026-02-15T17:21:00.815Z] INFO request.start requestId=af09e484-1aab-4913-b6ba-bbf1bc79f471 method=GET url=/api/admin/stats
+[2026-02-15T17:21:00.846Z] INFO request.finish requestId=af09e484-1aab-4913-b6ba-bbf1bc79f471 method=GET url=/api/admin/stats status=200 durationMs=30.7
+[2026-02-15T17:21:00.861Z] INFO request.start requestId=1591e708-2c58-46be-9c28-0131464edb68 method=POST url=/api/admin/courses
+[2026-02-15T17:21:00.877Z] INFO request.finish requestId=1591e708-2c58-46be-9c28-0131464edb68 method=POST url=/api/admin/courses status=201 durationMs=16.0
+[2026-02-15T17:21:00.883Z] INFO request.start requestId=46835ad5-5ec9-41b9-aa55-2365deffd1dd method=POST url=/api/admin/courses
+[2026-02-15T17:21:00.890Z] WARN request.finish requestId=46835ad5-5ec9-41b9-aa55-2365deffd1dd method=POST url=/api/admin/courses status=400 durationMs=7.3
+[2026-02-15T17:21:00.895Z] INFO request.start requestId=e7130096-7fcc-4b81-af2c-686011ee22ea method=POST url=/api/admin/users/bulk-delete
+[2026-02-15T17:21:00.898Z] INFO request.finish requestId=e7130096-7fcc-4b81-af2c-686011ee22ea method=POST url=/api/admin/users/bulk-delete status=200 durationMs=2.9
+[2026-02-15T17:21:00.902Z] INFO request.start requestId=701f8b27-9c68-446c-878e-695b1259fd72 method=POST url=/api/admin/users/bulk-delete
+[2026-02-15T17:21:00.906Z] WARN request.finish requestId=701f8b27-9c68-446c-878e-695b1259fd72 method=POST url=/api/admin/users/bulk-delete status=400 durationMs=4.1
+[2026-02-15T18:58:31.268Z] INFO request.start requestId=aefbeab3-d744-4d64-b44a-e05400fa498b method=OPTIONS url=/api/admin/stats
+[2026-02-15T18:58:31.272Z] INFO request.finish requestId=aefbeab3-d744-4d64-b44a-e05400fa498b method=OPTIONS url=/api/admin/stats status=204 durationMs=3.3
+[2026-02-15T18:58:31.273Z] INFO request.start requestId=ea3dc495-4843-4dc5-a201-a264d268cf21 method=OPTIONS url=/api/admin/stats
+[2026-02-15T18:58:31.274Z] INFO request.finish requestId=ea3dc495-4843-4dc5-a201-a264d268cf21 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.9
+[2026-02-15T18:58:31.275Z] INFO request.start requestId=68f2775d-f8e6-4bac-8d57-3b49a73bac14 method=GET url=/api/admin/stats
+[2026-02-15T18:58:32.377Z] INFO request.finish requestId=68f2775d-f8e6-4bac-8d57-3b49a73bac14 method=GET url=/api/admin/stats status=200 durationMs=1102.1
+[2026-02-15T18:58:32.378Z] INFO request.start requestId=e50b96a4-c3f8-4820-90ed-2aaf5abaa215 method=GET url=/api/admin/stats
+[2026-02-15T18:58:33.195Z] INFO request.finish requestId=e50b96a4-c3f8-4820-90ed-2aaf5abaa215 method=GET url=/api/admin/stats status=200 durationMs=817.0
+[2026-02-15T18:58:34.796Z] INFO request.start requestId=73e25d3c-7695-4bd2-9551-a3f9894f458d method=OPTIONS url=/api/admin/courses
+[2026-02-15T18:58:34.797Z] INFO request.finish requestId=73e25d3c-7695-4bd2-9551-a3f9894f458d method=OPTIONS url=/api/admin/courses status=204 durationMs=1.0
+[2026-02-15T18:58:34.798Z] INFO request.start requestId=d8a89cdb-33db-4b68-ab89-997167b3233b method=OPTIONS url=/api/admin/courses
+[2026-02-15T18:58:34.799Z] INFO request.finish requestId=d8a89cdb-33db-4b68-ab89-997167b3233b method=OPTIONS url=/api/admin/courses status=204 durationMs=0.6
+[2026-02-15T18:58:34.799Z] INFO request.start requestId=096f62f9-3b61-4ee0-8f5e-113f51faafdb method=GET url=/api/admin/courses
+[2026-02-15T18:58:34.911Z] INFO request.finish requestId=096f62f9-3b61-4ee0-8f5e-113f51faafdb method=GET url=/api/admin/courses status=304 durationMs=111.6
+[2026-02-15T18:58:34.913Z] INFO request.start requestId=bf1bcf44-0b01-430d-b1e2-8b58e33a028a method=GET url=/api/admin/courses
+[2026-02-15T18:58:35.015Z] INFO request.finish requestId=bf1bcf44-0b01-430d-b1e2-8b58e33a028a method=GET url=/api/admin/courses status=304 durationMs=102.7
+[2026-02-15T18:58:35.497Z] INFO request.start requestId=5b9ba61f-1c9b-441c-b416-b205d3fb099c method=OPTIONS url=/api/admin/users?page=1&limit=10
+[2026-02-15T18:58:35.498Z] INFO request.finish requestId=5b9ba61f-1c9b-441c-b416-b205d3fb099c method=OPTIONS url=/api/admin/users?page=1&limit=10 status=204 durationMs=1.3
+[2026-02-15T18:58:35.499Z] INFO request.start requestId=4a182a9e-d150-4bc8-8f75-bf6fb5a25785 method=OPTIONS url=/api/admin/users?page=1&limit=10
+[2026-02-15T18:58:35.500Z] INFO request.finish requestId=4a182a9e-d150-4bc8-8f75-bf6fb5a25785 method=OPTIONS url=/api/admin/users?page=1&limit=10 status=204 durationMs=0.7
+[2026-02-15T18:58:35.501Z] INFO request.start requestId=c84f747d-d467-4318-ad41-76b6cd070b6c method=GET url=/api/admin/users?page=1&limit=10
+[2026-02-15T18:58:35.624Z] INFO request.finish requestId=c84f747d-d467-4318-ad41-76b6cd070b6c method=GET url=/api/admin/users?page=1&limit=10 status=200 durationMs=123.0
+[2026-02-15T18:58:35.625Z] INFO request.start requestId=8f5a8b45-ab67-4af7-884b-10b8374f5691 method=GET url=/api/admin/users?page=1&limit=10
+[2026-02-15T18:58:35.734Z] INFO request.finish requestId=8f5a8b45-ab67-4af7-884b-10b8374f5691 method=GET url=/api/admin/users?page=1&limit=10 status=304 durationMs=109.4
+[2026-02-15T18:58:36.475Z] INFO request.start requestId=dda0e572-3bf7-4bf7-9cfe-95208c88718e method=GET url=/api/admin/courses
+[2026-02-15T18:58:36.569Z] INFO request.finish requestId=dda0e572-3bf7-4bf7-9cfe-95208c88718e method=GET url=/api/admin/courses status=304 durationMs=94.5
+[2026-02-15T18:58:36.570Z] INFO request.start requestId=11753ef6-b667-4b40-87aa-fd2652bc8b86 method=GET url=/api/admin/courses
+[2026-02-15T18:58:36.700Z] INFO request.finish requestId=11753ef6-b667-4b40-87aa-fd2652bc8b86 method=GET url=/api/admin/courses status=304 durationMs=130.2
+[2026-02-15T18:58:49.395Z] INFO request.start requestId=db729044-e841-4f6f-9c5f-f56861e550b4 method=OPTIONS url=/api/admin/courses/undefined
+[2026-02-15T18:58:49.397Z] INFO request.finish requestId=db729044-e841-4f6f-9c5f-f56861e550b4 method=OPTIONS url=/api/admin/courses/undefined status=204 durationMs=1.1
+[2026-02-15T18:58:49.398Z] INFO request.start requestId=020c5327-3d06-45b4-94aa-ad1e001510eb method=PUT url=/api/admin/courses/undefined
+[2026-02-15T18:58:49.988Z] ERROR request.finish requestId=020c5327-3d06-45b4-94aa-ad1e001510eb method=PUT url=/api/admin/courses/undefined status=500 durationMs=590.3
+[2026-02-15T19:08:07.670Z] INFO request.start requestId=995b9be2-5c98-46a7-be27-6341ef668646 method=OPTIONS url=/api/admin/courses
+[2026-02-15T19:08:07.671Z] INFO request.finish requestId=995b9be2-5c98-46a7-be27-6341ef668646 method=OPTIONS url=/api/admin/courses status=204 durationMs=1.0
+[2026-02-15T19:08:07.672Z] INFO request.start requestId=e5153e4c-223d-4465-9ec0-5279a5e868e7 method=POST url=/api/admin/courses
+[2026-02-15T19:08:08.622Z] ERROR request.finish requestId=e5153e4c-223d-4465-9ec0-5279a5e868e7 method=POST url=/api/admin/courses status=500 durationMs=949.7
+[2026-02-15T19:09:48.821Z] INFO request.start requestId=c166ca86-d8d0-465d-8eba-e9a7d84d55f7 method=OPTIONS url=/api/admin/courses
+[2026-02-15T19:09:48.824Z] INFO request.finish requestId=c166ca86-d8d0-465d-8eba-e9a7d84d55f7 method=OPTIONS url=/api/admin/courses status=204 durationMs=3.2
+[2026-02-15T19:09:48.825Z] INFO request.start requestId=e0ef2636-8975-42c6-96bf-6517b1caf252 method=POST url=/api/admin/courses
+[2026-02-15T19:09:49.233Z] INFO request.finish requestId=e0ef2636-8975-42c6-96bf-6517b1caf252 method=POST url=/api/admin/courses status=201 durationMs=407.7
+[2026-02-15T19:09:49.241Z] INFO request.start requestId=a9326b97-d86c-4583-9bae-e7270b726357 method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T19:09:49.242Z] INFO request.finish requestId=a9326b97-d86c-4583-9bae-e7270b726357 method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=0.9
+[2026-02-15T19:09:49.243Z] INFO request.start requestId=187c2b1f-8fe2-485a-945b-62fe351cb552 method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T19:09:49.540Z] INFO request.finish requestId=187c2b1f-8fe2-485a-945b-62fe351cb552 method=GET url=/api/admin/courses/python-sznebo status=200 durationMs=296.5
+[2026-02-15T19:09:53.056Z] INFO request.start requestId=2296971e-103b-492d-92dc-f8ca93d65c3a method=PUT url=/api/admin/courses/python-sznebo
+[2026-02-15T19:09:53.635Z] INFO request.finish requestId=2296971e-103b-492d-92dc-f8ca93d65c3a method=PUT url=/api/admin/courses/python-sznebo status=200 durationMs=578.8
+[2026-02-15T19:09:57.244Z] INFO request.start requestId=2426ef90-28f1-48f5-ab52-a83a45228796 method=OPTIONS url=/api/admin/courses
+[2026-02-15T19:09:57.245Z] INFO request.finish requestId=2426ef90-28f1-48f5-ab52-a83a45228796 method=OPTIONS url=/api/admin/courses status=204 durationMs=1.2
+[2026-02-15T19:09:57.246Z] INFO request.start requestId=dbd79d79-6bcb-4df4-997f-952b252543d9 method=OPTIONS url=/api/admin/courses
+[2026-02-15T19:09:57.247Z] INFO request.finish requestId=dbd79d79-6bcb-4df4-997f-952b252543d9 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.7
+[2026-02-15T19:09:57.248Z] INFO request.start requestId=1bc16c7c-50a9-4954-aff2-948a38c91c3f method=GET url=/api/admin/courses
+[2026-02-15T19:09:57.425Z] INFO request.finish requestId=1bc16c7c-50a9-4954-aff2-948a38c91c3f method=GET url=/api/admin/courses status=200 durationMs=177.2
+[2026-02-15T19:09:57.426Z] INFO request.start requestId=07ac64a2-3958-4d67-b344-2309df7bdc79 method=GET url=/api/admin/courses
+[2026-02-15T19:09:57.629Z] INFO request.finish requestId=07ac64a2-3958-4d67-b344-2309df7bdc79 method=GET url=/api/admin/courses status=304 durationMs=202.9
+[2026-02-15T19:10:00.046Z] INFO request.start requestId=e9b03a6d-d2c6-4be0-9f4b-839ee356df15 method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T19:10:00.047Z] INFO request.finish requestId=e9b03a6d-d2c6-4be0-9f4b-839ee356df15 method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=1.0
+[2026-02-15T19:10:00.047Z] INFO request.start requestId=ad6dcfc8-e603-4c79-a755-2bc013b1b090 method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T19:10:00.048Z] INFO request.finish requestId=ad6dcfc8-e603-4c79-a755-2bc013b1b090 method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=0.8
+[2026-02-15T19:10:00.049Z] INFO request.start requestId=542339d8-a090-4e5b-ab30-ca727297063a method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T19:10:00.251Z] INFO request.finish requestId=542339d8-a090-4e5b-ab30-ca727297063a method=GET url=/api/admin/courses/python-sznebo status=200 durationMs=202.3
+[2026-02-15T19:10:00.253Z] INFO request.start requestId=a8a5e037-cb1a-429e-b79a-7855b30bee45 method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T19:10:00.495Z] INFO request.finish requestId=a8a5e037-cb1a-429e-b79a-7855b30bee45 method=GET url=/api/admin/courses/python-sznebo status=304 durationMs=242.4
+[2026-02-15T19:10:39.099Z] INFO request.start requestId=ab025121-6a28-4991-8100-05ea4814ed1b method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T19:10:39.100Z] INFO request.finish requestId=ab025121-6a28-4991-8100-05ea4814ed1b method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=1.3
+[2026-02-15T19:10:39.101Z] INFO request.start requestId=f3d91adb-0339-4ffc-a405-38e525d76c17 method=PUT url=/api/admin/courses/python-sznebo
+[2026-02-15T19:10:40.534Z] INFO request.finish requestId=f3d91adb-0339-4ffc-a405-38e525d76c17 method=PUT url=/api/admin/courses/python-sznebo status=200 durationMs=1432.2
+[2026-02-15T19:11:16.988Z] INFO request.start requestId=3354029d-6b79-4726-8c8a-9f14a47b0c03 method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T19:11:16.989Z] INFO request.finish requestId=3354029d-6b79-4726-8c8a-9f14a47b0c03 method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=0.9
+[2026-02-15T19:11:16.990Z] INFO request.start requestId=249a801c-f587-4c45-ab09-7bbff1dc9c9d method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T19:11:16.991Z] INFO request.finish requestId=249a801c-f587-4c45-ab09-7bbff1dc9c9d method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=0.8
+[2026-02-15T19:11:16.992Z] INFO request.start requestId=11d0b82e-0f2f-4df0-8e3c-c1c58392e2ae method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T19:11:17.503Z] INFO request.finish requestId=11d0b82e-0f2f-4df0-8e3c-c1c58392e2ae method=GET url=/api/admin/courses/python-sznebo status=200 durationMs=510.6
+[2026-02-15T19:11:17.504Z] INFO request.start requestId=276931d7-ac95-4a02-82b5-d4caebea3560 method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T19:11:17.664Z] INFO request.finish requestId=276931d7-ac95-4a02-82b5-d4caebea3560 method=GET url=/api/admin/courses/python-sznebo status=304 durationMs=159.7
+[2026-02-15T19:11:23.152Z] INFO request.start requestId=747e04f5-0f31-4aae-9077-754da8b5e0cb method=OPTIONS url=/api/admin/courses
+[2026-02-15T19:11:23.153Z] INFO request.finish requestId=747e04f5-0f31-4aae-9077-754da8b5e0cb method=OPTIONS url=/api/admin/courses status=204 durationMs=1.0
+[2026-02-15T19:11:23.154Z] INFO request.start requestId=a2633476-ffef-411a-b1e6-86888bfe07f7 method=OPTIONS url=/api/admin/courses
+[2026-02-15T19:11:23.154Z] INFO request.finish requestId=a2633476-ffef-411a-b1e6-86888bfe07f7 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.6
+[2026-02-15T19:11:23.155Z] INFO request.start requestId=f0805d83-add0-4f41-961f-c891687fabe8 method=GET url=/api/admin/courses
+[2026-02-15T19:11:23.387Z] INFO request.finish requestId=f0805d83-add0-4f41-961f-c891687fabe8 method=GET url=/api/admin/courses status=304 durationMs=232.2
+[2026-02-15T19:11:23.389Z] INFO request.start requestId=06e5db7c-76e1-40cc-ae91-350f8718b2e5 method=GET url=/api/admin/courses
+[2026-02-15T19:11:23.517Z] INFO request.finish requestId=06e5db7c-76e1-40cc-ae91-350f8718b2e5 method=GET url=/api/admin/courses status=304 durationMs=128.6
+[2026-02-15T19:11:25.788Z] INFO request.start requestId=4e9c1232-45a2-47ed-b9bf-75ad68f89de9 method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T19:11:25.789Z] INFO request.finish requestId=4e9c1232-45a2-47ed-b9bf-75ad68f89de9 method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=0.9
+[2026-02-15T19:11:25.789Z] INFO request.start requestId=8231a1b6-3d94-464b-a3e9-4464ce34ff6c method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T19:11:25.790Z] INFO request.finish requestId=8231a1b6-3d94-464b-a3e9-4464ce34ff6c method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=0.8
+[2026-02-15T19:11:25.792Z] INFO request.start requestId=e1b6e2fa-7049-414c-94ce-8bb64656e0be method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T19:11:25.928Z] INFO request.finish requestId=e1b6e2fa-7049-414c-94ce-8bb64656e0be method=GET url=/api/admin/courses/python-sznebo status=304 durationMs=135.4
+[2026-02-15T19:11:25.928Z] INFO request.start requestId=8406822b-3f64-4cca-99e5-891b69760cb0 method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T19:11:26.082Z] INFO request.finish requestId=8406822b-3f64-4cca-99e5-891b69760cb0 method=GET url=/api/admin/courses/python-sznebo status=304 durationMs=153.6
+[2026-02-15T19:11:41.129Z] INFO request.start requestId=8a7711d5-884e-424f-831f-5d3c6e93807c method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T19:11:41.130Z] INFO request.finish requestId=8a7711d5-884e-424f-831f-5d3c6e93807c method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=0.8
+[2026-02-15T19:11:41.132Z] INFO request.start requestId=dcc56e9f-e64d-4944-a09e-086dcbd14de7 method=PUT url=/api/admin/courses/python-sznebo
+[2026-02-15T19:11:41.778Z] INFO request.finish requestId=dcc56e9f-e64d-4944-a09e-086dcbd14de7 method=PUT url=/api/admin/courses/python-sznebo status=200 durationMs=646.7
+[2026-02-15T19:11:44.336Z] INFO request.start requestId=e64bee3e-f5f5-4e0d-81da-a63b6c2e5254 method=OPTIONS url=/api/admin/courses
+[2026-02-15T19:11:44.337Z] INFO request.finish requestId=e64bee3e-f5f5-4e0d-81da-a63b6c2e5254 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.8
+[2026-02-15T19:11:44.338Z] INFO request.start requestId=85bd1520-f661-4d21-95fb-f82c83eee950 method=OPTIONS url=/api/admin/courses
+[2026-02-15T19:11:44.338Z] INFO request.finish requestId=85bd1520-f661-4d21-95fb-f82c83eee950 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.6
+[2026-02-15T19:11:44.339Z] INFO request.start requestId=aebb848f-1c42-40ea-821a-0fad64cf1771 method=GET url=/api/admin/courses
+[2026-02-15T19:11:44.483Z] INFO request.finish requestId=aebb848f-1c42-40ea-821a-0fad64cf1771 method=GET url=/api/admin/courses status=304 durationMs=144.6
+[2026-02-15T19:11:44.484Z] INFO request.start requestId=ccd72c40-611f-4235-be31-88f4dfada9b9 method=GET url=/api/admin/courses
+[2026-02-15T19:11:44.608Z] INFO request.finish requestId=ccd72c40-611f-4235-be31-88f4dfada9b9 method=GET url=/api/admin/courses status=304 durationMs=123.7
+[2026-02-15T19:11:45.736Z] INFO request.start requestId=f126b146-b879-4618-81fe-3987cdce8faf method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T19:11:45.857Z] INFO request.finish requestId=f126b146-b879-4618-81fe-3987cdce8faf method=GET url=/api/admin/courses/python-sznebo status=200 durationMs=121.7
+[2026-02-15T19:11:45.858Z] INFO request.start requestId=dddd6447-6f3e-4120-a262-f2260746f9d4 method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T19:11:45.974Z] INFO request.finish requestId=dddd6447-6f3e-4120-a262-f2260746f9d4 method=GET url=/api/admin/courses/python-sznebo status=304 durationMs=116.0
+[2026-02-15T19:38:12.877Z] INFO request.start requestId=fec1ac7f-534f-44f2-8b75-50ea791109f4 method=GET url=/api/admin/stats
+[2026-02-15T19:38:12.887Z] INFO request.finish requestId=fec1ac7f-534f-44f2-8b75-50ea791109f4 method=GET url=/api/admin/stats status=200 durationMs=10.1
+[2026-02-15T19:38:12.892Z] INFO request.start requestId=ecd8a88d-b651-410e-acb6-679321e879d7 method=POST url=/api/admin/courses
+[2026-02-15T19:38:12.901Z] ERROR request.finish requestId=ecd8a88d-b651-410e-acb6-679321e879d7 method=POST url=/api/admin/courses status=500 durationMs=8.8
+[2026-02-15T19:38:12.906Z] INFO request.start requestId=44916be1-0a26-40a9-a196-a32c4bc84651 method=POST url=/api/admin/courses
+[2026-02-15T19:38:12.910Z] WARN request.finish requestId=44916be1-0a26-40a9-a196-a32c4bc84651 method=POST url=/api/admin/courses status=400 durationMs=4.1
+[2026-02-15T19:38:12.913Z] INFO request.start requestId=01e7cf99-f4ff-47b6-8132-2f474075d0ab method=POST url=/api/admin/users/bulk-delete
+[2026-02-15T19:38:12.915Z] INFO request.finish requestId=01e7cf99-f4ff-47b6-8132-2f474075d0ab method=POST url=/api/admin/users/bulk-delete status=200 durationMs=1.8
+[2026-02-15T19:38:12.918Z] INFO request.start requestId=427bc064-fc0d-4bf1-877f-08a18d7ff1d1 method=POST url=/api/admin/users/bulk-delete
+[2026-02-15T19:38:12.920Z] WARN request.finish requestId=427bc064-fc0d-4bf1-877f-08a18d7ff1d1 method=POST url=/api/admin/users/bulk-delete status=400 durationMs=1.7
+[2026-02-15T19:38:58.069Z] INFO request.start requestId=6a579f1c-7aed-4f29-bf83-2589a51c6899 method=GET url=/api/admin/stats
+[2026-02-15T19:38:58.095Z] INFO request.finish requestId=6a579f1c-7aed-4f29-bf83-2589a51c6899 method=GET url=/api/admin/stats status=200 durationMs=25.6
+[2026-02-15T19:38:58.110Z] INFO request.start requestId=aec97463-f23a-4a6f-a14b-2ca2ef01d779 method=POST url=/api/admin/courses
+[2026-02-15T19:38:58.122Z] INFO request.finish requestId=aec97463-f23a-4a6f-a14b-2ca2ef01d779 method=POST url=/api/admin/courses status=201 durationMs=11.5
+[2026-02-15T19:38:58.126Z] INFO request.start requestId=1465a3fe-0ea2-4742-adf3-3f8e1b33b30e method=POST url=/api/admin/courses
+[2026-02-15T19:38:58.132Z] WARN request.finish requestId=1465a3fe-0ea2-4742-adf3-3f8e1b33b30e method=POST url=/api/admin/courses status=400 durationMs=6.3
+[2026-02-15T19:38:58.137Z] INFO request.start requestId=2ead6d53-161f-44fd-a05d-aa076a10d260 method=POST url=/api/admin/users/bulk-delete
+[2026-02-15T19:38:58.140Z] INFO request.finish requestId=2ead6d53-161f-44fd-a05d-aa076a10d260 method=POST url=/api/admin/users/bulk-delete status=200 durationMs=3.1
+[2026-02-15T19:38:58.144Z] INFO request.start requestId=1b569731-4f5c-4ef1-b24a-99e94a7e7732 method=POST url=/api/admin/users/bulk-delete
+[2026-02-15T19:38:58.149Z] WARN request.finish requestId=1b569731-4f5c-4ef1-b24a-99e94a7e7732 method=POST url=/api/admin/users/bulk-delete status=400 durationMs=4.7
+[2026-02-15T19:55:28.401Z] INFO request.start requestId=9502e4a1-f32e-4b21-8e8e-9798bfbd5b55 method=OPTIONS url=/api/admin/stats
+[2026-02-15T19:55:28.405Z] INFO request.finish requestId=9502e4a1-f32e-4b21-8e8e-9798bfbd5b55 method=OPTIONS url=/api/admin/stats status=204 durationMs=3.7
+[2026-02-15T19:55:28.406Z] INFO request.start requestId=5eb41921-78a1-4774-a8f4-41da87fb8dbd method=OPTIONS url=/api/admin/stats
+[2026-02-15T19:55:28.407Z] INFO request.finish requestId=5eb41921-78a1-4774-a8f4-41da87fb8dbd method=OPTIONS url=/api/admin/stats status=204 durationMs=1.0
+[2026-02-15T19:55:28.411Z] INFO request.start requestId=d9e99d75-8a75-4214-8e2c-b144f9898e59 method=GET url=/api/admin/stats
+[2026-02-15T19:55:30.350Z] INFO request.finish requestId=d9e99d75-8a75-4214-8e2c-b144f9898e59 method=GET url=/api/admin/stats status=200 durationMs=1939.7
+[2026-02-15T19:55:30.352Z] INFO request.start requestId=0ad01d29-489b-42af-9961-400f8671c579 method=GET url=/api/admin/stats
+[2026-02-15T19:55:31.031Z] INFO request.finish requestId=0ad01d29-489b-42af-9961-400f8671c579 method=GET url=/api/admin/stats status=200 durationMs=679.7
+[2026-02-15T19:55:38.853Z] INFO request.start requestId=de2ca2d7-5f62-4bf2-b8d7-534fc3c9d673 method=OPTIONS url=/api/admin/stats
+[2026-02-15T19:55:38.854Z] INFO request.finish requestId=de2ca2d7-5f62-4bf2-b8d7-534fc3c9d673 method=OPTIONS url=/api/admin/stats status=204 durationMs=1.2
+[2026-02-15T19:55:38.856Z] INFO request.start requestId=f4371692-0aa8-498d-97ca-cc15d149eef3 method=OPTIONS url=/api/admin/stats
+[2026-02-15T19:55:38.857Z] INFO request.finish requestId=f4371692-0aa8-498d-97ca-cc15d149eef3 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.6
+[2026-02-15T19:55:38.858Z] INFO request.start requestId=b710a1eb-a16c-4a83-8227-fc07f0e5fb9a method=GET url=/api/admin/stats
+[2026-02-15T19:55:39.450Z] INFO request.finish requestId=b710a1eb-a16c-4a83-8227-fc07f0e5fb9a method=GET url=/api/admin/stats status=200 durationMs=592.6
+[2026-02-15T19:55:39.451Z] INFO request.start requestId=084c9832-7271-41d9-9477-8a1cd66cecb3 method=GET url=/api/admin/stats
+[2026-02-15T19:55:39.935Z] INFO request.finish requestId=084c9832-7271-41d9-9477-8a1cd66cecb3 method=GET url=/api/admin/stats status=200 durationMs=483.6
+[2026-02-15T20:03:43.829Z] INFO request.start requestId=e1ec9c5b-faff-4f39-917c-9cd9beb5502a method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:03:43.830Z] INFO request.finish requestId=e1ec9c5b-faff-4f39-917c-9cd9beb5502a method=OPTIONS url=/api/admin/courses status=204 durationMs=1.1
+[2026-02-15T20:03:43.831Z] INFO request.start requestId=198fd871-bc20-424b-a200-73d8b88bb9b0 method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:03:43.831Z] INFO request.finish requestId=198fd871-bc20-424b-a200-73d8b88bb9b0 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.5
+[2026-02-15T20:03:43.832Z] INFO request.start requestId=c788250a-9409-4f63-a5bb-52ab81b0cc5e method=GET url=/api/admin/courses
+[2026-02-15T20:03:44.080Z] WARN request.finish requestId=c788250a-9409-4f63-a5bb-52ab81b0cc5e method=GET url=/api/admin/courses status=401 durationMs=247.9
+[2026-02-15T20:03:44.081Z] INFO request.start requestId=cfa84932-7863-42ea-b6df-0b7bdacdfc0f method=GET url=/api/admin/courses
+[2026-02-15T20:04:14.097Z] INFO request.start requestId=f0c113d4-403b-4a08-a8fa-3abe9f9c8102 method=OPTIONS url=/api/admin/stats
+[2026-02-15T20:04:14.098Z] INFO request.finish requestId=f0c113d4-403b-4a08-a8fa-3abe9f9c8102 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.8
+[2026-02-15T20:04:14.098Z] INFO request.start requestId=eab61edf-977a-4240-b14f-a553fcb98152 method=OPTIONS url=/api/admin/stats
+[2026-02-15T20:04:14.099Z] INFO request.finish requestId=eab61edf-977a-4240-b14f-a553fcb98152 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.5
+[2026-02-15T20:04:14.099Z] INFO request.start requestId=6fa70688-c453-4869-b374-0cb1b65b10c1 method=GET url=/api/admin/stats
+[2026-02-15T20:04:15.244Z] INFO request.finish requestId=6fa70688-c453-4869-b374-0cb1b65b10c1 method=GET url=/api/admin/stats status=200 durationMs=1145.0
+[2026-02-15T20:04:15.245Z] INFO request.start requestId=8d3ac186-9e7b-4ff9-9b6b-e482ef99b65c method=GET url=/api/admin/stats
+[2026-02-15T20:04:16.071Z] INFO request.finish requestId=8d3ac186-9e7b-4ff9-9b6b-e482ef99b65c method=GET url=/api/admin/stats status=200 durationMs=825.3
+[2026-02-15T20:04:16.263Z] INFO request.start requestId=19ad5165-67ed-4bb0-be8c-c3e57ee982af method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:04:16.263Z] INFO request.finish requestId=19ad5165-67ed-4bb0-be8c-c3e57ee982af method=OPTIONS url=/api/admin/courses status=204 durationMs=0.8
+[2026-02-15T20:04:16.264Z] INFO request.start requestId=0bba178f-43bd-4c04-b488-53f49b35cad0 method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:04:16.265Z] INFO request.finish requestId=0bba178f-43bd-4c04-b488-53f49b35cad0 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.7
+[2026-02-15T20:04:16.266Z] INFO request.start requestId=90ef0b5f-7d09-43c0-9677-5b6427653c1f method=GET url=/api/admin/courses
+[2026-02-15T20:04:16.406Z] INFO request.finish requestId=90ef0b5f-7d09-43c0-9677-5b6427653c1f method=GET url=/api/admin/courses status=200 durationMs=140.2
+[2026-02-15T20:04:16.407Z] INFO request.start requestId=0311ac19-426b-4d5b-8768-0a6c3077811d method=GET url=/api/admin/courses
+[2026-02-15T20:04:16.534Z] INFO request.finish requestId=0311ac19-426b-4d5b-8768-0a6c3077811d method=GET url=/api/admin/courses status=304 durationMs=126.6
+[2026-02-15T20:04:18.626Z] INFO request.start requestId=67712027-91d7-4723-8bb2-d1b4afa6ce2d method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T20:04:18.626Z] INFO request.finish requestId=67712027-91d7-4723-8bb2-d1b4afa6ce2d method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=0.8
+[2026-02-15T20:04:18.627Z] INFO request.start requestId=b0408e61-937f-413a-a84a-f62e8594a0df method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T20:04:18.628Z] INFO request.finish requestId=b0408e61-937f-413a-a84a-f62e8594a0df method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=0.7
+[2026-02-15T20:04:18.628Z] INFO request.start requestId=24ca8db9-24b9-44b6-86d1-7d0896adcffd method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T20:04:18.790Z] INFO request.finish requestId=24ca8db9-24b9-44b6-86d1-7d0896adcffd method=GET url=/api/admin/courses/python-sznebo status=304 durationMs=161.6
+[2026-02-15T20:04:18.791Z] INFO request.start requestId=6eb2625a-6f55-4b31-943e-e0bda7fcc8b6 method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T20:04:18.916Z] INFO request.finish requestId=6eb2625a-6f55-4b31-943e-e0bda7fcc8b6 method=GET url=/api/admin/courses/python-sznebo status=304 durationMs=125.3
+[2026-02-15T20:04:33.283Z] INFO request.start requestId=52de24a0-970b-43ba-9fb4-ca58d711c371 method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T20:04:33.284Z] INFO request.finish requestId=52de24a0-970b-43ba-9fb4-ca58d711c371 method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=0.9
+[2026-02-15T20:04:33.285Z] INFO request.start requestId=cb5f005d-6f6a-42ff-bfb5-7b4307e498fc method=PUT url=/api/admin/courses/python-sznebo
+[2026-02-15T20:04:34.186Z] INFO request.finish requestId=cb5f005d-6f6a-42ff-bfb5-7b4307e498fc method=PUT url=/api/admin/courses/python-sznebo status=200 durationMs=901.2
+[2026-02-15T20:04:37.626Z] INFO request.start requestId=3b434ea1-b698-4095-b725-302d7201c5d2 method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T20:04:37.772Z] INFO request.finish requestId=3b434ea1-b698-4095-b725-302d7201c5d2 method=GET url=/api/admin/courses/python-sznebo status=200 durationMs=145.8
+[2026-02-15T20:04:37.773Z] INFO request.start requestId=6df703b8-315f-4611-9cd8-df106b27942b method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T20:04:37.874Z] INFO request.finish requestId=6df703b8-315f-4611-9cd8-df106b27942b method=GET url=/api/admin/courses/python-sznebo status=304 durationMs=101.3
+[2026-02-15T20:04:52.758Z] INFO request.start requestId=2eaf8503-dc56-44d9-85e3-a5d39f6c4218 method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T20:04:52.758Z] INFO request.finish requestId=2eaf8503-dc56-44d9-85e3-a5d39f6c4218 method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=0.8
+[2026-02-15T20:04:52.760Z] INFO request.start requestId=a15984bf-8c21-4d4d-b4f8-d90243d4e691 method=PUT url=/api/admin/courses/python-sznebo
+[2026-02-15T20:04:53.746Z] INFO request.finish requestId=a15984bf-8c21-4d4d-b4f8-d90243d4e691 method=PUT url=/api/admin/courses/python-sznebo status=200 durationMs=985.7
+[2026-02-15T20:04:56.477Z] INFO request.start requestId=f81231c3-0025-4812-8e3a-ee7113b5420a method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:04:56.478Z] INFO request.finish requestId=f81231c3-0025-4812-8e3a-ee7113b5420a method=OPTIONS url=/api/admin/courses status=204 durationMs=1.0
+[2026-02-15T20:04:56.479Z] INFO request.start requestId=4a96dc9a-8eae-4a89-9301-ed9a13aef714 method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:04:56.480Z] INFO request.finish requestId=4a96dc9a-8eae-4a89-9301-ed9a13aef714 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.7
+[2026-02-15T20:04:56.480Z] INFO request.start requestId=86f555ac-2d7d-40d0-92ee-b23c36500b4a method=GET url=/api/admin/courses
+[2026-02-15T20:04:56.584Z] INFO request.finish requestId=86f555ac-2d7d-40d0-92ee-b23c36500b4a method=GET url=/api/admin/courses status=304 durationMs=103.3
+[2026-02-15T20:04:56.585Z] INFO request.start requestId=d4f6d41b-686a-4414-8173-e73b19313ab1 method=GET url=/api/admin/courses
+[2026-02-15T20:04:56.716Z] INFO request.finish requestId=d4f6d41b-686a-4414-8173-e73b19313ab1 method=GET url=/api/admin/courses status=304 durationMs=131.2
+[2026-02-15T20:04:58.020Z] INFO request.start requestId=4f444361-8f85-4cc8-b38f-d21a199393f7 method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T20:04:58.021Z] INFO request.finish requestId=4f444361-8f85-4cc8-b38f-d21a199393f7 method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=0.8
+[2026-02-15T20:04:58.022Z] INFO request.start requestId=2ca5c865-e55d-4294-9532-9a1939779b4d method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T20:04:58.023Z] INFO request.finish requestId=2ca5c865-e55d-4294-9532-9a1939779b4d method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=0.8
+[2026-02-15T20:04:58.024Z] INFO request.start requestId=0a65bfe3-c1fe-4bdd-b5b5-eab0b875ca9e method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T20:04:58.251Z] INFO request.finish requestId=0a65bfe3-c1fe-4bdd-b5b5-eab0b875ca9e method=GET url=/api/admin/courses/python-sznebo status=200 durationMs=226.6
+[2026-02-15T20:04:58.252Z] INFO request.start requestId=5a805f77-8369-48dc-816d-6bb6c32f5923 method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T20:04:58.457Z] INFO request.finish requestId=5a805f77-8369-48dc-816d-6bb6c32f5923 method=GET url=/api/admin/courses/python-sznebo status=304 durationMs=205.6
+[2026-02-15T20:06:00.489Z] INFO request.start requestId=ce740827-a87a-48d1-8691-2ab612b8b5ac method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T20:06:00.490Z] INFO request.finish requestId=ce740827-a87a-48d1-8691-2ab612b8b5ac method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=0.9
+[2026-02-15T20:06:00.492Z] INFO request.start requestId=52c44926-cc97-48c8-af1b-387d669dcacc method=PUT url=/api/admin/courses/python-sznebo
+[2026-02-15T20:06:01.093Z] INFO request.finish requestId=52c44926-cc97-48c8-af1b-387d669dcacc method=PUT url=/api/admin/courses/python-sznebo status=200 durationMs=600.8
+[2026-02-15T20:06:04.069Z] INFO request.start requestId=f9444edb-79f5-475d-ae01-148d48a153af method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T20:06:04.178Z] INFO request.finish requestId=f9444edb-79f5-475d-ae01-148d48a153af method=GET url=/api/admin/courses/python-sznebo status=200 durationMs=109.5
+[2026-02-15T20:06:04.180Z] INFO request.start requestId=140ee093-bc71-4515-9864-6d2e3fd9406e method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T20:06:04.275Z] INFO request.finish requestId=140ee093-bc71-4515-9864-6d2e3fd9406e method=GET url=/api/admin/courses/python-sznebo status=304 durationMs=95.7
+[2026-02-15T20:07:39.132Z] INFO request.start requestId=0c2db5d6-60ed-4db4-8ef5-43308a65465a method=GET url=/api/admin/stats
+[2026-02-15T20:07:39.157Z] INFO request.finish requestId=0c2db5d6-60ed-4db4-8ef5-43308a65465a method=GET url=/api/admin/stats status=200 durationMs=25.3
+[2026-02-15T20:07:39.170Z] INFO request.start requestId=df107698-123b-46bf-a56c-c8a2cec26047 method=POST url=/api/admin/courses
+[2026-02-15T20:07:39.184Z] ERROR request.finish requestId=df107698-123b-46bf-a56c-c8a2cec26047 method=POST url=/api/admin/courses status=500 durationMs=13.5
+[2026-02-15T20:07:39.192Z] INFO request.start requestId=24821948-ca7f-4901-832d-89efbea0586a method=POST url=/api/admin/courses
+[2026-02-15T20:07:39.198Z] WARN request.finish requestId=24821948-ca7f-4901-832d-89efbea0586a method=POST url=/api/admin/courses status=400 durationMs=6.2
+[2026-02-15T20:07:39.203Z] INFO request.start requestId=a565fcef-b877-4c3c-a232-65f0fccadb54 method=POST url=/api/admin/users/bulk-delete
+[2026-02-15T20:07:39.206Z] INFO request.finish requestId=a565fcef-b877-4c3c-a232-65f0fccadb54 method=POST url=/api/admin/users/bulk-delete status=200 durationMs=3.1
+[2026-02-15T20:07:39.211Z] INFO request.start requestId=cbaa0041-e6c7-41e0-9877-3a1850fe0fcc method=POST url=/api/admin/users/bulk-delete
+[2026-02-15T20:07:39.216Z] WARN request.finish requestId=cbaa0041-e6c7-41e0-9877-3a1850fe0fcc method=POST url=/api/admin/users/bulk-delete status=400 durationMs=4.3
+[2026-02-15T20:08:19.496Z] INFO request.start requestId=5fd84c9d-50e0-4e1e-a8e9-13b81dbc190e method=GET url=/api/admin/stats
+[2026-02-15T20:08:19.520Z] INFO request.finish requestId=5fd84c9d-50e0-4e1e-a8e9-13b81dbc190e method=GET url=/api/admin/stats status=200 durationMs=23.4
+[2026-02-15T20:08:19.533Z] INFO request.start requestId=c2507526-a666-48ba-8687-48ee979c4de5 method=POST url=/api/admin/courses
+[2026-02-15T20:08:19.543Z] INFO request.finish requestId=c2507526-a666-48ba-8687-48ee979c4de5 method=POST url=/api/admin/courses status=201 durationMs=10.3
+[2026-02-15T20:08:19.548Z] INFO request.start requestId=371cd547-29bd-4728-afc2-c700d1c57b2f method=POST url=/api/admin/courses
+[2026-02-15T20:08:19.554Z] WARN request.finish requestId=371cd547-29bd-4728-afc2-c700d1c57b2f method=POST url=/api/admin/courses status=400 durationMs=5.5
+[2026-02-15T20:08:19.558Z] INFO request.start requestId=d6c0b721-4951-411b-b37c-369a4fbcd5ee method=POST url=/api/admin/users/bulk-delete
+[2026-02-15T20:08:19.573Z] INFO request.finish requestId=d6c0b721-4951-411b-b37c-369a4fbcd5ee method=POST url=/api/admin/users/bulk-delete status=200 durationMs=14.9
+[2026-02-15T20:08:19.578Z] INFO request.start requestId=92c48b03-9b0b-4c35-9ec3-e47ec781f312 method=POST url=/api/admin/users/bulk-delete
+[2026-02-15T20:08:19.584Z] WARN request.finish requestId=92c48b03-9b0b-4c35-9ec3-e47ec781f312 method=POST url=/api/admin/users/bulk-delete status=400 durationMs=6.1
+[2026-02-15T20:09:57.513Z] INFO request.start requestId=1a62d944-a122-4c0a-8bff-9ab3cd4cf65f method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T20:09:57.516Z] INFO request.finish requestId=1a62d944-a122-4c0a-8bff-9ab3cd4cf65f method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=3.6
+[2026-02-15T20:09:57.518Z] INFO request.start requestId=e516b628-4b1e-4a4b-a4ab-73d3cc6ef198 method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T20:09:57.543Z] INFO request.start requestId=2e329903-a300-4bbe-9822-80df33dd8730 method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T20:09:57.544Z] INFO request.finish requestId=2e329903-a300-4bbe-9822-80df33dd8730 method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=0.8
+[2026-02-15T20:09:58.076Z] INFO request.finish requestId=e516b628-4b1e-4a4b-a4ab-73d3cc6ef198 method=GET url=/api/admin/courses/python-sznebo status=304 durationMs=558.3
+[2026-02-15T20:09:58.077Z] INFO request.start requestId=f9ed7c7d-0f83-42ae-bfa0-469fb8bca216 method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T20:09:58.246Z] INFO request.start requestId=22b196d3-2923-403b-9b5c-74485c7c84d1 method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T20:09:58.384Z] INFO request.finish requestId=22b196d3-2923-403b-9b5c-74485c7c84d1 method=GET url=/api/admin/courses/python-sznebo status=200 durationMs=137.2
+[2026-02-15T20:09:58.385Z] INFO request.start requestId=b9434f55-0717-475e-8ac5-529c311daf19 method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T20:09:58.486Z] INFO request.finish requestId=b9434f55-0717-475e-8ac5-529c311daf19 method=GET url=/api/admin/courses/python-sznebo status=304 durationMs=100.9
+[2026-02-15T20:09:58.860Z] INFO request.start requestId=b38ecc47-7350-49be-9ff6-9e8fb5838195 method=OPTIONS url=/api/admin/stats
+[2026-02-15T20:09:58.861Z] INFO request.finish requestId=b38ecc47-7350-49be-9ff6-9e8fb5838195 method=OPTIONS url=/api/admin/stats status=204 durationMs=1.0
+[2026-02-15T20:09:58.862Z] INFO request.start requestId=a32829a6-5c5f-415c-b203-ee93939d30cc method=OPTIONS url=/api/admin/stats
+[2026-02-15T20:09:58.862Z] INFO request.finish requestId=a32829a6-5c5f-415c-b203-ee93939d30cc method=OPTIONS url=/api/admin/stats status=204 durationMs=0.7
+[2026-02-15T20:09:58.864Z] INFO request.start requestId=722d07ca-1010-4c29-a925-5e63ddcd253d method=GET url=/api/admin/stats
+[2026-02-15T20:09:59.411Z] INFO request.finish requestId=722d07ca-1010-4c29-a925-5e63ddcd253d method=GET url=/api/admin/stats status=200 durationMs=547.3
+[2026-02-15T20:09:59.413Z] INFO request.start requestId=a9d5f543-7ef7-4bab-bdf9-540d5341c01b method=GET url=/api/admin/stats
+[2026-02-15T20:09:59.952Z] INFO request.finish requestId=a9d5f543-7ef7-4bab-bdf9-540d5341c01b method=GET url=/api/admin/stats status=200 durationMs=538.6
+[2026-02-15T20:10:01.339Z] INFO request.start requestId=5b53d6eb-71f5-4def-9bbd-bf3dac164678 method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:10:01.340Z] INFO request.finish requestId=5b53d6eb-71f5-4def-9bbd-bf3dac164678 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.9
+[2026-02-15T20:10:01.341Z] INFO request.start requestId=fa2c3ed1-3394-43c1-b9fa-9cacbbadaafd method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:10:01.341Z] INFO request.finish requestId=fa2c3ed1-3394-43c1-b9fa-9cacbbadaafd method=OPTIONS url=/api/admin/courses status=204 durationMs=0.7
+[2026-02-15T20:10:01.342Z] INFO request.start requestId=84995d3d-3ebb-4840-9f38-780de0fd5ed8 method=GET url=/api/admin/courses
+[2026-02-15T20:10:01.432Z] INFO request.finish requestId=84995d3d-3ebb-4840-9f38-780de0fd5ed8 method=GET url=/api/admin/courses status=304 durationMs=89.8
+[2026-02-15T20:10:01.433Z] INFO request.start requestId=f16346c9-1e13-44de-a227-bed5cd067f65 method=GET url=/api/admin/courses
+[2026-02-15T20:10:01.525Z] INFO request.finish requestId=f16346c9-1e13-44de-a227-bed5cd067f65 method=GET url=/api/admin/courses status=304 durationMs=92.5
+[2026-02-15T20:10:16.974Z] INFO request.start requestId=197edb25-c4d4-440b-9bd3-75458e58ce31 method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:10:16.975Z] INFO request.finish requestId=197edb25-c4d4-440b-9bd3-75458e58ce31 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.9
+[2026-02-15T20:10:16.977Z] INFO request.start requestId=705e9bc2-08a3-4d5f-b045-6a98812fe145 method=POST url=/api/admin/courses
+[2026-02-15T20:10:17.429Z] ERROR request.finish requestId=705e9bc2-08a3-4d5f-b045-6a98812fe145 method=POST url=/api/admin/courses status=500 durationMs=451.8
+[2026-02-15T20:10:20.017Z] INFO request.start requestId=1b9113ce-0568-41ba-955c-2dcc5e7b8b75 method=POST url=/api/admin/courses
+[2026-02-15T20:10:20.311Z] ERROR request.finish requestId=1b9113ce-0568-41ba-955c-2dcc5e7b8b75 method=POST url=/api/admin/courses status=500 durationMs=294.3
+[2026-02-15T20:10:31.234Z] INFO request.start requestId=0bb186e4-a638-40f6-9b2a-900614a0c18f method=OPTIONS url=/api/admin/stats
+[2026-02-15T20:10:31.235Z] INFO request.finish requestId=0bb186e4-a638-40f6-9b2a-900614a0c18f method=OPTIONS url=/api/admin/stats status=204 durationMs=1.0
+[2026-02-15T20:10:31.236Z] INFO request.start requestId=88766109-2e38-4347-ab0c-bac4dc61aeff method=OPTIONS url=/api/admin/stats
+[2026-02-15T20:10:31.237Z] INFO request.finish requestId=88766109-2e38-4347-ab0c-bac4dc61aeff method=OPTIONS url=/api/admin/stats status=204 durationMs=0.9
+[2026-02-15T20:10:31.237Z] INFO request.start requestId=e4e20746-1c80-4159-97e7-d4d7d26bef70 method=GET url=/api/admin/stats
+[2026-02-15T20:10:31.987Z] INFO request.start requestId=a4967b25-1c0d-434c-a24a-90f6cce1374f method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:10:31.988Z] INFO request.finish requestId=a4967b25-1c0d-434c-a24a-90f6cce1374f method=OPTIONS url=/api/admin/courses status=204 durationMs=0.9
+[2026-02-15T20:10:31.989Z] INFO request.start requestId=a00cce71-27b8-4e4f-916b-780c5c2a8877 method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:10:31.989Z] INFO request.finish requestId=a00cce71-27b8-4e4f-916b-780c5c2a8877 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.5
+[2026-02-15T20:10:31.990Z] INFO request.start requestId=1ba58ec8-c2b0-4408-b808-5bb4d1e8d4ee method=GET url=/api/admin/courses
+[2026-02-15T20:10:32.057Z] INFO request.finish requestId=e4e20746-1c80-4159-97e7-d4d7d26bef70 method=GET url=/api/admin/stats status=200 durationMs=819.6
+[2026-02-15T20:10:32.058Z] INFO request.start requestId=9c89e752-78b8-45a9-9ca7-1bcc97112f92 method=GET url=/api/admin/stats
+[2026-02-15T20:10:32.426Z] INFO request.finish requestId=1ba58ec8-c2b0-4408-b808-5bb4d1e8d4ee method=GET url=/api/admin/courses status=200 durationMs=436.8
+[2026-02-15T20:10:32.427Z] INFO request.start requestId=4a036c1c-5550-426e-893c-6b59b1d34c0b method=GET url=/api/admin/courses
+[2026-02-15T20:10:32.545Z] INFO request.finish requestId=4a036c1c-5550-426e-893c-6b59b1d34c0b method=GET url=/api/admin/courses status=304 durationMs=117.3
+[2026-02-15T20:10:32.668Z] INFO request.finish requestId=9c89e752-78b8-45a9-9ca7-1bcc97112f92 method=GET url=/api/admin/stats status=200 durationMs=610.7
+[2026-02-15T20:10:36.113Z] INFO request.start requestId=7c688e12-b384-4da8-83fc-5eb7fc44e93d method=OPTIONS url=/api/admin/courses/python-sznebo
+[2026-02-15T20:10:36.114Z] INFO request.finish requestId=7c688e12-b384-4da8-83fc-5eb7fc44e93d method=OPTIONS url=/api/admin/courses/python-sznebo status=204 durationMs=0.8
+[2026-02-15T20:10:36.115Z] INFO request.start requestId=dea38ae9-c0a2-4bb4-9637-5a0c98a46e82 method=DELETE url=/api/admin/courses/python-sznebo
+[2026-02-15T20:10:36.255Z] INFO request.finish requestId=dea38ae9-c0a2-4bb4-9637-5a0c98a46e82 method=DELETE url=/api/admin/courses/python-sznebo status=200 durationMs=139.1
+[2026-02-15T20:10:38.250Z] INFO request.start requestId=a5e0e8ec-ccb5-4944-ba35-e954decd78f4 method=OPTIONS url=/api/admin/courses/pythin-2-isjknd
+[2026-02-15T20:10:38.251Z] INFO request.finish requestId=a5e0e8ec-ccb5-4944-ba35-e954decd78f4 method=OPTIONS url=/api/admin/courses/pythin-2-isjknd status=204 durationMs=0.8
+[2026-02-15T20:10:38.252Z] INFO request.start requestId=1cf35aa8-5de8-43c0-bc16-e515c3f6d7bd method=DELETE url=/api/admin/courses/pythin-2-isjknd
+[2026-02-15T20:10:38.420Z] INFO request.finish requestId=1cf35aa8-5de8-43c0-bc16-e515c3f6d7bd method=DELETE url=/api/admin/courses/pythin-2-isjknd status=200 durationMs=167.8
+[2026-02-15T20:11:59.646Z] INFO request.start requestId=6ecc2890-db53-42d6-8532-940766feb720 method=GET url=/api/admin/courses/python-sznebo
+[2026-02-15T20:11:59.657Z] WARN request.finish requestId=6ecc2890-db53-42d6-8532-940766feb720 method=GET url=/api/admin/courses/python-sznebo status=401 durationMs=11.2
+[2026-02-15T20:12:13.300Z] INFO request.start requestId=c979e652-1612-412c-a3f7-83bbfa499dd8 method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:12:13.301Z] INFO request.finish requestId=c979e652-1612-412c-a3f7-83bbfa499dd8 method=OPTIONS url=/api/admin/courses status=204 durationMs=1.4
+[2026-02-15T20:12:13.303Z] INFO request.start requestId=3d6b5a22-aab3-4519-8562-0a79fa4eb413 method=GET url=/api/admin/courses
+[2026-02-15T20:12:13.754Z] INFO request.finish requestId=3d6b5a22-aab3-4519-8562-0a79fa4eb413 method=GET url=/api/admin/courses status=200 durationMs=450.5
+[2026-02-15T20:12:36.009Z] INFO request.start requestId=3770dbd0-8e0c-4dea-9a2d-02bc8750db42 method=OPTIONS url=/api/admin/stats
+[2026-02-15T20:12:36.010Z] INFO request.finish requestId=3770dbd0-8e0c-4dea-9a2d-02bc8750db42 method=OPTIONS url=/api/admin/stats status=204 durationMs=1.3
+[2026-02-15T20:12:36.012Z] INFO request.start requestId=c811d809-c9e2-4dcb-8809-2bbc7a0379e3 method=OPTIONS url=/api/admin/stats
+[2026-02-15T20:12:36.013Z] INFO request.finish requestId=c811d809-c9e2-4dcb-8809-2bbc7a0379e3 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.8
+[2026-02-15T20:12:36.013Z] INFO request.start requestId=70f1608e-b897-4a53-b369-310246f9b17e method=GET url=/api/admin/stats
+[2026-02-15T20:12:37.110Z] INFO request.finish requestId=70f1608e-b897-4a53-b369-310246f9b17e method=GET url=/api/admin/stats status=200 durationMs=1096.3
+[2026-02-15T20:12:37.111Z] INFO request.start requestId=ea272e6e-5587-40b3-bdc9-d62036c81e2f method=GET url=/api/admin/stats
+[2026-02-15T20:12:37.784Z] INFO request.finish requestId=ea272e6e-5587-40b3-bdc9-d62036c81e2f method=GET url=/api/admin/stats status=200 durationMs=673.8
+[2026-02-15T20:13:59.376Z] INFO request.start requestId=d1deb19d-89fd-444b-b678-635021b6758c method=OPTIONS url=/api/admin/stats
+[2026-02-15T20:13:59.377Z] INFO request.finish requestId=d1deb19d-89fd-444b-b678-635021b6758c method=OPTIONS url=/api/admin/stats status=204 durationMs=1.1
+[2026-02-15T20:13:59.379Z] INFO request.start requestId=9e274302-60c8-4390-8629-f92097d16026 method=OPTIONS url=/api/admin/stats
+[2026-02-15T20:13:59.380Z] INFO request.finish requestId=9e274302-60c8-4390-8629-f92097d16026 method=OPTIONS url=/api/admin/stats status=204 durationMs=1.0
+[2026-02-15T20:13:59.382Z] INFO request.start requestId=a5ac6051-f98a-47db-bedd-181f19ce63f4 method=GET url=/api/admin/stats
+[2026-02-15T20:14:00.260Z] INFO request.start requestId=4f88151d-9d42-44ba-8616-611194c49d2a method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:14:00.261Z] INFO request.finish requestId=4f88151d-9d42-44ba-8616-611194c49d2a method=OPTIONS url=/api/admin/courses status=204 durationMs=0.9
+[2026-02-15T20:14:00.262Z] INFO request.start requestId=64706daa-eab0-4c58-a326-cf939957c4ec method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:14:00.262Z] INFO request.finish requestId=64706daa-eab0-4c58-a326-cf939957c4ec method=OPTIONS url=/api/admin/courses status=204 durationMs=0.8
+[2026-02-15T20:14:00.263Z] INFO request.start requestId=d511522a-2e04-4a59-aeb9-369c5bf8ca5c method=GET url=/api/admin/courses
+[2026-02-15T20:14:00.364Z] INFO request.finish requestId=a5ac6051-f98a-47db-bedd-181f19ce63f4 method=GET url=/api/admin/stats status=200 durationMs=982.5
+[2026-02-15T20:14:00.365Z] INFO request.start requestId=09e652b6-a423-4430-a80b-ef4e04f8c97c method=GET url=/api/admin/stats
+[2026-02-15T20:14:00.389Z] INFO request.finish requestId=d511522a-2e04-4a59-aeb9-369c5bf8ca5c method=GET url=/api/admin/courses status=304 durationMs=126.3
+[2026-02-15T20:14:00.390Z] INFO request.start requestId=861cfd18-c470-4548-843d-3673d5aaecf3 method=GET url=/api/admin/courses
+[2026-02-15T20:14:00.495Z] INFO request.finish requestId=861cfd18-c470-4548-843d-3673d5aaecf3 method=GET url=/api/admin/courses status=304 durationMs=105.1
+[2026-02-15T20:14:00.777Z] INFO request.finish requestId=09e652b6-a423-4430-a80b-ef4e04f8c97c method=GET url=/api/admin/stats status=200 durationMs=412.5
+[2026-02-15T20:14:02.103Z] INFO request.start requestId=5df48332-bdd0-4a5b-aae0-2c0452dbed79 method=OPTIONS url=/api/admin/courses/pythin-2-ls7jb7
+[2026-02-15T20:14:02.104Z] INFO request.finish requestId=5df48332-bdd0-4a5b-aae0-2c0452dbed79 method=OPTIONS url=/api/admin/courses/pythin-2-ls7jb7 status=204 durationMs=1.0
+[2026-02-15T20:14:02.105Z] INFO request.start requestId=eb14f29d-5beb-4292-9310-31310f105f6c method=DELETE url=/api/admin/courses/pythin-2-ls7jb7
+[2026-02-15T20:14:02.229Z] INFO request.finish requestId=eb14f29d-5beb-4292-9310-31310f105f6c method=DELETE url=/api/admin/courses/pythin-2-ls7jb7 status=200 durationMs=123.5
+[2026-02-15T20:14:11.732Z] INFO request.start requestId=9151f08c-5f29-4b55-b043-3eac7a8d2829 method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:14:11.733Z] INFO request.finish requestId=9151f08c-5f29-4b55-b043-3eac7a8d2829 method=OPTIONS url=/api/admin/courses status=204 durationMs=1.4
+[2026-02-15T20:14:11.735Z] INFO request.start requestId=a208649f-af40-4c88-8e1d-c1f9930e3387 method=POST url=/api/admin/courses
+[2026-02-15T20:14:12.135Z] INFO request.finish requestId=a208649f-af40-4c88-8e1d-c1f9930e3387 method=POST url=/api/admin/courses status=201 durationMs=399.8
+[2026-02-15T20:14:12.142Z] INFO request.start requestId=64158be6-9afd-4725-b05a-f137a6067ad0 method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:14:12.143Z] INFO request.finish requestId=64158be6-9afd-4725-b05a-f137a6067ad0 method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=1.1
+[2026-02-15T20:14:12.145Z] INFO request.start requestId=d5bc69b7-b0b8-4f01-b78b-f9d3998b781b method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:14:12.248Z] INFO request.finish requestId=d5bc69b7-b0b8-4f01-b78b-f9d3998b781b method=GET url=/api/admin/courses/python-7iw9iu status=200 durationMs=102.8
+[2026-02-15T20:14:20.209Z] INFO request.start requestId=3da50eec-a1d1-45f1-bd83-20a8a4f88a08 method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:14:20.210Z] INFO request.finish requestId=3da50eec-a1d1-45f1-bd83-20a8a4f88a08 method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=0.8
+[2026-02-15T20:14:20.212Z] INFO request.start requestId=63a1d6a7-33e5-4190-a971-cf5868660c19 method=PUT url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:14:20.724Z] INFO request.finish requestId=63a1d6a7-33e5-4190-a971-cf5868660c19 method=PUT url=/api/admin/courses/python-7iw9iu status=200 durationMs=512.0
+[2026-02-15T20:14:23.759Z] INFO request.start requestId=bdb5c6d5-25d2-40ad-a27b-c714648a17b9 method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:14:23.759Z] INFO request.finish requestId=bdb5c6d5-25d2-40ad-a27b-c714648a17b9 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.8
+[2026-02-15T20:14:23.761Z] INFO request.start requestId=5cdab782-38db-4254-9680-d2b78f1b3602 method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:14:23.762Z] INFO request.finish requestId=5cdab782-38db-4254-9680-d2b78f1b3602 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.7
+[2026-02-15T20:14:23.762Z] INFO request.start requestId=fc07d244-4310-45b8-a29b-99f1cd465792 method=GET url=/api/admin/courses
+[2026-02-15T20:14:23.902Z] INFO request.finish requestId=fc07d244-4310-45b8-a29b-99f1cd465792 method=GET url=/api/admin/courses status=200 durationMs=139.9
+[2026-02-15T20:14:23.903Z] INFO request.start requestId=be74476f-f781-4298-99af-185e1209ddf8 method=GET url=/api/admin/courses
+[2026-02-15T20:14:24.107Z] INFO request.finish requestId=be74476f-f781-4298-99af-185e1209ddf8 method=GET url=/api/admin/courses status=304 durationMs=204.2
+[2026-02-15T20:14:25.704Z] INFO request.start requestId=741da985-cbca-4035-8c05-2aaef0e2ab00 method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:14:25.704Z] INFO request.finish requestId=741da985-cbca-4035-8c05-2aaef0e2ab00 method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=0.9
+[2026-02-15T20:14:25.705Z] INFO request.start requestId=051c92ff-bd50-4abc-89f2-f40ad622bbb0 method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:14:25.706Z] INFO request.finish requestId=051c92ff-bd50-4abc-89f2-f40ad622bbb0 method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=0.6
+[2026-02-15T20:14:25.707Z] INFO request.start requestId=b1cff727-6304-4cf4-92bc-46e2d4980cb7 method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:14:25.848Z] INFO request.finish requestId=b1cff727-6304-4cf4-92bc-46e2d4980cb7 method=GET url=/api/admin/courses/python-7iw9iu status=200 durationMs=140.9
+[2026-02-15T20:14:25.849Z] INFO request.start requestId=28ec5d7c-c2b3-407b-a1e4-08eaafc8d22a method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:14:25.951Z] INFO request.finish requestId=28ec5d7c-c2b3-407b-a1e4-08eaafc8d22a method=GET url=/api/admin/courses/python-7iw9iu status=304 durationMs=101.5
+[2026-02-15T20:14:28.928Z] INFO request.start requestId=f27ae778-98d4-407c-b6fb-80ee20add5ba method=PUT url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:14:29.330Z] INFO request.finish requestId=f27ae778-98d4-407c-b6fb-80ee20add5ba method=PUT url=/api/admin/courses/python-7iw9iu status=200 durationMs=401.6
+[2026-02-15T20:14:31.340Z] INFO request.start requestId=fb8339ac-b4d0-46eb-b8bb-c06c60cb5a84 method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:14:31.342Z] INFO request.finish requestId=fb8339ac-b4d0-46eb-b8bb-c06c60cb5a84 method=OPTIONS url=/api/admin/courses status=204 durationMs=1.2
+[2026-02-15T20:14:31.342Z] INFO request.start requestId=72c7bec5-2ed3-4687-8c61-d422e6fc1eba method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:14:31.343Z] INFO request.finish requestId=72c7bec5-2ed3-4687-8c61-d422e6fc1eba method=OPTIONS url=/api/admin/courses status=204 durationMs=0.6
+[2026-02-15T20:14:31.344Z] INFO request.start requestId=3b7e80b0-63d4-4d0f-959c-39c1aa64c815 method=GET url=/api/admin/courses
+[2026-02-15T20:14:31.479Z] INFO request.finish requestId=3b7e80b0-63d4-4d0f-959c-39c1aa64c815 method=GET url=/api/admin/courses status=200 durationMs=135.5
+[2026-02-15T20:14:31.480Z] INFO request.start requestId=35d1af0e-90d3-4228-947f-c855ce44a772 method=GET url=/api/admin/courses
+[2026-02-15T20:14:31.684Z] INFO request.finish requestId=35d1af0e-90d3-4228-947f-c855ce44a772 method=GET url=/api/admin/courses status=304 durationMs=203.7
+[2026-02-15T20:14:32.729Z] INFO request.start requestId=01e3295e-cf94-4bd4-b190-91160692548a method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:14:32.730Z] INFO request.finish requestId=01e3295e-cf94-4bd4-b190-91160692548a method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=0.9
+[2026-02-15T20:14:32.731Z] INFO request.start requestId=04344e46-b053-49cb-98d7-c5aeaf17a4a4 method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:14:32.731Z] INFO request.finish requestId=04344e46-b053-49cb-98d7-c5aeaf17a4a4 method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=0.6
+[2026-02-15T20:14:32.732Z] INFO request.start requestId=c80b6001-9e9f-4ebe-a4a0-b16096f63222 method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:14:32.819Z] INFO request.finish requestId=c80b6001-9e9f-4ebe-a4a0-b16096f63222 method=GET url=/api/admin/courses/python-7iw9iu status=200 durationMs=86.5
+[2026-02-15T20:14:32.820Z] INFO request.start requestId=ad4ad150-61f6-4ac4-a0b9-ec435e350591 method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:14:32.913Z] INFO request.finish requestId=ad4ad150-61f6-4ac4-a0b9-ec435e350591 method=GET url=/api/admin/courses/python-7iw9iu status=304 durationMs=93.8
+[2026-02-15T20:14:37.406Z] INFO request.start requestId=a17af0f8-6045-42a5-96ca-a6376c204562 method=PUT url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:14:38.239Z] ERROR request.finish requestId=a17af0f8-6045-42a5-96ca-a6376c204562 method=PUT url=/api/admin/courses/python-7iw9iu status=500 durationMs=832.6
+[2026-02-15T20:15:39.054Z] INFO request.start requestId=e1f4a55e-a906-4f81-9121-0f653f948400 method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:15:39.057Z] INFO request.finish requestId=e1f4a55e-a906-4f81-9121-0f653f948400 method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=3.2
+[2026-02-15T20:15:39.059Z] INFO request.start requestId=8c9210bb-ed9a-4bcd-a719-2dd774284a85 method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:15:39.482Z] INFO request.finish requestId=8c9210bb-ed9a-4bcd-a719-2dd774284a85 method=GET url=/api/admin/courses/python-7iw9iu status=304 durationMs=423.4
+[2026-02-15T20:15:57.596Z] INFO request.start requestId=1e8321e5-19a1-420e-b4d0-231858852240 method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:15:57.597Z] INFO request.finish requestId=1e8321e5-19a1-420e-b4d0-231858852240 method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=0.9
+[2026-02-15T20:15:57.599Z] INFO request.start requestId=b5ceb5a4-a0f8-430a-b57f-3a32a91dc89b method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:15:57.599Z] INFO request.finish requestId=b5ceb5a4-a0f8-430a-b57f-3a32a91dc89b method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=0.8
+[2026-02-15T20:15:57.600Z] INFO request.start requestId=bb295edf-49de-4c98-ae8e-fbb4dfdff697 method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:15:57.870Z] INFO request.finish requestId=bb295edf-49de-4c98-ae8e-fbb4dfdff697 method=GET url=/api/admin/courses/python-7iw9iu status=304 durationMs=269.7
+[2026-02-15T20:15:57.871Z] INFO request.start requestId=fbbc6ee8-b8b0-4201-a606-decf9ef061e2 method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:15:58.004Z] INFO request.finish requestId=fbbc6ee8-b8b0-4201-a606-decf9ef061e2 method=GET url=/api/admin/courses/python-7iw9iu status=304 durationMs=132.8
+[2026-02-15T20:15:59.093Z] INFO request.start requestId=4b6ae267-325f-400c-8fd2-42743d8a0ebe method=PUT url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:15:59.441Z] INFO request.finish requestId=4b6ae267-325f-400c-8fd2-42743d8a0ebe method=PUT url=/api/admin/courses/python-7iw9iu status=200 durationMs=348.7
+[2026-02-15T20:16:06.247Z] INFO request.start requestId=a68d1a1d-173f-4fcb-a0ae-d689b9881a30 method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:16:06.248Z] INFO request.finish requestId=a68d1a1d-173f-4fcb-a0ae-d689b9881a30 method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=0.9
+[2026-02-15T20:16:06.250Z] INFO request.start requestId=2cc4f28e-6f8b-42e7-bbf3-6bdbcae9480e method=PUT url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:16:07.121Z] INFO request.finish requestId=2cc4f28e-6f8b-42e7-bbf3-6bdbcae9480e method=PUT url=/api/admin/courses/python-7iw9iu status=200 durationMs=871.0
+[2026-02-15T20:16:11.044Z] INFO request.start requestId=6b9ee4d7-4936-49b0-b87b-7b498c74d9c5 method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:16:11.165Z] INFO request.finish requestId=6b9ee4d7-4936-49b0-b87b-7b498c74d9c5 method=GET url=/api/admin/courses/python-7iw9iu status=200 durationMs=120.5
+[2026-02-15T20:16:11.166Z] INFO request.start requestId=650be14b-9c7d-435a-a25f-f9ac01bbe6dd method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:16:11.257Z] INFO request.finish requestId=650be14b-9c7d-435a-a25f-f9ac01bbe6dd method=GET url=/api/admin/courses/python-7iw9iu status=304 durationMs=90.3
+[2026-02-15T20:16:14.060Z] INFO request.start requestId=0b86d4ab-a709-4784-a744-fc902d7bf652 method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:16:14.061Z] INFO request.finish requestId=0b86d4ab-a709-4784-a744-fc902d7bf652 method=OPTIONS url=/api/admin/courses status=204 durationMs=1.0
+[2026-02-15T20:16:14.062Z] INFO request.start requestId=f44f36f2-9273-45fc-8a2d-967dcacdacb5 method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:16:14.062Z] INFO request.finish requestId=f44f36f2-9273-45fc-8a2d-967dcacdacb5 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.6
+[2026-02-15T20:16:14.063Z] INFO request.start requestId=b863461e-808f-49da-8965-26261264ccb4 method=GET url=/api/admin/courses
+[2026-02-15T20:16:14.316Z] INFO request.finish requestId=b863461e-808f-49da-8965-26261264ccb4 method=GET url=/api/admin/courses status=200 durationMs=252.7
+[2026-02-15T20:16:14.316Z] INFO request.start requestId=9e0278c3-12a7-4950-a3c4-9cd1dd7eb84b method=GET url=/api/admin/courses
+[2026-02-15T20:16:14.434Z] INFO request.finish requestId=9e0278c3-12a7-4950-a3c4-9cd1dd7eb84b method=GET url=/api/admin/courses status=304 durationMs=117.9
+[2026-02-15T20:16:16.157Z] INFO request.start requestId=87edef17-cdeb-4ab5-9be0-58a8b9996593 method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:16:16.158Z] INFO request.finish requestId=87edef17-cdeb-4ab5-9be0-58a8b9996593 method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=1.1
+[2026-02-15T20:16:16.158Z] INFO request.start requestId=70053cbb-c501-4fe4-b2cd-6e1354f22f33 method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:16:16.159Z] INFO request.finish requestId=70053cbb-c501-4fe4-b2cd-6e1354f22f33 method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=0.6
+[2026-02-15T20:16:16.160Z] INFO request.start requestId=3a7c3cb4-79fb-4b71-be6e-4cef4dca5b38 method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:16:16.335Z] INFO request.finish requestId=3a7c3cb4-79fb-4b71-be6e-4cef4dca5b38 method=GET url=/api/admin/courses/python-7iw9iu status=304 durationMs=175.8
+[2026-02-15T20:16:16.336Z] INFO request.start requestId=12d7462b-0a40-49e7-8346-8504c551d861 method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:16:16.439Z] INFO request.finish requestId=12d7462b-0a40-49e7-8346-8504c551d861 method=GET url=/api/admin/courses/python-7iw9iu status=304 durationMs=102.3
+[2026-02-15T20:16:44.115Z] INFO request.start requestId=be4a0d7f-33ff-423e-9b45-e993ebe7d331 method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:16:44.116Z] INFO request.finish requestId=be4a0d7f-33ff-423e-9b45-e993ebe7d331 method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=1.0
+[2026-02-15T20:16:44.117Z] INFO request.start requestId=ea3f69b7-2b06-4d91-b7cf-bfad28ba6346 method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:16:44.118Z] INFO request.finish requestId=ea3f69b7-2b06-4d91-b7cf-bfad28ba6346 method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=1.1
+[2026-02-15T20:16:44.119Z] INFO request.start requestId=469a88a2-274c-4e8c-b37f-1952da0d9759 method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:16:44.466Z] INFO request.finish requestId=469a88a2-274c-4e8c-b37f-1952da0d9759 method=GET url=/api/admin/courses/python-7iw9iu status=304 durationMs=346.1
+[2026-02-15T20:16:44.467Z] INFO request.start requestId=7c5ce411-1ee4-4a03-821a-c18cc3e95f12 method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:16:44.578Z] INFO request.finish requestId=7c5ce411-1ee4-4a03-821a-c18cc3e95f12 method=GET url=/api/admin/courses/python-7iw9iu status=304 durationMs=111.6
+[2026-02-15T20:19:12.516Z] INFO request.start requestId=61277d5f-8c3a-4de4-9627-1b59b3aeb2bf method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:19:12.517Z] INFO request.finish requestId=61277d5f-8c3a-4de4-9627-1b59b3aeb2bf method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=0.9
+[2026-02-15T20:19:12.519Z] INFO request.start requestId=67e8263e-575f-47d0-ad37-07307d9361c1 method=PUT url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:19:13.384Z] INFO request.finish requestId=67e8263e-575f-47d0-ad37-07307d9361c1 method=PUT url=/api/admin/courses/python-7iw9iu status=200 durationMs=865.0
+[2026-02-15T20:34:10.376Z] INFO request.start requestId=afc1b86e-c145-4412-a474-85ea9e343d52 method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:34:10.377Z] INFO request.finish requestId=afc1b86e-c145-4412-a474-85ea9e343d52 method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=1.0
+[2026-02-15T20:34:10.378Z] INFO request.start requestId=512f5de7-d5ed-4d8e-a721-fd9334ee8de5 method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:34:10.379Z] INFO request.finish requestId=512f5de7-d5ed-4d8e-a721-fd9334ee8de5 method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=0.8
+[2026-02-15T20:34:10.380Z] INFO request.start requestId=9c34e0d5-d6ce-4d43-81a6-7ada7bef926d method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:34:11.340Z] INFO request.finish requestId=9c34e0d5-d6ce-4d43-81a6-7ada7bef926d method=GET url=/api/admin/courses/python-7iw9iu status=200 durationMs=960.2
+[2026-02-15T20:34:11.341Z] INFO request.start requestId=50578560-e23a-42b0-b331-4d23db39f602 method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:34:11.625Z] INFO request.finish requestId=50578560-e23a-42b0-b331-4d23db39f602 method=GET url=/api/admin/courses/python-7iw9iu status=304 durationMs=283.4
+[2026-02-15T20:34:13.448Z] INFO request.start requestId=2595b855-f8d6-4383-a1c5-97c0031080c0 method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:34:13.448Z] INFO request.finish requestId=2595b855-f8d6-4383-a1c5-97c0031080c0 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.8
+[2026-02-15T20:34:13.449Z] INFO request.start requestId=fccff8fa-384e-4749-8c8a-325ec0c65c01 method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:34:13.450Z] INFO request.finish requestId=fccff8fa-384e-4749-8c8a-325ec0c65c01 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.5
+[2026-02-15T20:34:13.450Z] INFO request.start requestId=25a98e1f-3967-44ec-8021-184c4a123c23 method=GET url=/api/admin/courses
+[2026-02-15T20:34:13.588Z] INFO request.finish requestId=25a98e1f-3967-44ec-8021-184c4a123c23 method=GET url=/api/admin/courses status=304 durationMs=137.7
+[2026-02-15T20:34:13.589Z] INFO request.start requestId=d69d4a73-40d5-49ae-9672-98b2e1921021 method=GET url=/api/admin/courses
+[2026-02-15T20:34:13.714Z] INFO request.finish requestId=d69d4a73-40d5-49ae-9672-98b2e1921021 method=GET url=/api/admin/courses status=304 durationMs=124.5
+[2026-02-15T20:35:29.949Z] INFO request.start requestId=8b22dec1-7f86-442f-ba4a-04ee9534e927 method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:35:29.950Z] INFO request.finish requestId=8b22dec1-7f86-442f-ba4a-04ee9534e927 method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=0.9
+[2026-02-15T20:35:29.950Z] INFO request.start requestId=de252d0d-efc5-4f3b-8cc1-f127fd314ffb method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:35:29.951Z] INFO request.finish requestId=de252d0d-efc5-4f3b-8cc1-f127fd314ffb method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=0.6
+[2026-02-15T20:35:29.952Z] INFO request.start requestId=61cb1a9b-cb31-4f59-a274-d5b1bf39a882 method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:35:30.274Z] INFO request.finish requestId=61cb1a9b-cb31-4f59-a274-d5b1bf39a882 method=GET url=/api/admin/courses/python-7iw9iu status=304 durationMs=322.0
+[2026-02-15T20:35:30.274Z] INFO request.start requestId=a0099dad-7ca2-4457-a091-569e6ddc6267 method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:35:30.472Z] INFO request.finish requestId=a0099dad-7ca2-4457-a091-569e6ddc6267 method=GET url=/api/admin/courses/python-7iw9iu status=304 durationMs=198.0
+[2026-02-15T20:35:40.619Z] INFO request.start requestId=3b01a2ca-9369-40b6-b025-4ab232926d24 method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:35:40.620Z] INFO request.finish requestId=3b01a2ca-9369-40b6-b025-4ab232926d24 method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=0.9
+[2026-02-15T20:35:40.622Z] INFO request.start requestId=57a722d5-6cd1-4994-8f94-34d2a5383fae method=PUT url=/api/admin/courses/python-7iw9iu
+[2026-02-15T20:35:41.238Z] INFO request.finish requestId=57a722d5-6cd1-4994-8f94-34d2a5383fae method=PUT url=/api/admin/courses/python-7iw9iu status=200 durationMs=616.2
+[2026-02-15T20:35:54.004Z] INFO request.start requestId=d127e927-0379-40e0-a4e8-723b8e4ddf8a method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:35:54.005Z] INFO request.finish requestId=d127e927-0379-40e0-a4e8-723b8e4ddf8a method=OPTIONS url=/api/admin/courses status=204 durationMs=0.8
+[2026-02-15T20:35:54.006Z] INFO request.start requestId=fc928a95-ee53-4eb2-b3e9-66e317047804 method=OPTIONS url=/api/admin/courses
+[2026-02-15T20:35:54.006Z] INFO request.finish requestId=fc928a95-ee53-4eb2-b3e9-66e317047804 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.7
+[2026-02-15T20:35:54.007Z] INFO request.start requestId=52ee3ce5-b223-49ec-b257-9103ffa3de94 method=GET url=/api/admin/courses
+[2026-02-15T20:35:54.265Z] INFO request.finish requestId=52ee3ce5-b223-49ec-b257-9103ffa3de94 method=GET url=/api/admin/courses status=304 durationMs=257.5
+[2026-02-15T20:35:54.265Z] INFO request.start requestId=f40f4227-ba7b-4d42-bf4f-1b29c0668fa0 method=GET url=/api/admin/courses
+[2026-02-15T20:35:54.390Z] INFO request.finish requestId=f40f4227-ba7b-4d42-bf4f-1b29c0668fa0 method=GET url=/api/admin/courses status=304 durationMs=125.0
+[2026-02-15T21:03:31.533Z] INFO request.start requestId=a48a85cf-af73-483e-b2b3-afa197542188 method=OPTIONS url=/api/admin/courses
+[2026-02-15T21:03:31.533Z] INFO request.finish requestId=a48a85cf-af73-483e-b2b3-afa197542188 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.9
+[2026-02-15T21:03:31.534Z] INFO request.start requestId=d90e0a52-5994-4846-88db-0aaf31ae2fd0 method=OPTIONS url=/api/admin/courses
+[2026-02-15T21:03:31.535Z] INFO request.finish requestId=d90e0a52-5994-4846-88db-0aaf31ae2fd0 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.5
+[2026-02-15T21:03:31.536Z] INFO request.start requestId=2a91ca4c-ce1b-4e1c-8ae3-71d215256c7e method=GET url=/api/admin/courses
+[2026-02-15T21:03:32.064Z] INFO request.finish requestId=2a91ca4c-ce1b-4e1c-8ae3-71d215256c7e method=GET url=/api/admin/courses status=304 durationMs=528.1
+[2026-02-15T21:03:32.065Z] INFO request.start requestId=4062ea68-c44b-4d88-99e2-90cc8ca786b5 method=GET url=/api/admin/courses
+[2026-02-15T21:03:32.270Z] INFO request.finish requestId=4062ea68-c44b-4d88-99e2-90cc8ca786b5 method=GET url=/api/admin/courses status=304 durationMs=204.4
+[2026-02-15T21:03:33.500Z] INFO request.start requestId=6362947d-8a45-474e-bd49-99fd5c3ad5b8 method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T21:03:33.501Z] INFO request.finish requestId=6362947d-8a45-474e-bd49-99fd5c3ad5b8 method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=0.8
+[2026-02-15T21:03:33.501Z] INFO request.start requestId=f3c60820-9f65-44aa-bfb2-37349e60b1eb method=OPTIONS url=/api/admin/courses/python-7iw9iu
+[2026-02-15T21:03:33.502Z] INFO request.finish requestId=f3c60820-9f65-44aa-bfb2-37349e60b1eb method=OPTIONS url=/api/admin/courses/python-7iw9iu status=204 durationMs=0.5
+[2026-02-15T21:03:33.503Z] INFO request.start requestId=50d287c3-3799-4c22-9bda-87c62afacf13 method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T21:03:33.682Z] INFO request.finish requestId=50d287c3-3799-4c22-9bda-87c62afacf13 method=GET url=/api/admin/courses/python-7iw9iu status=200 durationMs=178.9
+[2026-02-15T21:03:33.683Z] INFO request.start requestId=be4d7b13-5641-406d-969c-5206b92a35b3 method=GET url=/api/admin/courses/python-7iw9iu
+[2026-02-15T21:03:33.814Z] INFO request.finish requestId=be4d7b13-5641-406d-969c-5206b92a35b3 method=GET url=/api/admin/courses/python-7iw9iu status=304 durationMs=131.1
+[2026-02-15T21:03:34.575Z] INFO request.start requestId=b69f8219-1a32-4466-908c-576b1a3e80a0 method=PUT url=/api/admin/courses/python-7iw9iu
+[2026-02-15T21:03:35.406Z] INFO request.finish requestId=b69f8219-1a32-4466-908c-576b1a3e80a0 method=PUT url=/api/admin/courses/python-7iw9iu status=200 durationMs=831.4
+[2026-02-16T04:18:29.877Z] INFO request.start requestId=6cbcad7e-aea0-434d-b02c-44079b964966 method=GET url=/?ide_webview_request_time=1771215509865
+[2026-02-16T04:18:29.883Z] WARN request.finish requestId=6cbcad7e-aea0-434d-b02c-44079b964966 method=GET url=/?ide_webview_request_time=1771215509865 status=404 durationMs=5.7
+[2026-02-16T04:27:13.554Z] INFO request.start requestId=8ddd3785-22d4-490f-b40f-b80d01a2a84f method=OPTIONS url=/api/admin/stats
+[2026-02-16T04:27:13.556Z] INFO request.finish requestId=8ddd3785-22d4-490f-b40f-b80d01a2a84f method=OPTIONS url=/api/admin/stats status=204 durationMs=1.9
+[2026-02-16T04:27:13.557Z] INFO request.start requestId=76a5195a-1aff-4afb-a9a3-fbfa699249b0 method=OPTIONS url=/api/admin/stats
+[2026-02-16T04:27:13.558Z] INFO request.finish requestId=76a5195a-1aff-4afb-a9a3-fbfa699249b0 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.9
+[2026-02-16T04:27:13.559Z] INFO request.start requestId=908caa86-41fd-4f7f-b7e1-c43334f35220 method=GET url=/api/admin/stats
+[2026-02-16T04:27:13.914Z] WARN request.finish requestId=908caa86-41fd-4f7f-b7e1-c43334f35220 method=GET url=/api/admin/stats status=401 durationMs=355.2
+[2026-02-16T04:27:13.916Z] INFO request.start requestId=0df03b5f-3c09-4bae-86a6-ddc51d1ab0bf method=GET url=/api/admin/stats
+[2026-02-16T04:27:14.014Z] WARN request.finish requestId=0df03b5f-3c09-4bae-86a6-ddc51d1ab0bf method=GET url=/api/admin/stats status=401 durationMs=97.4
+[2026-02-16T04:28:56.706Z] INFO request.start requestId=ea038638-2f35-4d1c-93dd-969ece5d7715 method=OPTIONS url=/api/admin/stats
+[2026-02-16T04:28:56.707Z] INFO request.finish requestId=ea038638-2f35-4d1c-93dd-969ece5d7715 method=OPTIONS url=/api/admin/stats status=204 durationMs=1.0
+[2026-02-16T04:28:56.707Z] INFO request.start requestId=11f57843-ffc3-4917-afbb-2e6ed5eaf924 method=OPTIONS url=/api/admin/stats
+[2026-02-16T04:28:56.708Z] INFO request.finish requestId=11f57843-ffc3-4917-afbb-2e6ed5eaf924 method=OPTIONS url=/api/admin/stats status=204 durationMs=0.7
+[2026-02-16T04:28:56.710Z] INFO request.start requestId=ded6c18c-28a6-45cf-b705-bc9a0eb2ad43 method=GET url=/api/admin/stats
+[2026-02-16T04:28:57.554Z] INFO request.finish requestId=ded6c18c-28a6-45cf-b705-bc9a0eb2ad43 method=GET url=/api/admin/stats status=200 durationMs=844.3
+[2026-02-16T04:28:57.555Z] INFO request.start requestId=71f7078c-9b65-41a6-bcef-32af61243d0e method=GET url=/api/admin/stats
+[2026-02-16T04:28:57.993Z] INFO request.finish requestId=71f7078c-9b65-41a6-bcef-32af61243d0e method=GET url=/api/admin/stats status=200 durationMs=437.9
+[2026-02-16T04:29:01.714Z] INFO request.start requestId=67505741-5f7e-426f-a873-39d522d775f2 method=OPTIONS url=/api/admin/users?page=1&limit=10
+[2026-02-16T04:29:01.715Z] INFO request.finish requestId=67505741-5f7e-426f-a873-39d522d775f2 method=OPTIONS url=/api/admin/users?page=1&limit=10 status=204 durationMs=0.9
+[2026-02-16T04:29:01.716Z] INFO request.start requestId=87a781ac-823e-4035-8a21-294f5a09155a method=OPTIONS url=/api/admin/users?page=1&limit=10
+[2026-02-16T04:29:01.716Z] INFO request.finish requestId=87a781ac-823e-4035-8a21-294f5a09155a method=OPTIONS url=/api/admin/users?page=1&limit=10 status=204 durationMs=0.6
+[2026-02-16T04:29:01.717Z] INFO request.start requestId=0849b647-aa0f-4065-8324-aa8544e04da5 method=GET url=/api/admin/users?page=1&limit=10
+[2026-02-16T04:29:01.903Z] INFO request.finish requestId=0849b647-aa0f-4065-8324-aa8544e04da5 method=GET url=/api/admin/users?page=1&limit=10 status=200 durationMs=185.8
+[2026-02-16T04:29:01.904Z] INFO request.start requestId=2f9d14ec-56da-4bee-ab9e-966dfb0488ce method=GET url=/api/admin/users?page=1&limit=10
+[2026-02-16T04:29:02.026Z] INFO request.finish requestId=2f9d14ec-56da-4bee-ab9e-966dfb0488ce method=GET url=/api/admin/users?page=1&limit=10 status=304 durationMs=122.1
+[2026-02-16T04:29:02.599Z] INFO request.start requestId=fd60a488-b3ea-4ef0-a850-f212dda5a5dd method=OPTIONS url=/api/admin/courses
+[2026-02-16T04:29:02.600Z] INFO request.finish requestId=fd60a488-b3ea-4ef0-a850-f212dda5a5dd method=OPTIONS url=/api/admin/courses status=204 durationMs=0.7
+[2026-02-16T04:29:02.600Z] INFO request.start requestId=94f699c8-695c-4d01-bc1c-7b0ba11065a5 method=OPTIONS url=/api/admin/courses
+[2026-02-16T04:29:02.601Z] INFO request.finish requestId=94f699c8-695c-4d01-bc1c-7b0ba11065a5 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.5
+[2026-02-16T04:29:02.601Z] INFO request.start requestId=d1981b0f-d6f5-4da9-be94-52eabe4a63e4 method=GET url=/api/admin/courses
+[2026-02-16T04:29:02.752Z] INFO request.finish requestId=d1981b0f-d6f5-4da9-be94-52eabe4a63e4 method=GET url=/api/admin/courses status=304 durationMs=151.0
+[2026-02-16T04:29:02.754Z] INFO request.start requestId=cfbc5af1-33d4-4c6c-b6da-3b7233ebea82 method=GET url=/api/admin/courses
+[2026-02-16T04:29:02.916Z] INFO request.finish requestId=cfbc5af1-33d4-4c6c-b6da-3b7233ebea82 method=GET url=/api/admin/courses status=304 durationMs=161.8
+[2026-02-16T04:39:54.798Z] INFO request.start requestId=dcab7f81-6eeb-45ca-8390-e8a6f3dba0a4 method=GET url=/health
+[2026-02-16T04:39:54.804Z] INFO request.finish requestId=dcab7f81-6eeb-45ca-8390-e8a6f3dba0a4 method=GET url=/health status=200 durationMs=5.9
+[2026-02-16T04:50:04.791Z] INFO request.start requestId=802c1c87-d409-49e1-97ba-c35e94c4ac6d method=GET url=/?ide_webview_request_time=1771217404782
+[2026-02-16T04:50:04.797Z] WARN request.finish requestId=802c1c87-d409-49e1-97ba-c35e94c4ac6d method=GET url=/?ide_webview_request_time=1771217404782 status=404 durationMs=5.5
+[2026-02-16T17:00:26.002Z] INFO request.start requestId=39783b3d-6d97-4222-ad83-ec9be9010a45 method=GET url=/health
+[2026-02-16T17:00:26.008Z] INFO request.finish requestId=39783b3d-6d97-4222-ad83-ec9be9010a45 method=GET url=/health status=200 durationMs=6.0
+[2026-02-16T17:00:26.077Z] INFO request.start requestId=a958c0c0-3938-4da0-9476-5f4f76598a58 method=GET url=/@vite/client
+[2026-02-16T17:00:26.079Z] ERROR request.finish requestId=a958c0c0-3938-4da0-9476-5f4f76598a58 method=GET url=/@vite/client status=500 durationMs=2.4
+[2026-02-16T17:58:13.060Z] INFO request.start requestId=c903c5e4-5516-41e4-a2b3-7166168a4900 method=OPTIONS url=/api/admin/stats
+[2026-02-16T17:58:13.064Z] INFO request.finish requestId=c903c5e4-5516-41e4-a2b3-7166168a4900 method=OPTIONS url=/api/admin/stats status=204 durationMs=4.1
+[2026-02-16T17:58:13.065Z] INFO request.start requestId=8c875f69-ce3a-4e59-8183-8d144ad563d6 method=GET url=/api/admin/stats
+[2026-02-16T17:58:13.092Z] INFO request.start requestId=347e8cac-42a3-41af-a11b-9ed743dee323 method=OPTIONS url=/api/admin/stats
+[2026-02-16T17:58:13.093Z] INFO request.finish requestId=347e8cac-42a3-41af-a11b-9ed743dee323 method=OPTIONS url=/api/admin/stats status=204 durationMs=1.0
+[2026-02-16T17:58:14.254Z] INFO request.finish requestId=8c875f69-ce3a-4e59-8183-8d144ad563d6 method=GET url=/api/admin/stats status=200 durationMs=1189.3
+[2026-02-16T17:58:14.256Z] INFO request.start requestId=5723c8b3-fca5-4136-bc56-b4ffe4e4c824 method=GET url=/api/admin/stats
+[2026-02-16T17:58:14.954Z] INFO request.finish requestId=5723c8b3-fca5-4136-bc56-b4ffe4e4c824 method=GET url=/api/admin/stats status=200 durationMs=698.5
+[2026-02-16T17:58:17.676Z] INFO request.start requestId=99b8c8d5-ad29-42a0-93d8-ac75019bdcdb method=OPTIONS url=/api/admin/courses
+[2026-02-16T17:58:17.678Z] INFO request.finish requestId=99b8c8d5-ad29-42a0-93d8-ac75019bdcdb method=OPTIONS url=/api/admin/courses status=204 durationMs=1.7
+[2026-02-16T17:58:17.679Z] INFO request.start requestId=acb67ed2-ba0b-4518-8d90-2f085838ffab method=GET url=/api/admin/courses
+[2026-02-16T17:58:17.681Z] INFO request.start requestId=b7ee54bd-2b16-4c89-b74a-8a3f02e0fe7f method=OPTIONS url=/api/admin/courses
+[2026-02-16T17:58:17.682Z] INFO request.finish requestId=b7ee54bd-2b16-4c89-b74a-8a3f02e0fe7f method=OPTIONS url=/api/admin/courses status=204 durationMs=0.9
+[2026-02-16T17:58:17.851Z] INFO request.finish requestId=acb67ed2-ba0b-4518-8d90-2f085838ffab method=GET url=/api/admin/courses status=200 durationMs=172.5
+[2026-02-16T17:58:17.853Z] INFO request.start requestId=7d597e40-98d5-402c-aa5c-cd74d49d0e21 method=GET url=/api/admin/courses
+[2026-02-16T17:58:17.989Z] INFO request.finish requestId=7d597e40-98d5-402c-aa5c-cd74d49d0e21 method=GET url=/api/admin/courses status=304 durationMs=136.8
+[2026-02-16T18:04:50.485Z] INFO request.start requestId=24855498-fda7-47b6-a219-6b6e2ad25052 method=GET url=/health
+[2026-02-16T18:04:50.486Z] INFO request.finish requestId=24855498-fda7-47b6-a219-6b6e2ad25052 method=GET url=/health status=200 durationMs=1.0
+[2026-02-16T18:05:07.474Z] INFO request.start requestId=ccb68bd8-7f8e-4d42-9091-cde91b2735e3 method=POST url=/api/create-checkout-session
+[2026-02-16T18:05:07.490Z] WARN request.finish requestId=ccb68bd8-7f8e-4d42-9091-cde91b2735e3 method=POST url=/api/create-checkout-session status=401 durationMs=16.3
+[2026-02-16T18:05:21.452Z] INFO request.start requestId=53384d2b-1db4-43a8-a9d4-305c94eb3ee2 method=POST url=/api/create-checkout-session
+[2026-02-16T18:05:21.453Z] WARN request.finish requestId=53384d2b-1db4-43a8-a9d4-305c94eb3ee2 method=POST url=/api/create-checkout-session status=401 durationMs=1.4
+[2026-02-16T20:02:10.969Z] INFO request.start requestId=a34dc2fc-1cf3-46d6-a212-56d01a161faa method=OPTIONS url=/api/admin/courses
+[2026-02-16T20:02:10.972Z] INFO request.finish requestId=a34dc2fc-1cf3-46d6-a212-56d01a161faa method=OPTIONS url=/api/admin/courses status=204 durationMs=2.4
+[2026-02-16T20:02:10.973Z] INFO request.start requestId=81fa5d62-70ca-447e-8931-5be9c1003565 method=OPTIONS url=/api/admin/courses
+[2026-02-16T20:02:10.974Z] INFO request.finish requestId=81fa5d62-70ca-447e-8931-5be9c1003565 method=OPTIONS url=/api/admin/courses status=204 durationMs=0.8
+[2026-02-16T20:02:10.975Z] INFO request.start requestId=f4872580-c3e7-4cc4-9f45-d1a6ed3d26a9 method=GET url=/api/admin/courses
+[2026-02-16T20:02:11.207Z] WARN request.finish requestId=f4872580-c3e7-4cc4-9f45-d1a6ed3d26a9 method=GET url=/api/admin/courses status=401 durationMs=232.4
+[2026-02-16T20:02:11.208Z] INFO request.start requestId=7cf47348-2414-41da-9f11-2a6f3808a60f method=GET url=/api/admin/courses

@@ -124,9 +124,9 @@ const CompleteProfileContent: React.FC = () => {
     try {
       console.log('Saving profile...', { fullName: formData.fullName, phone: fullPhone, birthDate });
 
-      // Create a timeout promise to prevent infinite hanging
+      // Create a timeout promise to prevent infinite hanging (extended for slower networks)
       const timeoutPromise = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('Request timed out. Please check your connection.')), 15000)
+        setTimeout(() => reject(new Error('Request timed out. Please check your connection.')), 45000)
       );
 
       // Save all profile data including current avatarUrl from store

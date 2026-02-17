@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '../services/supabase';
 import { useUserStore } from '../store/useUserStore';
 import { ROUTES } from '../routes/paths';
+import type { AuthChangeEvent, Session } from '@supabase/supabase-js';
 
 const AuthCallback: React.FC = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const AuthCallback: React.FC = () => {
         } else {
           console.log('No session yet, listening for auth state changes...');
           // If no session, listen for the SIGNED_IN event
-          const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+          const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event: AuthChangeEvent, session: Session | null) => {
             if (event === 'SIGNED_IN' && session) {
               console.log('User signed in via event, updating state...');
               await checkSession();

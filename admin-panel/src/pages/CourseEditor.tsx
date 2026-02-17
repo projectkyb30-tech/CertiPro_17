@@ -4,13 +4,103 @@ import 'react-quill/dist/quill.snow.css';
 import { Save, ArrowLeft, Plus, Trash, Code, FileText, Settings } from 'lucide-react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { adminApi } from '../services/api';
+const SortableModuleItem = ({
+  module,
+  isActive,
+  onSelect,
+  onDelete,
+  draggable,
+  onDragStart,
+  onDragOver,
+  onDrop
+}: {
+  module: any;
+  isActive: boolean;
+  onSelect: () => void;
+  onDelete: () => void;
+  draggable?: boolean;
+  onDragStart?: (e: React.DragEvent<HTMLDivElement>) => void;
+  onDragOver?: (e: React.DragEvent<HTMLDivElement>) => void;
+  onDrop?: (e: React.DragEvent<HTMLDivElement>) => void;
+}) => {
+  return (
+    <div
+      className="border border-gray-100 rounded-lg overflow-hidden"
+      draggable={draggable}
+      onDragStart={onDragStart}
+      onDragOver={onDragOver}
+      onDrop={onDrop}
+    >
+      <div
+        className={`p-3 cursor-pointer flex justify-between items-center ${isActive ? 'bg-blue-50 border-l-4 border-blue-500' : 'hover:bg-gray-50'}`}
+        onClick={onSelect}
+      >
+        <span className="font-medium text-sm text-gray-800">{module.title}</span>
+        <div className="flex gap-1">
+          <button
+            className="text-gray-400 hover:text-red-500"
+            onClick={(e) => {
+              e.stopPropagation();
+              onDelete();
+            }}
+          >
+            <Trash className="w-3 h-3" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const SortableLessonItem = ({
+  lesson,
+  isActive,
+  onSelect,
+  draggable,
+  onDragStart,
+  onDragOver,
+  onDrop
+}: {
+  lesson: any;
+  isActive: boolean;
+  onSelect: () => void;
+  draggable?: boolean;
+  onDragStart?: (e: React.DragEvent<HTMLDivElement>) => void;
+  onDragOver?: (e: React.DragEvent<HTMLDivElement>) => void;
+  onDrop?: (e: React.DragEvent<HTMLDivElement>) => void;
+}) => {
+  return (
+    <div
+      draggable={draggable}
+      onDragStart={onDragStart}
+      onDragOver={onDragOver}
+      onDrop={onDrop}
+      onClick={(e) => {
+        e.stopPropagation();
+        onSelect();
+      }}
+      className={`p-2 pl-4 text-sm rounded cursor-pointer flex items-center gap-2 ${
+        isActive ? 'bg-white shadow-sm text-blue-600 font-medium' : 'text-gray-500 hover:text-gray-900'
+      }`}
+    >
+      {lesson.type === 'react' ? <Code className="w-3 h-3" /> : <FileText className="w-3 h-3" />}
+      {lesson.title}
+    </div>
+  );
+};
+
+const moveItem = <T,>(array: T[], fromIndex: number, toIndex: number): T[] => {
+  const updated = [...array];
+  const [moved] = updated.splice(fromIndex, 1);
+  updated.splice(toIndex, 0, moved);
+  return updated;
+};
 
 export const CourseEditor = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const quillRef = React.useRef<ReactQuill>(null);
   const [loading, setLoading] = useState(false);
-  
   const [course, setCourse] = useState({
     title: '',
     description: '',
@@ -23,6 +113,8 @@ export const CourseEditor = () => {
 
   const [activeModuleId, setActiveModuleId] = useState<string | null>(null);
   const [activeLessonId, setActiveLessonId] = useState<string | null>(null);
+  const [draggedModuleId, setDraggedModuleId] = useState<string | null>(null);
+  const [draggedLesson, setDraggedLesson] = useState<{ moduleId: string; lessonId: string } | null>(null);
 
   // Custom Image Handler
   const imageHandler = React.useCallback(() => {
@@ -93,11 +185,19 @@ export const CourseEditor = () => {
   const handleSave = async () => {
     setLoading(true);
     try {
-      if (id === 'new') {
+      if (!id || id === 'new') {
         const newCourse = await adminApi.createCourse(course);
+        if (!newCourse || !newCourse.id) {
+          console.error('Course created without valid id', newCourse);
+          alert('Cursul a fost creat, dar serverul nu a trimis un ID valid. Verifică lista de cursuri.');
+          return;
+        }
         navigate(`/courses/${newCourse.id}/edit`);
       } else {
-        await adminApi.updateCourse(id!, course);
+        const updated = await adminApi.updateCourse(id!, course);
+        if (updated && updated.id) {
+          setCourse({ ...updated, category: updated.category || 'python', modules: updated.modules || [] });
+        }
         alert('Salvat cu succes!');
       }
     } catch (err) {
@@ -126,7 +226,7 @@ export const CourseEditor = () => {
       title: 'Lecție Nouă',
       content: '',
       type: 'text',
-      order: 0,
+      order: (course.modules.find(m => m.id === moduleId)?.lessons?.length ?? 0),
       module_id: moduleId
     };
     
@@ -228,38 +328,88 @@ export const CourseEditor = () => {
 
             <div className="h-px bg-gray-100 my-1" />
 
-            {course.modules.map((module) => (
-              <div key={module.id} className="border border-gray-100 rounded-lg overflow-hidden">
-                <div 
-                  className={`p-3 cursor-pointer flex justify-between items-center ${activeModuleId === module.id ? 'bg-blue-50 border-l-4 border-blue-500' : 'hover:bg-gray-50'}`}
-                  onClick={() => {
+            {course.modules.map((module, moduleIndex) => (
+              <div key={module.id}>
+                <SortableModuleItem
+                  module={module}
+                  isActive={activeModuleId === module.id}
+                  onSelect={() => {
                     setActiveModuleId(module.id);
-                    setActiveLessonId(null); // Deselect lesson when selecting module
+                    setActiveLessonId(null);
                   }}
-                >
-                  <span className="font-medium text-sm text-gray-800">{module.title}</span>
-                  <div className="flex gap-1">
-                     <button className="text-gray-400 hover:text-red-500"><Trash className="w-3 h-3" /></button>
-                  </div>
-                </div>
-                
-                {/* Lessons List */}
+                  onDelete={() => {
+                    const filtered = course.modules.filter((m) => m.id !== module.id);
+                    const reindexed = filtered.map((m, index) => ({ ...m, order: index }));
+                    setCourse({
+                      ...course,
+                      modules: reindexed
+                    });
+                    if (activeModuleId === module.id) {
+                      setActiveModuleId(null);
+                      setActiveLessonId(null);
+                    }
+                  }}
+                  draggable
+                  onDragStart={() => setDraggedModuleId(module.id)}
+                  onDragOver={(e) => {
+                    e.preventDefault();
+                  }}
+                  onDrop={() => {
+                    if (!draggedModuleId || draggedModuleId === module.id) return;
+                    const fromIndex = course.modules.findIndex((m) => m.id === draggedModuleId);
+                    if (fromIndex === -1) return;
+                    const toIndex = moduleIndex;
+                    const reordered = moveItem(course.modules, fromIndex, toIndex).map((m, index) => ({
+                      ...m,
+                      order: index
+                    }));
+                    setCourse({ ...course, modules: reordered });
+                    setDraggedModuleId(null);
+                  }}
+                />
+
                 {activeModuleId === module.id && (
                   <div className="bg-gray-50 p-2 space-y-1 border-t border-gray-100">
-                    {module.lessons?.map((lesson: any) => (
-                      <div 
+                    {module.lessons?.map((lesson: any, lessonIndex: number) => (
+                      <SortableLessonItem
                         key={lesson.id}
-                        onClick={(e) => {
+                        lesson={lesson}
+                        isActive={activeLessonId === lesson.id}
+                        onSelect={() => setActiveLessonId(lesson.id)}
+                        draggable
+                        onDragStart={(e) => {
                           e.stopPropagation();
-                          setActiveLessonId(lesson.id);
+                          setDraggedLesson({ moduleId: module.id, lessonId: lesson.id });
                         }}
-                        className={`p-2 pl-4 text-sm rounded cursor-pointer flex items-center gap-2 ${activeLessonId === lesson.id ? 'bg-white shadow-sm text-blue-600 font-medium' : 'text-gray-500 hover:text-gray-900'}`}
-                      >
-                        {lesson.type === 'react' ? <Code className="w-3 h-3" /> : <FileText className="w-3 h-3" />}
-                        {lesson.title}
-                      </div>
+                        onDragOver={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                        }}
+                        onDrop={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          if (!draggedLesson || draggedLesson.lessonId === lesson.id) return;
+                          if (draggedLesson.moduleId !== module.id) return;
+                          const targetModule = course.modules.find((m) => m.id === module.id);
+                          if (!targetModule || !targetModule.lessons) return;
+                          const fromIndex = targetModule.lessons.findIndex((l: any) => l.id === draggedLesson.lessonId);
+                          if (fromIndex === -1) return;
+                          const toIndex = lessonIndex;
+                          const reorderedLessons = moveItem(targetModule.lessons, fromIndex, toIndex).map(
+                            (l: any, index: number) => ({
+                              ...l,
+                              order: index
+                            })
+                          );
+                          const updatedModules = course.modules.map((m) =>
+                            m.id === module.id ? { ...m, lessons: reorderedLessons } : m
+                          );
+                          setCourse({ ...course, modules: updatedModules });
+                          setDraggedLesson(null);
+                        }}
+                      />
                     ))}
-                    <button 
+                    <button
                       onClick={(e) => {
                         e.stopPropagation();
                         addLesson(module.id);

@@ -11,7 +11,7 @@ import { LessonRenderer } from '../features/courses/components/LessonRenderer';
 const CoursePlayer: React.FC = () => {
   const { courseId } = useParams<{ courseId: string }>();
   const navigate = useNavigate();
-  const { getCourse, completeLesson, fetchCourseDetails, fetchLessonContent, isLoading } = useCourseStore();
+  const { getCourse, completeLesson, fetchCourseDetails, fetchLessonContent, isLoading, lessonContentCache } = useCourseStore();
   const course = getCourse(courseId || '');
   
   const [currentModuleIndex, setCurrentModuleIndex] = useState(0);
@@ -27,6 +27,7 @@ const CoursePlayer: React.FC = () => {
 
   const currentModule = course?.modules?.[currentModuleIndex];
   const currentLesson = currentModule?.lessons?.[currentLessonIndex];
+  const currentContent = currentLesson ? lessonContentCache[currentLesson.id] : null;
 
   // Fetch lesson content when lesson changes
   useEffect(() => {
@@ -216,14 +217,14 @@ const CoursePlayer: React.FC = () => {
               {/* Content Placeholder */}
               <h2>{currentLesson?.title}</h2>
               
-              {!currentLesson?.content && currentLesson?.type !== 'react' && currentLesson?.type !== 'presentation' ? (
+              {!currentContent && currentLesson?.type !== 'react' && currentLesson?.type !== 'presentation' ? (
                  <div className="flex flex-col items-center justify-center py-12 space-y-4">
                    <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary"></div>
                    <p className="text-gray-400 animate-pulse">Se încarcă conținutul securizat...</p>
                  </div>
               ) : (
                 <div className="mt-6">
-                  <LessonRenderer lesson={currentLesson} />
+                  <LessonRenderer lesson={{ ...currentLesson!, content: currentContent }} />
                 </div>
               )}
             </div>

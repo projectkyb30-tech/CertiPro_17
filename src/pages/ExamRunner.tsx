@@ -20,7 +20,21 @@ const ExamRunner: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
+  const [isExamActive, setIsExamActive] = useState(false);
+
+  // Navigation Guard: Prevent accidental exit
+  useEffect(() => {
+    if (loading || !isExamActive) return;
+
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      e.returnValue = ''; // Standard for modern browsers
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [loading, isExamActive]);
+
   // Fetch exam details and questions
   useEffect(() => {
     const fetchExam = async () => {
@@ -43,6 +57,7 @@ const ExamRunner: React.FC = () => {
             const remaining = totalDurationSeconds - elapsedSeconds;
             
             setTimeLeft(remaining > 0 ? remaining : 0);
+            setIsExamActive(true);
             
           } catch (err) {
             console.error('Failed to start/resume exam attempt:', err);
@@ -86,6 +101,7 @@ const ExamRunner: React.FC = () => {
 
       await examApi.submitExam(courseId, formattedAnswers);
 
+      setIsExamActive(false);
       navigate(ROUTES.EXAM_CENTER); // Or a results page
     } catch {
       setError('Submission failed.');

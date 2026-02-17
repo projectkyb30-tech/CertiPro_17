@@ -12,6 +12,8 @@ All admin routes require `Authorization: Bearer <token>` header.
 ### Users
 - **GET** `/api/admin/users?page=1&limit=10`
   - List users with pagination.
+- **DELETE** `/api/admin/users/:id`
+  - Delete a user by id.
 - **PUT** `/api/admin/users/:id`
   - Update user role or ban status.
   - Body: `{ role: 'admin'|'user'|'instructor', banned: boolean }`
@@ -33,6 +35,8 @@ All admin routes require `Authorization: Bearer <token>` header.
 - **POST** `/api/admin/courses/bulk-delete`
   - Delete multiple courses.
   - Body: `{ ids: ['id1', 'id2'] }`
+- **DELETE** `/api/admin/courses/:id`
+  - Delete a course by id.
 
 ### Modules & Lessons
 - **POST** `/api/admin/modules`
@@ -43,7 +47,7 @@ All admin routes require `Authorization: Bearer <token>` header.
 
 ### Uploads
 - **POST** `/api/upload`
-  - Upload file (image, video, code/presentation).
+  - Upload file (image or PDF). Requires `Authorization: Bearer <token>`.
   - Returns: `{ url: string }`
 
 ## Error Handling

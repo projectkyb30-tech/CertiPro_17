@@ -1,7 +1,10 @@
 const path = require('path');
 const dotenv = require('dotenv');
 
+// Load root .env (frontend) first
 dotenv.config({ path: path.join(__dirname, '..', '..', '.env') });
+// Then load backend-specific .env to override if present
+dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 const required = [
   'SUPABASE_URL',

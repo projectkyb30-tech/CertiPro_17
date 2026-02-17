@@ -12,9 +12,13 @@ jest.mock('../src/middleware/adminAuth', () => ({
   requireAdmin: (req, res, next) => next()
 }));
 
+// Mock external deps used in app.js to avoid requiring installed packages
+jest.mock('helmet', () => () => (req, res, next) => next(), { virtual: true });
+
 jest.mock('../src/lib/supabaseAdmin', () => ({
   supabaseAdmin: {
     from: jest.fn(),
+    rpc: jest.fn(),
     auth: {
       admin: {
         listUsers: jest.fn(),
@@ -46,10 +50,18 @@ describe('Admin API', () => {
       supabaseAdmin.from.mockReturnValue({
         select: mockSelect
       });
+      supabaseAdmin.rpc.mockResolvedValue({
+        data: [
+          { month: 'Sep', users: 10, revenue: 1000 },
+          { month: 'Oct', users: 12, revenue: 1200 }
+        ],
+        error: null
+      });
 
       const res = await request(app).get('/api/admin/stats');
       expect(res.status).toBe(200);
-      expect(res.body).toHaveProperty('totalUsers');
+      expect(res.body.success).toBe(true);
+      expect(res.body.data).toHaveProperty('totalUsers');
     });
   });
 
@@ -61,20 +73,36 @@ describe('Admin API', () => {
         category: 'python'
       };
 
-      const mockSingle = jest.fn().mockResolvedValue({ data: { id: '1', ...courseData }, error: null });
-      const mockSelect = jest.fn().mockReturnValue({ single: mockSingle });
-      const mockInsert = jest.fn().mockReturnValue({ select: mockSelect });
-      
-      supabaseAdmin.from.mockReturnValue({
-        insert: mockInsert
+      const mockInsertSelect = jest.fn().mockResolvedValue({
+        data: [{ id: '1', ...courseData }],
+        error: null
+      });
+      const mockInsert = jest.fn().mockReturnValue({ select: mockInsertSelect });
+
+      const mockDetailsMaybeSingle = jest.fn().mockResolvedValue({
+        data: { id: '1', ...courseData, modules: [] },
+        error: null
+      });
+      const mockDetailsEq = jest.fn().mockReturnValue({ maybeSingle: mockDetailsMaybeSingle });
+      const mockDetailsSelect = jest.fn().mockReturnValue({ eq: mockDetailsEq });
+
+      supabaseAdmin.from.mockImplementation((table) => {
+        if (table === 'courses') {
+          return {
+            insert: mockInsert,
+            select: mockDetailsSelect
+          };
+        }
+        return { select: jest.fn() };
       });
 
       const res = await request(app)
         .post('/api/admin/courses')
         .send(courseData);
 
-      expect(res.status).toBe(200);
-      expect(res.body.title).toBe('New Course');
+      expect(res.status).toBe(201);
+      expect(res.body.success).toBe(true);
+      expect(res.body.data.title).toBe('New Course');
     });
 
     it('should fail validation with missing title', async () => {
@@ -93,10 +121,11 @@ describe('Admin API', () => {
 
       const res = await request(app)
         .post('/api/admin/users/bulk-delete')
-        .send({ ids: ['1', '2'] });
+        .send({ ids: ['123e4567-e89b-12d3-a456-426614174000', '123e4567-e89b-12d3-a456-426614174001'] });
 
       expect(res.status).toBe(200);
-      expect(res.body.results.length).toBe(2);
+      expect(res.body.success).toBe(true);
+      expect(res.body.data.length).toBe(2);
       expect(supabaseAdmin.auth.admin.deleteUser).toHaveBeenCalledTimes(2);
     });
 

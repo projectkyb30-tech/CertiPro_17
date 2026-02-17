@@ -21,6 +21,7 @@ export interface UserProfile {
   bio?: string | null;
   phone?: string | null;
   birthDate?: string | null; // ISO Date string YYYY-MM-DD
+  role?: 'user' | 'admin';
   
   // Gamification Stats
   streak: number;
@@ -118,6 +119,7 @@ export interface Exam {
   status: ExamStatus;
   lastScore?: number | null;
   isUnlocked: boolean; // Based on course completion
+  cooldownHours?: number | null; // Hours remaining until next attempt allowed
 }
 
 export interface Question {

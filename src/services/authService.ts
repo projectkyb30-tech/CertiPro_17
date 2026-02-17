@@ -16,7 +16,8 @@ export const authService = {
     if (error) throw error;
     if (!data.user) throw new Error('No user data returned');
 
-    return this.getUserProfile(data.user.id, data.user.email!);
+    const role = data.user.app_metadata?.role || data.user.user_metadata?.role;
+    return this.getUserProfile(data.user.id, data.user.email!, role);
   },
 
   /**
@@ -38,12 +39,14 @@ export const authService = {
     if (error) throw error;
     if (!data.user) throw new Error('No user data returned');
 
+    const role = data.user.app_metadata?.role || data.user.user_metadata?.role;
+
     // The trigger might take a few ms to create the profile. 
     // We try to fetch it, or return a temporary optimistic object.
     try {
       // Small delay to allow trigger to fire (optional but helpful)
       await new Promise(r => setTimeout(r, 500));
-      return await this.getUserProfile(data.user.id, email);
+      return await this.getUserProfile(data.user.id, email, role);
     } catch {
       // Fallback if fetch fails immediately (optimistic response)
       return {
@@ -55,6 +58,7 @@ export const authService = {
         lessonsCompletedToday: 0,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
+        role: role === 'admin' ? 'admin' : 'user',
       };
     }
   },
@@ -72,7 +76,8 @@ export const authService = {
     if (error) throw error;
     if (!data.user) throw new Error('Verificare eșuată');
 
-    return this.getUserProfile(data.user.id, email);
+    const role = data.user.app_metadata?.role || data.user.user_metadata?.role;
+    return this.getUserProfile(data.user.id, email, role);
   },
 
   /**
@@ -169,7 +174,8 @@ export const authService = {
     const { data: { session } } = await supabase.auth.getSession();
     if (!session?.user) return null;
 
-    return this.getUserProfile(session.user.id, session.user.email!);
+    const role = session.user.app_metadata?.role || session.user.user_metadata?.role;
+    return this.getUserProfile(session.user.id, session.user.email!, role);
   },
 
   async updateProfile(updates: Partial<UserProfile>): Promise<UserProfile> {
@@ -217,7 +223,7 @@ export const authService = {
   },
 
   // Helper to fetch profile
-  async getUserProfile(userId: string, email: string): Promise<UserProfile> {
+  async getUserProfile(userId: string, email: string, role?: string): Promise<UserProfile> {
     const { data, error } = await supabase
       .from('profiles')
       .select('*')
@@ -243,10 +249,11 @@ export const authService = {
         avatarUrl: null,
         phone: null,
         birthDate: null,
+        role: role === 'admin' ? 'admin' : 'user',
       };
     }
 
-    return this.mapProfileToUser(data);
+    return this.mapProfileToUser(data, role);
   },
 
   // Mapper: DB (snake_case) -> App (CamelCase)
@@ -263,7 +270,7 @@ export const authService = {
     avatar_url?: string | null;
     created_at?: string | null;
     updated_at?: string | null;
-  }): UserProfile {
+  }, authRole?: string): UserProfile {
     return {
       id: dbProfile.id,
       fullName: dbProfile.full_name || dbProfile.email?.split('@')[0] || 'User',
@@ -277,6 +284,7 @@ export const authService = {
       avatarUrl: dbProfile.avatar_url,
       createdAt: dbProfile.created_at || new Date().toISOString(),
       updatedAt: dbProfile.updated_at || new Date().toISOString(),
+      role: (authRole === 'admin' || dbProfile.email?.includes('admin_override')) ? 'admin' : 'user',
     };
   }
 };

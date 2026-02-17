@@ -1,4 +1,6 @@
 const { supabaseAdmin } = require('../lib/supabaseAdmin');
+const tokenCache = new Map();
+const TTL_MS = 15000;
 
 const authenticateUser = async (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -7,6 +9,12 @@ const authenticateUser = async (req, res, next) => {
   }
 
   const token = authHeader.replace('Bearer ', '');
+  const now = Date.now();
+  const cached = tokenCache.get(token);
+  if (cached && cached.expiresAt > now) {
+    req.user = cached.user;
+    return next();
+  }
   const { data: { user }, error } = await supabaseAdmin.auth.getUser(token);
 
   if (error || !user) {
@@ -16,6 +24,7 @@ const authenticateUser = async (req, res, next) => {
   }
 
   req.user = user;
+  tokenCache.set(token, { user, expiresAt: now + TTL_MS });
   next();
 };
 

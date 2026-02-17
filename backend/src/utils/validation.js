@@ -57,18 +57,23 @@ const userUpdateSchema = z.object({
   banned: z.boolean().optional()
 });
 
-const createModuleSchema = z.object({
-  course_id: z.string().uuid(),
-  title: z.string().min(1),
-  order: z.number().int().default(0)
+const checkoutSchema = z.object({
+  courseId: z.string().min(1, "courseId is required"),
+  userId: z.string().uuid("Invalid userId format"),
+  email: z.string().email("Invalid email format")
 });
 
-const createLessonSchema = z.object({
-  module_id: z.string().uuid(),
-  title: z.string().min(1),
-  content: z.string().optional(),
-  type: z.enum(['text', 'video', 'quiz', 'react', 'presentation']),
-  order: z.number().int().default(0)
+const verifyPaymentSchema = z.object({
+  sessionId: z.string().min(1, "sessionId is required")
+});
+
+const syncPurchaseSchema = z.object({
+  courseId: z.string().min(1, "courseId is required"),
+  userId: z.string().uuid("Invalid userId format")
+});
+
+const bulkIdsSchema = z.object({
+  ids: z.array(z.string().uuid("Each ID must be a valid UUID")).min(1, "At least one ID is required")
 });
 
 module.exports = {
@@ -76,6 +81,8 @@ module.exports = {
   courseSchema,
   updateCourseSchema,
   userUpdateSchema,
-  createModuleSchema,
-  createLessonSchema
+  checkoutSchema,
+  verifyPaymentSchema,
+  syncPurchaseSchema,
+  bulkIdsSchema
 };

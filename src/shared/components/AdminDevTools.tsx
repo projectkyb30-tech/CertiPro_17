@@ -11,8 +11,7 @@ export const AdminDevTools = () => {
   const location = useLocation();
   const { user } = useUserStore();
 
-  // Simple admin check - replace with your actual admin logic
-  const isAdmin = user?.email === 'admin@certipro.com' || user?.email?.toLowerCase().includes('admin') || user?.email === 'daniilchifeac@gmail.com';
+  const isAdmin = user?.role === 'admin';
 
   if (!isAdmin) return null;
 

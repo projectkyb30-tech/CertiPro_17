@@ -1,58 +1,76 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
-const fs = require('fs');
+const { authenticateUser } = require('../middleware/auth');
+const { uploadLimiter } = require('../middleware/rateLimit');
+const { supabaseAdmin } = require('../lib/supabaseAdmin');
+const { sendSuccess, sendError } = require('../utils/response');
 
 const router = express.Router();
 
-// Configure storage
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const uploadDir = path.join(__dirname, '../../uploads');
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-    cb(null, uploadDir);
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, uniqueSuffix + path.extname(file.originalname));
-  }
-});
+// Use memory storage for Supabase upload
+const storage = multer.memoryStorage();
 
 const fileFilter = (req, file, cb) => {
-  // Accept images, videos, and code/text files for presentations (json, md, mdx, js, tsx)
-  if (file.mimetype.startsWith('image/') || 
-      file.mimetype.startsWith('video/') ||
-      file.originalname.match(/\.(json|md|mdx|js|jsx|ts|tsx|txt)$/)) {
+  // STRICT FILTER: Only images and PDFs allowed for security
+  const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif', 'application/pdf'];
+  const allowedExtensions = /^\.(jpg|jpeg|png|gif|pdf)$/i;
+
+  if (allowedMimeTypes.includes(file.mimetype) && allowedExtensions.test(path.extname(file.originalname))) {
     cb(null, true);
   } else {
-    cb(new Error('Invalid file type'), false);
+    cb(new Error('Invalid file type. Only JPG, PNG, GIF and PDF are allowed.'), false);
   }
 };
 
 const upload = multer({ 
   storage: storage, 
   fileFilter: fileFilter,
-  limits: { fileSize: 50 * 1024 * 1024 } // 50MB
+  limits: { fileSize: 10 * 1024 * 1024 } // 10MB
 });
 
-// Upload endpoint
-router.post('/upload', upload.single('file'), (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({ error: 'No file uploaded' });
-  }
+// Upload endpoint - Protected by authenticateUser and rate limited
+router.post('/upload', uploadLimiter, authenticateUser, upload.single('file'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return sendError(res, 'No file uploaded', 400);
+    }
 
-  // Return the URL for the uploaded file
-  // Assuming the server serves 'uploads' directory at /uploads
-  const fileUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
-  
-  res.json({ 
-    url: fileUrl,
-    filename: req.file.filename,
-    mimetype: req.file.mimetype,
-    size: req.file.size
-  });
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    const filename = `${uniqueSuffix}${path.extname(req.file.originalname)}`;
+    
+    // Upload to Supabase Storage (Bucket: 'uploads')
+    const { data, error } = await supabaseAdmin.storage
+      .from('uploads')
+      .upload(filename, req.file.buffer, {
+        contentType: req.file.mimetype,
+        upsert: false
+      });
+
+    if (error) {
+      if (error.message?.includes('bucket not found') || error.error === 'Bucket not found') {
+        console.error('Supabase Storage bucket "uploads" not found. Please create it in Supabase Dashboard.');
+        return sendError(res, 'Storage configuration error: bucket "uploads" missing', 500);
+      }
+      throw error;
+    }
+
+    // Get public URL
+    const { data: { publicUrl } } = supabaseAdmin.storage
+      .from('uploads')
+      .getPublicUrl(filename);
+    
+    sendSuccess(res, { 
+      url: publicUrl,
+      filename: filename,
+      mimetype: req.file.mimetype,
+      size: req.file.size,
+      provider: 'supabase'
+    }, 'File uploaded successfully');
+  } catch (error) {
+    console.error('Upload error:', error);
+    sendError(res, error.message || 'Failed to upload file');
+  }
 });
 
 module.exports = { uploadRouter: router };

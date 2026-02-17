@@ -1,12 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { ROUTES } from '../routes/paths';
-import { Home, BookOpen, ClipboardList, Settings } from 'lucide-react';
+import { Home, BookOpen, Layers, ClipboardList, Settings } from 'lucide-react';
 
 const BottomNav: React.FC = () => {
   const navItems = [
     { icon: Home, label: 'Home', path: ROUTES.HOME },
-    { icon: BookOpen, label: 'Lessons', path: ROUTES.LESSONS },
+    { icon: BookOpen, label: 'Courses', path: ROUTES.COURSES },
+    { icon: Layers, label: 'Lessons', path: ROUTES.LESSONS },
     { icon: ClipboardList, label: 'Exam Center', path: ROUTES.EXAM_CENTER },
     { icon: Settings, label: 'Settings', path: ROUTES.SETTINGS },
   ];

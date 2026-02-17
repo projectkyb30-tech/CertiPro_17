@@ -8,4 +8,12 @@ const apiLimiter = rateLimit({
   message: { error: 'Too many requests, please try again later.' }
 });
 
-module.exports = { apiLimiter };
+const uploadLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 10, // Limit each IP to 10 uploads per hour
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Upload limit exceeded. Please try again in an hour.' }
+});
+
+module.exports = { apiLimiter, uploadLimiter };

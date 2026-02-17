@@ -1,6 +1,7 @@
 const express = require('express');
-const { supabaseAdmin } = require('../lib/supabaseAdmin');
 const { authenticateUser } = require('../middleware/auth');
+const { getUserPurchases } = require('../services/purchaseService');
+const { sendSuccess, sendError } = require('../utils/response');
 
 const router = express.Router();
 
@@ -9,21 +10,14 @@ router.get('/user-purchases/:userId', authenticateUser, async (req, res) => {
     const { userId } = req.params;
 
     if (req.user.id !== userId) {
-      return res.status(403).json({ error: 'Unauthorized access to user data' });
+      return sendError(res, 'Unauthorized access to user data', 403);
     }
 
-    const { data, error } = await supabaseAdmin
-      .from('user_purchases')
-      .select('course_id')
-      .eq('user_id', userId)
-      .eq('status', 'paid');
-
-    if (error) throw error;
-
-    res.json(data || []);
+    const data = await getUserPurchases(userId);
+    sendSuccess(res, data, 'User purchases retrieved successfully');
   } catch (error) {
     console.error('Error fetching purchases:', error);
-    res.status(500).json({ error: error.message });
+    sendError(res, error.message);
   }
 });
 

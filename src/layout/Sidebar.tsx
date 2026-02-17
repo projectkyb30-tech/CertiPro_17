@@ -4,6 +4,7 @@ import { ROUTES } from '../routes/paths';
 import { 
   Home, 
   BookOpen, 
+  Layers,
   Settings, 
   LogOut, 
   GraduationCap,
@@ -22,7 +23,8 @@ const Sidebar: React.FC = () => {
 
   const navItems = [
     { icon: Home, label: 'Home', path: ROUTES.HOME },
-    { icon: BookOpen, label: 'Lessons', path: ROUTES.LESSONS },
+    { icon: BookOpen, label: 'Courses', path: ROUTES.COURSES },
+    { icon: Layers, label: 'Lessons', path: ROUTES.LESSONS },
     { icon: ClipboardList, label: 'Exam Center', path: ROUTES.EXAM_CENTER },
     { icon: Settings, label: 'Settings', path: ROUTES.SETTINGS },
   ];

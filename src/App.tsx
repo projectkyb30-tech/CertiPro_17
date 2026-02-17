@@ -9,6 +9,7 @@ import { useUserStore } from './store/useUserStore';
 import { setUser } from './shared/monitoring';
 import { SkeletonPage } from './shared/ui/Skeleton';
 import { App as CapApp } from '@capacitor/app';
+import type { AuthChangeEvent } from '@supabase/supabase-js';
 
 // Loading fallback
 const PageLoader = () => (
@@ -39,7 +40,7 @@ function App() {
       }
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event: AuthChangeEvent) => {
       if (['INITIAL_SESSION', 'SIGNED_IN', 'TOKEN_REFRESHED', 'SIGNED_OUT'].includes(event)) {
         await checkSession();
       }

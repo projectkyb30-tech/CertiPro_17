@@ -89,7 +89,7 @@ BEGIN
     WHERE course_id = p_course_id;
 
     IF v_total_course_questions = 0 THEN
-        v_total_course_questions := 1; -- Avoid division by zero
+        RAISE EXCEPTION 'No questions found for this exam. Please contact support.';
     END IF;
 
     -- 5. Validate Answers

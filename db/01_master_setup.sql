@@ -6,14 +6,17 @@
 -- ATENTIE: Acest script STERGE toate datele existente în tabelele publice!
 
 -- 1. CURĂȚARE (RESET)
--- Ștergem tabelele în ordinea inversă a dependențelor
+-- ATENȚIE: DROP TABLE este dezactivat pentru siguranță în scriptul master.
+-- Folosiți migrații incrementale pentru modificări de schemă.
+/*
 DROP TABLE IF EXISTS public.user_progress CASCADE;
 DROP TABLE IF EXISTS public.enrollments CASCADE;
-DROP TABLE IF EXISTS public.payments CASCADE;
 DROP TABLE IF EXISTS public.lessons CASCADE;
 DROP TABLE IF EXISTS public.modules CASCADE;
 DROP TABLE IF EXISTS public.courses CASCADE;
 DROP TABLE IF EXISTS public.profiles CASCADE;
+DROP TABLE IF EXISTS public.user_purchases CASCADE;
+*/
 
 -- Ștergem tipurile custom dacă există
 DROP TYPE IF EXISTS public.lesson_type;
@@ -52,7 +55,7 @@ CREATE TABLE public.courses (
     icon TEXT, -- nume iconita (ex: 'python')
     total_lessons INTEGER DEFAULT 0,
     duration_hours NUMERIC(10, 2) DEFAULT 0,
-    price NUMERIC(10, 2) DEFAULT 0.00,
+    price NUMERIC(10, 2) DEFAULT 0.00 CHECK (price >= 0),
     is_published BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
@@ -90,15 +93,16 @@ CREATE TABLE public.enrollments (
     UNIQUE(user_id, course_id)
 );
 
--- 3.6 PAYMENTS (Istoric plăți - Mock pentru început)
-CREATE TABLE public.payments (
-    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
-    course_id TEXT REFERENCES public.courses(id) ON DELETE SET NULL,
-    amount NUMERIC(10, 2) NOT NULL,
-    currency TEXT DEFAULT 'RON',
-    status public.payment_status DEFAULT 'pending',
-    provider_id TEXT, -- Stripe Payment Intent ID
+-- 3.6 USER PURCHASES (Consolidat)
+CREATE TABLE IF NOT EXISTS public.user_purchases (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    user_id UUID REFERENCES auth.users(id) NOT NULL,
+    course_id TEXT NOT NULL,
+    stripe_session_id TEXT UNIQUE NOT NULL,
+    payment_intent_id TEXT,
+    amount_total INTEGER NOT NULL, -- Suma în bani/cents
+    currency TEXT NOT NULL DEFAULT 'ron',
+    status TEXT NOT NULL DEFAULT 'paid',
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
@@ -121,7 +125,7 @@ ALTER TABLE public.courses ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.modules ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.lessons ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.enrollments ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.payments ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.user_purchases ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.user_progress ENABLE ROW LEVEL SECURITY;
 
 -- Politici PROFILES
@@ -151,12 +155,9 @@ ON public.enrollments FOR SELECT USING (auth.uid() = user_id);
 CREATE POLICY "Users can insert own enrollment" 
 ON public.enrollments FOR INSERT WITH CHECK (auth.uid() = user_id);
 
--- Politici PAYMENTS
-CREATE POLICY "Users can view own payments" 
-ON public.payments FOR SELECT USING (auth.uid() = user_id);
-
-CREATE POLICY "Users can insert own payments" 
-ON public.payments FOR INSERT WITH CHECK (auth.uid() = user_id);
+-- Politici USER PURCHASES
+CREATE POLICY "Users can view own purchases" 
+ON public.user_purchases FOR SELECT USING (auth.uid() = user_id);
 
 -- Politici USER PROGRESS
 CREATE POLICY "Users can view own progress" 
@@ -210,5 +211,11 @@ VALUES
 ('python-basics', 'ITS - Python', 'Certificare oficială Certiport IT Specialist în Python.', 'python', 20, 50.00, 150.00, true),
 ('database-fundamentals', 'ITS - Databases (SQL)', 'Certificare oficială Certiport IT Specialist în Baze de Date.', 'database', 25, 55.00, 150.00, true),
 ('networking-basics', 'ITS - Networking', 'Bazele rețelelor de calculatoare și internetului.', 'network', 18, 40.00, 150.00, true);
+
+-- 7. INDECȘI PENTRU PERFORMANȚĂ
+CREATE INDEX IF NOT EXISTS idx_user_purchases_user_id ON public.user_purchases(user_id);
+CREATE INDEX IF NOT EXISTS idx_user_purchases_course_id ON public.user_purchases(course_id);
+CREATE INDEX IF NOT EXISTS idx_user_progress_user_id ON public.user_progress(user_id);
+CREATE INDEX IF NOT EXISTS idx_enrollments_user_id ON public.enrollments(user_id);
 
 -- GATA! Baza de date este pregătită pentru producție.
