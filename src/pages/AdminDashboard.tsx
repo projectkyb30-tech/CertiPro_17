@@ -15,11 +15,7 @@ const AdminDashboard: React.FC = () => {
     const fetchStats = async () => {
       try {
         setLoading(true);
-        const statsPromise = adminService.getStats();
-        const timeout = new Promise<never>((_, reject) =>
-          setTimeout(() => reject(new Error('Timeout la încărcarea datelor admin')), 8000)
-        );
-        const data = await Promise.race([statsPromise, timeout]);
+        const data = await adminService.getStats();
         setStats(data);
       } catch (err: any) {
         console.error('Failed to fetch admin stats:', err);
