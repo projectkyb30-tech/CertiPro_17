@@ -11,7 +11,11 @@ const Logout: React.FC = () => {
     let mounted = true;
     const run = async () => {
       try {
-        await logout();
+        const logoutPromise = logout();
+        const timeout = new Promise((_, reject) =>
+          setTimeout(() => reject(new Error('Logout timeout')), 2000)
+        );
+        await Promise.race([logoutPromise, timeout]);
       } catch {
       } finally {
         if (!mounted) return;
