@@ -22,7 +22,7 @@ function App() {
   const { checkSession, user } = useUserStore();
 
   useEffect(() => {
-    fetchCourses();
+    fetchCourses({ force: true });
 
     // Handle Deep Links for OAuth
     CapApp.addListener('appUrlOpen', async (data: { url: string }) => {
