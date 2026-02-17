@@ -23,4 +23,5 @@ export const ROUTES = {
 
   // Admin
   ADMIN: '/admin',
+  LOGOUT: '/logout',
 } as const;

@@ -1,0 +1,44 @@
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useUserStore } from '../store/useUserStore';
+import { ROUTES } from '../routes/paths';
+
+const Logout: React.FC = () => {
+  const navigate = useNavigate();
+  const { logout } = useUserStore();
+
+  useEffect(() => {
+    let mounted = true;
+    const run = async () => {
+      try {
+        await logout();
+      } catch {
+      } finally {
+        if (!mounted) return;
+        try {
+          Object.keys(localStorage).forEach((k) => {
+            if (k.startsWith('sb-') || k.includes('supabase')) {
+              localStorage.removeItem(k);
+            }
+          });
+        } catch {}
+        window.location.replace(ROUTES.AUTH);
+      }
+    };
+    run();
+    return () => {
+      mounted = false;
+    };
+  }, [logout, navigate]);
+
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="text-center space-y-4">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+        <p className="text-gray-500">Se deconectează...</p>
+      </div>
+    </div>
+  );
+};
+
+export default Logout;

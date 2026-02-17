@@ -14,11 +14,10 @@ import { useUserStore } from '../store/useUserStore';
 
 const Sidebar: React.FC = () => {
   const navigate = useNavigate();
-  const { logout } = useUserStore();
+  useUserStore();
 
   const handleLogout = async () => {
-    await logout();
-    navigate(ROUTES.AUTH);
+    navigate(ROUTES.LOGOUT);
   };
 
   const navItems = [

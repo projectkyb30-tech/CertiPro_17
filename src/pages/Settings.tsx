@@ -48,35 +48,8 @@ const Settings: React.FC = () => {
   const [emailNotifs, setEmailNotifs] = useState(true);
   const [pushNotifs, setPushNotifs] = useState(false);
 
-  // Handle Logout
   const handleLogout = async () => {
-    try {
-      // 1. Attempt Supabase logout with timeout
-      // Prevent infinite hanging if server is unreachable
-      const logoutPromise = logout();
-      const timeoutPromise = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('Logout timeout')), 2000)
-      );
-
-      await Promise.race([logoutPromise, timeoutPromise]);
-    } catch (error) {
-      console.warn('Logout warning (continuing to clear local data):', error);
-    } finally {
-      // 2. Clear critical storage immediately (safety net)
-      try {
-        localStorage.removeItem('sb-qvascvcyfbymbwthvbdi-auth-token');
-        Object.keys(localStorage).forEach(key => {
-          if (key.startsWith('sb-') || key.includes('supabase')) {
-            localStorage.removeItem(key);
-          }
-        });
-      } catch (e) {
-        console.error('Storage clear error:', e);
-      }
-
-      // 3. Force redirect to ensure clean state
-      window.location.replace(ROUTES.AUTH);
-    }
+    navigate(ROUTES.LOGOUT);
   };
 
   if (!user) return null;
@@ -258,10 +231,7 @@ const Settings: React.FC = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4 w-full">
                 <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleLogout();
-                  }}
+                  onClick={(e) => { e.preventDefault(); handleLogout(); }}
                   className="flex items-center justify-between flex-1 group cursor-pointer text-left w-full"
                 >
                   <div className="flex items-center gap-4">

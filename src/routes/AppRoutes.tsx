@@ -23,6 +23,7 @@ const CompleteProfile = React.lazy(() => import('../pages/CompleteProfile'));
 const Success = React.lazy(() => import('../pages/Success'));
 const AdminDashboard = React.lazy(() => import('../pages/AdminDashboard'));
 const AuthCallback = React.lazy(() => import('../pages/AuthCallback'));
+const Logout = React.lazy(() => import('../pages/Logout'));
 
 import { AdminDevTools } from '../shared/components/AdminDevTools';
 
@@ -117,6 +118,11 @@ const AppRoutes = () => {
           element={
             <AuthCallback />
           } 
+        />
+
+        <Route 
+          path={ROUTES.LOGOUT}
+          element={<Logout />}
         />
 
         {/* Success Route - Handles Stripe Redirects */}
