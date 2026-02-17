@@ -87,7 +87,7 @@ export const AdminDevTools = () => {
       </AnimatePresence>
 
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => navigate(ROUTES.ADMIN)}
         className={`flex items-center gap-2 px-4 py-3 rounded-full shadow-lg transition-all ${
           isOpen 
             ? 'bg-gray-800 text-white dark:bg-white dark:text-gray-900' 
