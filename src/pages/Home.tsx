@@ -7,7 +7,7 @@ import { useUserStore } from '../store/useUserStore';
 import { useCourseStore } from '../store/useCourseStore';
 import { SkeletonCard } from '../shared/ui/Skeleton';
 import { BookOpen } from 'lucide-react';
-import Card, { CardHeader, CardTitle, CardDescription, CardContent } from '../shared/ui/Card';
+import Card, { CardHeader, CardTitle, CardContent } from '../shared/ui/Card';
 
 const Home: React.FC = () => {
   const { courses, isLoading, error } = useCourseStore();
