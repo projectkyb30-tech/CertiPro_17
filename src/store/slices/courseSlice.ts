@@ -24,7 +24,7 @@ export interface CourseSlice {
 
 export const createCourseSlice: StateCreator<CourseSlice> = (set, get) => ({
   courses: [],
-  isCourseLoading: false,
+  isCourseLoading: true,
   courseError: null,
   lessonContentCache: {},
   coursesFetchedAt: null,
