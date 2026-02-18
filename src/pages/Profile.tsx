@@ -125,11 +125,11 @@ const Profile: React.FC = () => {
         {/* Header Title */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] flex items-center gap-3">
               <User className="text-primary h-8 w-8" />
               Profilul Meu
             </h1>
-            <p className="text-gray-500 dark:text-gray-400 mt-2">
+            <p className="text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] mt-2">
               Gestionează datele personale și securitatea contului tău.
             </p>
           </div>
@@ -159,7 +159,7 @@ const Profile: React.FC = () => {
           {/* Left Column: Profile Card */}
           <div className="lg:col-span-1 space-y-6">
             {isUserLoading ? (
-              <div className="bg-white dark:bg-[#1A1B1D] rounded-2xl p-6 border border-gray-100 dark:border-gray-800 flex flex-col items-center">
+              <div className="bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] rounded-2xl p-6 border border-[var(--color-border)] dark:border-[var(--color-border-dark)] flex flex-col items-center">
                 <Skeleton variant="circular" width={128} height={128} className="mb-4" />
                 <Skeleton variant="text" width={180} height={28} className="mb-2" />
                 <Skeleton variant="text" width={220} height={20} className="mb-6" />
@@ -183,7 +183,7 @@ const Profile: React.FC = () => {
           <div className="lg:col-span-2 space-y-6">
             
             {/* Tabs */}
-            <div className="flex p-1 bg-white dark:bg-[#1A1B1D] rounded-xl border border-gray-200 dark:border-gray-800">
+            <div className="flex p-1 bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] rounded-xl border border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
               {isUserLoading ? (
                 <>
                   <Skeleton variant="rounded" className="flex-1 h-10 mx-1" />
@@ -196,7 +196,7 @@ const Profile: React.FC = () => {
                     className={`flex-1 py-2.5 px-4 rounded-lg font-medium text-sm transition-all ${
                       activeTab === 'personal'
                         ? 'bg-primary text-white shadow-lg shadow-primary/20'
-                        : 'text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
+                        : 'text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] hover:text-[var(--color-foreground)] dark:hover:text-[var(--color-foreground-dark)] hover:bg-[var(--color-card)] dark:hover:bg-[var(--color-card-dark)]'
                     }`}
                   >
                     Date Personale
@@ -206,7 +206,7 @@ const Profile: React.FC = () => {
                     className={`flex-1 py-2.5 px-4 rounded-lg font-medium text-sm transition-all ${
                       activeTab === 'security'
                         ? 'bg-primary text-white shadow-lg shadow-primary/20'
-                        : 'text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
+                        : 'text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] hover:text-[var(--color-foreground)] dark:hover:text-[var(--color-foreground-dark)] hover:bg-[var(--color-card)] dark:hover:bg-[var(--color-card-dark)]'
                     }`}
                   >
                     Securitate
@@ -217,7 +217,7 @@ const Profile: React.FC = () => {
 
             {/* Content Area */}
             {isUserLoading ? (
-              <div className="bg-white dark:bg-[#1A1B1D] rounded-2xl p-6 border border-gray-100 dark:border-gray-800 space-y-6">
+              <div className="bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] rounded-2xl p-6 border border-[var(--color-border)] dark:border-[var(--color-border-dark)] space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                    <div className="space-y-2">
                      <Skeleton variant="text" width={100} height={20} />

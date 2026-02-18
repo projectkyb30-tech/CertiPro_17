@@ -40,10 +40,10 @@ const Logout: React.FC = () => {
   }, [logout, navigate]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center min-h-screen bg-[var(--color-background)] dark:bg-[var(--color-background-dark)]">
       <div className="text-center space-y-4">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-        <p className="text-gray-500">Se deconectează...</p>
+        <p className="text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">Se deconectează...</p>
       </div>
     </div>
   );

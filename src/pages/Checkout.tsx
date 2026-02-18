@@ -25,10 +25,13 @@ const Checkout: React.FC = () => {
 
   if (!course) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-surface dark:bg-[#1A1B1D] text-gray-900 dark:text-white">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Cursul nu a fost găsit</h1>
-          <button onClick={() => navigate(ROUTES.HOME)} className="text-primary hover:underline">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--color-background)] dark:bg-[var(--color-background-dark)] text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
+        <div className="text-center space-y-4">
+          <h1 className="text-2xl font-bold">Cursul nu a fost găsit</h1>
+          <button
+            onClick={() => navigate(ROUTES.HOME)}
+            className="text-primary hover:underline"
+          >
             Înapoi la Dashboard
           </button>
         </div>
@@ -67,24 +70,24 @@ const Checkout: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-surface dark:bg-[#1A1B1D] py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+    <div className="min-h-screen bg-[var(--color-background)] dark:bg-[var(--color-background-dark)] py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
       <div className="max-w-3xl mx-auto">
         <button 
           onClick={() => navigate(ROUTES.HOME)}
-          className="flex items-center gap-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white mb-8 transition-colors"
+          className="flex items-center gap-2 text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] dark:text-[var(--color-muted-foreground-dark)] dark:hover:text-[var(--color-foreground-dark)] mb-8 transition-colors"
         >
           <ArrowLeft className="w-5 h-5" />
           Înapoi la Cursuri
         </button>
 
-        <div className="bg-white dark:bg-[#1A1B1D] border border-gray-200 dark:border-gray-800 rounded-3xl shadow-xl overflow-hidden">
+        <div className="bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] rounded-3xl shadow-xl overflow-hidden">
           {/* Header */}
-          <div className="bg-gray-50 dark:bg-gray-900/50 px-8 py-6 border-b border-gray-200 dark:border-gray-800">
+          <div className="bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] px-8 py-6 border-b border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
             <div className="flex items-center gap-3 mb-2">
               <ShieldCheck className="w-6 h-6 text-primary" />
               <span className="text-sm font-bold text-primary uppercase tracking-wider">Secured Checkout</span>
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <h1 className="text-2xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
               Deblocare Curs Complet
             </h1>
           </div>
@@ -94,29 +97,29 @@ const Checkout: React.FC = () => {
               <div className="grid md:grid-cols-2 gap-12">
                 {/* Order Summary */}
                 <div className="space-y-6">
-                  <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Sumar Comandă</h2>
+                  <h2 className="text-lg font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] mb-4">Sumar Comandă</h2>
                   
-                  <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-900/50 rounded-2xl border border-gray-100 dark:border-gray-800">
-                    <div className="p-3 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+                  <div className="flex items-start gap-4 p-4 bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] rounded-2xl border border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
+                    <div className="p-3 bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] rounded-xl shadow-sm">
                       <Lock className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900 dark:text-white">{course.title}</h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Acces complet pe viață</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">{course.totalLessons} lecții • {course.durationHours} ore</p>
+                      <h3 className="font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">{course.title}</h3>
+                      <p className="text-sm text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] mt-1">Acces complet pe viață</p>
+                      <p className="text-sm text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">{course.totalLessons} lecții • {course.durationHours} ore</p>
                     </div>
                   </div>
 
-                  <div className="border-t border-gray-100 dark:border-gray-800 pt-4 space-y-2">
-                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
+                  <div className="border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)] pt-4 space-y-2">
+                    <div className="flex justify-between text-sm text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
                       <span>Preț Curs</span>
                       <span>€{course.price.toFixed(2)}</span>
                     </div>
-                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
+                    <div className="flex justify-between text-sm text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
                       <span>Reducere Demo</span>
                       <span className="text-green-500">-€0.00</span>
                     </div>
-                    <div className="flex justify-between text-lg font-bold text-gray-900 dark:text-white pt-2">
+                    <div className="flex justify-between text-lg font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] pt-2">
                       <span>Total</span>
                       <span>€{course.price.toFixed(2)}</span>
                     </div>
@@ -126,11 +129,11 @@ const Checkout: React.FC = () => {
                 {/* Secure Payment Call to Action */}
                 <div className="flex flex-col justify-center space-y-6">
                   <div className="bg-primary/5 dark:bg-primary/10 p-6 rounded-2xl border border-primary/10">
-                     <h3 className="font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                     <h3 className="font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] mb-2 flex items-center gap-2">
                         <CreditCard className="w-5 h-5 text-primary"/>
                         Plată Securizată
                      </h3>
-                     <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                     <p className="text-sm text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] mb-4">
                         Vei fi redirecționat către Stripe pentru a finaliza plata în siguranță. Nu stocăm datele cardului tău.
                      </p>
 
@@ -175,10 +178,10 @@ const Checkout: React.FC = () => {
                   <Check className="w-12 h-12 text-green-500" />
                 </motion.div>
                 
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                <h2 className="text-3xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] mb-4">
                   Plată Confirmată!
                 </h2>
-                <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-md mx-auto">
+                <p className="text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] mb-8 max-w-md mx-auto">
                   Felicitări! Ai deblocat accesul complet la cursul <strong>{course.title}</strong>. Poți începe să înveți chiar acum.
                 </p>
                 

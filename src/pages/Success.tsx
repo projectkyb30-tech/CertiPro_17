@@ -63,11 +63,11 @@ const Success: React.FC = () => {
   }, [sessionId, fetchCourses]);
 
   return (
-    <div className="min-h-screen bg-surface dark:bg-background-dark flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[var(--color-background)] dark:bg-[var(--color-background-dark)] flex items-center justify-center p-4">
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white dark:bg-[#1A1B1D] rounded-3xl p-8 max-w-md w-full text-center shadow-xl border border-gray-100 dark:border-gray-800"
+        className="bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] rounded-3xl p-8 max-w-md w-full text-center shadow-xl border border-[var(--color-border)] dark:border-[var(--color-border-dark)]"
       >
         {status === 'loading' && (
           <SkeletonSuccess />
@@ -78,10 +78,10 @@ const Success: React.FC = () => {
             <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-6">
               <CheckCircle2 className="w-10 h-10 text-green-600 dark:text-green-400" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            <h2 className="text-2xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] mb-2">
               Plată Reușită!
             </h2>
-            <p className="text-gray-500 dark:text-gray-400 mb-8">
+            <p className="text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] mb-8">
               Cursul a fost deblocat cu succes. Poți începe să înveți chiar acum.
             </p>
             <button
@@ -99,7 +99,7 @@ const Success: React.FC = () => {
             <div className="w-20 h-20 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mb-6">
               <AlertCircle className="w-10 h-10 text-red-600 dark:text-red-400" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            <h2 className="text-2xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] mb-2">
               Ceva nu a mers bine
             </h2>
             <p className="text-red-500 mb-8">
@@ -107,7 +107,7 @@ const Success: React.FC = () => {
             </p>
             <button
               onClick={() => navigate(ROUTES.HOME)}
-              className="w-full py-3 px-6 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              className="w-full py-3 px-6 bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] rounded-xl font-medium hover:bg-[var(--color-card)] dark:hover:bg-[var(--color-card-dark)] transition-colors"
             >
               Înapoi la Home
             </button>

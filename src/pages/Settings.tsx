@@ -130,10 +130,10 @@ const Settings: React.FC = () => {
   return (
     <div className="space-y-8 pb-20 md:pb-0 relative">
         <div className="flex flex-col gap-2">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-2xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
             Setări
           </h1>
-          <p className="text-gray-500 dark:text-gray-400">
+          <p className="text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
             Gestionează preferințele contului și ale aplicației
           </p>
         </div>
@@ -145,9 +145,9 @@ const Settings: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
-              className="bg-white dark:bg-[#1A1B1D] rounded-3xl p-6 border border-gray-200 dark:border-gray-800"
+              className="bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] rounded-3xl p-6 border border-[var(--color-border)] dark:border-[var(--color-border-dark)]"
             >
-              <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-6">
+              <h2 className="text-lg font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] mb-6">
                 {section.title}
               </h2>
 
@@ -172,18 +172,18 @@ const Settings: React.FC = () => {
                           <div className={`p-3 rounded-xl transition-colors ${
                             item.isDestructive 
                               ? 'bg-red-50 dark:bg-red-900/10 text-red-500' 
-                              : 'bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400 group-hover:text-primary group-hover:bg-primary/10'
+                              : 'bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] group-hover:text-primary group-hover:bg-primary/10'
                           }`}>
                             <item.icon size={20} />
                           </div>
                           <div>
                             <p className={`font-medium ${
-                              item.isDestructive ? 'text-red-500' : 'text-gray-900 dark:text-white'
+                              item.isDestructive ? 'text-red-500' : 'text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]'
                             }`}>
                               {item.label}
                             </p>
                             {item.value && (
-                              <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">
+                              <p className="text-sm text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] mt-0.5">
                                 {item.value}
                               </p>
                             )}
@@ -202,7 +202,7 @@ const Settings: React.FC = () => {
                             item.onToggle?.();
                           }}
                           className={`w-12 h-6 rounded-full transition-colors relative ml-auto ${
-                            item.toggleValue ? 'bg-primary' : 'bg-gray-200 dark:bg-gray-700'
+                            item.toggleValue ? 'bg-primary' : 'bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]'
                           }`}
                         >
                           <div className={`absolute top-1 left-1 w-4 h-4 rounded-full bg-white transition-transform ${
@@ -222,9 +222,9 @@ const Settings: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="bg-white dark:bg-[#1A1B1D] rounded-3xl p-6 border border-gray-200 dark:border-gray-800"
+            className="bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] rounded-3xl p-6 border border-[var(--color-border)] dark:border-[var(--color-border-dark)]"
           >
-            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-lg font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] mb-6">
               Cont
             </h2>
             <div className="flex items-center justify-between">

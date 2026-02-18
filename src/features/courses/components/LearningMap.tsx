@@ -34,8 +34,8 @@ const LearningMap: React.FC<LearningMapProps> = ({ course }) => {
 
   if (!course.modules || course.modules.length === 0) {
     return (
-      <div className="text-center py-12 px-4 bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800">
-        <p className="text-gray-500 dark:text-gray-400">
+      <div className="text-center py-12 px-4 bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] rounded-2xl border border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
+        <p className="text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
           {t('course.locked')} {/* Fallback message if no lessons */}
         </p>
       </div>
@@ -55,17 +55,17 @@ const LearningMap: React.FC<LearningMapProps> = ({ course }) => {
                 {moduleIndex + 1}
               </div>
               <div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white leading-tight">
+                <h3 className="text-lg font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] leading-tight">
                   {module.title}
                 </h3>
-                <span className="text-sm text-gray-500 font-medium">
+                <span className="text-sm text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] font-medium">
                   {module.lessons.length} {t('course.lessons')}
                 </span>
               </div>
             </div>
 
             {/* Lessons Timeline */}
-            <div className="ml-5 border-l-2 border-gray-200 dark:border-gray-800 pl-6 space-y-4 pb-4">
+            <div className="ml-5 border-l-2 border-[var(--color-border)] dark:border-[var(--color-border-dark)] pl-6 space-y-4 pb-4">
               {module.lessons.map((lesson) => {
                 const Icon = getLessonIcon(lesson.type);
                 
@@ -78,39 +78,57 @@ const LearningMap: React.FC<LearningMapProps> = ({ course }) => {
                 return (
                   <div key={lesson.id} className="relative">
                     {/* Timeline Dot */}
-                    <div className={`absolute -left-[31px] top-1/2 -translate-y-1/2 w-3 h-3 rounded-full border-2 
-                      ${isCompleted ? 'bg-green-500 border-green-500' : 
-                        isUnlocked ? 'bg-white dark:bg-[#1A1B1D] border-primary' : 
-                        'bg-gray-200 dark:bg-gray-800 border-gray-300 dark:border-gray-700'}`} 
+                    <div
+                      className={`absolute -left-[31px] top-1/2 -translate-y-1/2 w-3 h-3 rounded-full border-2 
+                      ${
+                        isCompleted
+                          ? 'bg-green-500 border-green-500'
+                          : isUnlocked
+                          ? 'bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] border-primary'
+                          : 'bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] border-[var(--color-border)] dark:border-[var(--color-border-dark)]'
+                      }`} 
                     />
 
                     <button
                       onClick={() => isUnlocked && handleLessonClick()}
                       disabled={!isUnlocked}
                       className={`w-full text-left p-4 rounded-xl border transition-all duration-200
-                        ${!isUnlocked 
-                          ? 'bg-gray-50 dark:bg-gray-900 border-gray-100 dark:border-gray-800 opacity-60' 
-                          : isCompleted
+                        ${
+                          !isUnlocked
+                            ? 'bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] border-[var(--color-border)] dark:border-[var(--color-border-dark)] opacity-60'
+                            : isCompleted
                             ? 'bg-green-50/50 dark:bg-green-900/10 border-green-200 dark:border-green-900'
-                            : 'bg-white dark:bg-[#1A1B1D] border-gray-200 dark:border-gray-800 shadow-sm active:scale-98'
+                            : 'bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] border-[var(--color-border)] dark:border-[var(--color-border-dark)] shadow-sm active:scale-98'
                         }
                       `}
                     >
                       <div className="flex items-center justify-between mb-2">
-                        <div className={`p-2 rounded-lg ${isCompleted ? 'bg-green-100 dark:bg-green-900/30 text-green-600' : 'bg-gray-100 dark:bg-gray-800 text-gray-500'}`}>
+                        <div
+                          className={`p-2 rounded-lg ${
+                            isCompleted
+                              ? 'bg-green-100 dark:bg-green-900/30 text-green-600'
+                              : 'bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]'
+                          }`}
+                        >
                           <Icon size={16} />
                         </div>
                         {isCompleted ? (
                           <Check size={16} className="text-green-500" />
                         ) : !isUnlocked ? (
-                          <Lock size={16} className="text-gray-400" />
+                          <Lock size={16} className="text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]" />
                         ) : null}
                       </div>
                       
-                      <h4 className={`font-semibold mb-1 ${isCompleted ? 'text-green-900 dark:text-green-100' : 'text-gray-900 dark:text-white'}`}>
+                      <h4
+                        className={`font-semibold mb-1 ${
+                          isCompleted
+                            ? 'text-green-900 dark:text-green-100'
+                            : 'text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]'
+                        }`}
+                      >
                         {lesson.title}
                       </h4>
-                      <p className="text-xs text-gray-500 flex items-center gap-2">
+                      <p className="text-xs text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] flex items-center gap-2">
                         {lesson.duration}
                         {!isUnlocked && (
                           <span className="text-red-400 flex items-center gap-1">

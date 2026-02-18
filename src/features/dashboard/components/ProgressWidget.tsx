@@ -60,28 +60,28 @@ const ProgressWidget: React.FC<ProgressWidgetProps> = ({ user }) => {
             <Flame className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">Streak</p>
-            <p className="text-xl font-bold text-gray-900 dark:text-white">{user.streak} Zile</p>
+            <p className="text-sm text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] font-medium">Streak</p>
+            <p className="text-xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">{user.streak} Zile</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/50">
+        <div className="flex items-center gap-4 p-4 rounded-2xl bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
           <div className="p-3 bg-violet-500/10 rounded-xl text-violet-500">
             <Trophy className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">XP Total</p>
-            <p className="text-xl font-bold text-gray-900 dark:text-white">{user.xp}</p>
+            <p className="text-sm text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] font-medium">XP Total</p>
+            <p className="text-xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">{user.xp}</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/50">
+        <div className="flex items-center gap-4 p-4 rounded-2xl bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
           <div className="p-3 bg-emerald-500/10 rounded-xl text-emerald-500">
             <Target className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">Lecții Azi</p>
-            <p className="text-xl font-bold text-gray-900 dark:text-white">{user.lessonsCompletedToday}/5</p>
+            <p className="text-sm text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] font-medium">Lecții Azi</p>
+            <p className="text-xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">{user.lessonsCompletedToday}/5</p>
           </div>
         </div>
       </div>

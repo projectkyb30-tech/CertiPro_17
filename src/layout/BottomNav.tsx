@@ -13,7 +13,7 @@ const BottomNav: React.FC = () => {
   ];
 
   return (
-    <nav id="mobile-nav" className="md:hidden fixed bottom-0 left-0 w-full bg-white dark:bg-[#1A1B1D] border-t border-gray-200 dark:border-gray-800 z-50 pb-safe shadow-[0_-5px_15px_rgba(0,0,0,0.05)] dark:shadow-[0_-5px_15px_rgba(0,0,0,0.2)]">
+    <nav id="mobile-nav" className="md:hidden fixed bottom-0 left-0 w-full bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)] z-50 pb-safe shadow-[0_-5px_15px_rgba(0,0,0,0.05)] dark:shadow-[0_-5px_15px_rgba(0,0,0,0.2)]">
       <div className="flex justify-around items-center h-20">
         {navItems.map((item) => (
           <NavLink
@@ -23,7 +23,7 @@ const BottomNav: React.FC = () => {
               `relative flex flex-col items-center justify-center w-full h-full gap-1.5 transition-colors duration-300 ${
                 isActive
                   ? 'text-primary'
-                  : 'text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300'
+                  : 'text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] hover:text-[var(--color-foreground)] dark:hover:text-[var(--color-foreground-dark)]'
               }`
             }
           >

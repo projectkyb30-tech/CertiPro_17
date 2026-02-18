@@ -40,7 +40,7 @@ const Input: React.FC<InputProps> = ({
         <input
           type={isPassword ? (showPassword ? 'text' : 'password') : type}
           className={twMerge(
-            "w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-background-dark text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all",
+            "w-full px-4 py-3 rounded-[var(--radius)] border border-[var(--color-input)] dark:border-[var(--color-input-dark)] bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] placeholder-[var(--color-muted-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] transition-all",
             Icon && "pl-12",
             error && "border-red-500 focus:ring-red-500",
             isPassword && "pr-12",
