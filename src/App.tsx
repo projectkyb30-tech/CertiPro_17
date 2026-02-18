@@ -22,7 +22,7 @@ function App() {
   const { checkSession, user } = useUserStore();
 
   useEffect(() => {
-    fetchCourses({ force: true });
+    checkSession();
 
     // Handle Deep Links for OAuth
     CapApp.addListener('appUrlOpen', async (data: { url: string }) => {
@@ -43,9 +43,6 @@ function App() {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event: AuthChangeEvent) => {
       if (['INITIAL_SESSION', 'SIGNED_IN', 'TOKEN_REFRESHED', 'SIGNED_OUT'].includes(event)) {
         await checkSession();
-      }
-      if (['SIGNED_IN', 'SIGNED_OUT'].includes(event)) {
-        await fetchCourses({ force: true });
       }
     });
 

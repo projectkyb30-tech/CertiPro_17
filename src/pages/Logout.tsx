@@ -16,17 +16,21 @@ const Logout: React.FC = () => {
           setTimeout(() => reject(new Error('Logout timeout')), 2000)
         );
         await Promise.race([logoutPromise, timeout]);
-      } catch {
+      } catch (error) {
+        console.error('Logout failed or timed out', error);
       } finally {
-        if (!mounted) return;
-        try {
-          Object.keys(localStorage).forEach((k) => {
-            if (k.startsWith('sb-') || k.includes('supabase')) {
-              localStorage.removeItem(k);
-            }
-          });
-        } catch {}
-        window.location.replace(ROUTES.AUTH);
+        if (mounted) {
+          try {
+            Object.keys(localStorage).forEach((k) => {
+              if (k.startsWith('sb-') || k.includes('supabase')) {
+                localStorage.removeItem(k);
+              }
+            });
+          } catch (storageError) {
+            console.warn('Failed to clean auth keys from localStorage', storageError);
+          }
+          window.location.replace(ROUTES.AUTH);
+        }
       }
     };
     run();

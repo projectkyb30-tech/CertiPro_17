@@ -28,11 +28,16 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
 
   checkSession: async () => {
     const state = get();
-    // OPTIMIZATION: Only show loading if we don't have a user (first load, or logged out)
-    // If we have a user (persisted), we do a "stale-while-revalidate" background check.
     if (!state.user) {
       set({ isAuthLoading: true });
     }
+
+    const refetchCoursesForCurrentUser = async () => {
+      const anyState = get() as any;
+      if (typeof anyState.fetchCourses === 'function') {
+        await anyState.fetchCourses({ force: true });
+      }
+    };
     
     try {
       const user = await authService.getCurrentUser();
@@ -49,12 +54,14 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
           isAuthLoading: false 
         });
       }
+      await refetchCoursesForCurrentUser();
     } catch {
       set({ 
         isAuthenticated: false, 
         user: null, 
         isAuthLoading: false 
       });
+      await refetchCoursesForCurrentUser();
     }
   },
 
