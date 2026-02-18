@@ -66,100 +66,89 @@ const DailyFocus: React.FC = () => {
   const currentStats = stats.stats[timeframe];
 
   return (
-    <div className="space-y-6 mb-8">
-      {/* Certification Path Hero */}
+    <div className={`grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8`}>
+      {/* Certification Path Tracker (Takes up 2 columns) */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-3xl relative overflow-hidden px-6 py-6 md:px-8 md:py-8 shadow-[0_20px_45px_rgba(31,41,55,0.35)] bg-gradient-to-br from-[#7C5CFF] via-[#8F6BFF] to-[#FF9AD4] text-white"
+        className="lg:col-span-2 bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] p-6 rounded-3xl border border-[var(--color-border)] dark:border-[var(--color-border-dark)] shadow-sm relative overflow-hidden flex flex-col justify-center"
       >
-        <div className="pointer-events-none absolute -right-20 -bottom-24 w-72 h-72 rounded-full bg-white/15 blur-3xl" />
-        <div className="relative flex flex-col gap-6">
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="p-3 rounded-2xl bg-black/20 backdrop-blur">
-                <Award className="w-6 h-6 text-white" />
+        <div className="flex items-center gap-3 mb-8">
+          <div className="p-2.5 bg-primary/10 rounded-xl">
+            <Award className="w-6 h-6 text-primary" />
+          </div>
+          <div>
+            <h3 className="font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] text-lg">
+              Drumul spre Certificare
+            </h3>
+            <p className="text-sm text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
+              Nivel curent: <span className="font-semibold text-primary">{stats.level}</span>
+            </p>
+          </div>
+        </div>
+
+        <div className="space-y-8">
+          {/* Progress to Next Exam */}
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2 text-sm font-medium text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
+                <Flag size={16} className="text-primary" />
+                Următorul Examen: <span className="text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] font-bold">{stats.nextExam}</span>
               </div>
-              <div>
-                <h3 className="font-bold text-lg md:text-xl">
-                  Drumul spre Certificare
-                </h3>
-                <p className="text-xs md:text-sm text-white/80">
-                  Nivel curent: <span className="font-semibold">{stats.level}</span>
-                </p>
-              </div>
+              <span className="text-sm font-bold text-primary">{stats.progressToExam}%</span>
             </div>
+            <div className="h-4 bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] rounded-full overflow-hidden p-[2px]">
+              <motion.div 
+                initial={{ width: 0 }}
+                animate={{ width: `${stats.progressToExam}%` }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="h-full bg-primary rounded-full relative overflow-hidden"
+              >
+                {/* Shimmer Effect */}
+                <motion.div
+                  animate={{ x: ["-100%", "200%"] }}
+                  transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent w-1/2 h-full skew-x-12"
+                />
+              </motion.div>
+            </div>
+            <p className="text-xs text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] mt-2">
+              Completează modulul curent pentru a debloca examenul.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Progress to Next Exam */}
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-2 text-xs md:text-sm font-medium text-white/80">
-                  <Flag size={16} className="text-white" />
-                  Următorul Examen:{' '}
-                  <span className="text-white font-bold">{stats.nextExam}</span>
-                </div>
-                <span className="text-sm font-bold bg-black/25 rounded-full px-3 py-1">
-                  {stats.progressToExam}%
-                </span>
+          {/* Progress to Course Completion */}
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2 text-sm font-medium text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
+                <GraduationCap size={16} className="text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]" />
+                Finalizare Curs: <span className="text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] font-bold">{stats.courseName}</span>
               </div>
-              <div className="h-4 bg-white/15 rounded-full overflow-hidden p-[2px]">
-                <motion.div 
-                  initial={{ width: 0 }}
-                  animate={{ width: `${stats.progressToExam}%` }}
-                  transition={{ duration: 1.2, ease: "easeOut" }}
-                  className="h-full bg-white rounded-full relative overflow-hidden"
-                >
-                  {/* Shimmer Effect */}
-                  <motion.div
-                    animate={{ x: ["-100%", "200%"] }}
-                    transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent w-1/2 h-full skew-x-12"
-                  />
-                </motion.div>
-              </div>
-              <p className="text-[11px] md:text-xs text-white/80 mt-2">
-                Completează modulul curent pentru a debloca examenul.
-              </p>
+              <span className="text-sm font-bold text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">{stats.progressToCompletion}%</span>
             </div>
-
-            {/* Progress to Course Completion */}
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-2 text-xs md:text-sm font-medium text-white/80">
-                  <GraduationCap size={16} className="text-white" />
-                  Finalizare Curs:{' '}
-                  <span className="text-white font-bold">{stats.courseName}</span>
-                </div>
-                <span className="text-sm font-bold bg-black/25 rounded-full px-3 py-1">
-                  {stats.progressToCompletion}%
-                </span>
-              </div>
-              <div className="h-4 bg-white/15 rounded-full overflow-hidden p-[2px]">
-                <motion.div 
-                  initial={{ width: 0 }}
-                  animate={{ width: `${stats.progressToCompletion}%` }}
-                  transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-                  className="h-full bg-white/80 rounded-full relative overflow-hidden"
-                >
-                  {/* Shimmer Effect */}
-                  <motion.div
-                    animate={{ x: ["-100%", "200%"] }}
-                    transition={{ repeat: Infinity, duration: 2, ease: "linear", delay: 0.5 }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent w-1/2 h-full skew-x-12"
-                  />
-                </motion.div>
-              </div>
-              <p className="text-[11px] md:text-xs text-white/80 mt-2">
-                Continuă să înveți pentru a obține certificarea.
-              </p>
+            <div className="h-4 bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] rounded-full overflow-hidden p-[2px]">
+              <motion.div 
+                initial={{ width: 0 }}
+                animate={{ width: `${stats.progressToCompletion}%` }}
+                transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+                className="h-full bg-[var(--color-muted-foreground)] dark:bg-[var(--color-muted-foreground-dark)] rounded-full relative overflow-hidden"
+              >
+                {/* Shimmer Effect */}
+                <motion.div
+                  animate={{ x: ["-100%", "200%"] }}
+                  transition={{ repeat: Infinity, duration: 2, ease: "linear", delay: 0.5 }}
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent w-1/2 h-full skew-x-12"
+                />
+              </motion.div>
             </div>
+            <p className="text-xs text-gray-400 mt-2">
+              Continuă să înveți pentru a obține certificarea.
+            </p>
           </div>
         </div>
       </motion.div>
 
-      {/* Weekly / Monthly Activity */}
+      {/* Weekly Activity (Takes up 1 column) */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

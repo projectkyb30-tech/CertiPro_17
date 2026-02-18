@@ -7,7 +7,7 @@ import { useUserStore } from '../store/useUserStore';
 import { useCourseStore } from '../store/useCourseStore';
 import { SkeletonCard } from '../shared/ui/Skeleton';
 import { BookOpen } from 'lucide-react';
-import Card, { CardHeader, CardTitle, CardContent } from '../shared/ui/Card';
+import Card, { CardHeader, CardTitle, CardDescription, CardContent } from '../shared/ui/Card';
 
 const Home: React.FC = () => {
   const { courses, isLoading, error } = useCourseStore();
@@ -17,41 +17,19 @@ const Home: React.FC = () => {
     (course) => !course.isLocked || course.isProcessing
   );
 
-  const purchasedCount = purchasedCourses.length;
-  const lessonsToday = user?.lessonsCompletedToday ?? 0;
-  const streak = user?.streak ?? 0;
-  const level = Math.floor((user?.xp ?? 0) / 1000) + 1;
-
   return (
     <div className="space-y-8">
-      {/* Header compact: Hello + progres scurt */}
       <section>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="flex items-center justify-between rounded-3xl bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] px-5 py-4 md:px-6 md:py-5 border border-[var(--color-border)] dark:border-[var(--color-border-dark)] shadow-sm"
-        >
-          <div className="space-y-1">
-            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.16em] text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
-              Bun venit înapoi
-            </p>
-            <h1 className="text-xl md:text-2xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
+        <Card className="border-none bg-transparent shadow-none p-0">
+          <CardHeader className="px-0 pt-0 space-y-2">
+            <CardTitle className="text-3xl font-bold flex items-center gap-3 text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
               Salut, {user?.fullName || 'Student'}!
-            </h1>
-            <p className="text-xs md:text-sm text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
-              Level {level} • {purchasedCount} cursuri active
-            </p>
-          </div>
-          <div className="shrink-0 flex flex-col items-end gap-2">
-            <span className="inline-flex items-center gap-2 rounded-2xl bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] px-4 py-2 text-xs font-semibold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
-              Lecții azi: {lessonsToday}
-            </span>
-            <span className="text-[11px] text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
-              Streak: {streak} zile
-            </span>
-          </div>
-        </motion.div>
+            </CardTitle>
+            <CardDescription className="text-sm md:text-base">
+              Continuă să înveți și să progresezi spre certificare.
+            </CardDescription>
+          </CardHeader>
+        </Card>
       </section>
 
       <section id="daily-focus">
