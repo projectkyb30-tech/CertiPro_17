@@ -11,9 +11,18 @@ const corsMiddleware = cors({
     if (!origin) {
       return callback(null, true);
     }
+
+    if (allowedOrigins.length === 0) {
+      console.warn(
+        'CORS middleware: no ALLOWED_ORIGINS or FRONTEND_URL configured, allowing all origins'
+      );
+      return callback(null, true);
+    }
+
     if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
+
     return callback(new Error('Not allowed by CORS'));
   },
   credentials: true,
