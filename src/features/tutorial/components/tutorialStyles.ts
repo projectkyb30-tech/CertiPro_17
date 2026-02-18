@@ -9,9 +9,9 @@ export const getJoyrideStyles = (theme: string): Styles => ({
   options: {
     zIndex: 10000,
     primaryColor: '#0066FF',
-    textColor: theme === 'dark' ? '#fff' : '#333',
-    backgroundColor: theme === 'dark' ? '#1A1B1D' : '#fff',
-    arrowColor: theme === 'dark' ? '#1A1B1D' : '#fff',
+    textColor: theme === 'dark' ? '#E6EDF3' : '#333',
+    backgroundColor: theme === 'dark' ? '#161B22' : '#fff',
+    arrowColor: theme === 'dark' ? '#161B22' : '#fff',
     beaconSize: 36,
     overlayColor: 'rgba(0, 0, 0, 0.5)',
     spotlightShadow: '0 0 0 9999px rgba(0, 0, 0, 0.5)'

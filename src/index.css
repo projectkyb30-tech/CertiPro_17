@@ -7,22 +7,22 @@
   --color-primary-dark: #0052CC;
   --color-primary-light: #3385FF;
   --color-surface: #F8F9FA;
-  --color-background-dark: #1A1B1D;
+  --color-background-dark: #0D1117;
   --color-background: #FFFFFF;
   --color-foreground: #0F172A;
-  --color-foreground-dark: #E5E7EB;
+  --color-foreground-dark: #E6EDF3;
   --color-muted: #F3F4F6;
-  --color-muted-dark: #222428;
+  --color-muted-dark: #161B22;
   --color-muted-foreground: #6B7280;
-  --color-muted-foreground-dark: #9CA3AF;
+  --color-muted-foreground-dark: #8B949E;
   --color-card: #FFFFFF;
-  --color-card-dark: #121316;
+  --color-card-dark: #161B22;
   --color-card-foreground: #0F172A;
-  --color-card-foreground-dark: #E5E7EB;
+  --color-card-foreground-dark: #E6EDF3;
   --color-popover: #FFFFFF;
-  --color-popover-dark: #121316;
+  --color-popover-dark: #161B22;
   --color-border: #E5E7EB;
-  --color-border-dark: #2A2C31;
+  --color-border-dark: #30363D;
   --color-input: #E5E7EB;
   --color-input-dark: #2A2C31;
   --color-ring: #0066FF;
@@ -37,6 +37,15 @@
 
 @layer base {
   body {
-    @apply antialiased text-gray-900 bg-surface dark:bg-background-dark dark:text-white transition-colors duration-300;
+    @apply antialiased;
+    font-family: var(--font-sans);
+    color: var(--color-foreground);
+    background-color: var(--color-surface);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .dark body {
+    color: var(--color-foreground-dark);
+    background-color: var(--color-background-dark);
   }
 }

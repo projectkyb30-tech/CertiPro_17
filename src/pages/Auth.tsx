@@ -243,7 +243,7 @@ const Auth: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-surface dark:bg-background-dark flex flex-col items-center p-6 transition-colors duration-300">
+    <div className="min-h-screen bg-[var(--color-background)] dark:bg-[var(--color-background-dark)] flex flex-col items-center p-6 transition-colors duration-300">
       {/* Header */}
       <div className="w-full max-w-md flex items-center justify-between mb-8 pt-4">
         <button 
@@ -254,7 +254,7 @@ const Auth: React.FC = () => {
               navigate(-1);
             }
           }}
-          className="p-2 -ml-2 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+          className="p-2 -ml-2 text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] hover:text-primary transition-colors rounded-full hover:bg-[var(--color-muted)] dark:hover:bg-[var(--color-muted-dark)]"
         >
           <ArrowLeft size={24} />
         </button>
@@ -265,13 +265,13 @@ const Auth: React.FC = () => {
       <div className="w-full max-w-md space-y-8">
         {/* Header Text */}
         <div className="text-center space-y-2">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-3xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
             {showOtpInput ? 'Verificare Email' : (
               activeTab === 'login' ? 'Bine ai revenit!' : 
               activeTab === 'register' ? 'Creează cont' : 'Resetare Parolă'
             )}
           </h1>
-          <p className="text-gray-500 dark:text-gray-400">
+          <p className="text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
             {showOtpInput 
               ? 'Introdu codul primit pe email. Dacă nu îl găsești, verifică și folderul Spam.'
               : (activeTab === 'login' 
@@ -292,24 +292,26 @@ const Auth: React.FC = () => {
 
             <div className="relative flex items-center justify-center">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-200 dark:border-gray-700"></div>
+                <div className="w-full border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)]"></div>
               </div>
-              <span className="relative px-4 text-sm text-gray-500 bg-surface dark:bg-background-dark">
+              <span className="relative px-4 text-sm text-[var(--color-muted-foreground)] bg-[var(--color-background)] dark:bg-[var(--color-background-dark)]">
                 sau continuă cu email
               </span>
             </div>
 
             {/* Tabs */}
-            <div className="relative flex p-1 bg-gray-100 dark:bg-background-dark border border-transparent dark:border-gray-700 rounded-2xl">
+            <div className="relative flex p-1 bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] border border-transparent dark:border-[var(--color-border-dark)] rounded-2xl">
               <motion.div
-                className="absolute top-1 bottom-1 w-[calc(50%-4px)] bg-white dark:bg-gray-800 rounded-xl shadow-sm"
+                className="absolute top-1 bottom-1 w-[calc(50%-4px)] bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] rounded-xl shadow-sm"
                 animate={{ x: activeTab === 'login' ? 0 : '100%' }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               />
               <button
                 onClick={() => setActiveTab('login')}
                 className={`flex-1 relative z-10 py-3 text-sm font-bold text-center transition-colors ${
-                  activeTab === 'login' ? 'text-primary' : 'text-gray-500 dark:text-gray-400'
+                  activeTab === 'login'
+                    ? 'text-primary'
+                    : 'text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]'
                 }`}
               >
                 Login
@@ -317,7 +319,9 @@ const Auth: React.FC = () => {
               <button
                 onClick={() => setActiveTab('register')}
                 className={`flex-1 relative z-10 py-3 text-sm font-bold text-center transition-colors ${
-                  activeTab === 'register' ? 'text-primary' : 'text-gray-500 dark:text-gray-400'
+                  activeTab === 'register'
+                    ? 'text-primary'
+                    : 'text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]'
                 }`}
               >
                 Register
@@ -327,7 +331,7 @@ const Auth: React.FC = () => {
         )}
 
         {/* Form */}
-        <div className="bg-white dark:bg-background-dark p-8 rounded-3xl shadow-xl shadow-gray-100/50 dark:shadow-none border border-gray-100 dark:border-gray-700 transition-colors duration-300">
+        <div className="bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] p-8 rounded-3xl shadow-xl shadow-gray-100/50 dark:shadow-none border border-[var(--color-border)] dark:border-[var(--color-border-dark)] transition-colors duration-300">
           <AnimatePresence mode="wait">
             <motion.form
               key={activeTab}
@@ -377,7 +381,7 @@ const Auth: React.FC = () => {
                         disabled={resendTimer > 0}
                         className={`text-sm font-medium ${
                           resendTimer > 0 
-                            ? 'text-gray-400 cursor-not-allowed' 
+                            ? 'text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] cursor-not-allowed' 
                             : 'text-primary hover:text-primary-dark'
                         }`}
                       >
@@ -389,7 +393,7 @@ const Auth: React.FC = () => {
                       <button
                         type="button"
                         onClick={handleCancelOtp}
-                        className="text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                        className="text-sm font-medium text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] dark:text-[var(--color-muted-foreground-dark)] dark:hover:text-[var(--color-foreground-dark)]"
                       >
                         Anulează
                       </button>
@@ -464,7 +468,7 @@ const Auth: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setActiveTab('login')}
-                    className="w-full py-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-sm font-medium"
+                    className="w-full py-2 text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] dark:text-[var(--color-muted-foreground-dark)] dark:hover:text-[var(--color-foreground-dark)] text-sm font-medium"
                   >
                     Înapoi la Autentificare
                   </button>
@@ -475,7 +479,7 @@ const Auth: React.FC = () => {
         </div>
 
         {/* Footer */}
-        <p className="text-center text-sm text-gray-500 dark:text-gray-400">
+        <p className="text-center text-sm text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
           Prin continuare, accepți{' '}
           <Link to={ROUTES.TERMS} className="text-primary hover:underline">Termenii și Condițiile</Link>
         </p>

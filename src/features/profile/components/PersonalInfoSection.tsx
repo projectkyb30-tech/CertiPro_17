@@ -31,9 +31,9 @@ const PersonalInfoSection: React.FC<PersonalInfoSectionProps> = ({
   onCancel
 }) => {
   return (
-    <div className="bg-white dark:bg-[#1A1B1D] p-8 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm">
+    <div className="bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] p-8 rounded-3xl border border-[var(--color-border)] dark:border-[var(--color-border-dark)] shadow-sm">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white">Date de Identificare</h3>
+        <h3 className="text-xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">Date de Identificare</h3>
         {!isEditing ? (
           <button 
             onClick={() => onEditToggle(true)}
@@ -45,7 +45,7 @@ const PersonalInfoSection: React.FC<PersonalInfoSectionProps> = ({
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <button 
               onClick={onCancel}
-              className="flex-1 sm:flex-none flex items-center justify-center gap-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 font-medium transition-colors py-2 bg-gray-100 dark:bg-gray-800 rounded-lg sm:bg-transparent sm:dark:bg-transparent"
+              className="flex-1 sm:flex-none flex items-center justify-center gap-2 text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] dark:text-[var(--color-muted-foreground-dark)] dark:hover:text-[var(--color-foreground-dark)] font-medium transition-colors py-2 bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] rounded-lg sm:bg-transparent sm:dark:bg-transparent"
             >
               <X size={18} /> Anulează
             </button>
@@ -102,7 +102,7 @@ const PersonalInfoSection: React.FC<PersonalInfoSectionProps> = ({
       </div>
 
       <div className="mt-6">
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label className="block text-sm font-medium text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] mb-2">
           Despre Mine (Bio)
         </label>
         <textarea
@@ -111,7 +111,7 @@ const PersonalInfoSection: React.FC<PersonalInfoSectionProps> = ({
           onChange={onInputChange}
           disabled={!isEditing}
           rows={4}
-          className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-background-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none disabled:opacity-60 disabled:cursor-not-allowed"
+          className="w-full px-4 py-3 rounded-xl border border-[var(--color-border)] dark:border-[var(--color-border-dark)] bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none disabled:opacity-60 disabled:cursor-not-allowed"
           placeholder="Spune-ne câteva cuvinte despre tine..."
         />
       </div>

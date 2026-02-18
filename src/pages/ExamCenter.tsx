@@ -48,26 +48,26 @@ const ExamCenter: React.FC = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+            <h1 className="text-2xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] flex items-center gap-3">
               <ClipboardList className="w-8 h-8 text-primary" />
               Centrul de Examinare
             </h1>
-            <p className="text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] mt-1">
               Simulări oficiale, teste de verificare și planificare studiu.
             </p>
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="flex p-1 bg-gray-100 dark:bg-gray-800/50 rounded-xl overflow-x-auto">
+        <div className="flex p-1 bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] rounded-xl overflow-x-auto">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 text-sm font-medium rounded-lg transition-all whitespace-nowrap ${
                 activeTab === tab.id
-                  ? 'bg-white dark:bg-[#1A1B1D] text-primary shadow-sm'
-                  : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                  ? 'bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] text-primary shadow-sm'
+                  : 'text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] hover:text-[var(--color-foreground)] dark:hover:text-[var(--color-foreground-dark)]'
               }`}
             >
               <tab.icon className="w-4 h-4" />
@@ -88,7 +88,7 @@ const ExamCenter: React.FC = () => {
                 ))}
               </div>
             ) : exams.length === 0 ? (
-              <div className="text-center text-gray-400 py-10">
+              <div className="text-center text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] py-10">
                 Nu există simulări oficiale încă.
               </div>
             ) : (
@@ -98,10 +98,10 @@ const ExamCenter: React.FC = () => {
                     key={exam.id}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className={`relative group bg-white dark:bg-[#1A1B1D] border rounded-2xl p-6 transition-all hover:shadow-lg ${
+                    className={`relative group bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] border rounded-2xl p-6 transition-all hover:shadow-lg ${
                       exam.status === 'locked'
-                        ? 'border-gray-200 dark:border-gray-800 opacity-75'
-                        : 'border-gray-200 dark:border-gray-700'
+                        ? 'border-[var(--color-border)] dark:border-[var(--color-border-dark)] opacity-75'
+                        : 'border-[var(--color-border)] dark:border-[var(--color-border-dark)]'
                     }`}
                   >
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
@@ -112,11 +112,11 @@ const ExamCenter: React.FC = () => {
                       <Award className="w-6 h-6" />
                     </div>
 
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                    <h3 className="text-lg font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] mb-2">
                       {exam.title}
                     </h3>
 
-                    <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-6">
+                    <div className="flex items-center gap-4 text-sm text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] mb-6">
                       <span className="flex items-center gap-1">
                         <Clock className="w-4 h-4" />
                         {exam.durationMinutes} min
@@ -132,8 +132,8 @@ const ExamCenter: React.FC = () => {
                       onClick={() => navigate(`${ROUTES.EXAM_TAKE}/${exam.id}`)}
                       className={`w-full py-3 px-4 rounded-xl font-medium transition-colors flex items-center justify-center gap-2 ${
                         exam.status === 'locked'
-                          ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed'
-                          : 'bg-primary hover:bg-primary-dark text-white'
+                          ? 'bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] cursor-not-allowed'
+                          : 'bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white'
                       }`}
                     >
                       {exam.status === 'locked' ? (
@@ -156,7 +156,7 @@ const ExamCenter: React.FC = () => {
 
           {/* 2. CHAPTER TESTS TAB (no data yet) */}
           {activeTab === 'chapters' && (
-            <div className="text-center text-gray-400 py-10">
+            <div className="text-center text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] py-10">
               Nu există teste pe capitole încă.
             </div>
           )}

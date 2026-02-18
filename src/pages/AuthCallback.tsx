@@ -62,17 +62,17 @@ const AuthCallback: React.FC = () => {
   }, [navigate, checkSession]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-surface dark:bg-background-dark">
+    <div className="min-h-screen flex items-center justify-center bg-[var(--color-background)] dark:bg-[var(--color-background-dark)]">
       <div className="flex flex-col items-center gap-6 p-8 text-center">
         <div className="relative">
           <div className="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
           <div className="absolute inset-0 bg-primary/10 blur-xl rounded-full"></div>
         </div>
         <div className="space-y-2">
-          <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+          <h2 className="text-xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
             Se finalizează autentificarea
           </h2>
-          <p className="text-gray-500 dark:text-gray-400 animate-pulse">
+          <p className="text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] animate-pulse">
             Te rugăm să aștepți un moment...
           </p>
         </div>

@@ -20,9 +20,9 @@ const SecuritySection: React.FC<SecuritySectionProps> = ({
   onSave
 }) => {
   return (
-    <div className="bg-white dark:bg-[#1A1B1D] p-8 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm">
+    <div className="bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] p-8 rounded-3xl border border-[var(--color-border)] dark:border-[var(--color-border-dark)] shadow-sm">
       <div className="flex items-center justify-between gap-4 mb-8">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white">Schimbare Parolă</h3>
+        <h3 className="text-xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">Schimbare Parolă</h3>
         <Shield className="text-primary h-6 w-6" />
       </div>
 
@@ -36,7 +36,7 @@ const SecuritySection: React.FC<SecuritySectionProps> = ({
           onChange={onInputChange}
           placeholder="••••••••"
         />
-        <div className="pt-4 border-t border-gray-100 dark:border-gray-800">
+        <div className="pt-4 border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
           <Input
             icon={Key}
             label="Parola Nouă"

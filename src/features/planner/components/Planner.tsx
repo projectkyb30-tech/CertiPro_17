@@ -39,15 +39,19 @@ export const Planner = () => {
   }
 
   if (!user) {
-    return <div className="text-center py-10 text-gray-500">Te rugăm să te autentifici pentru a accesa planificatorul.</div>;
+    return (
+      <div className="text-center py-10 text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
+        Te rugăm să te autentifici pentru a accesa planificatorul.
+      </div>
+    );
   }
 
   return (
     <div className="flex flex-col lg:flex-row gap-6 h-full">
       {/* Sidebar - Subjects */}
       <div className="w-full lg:w-64 flex-shrink-0 space-y-4">
-        <div className="bg-white dark:bg-[#1A1B1D] rounded-2xl p-4 border border-gray-200 dark:border-gray-800 sticky top-4">
-          <h3 className="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+        <div className="bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] rounded-2xl p-4 border border-[var(--color-border)] dark:border-[var(--color-border-dark)] sticky top-4">
+          <h3 className="font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] mb-4 flex items-center gap-2">
             <BookOpen size={20} className="text-primary" />
             Materii
           </h3>
@@ -58,7 +62,7 @@ export const Planner = () => {
               className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                 selectedCourseId === null
                   ? 'bg-primary text-white shadow-lg shadow-primary/30'
-                  : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
+                  : 'text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] hover:bg-[var(--color-muted)] dark:hover:bg-[var(--color-muted-dark)]'
               }`}
             >
               Toate Notițele
@@ -71,7 +75,7 @@ export const Planner = () => {
                 className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors truncate ${
                   selectedCourseId === course.id
                     ? 'bg-primary text-white shadow-lg shadow-primary/30'
-                    : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
+                    : 'text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] hover:bg-[var(--color-muted)] dark:hover:bg-[var(--color-muted-dark)]'
                 }`}
               >
                 {course.title}
@@ -85,9 +89,9 @@ export const Planner = () => {
       <div className="flex-1 space-y-6">
         <WeeklyPlanner userId={user.id} />
 
-        <div className="bg-white dark:bg-[#1A1B1D] rounded-2xl p-6 border border-gray-200 dark:border-gray-800 min-h-[500px]">
+        <div className="bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] rounded-2xl p-6 border border-[var(--color-border)] dark:border-[var(--color-border-dark)] min-h-[500px]">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+            <h2 className="text-xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] flex items-center gap-2">
               <Layout size={20} className="text-primary" />
               {selectedCourseId 
                 ? `Notițe - ${courses.find(c => c.id === selectedCourseId)?.title}` 

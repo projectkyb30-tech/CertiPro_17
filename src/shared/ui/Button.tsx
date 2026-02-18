@@ -16,7 +16,7 @@ const base =
 
 const variants: Record<ButtonVariant, string> = {
   default:
-    'bg-[var(--color-foreground)] text-white dark:bg-[var(--color-foreground-dark)] hover:opacity-95',
+    'bg-[var(--color-primary)] text-white hover:opacity-95',
   secondary:
     'bg-[var(--color-muted)] text-[var(--color-foreground)] dark:bg-[var(--color-muted-dark)] dark:text-[var(--color-foreground-dark)] hover:opacity-95',
   ghost:
