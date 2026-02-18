@@ -54,26 +54,40 @@ export class SupabaseCourseAdapter implements CourseAdapter {
    */
   async getAllCourses(): Promise<Course[]> {
     try {
-      // 1. Parallelize initial data fetching
-      const [coursesRes, userRes] = await Promise.all([
-        supabase
-          .from('courses')
-          .select('id, title, description, icon, total_lessons, duration_hours, price, is_published')
-          .eq('is_published', true)
-          .order('price', { ascending: true }),
-        supabase.auth.getUser()
-      ]);
-
-      const { data: coursesData, error: coursesError } = coursesRes;
-      const { data: { user } } = userRes;
+      // 1. Fetch courses first
+      const { data: coursesData, error: coursesError } = await supabase
+        .from('courses')
+        .select('id, title, description, icon, total_lessons, duration_hours, price, is_published')
+        .eq('is_published', true)
+        .order('price', { ascending: true });
 
       if (coursesError) throw coursesError;
       if (!coursesData) return [];
 
+      // 2. Try to get current user, but never fail hard on lock / auth storage issues
+      let user: { id: string } | null = null;
+      try {
+        const { data } = await supabase.auth.getUser();
+        user = data.user ?? null;
+      } catch (authError: any) {
+        const message = authError?.message ?? String(authError);
+        const isLockError =
+          typeof message === 'string' &&
+          message.includes('Navigator LockManager lock');
+
+        if (isLockError) {
+          console.warn('Supabase auth lock error while fetching courses, continuing without user context:', authError);
+        } else {
+          console.error('Supabase auth error while fetching courses:', authError);
+        }
+
+        user = null;
+      }
+
       const enrollmentMap = new Map<string, { progress: number }>();
       const purchaseSet = new Set<string>();
 
-      // 2. If user exists, fetch secondary data in parallel
+      // 3. If user exists, fetch secondary data in parallel
       if (user) {
         const [enrollmentsRes, purchasesRes] = await Promise.all([
           supabase
@@ -100,7 +114,7 @@ export class SupabaseCourseAdapter implements CourseAdapter {
         }
       }
 
-      // 3. Map to Course interface
+      // 4. Map to Course interface
       const courses = (coursesData || []) as CourseRow[];
       return courses.map((c) => {
         const enrollment = enrollmentMap.get(c.id);
@@ -140,8 +154,8 @@ export class SupabaseCourseAdapter implements CourseAdapter {
    */
   async getCourseById(courseId: string): Promise<Course | undefined> {
     try {
-      // 1. Fetch course details, modules, and user in parallel
-      const [courseRes, modulesRes, userRes] = await Promise.all([
+      // 1. Fetch course details and modules in parallel
+      const [courseRes, modulesRes] = await Promise.all([
         supabase
           .from('courses')
           .select('*')
@@ -151,13 +165,11 @@ export class SupabaseCourseAdapter implements CourseAdapter {
           .from('modules')
           .select('id, course_id, title, order, lessons (id, module_id, title, type, duration, summary, is_free, order)')
           .eq('course_id', courseId)
-          .order('order', { ascending: true }),
-        supabase.auth.getUser()
+          .order('order', { ascending: true })
       ]);
 
       const { data: courseData, error: courseError } = courseRes;
       const { data: modulesData, error: modulesError } = modulesRes;
-      const { data: { user } } = userRes;
 
       if (courseError || !courseData) return undefined;
       if (modulesError) throw modulesError;
@@ -169,6 +181,26 @@ export class SupabaseCourseAdapter implements CourseAdapter {
       let isProcessing = false;
       let currentProgress = 0;
       const completedLessonIds = new Set<string>();
+
+      // 3. Try to get current user, but avoid failing hard on lock / storage issues
+      let user: { id: string } | null = null;
+      try {
+        const { data } = await supabase.auth.getUser();
+        user = data.user ?? null;
+      } catch (authError: any) {
+        const message = authError?.message ?? String(authError);
+        const isLockError =
+          typeof message === 'string' &&
+          message.includes('Navigator LockManager lock');
+
+        if (isLockError) {
+          console.warn(`Supabase auth lock error while fetching course ${courseId}, continuing without user context:`, authError);
+        } else {
+          console.error(`Supabase auth error while fetching course ${courseId}:`, authError);
+        }
+
+        user = null;
+      }
 
       if (user) {
         const lessonIds = modulesRows.flatMap((m) => (m.lessons || []).map((l) => l.id));
