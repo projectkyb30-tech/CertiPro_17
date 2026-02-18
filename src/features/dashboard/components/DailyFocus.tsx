@@ -66,12 +66,12 @@ const DailyFocus: React.FC = () => {
   const currentStats = stats.stats[timeframe];
 
   return (
-    <div className={`grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8`}>
-      {/* Certification Path Tracker (Takes up 2 columns) */}
+    <div className="space-y-6 mb-8">
+      {/* Certification Path Hero */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="lg:col-span-2 rounded-3xl relative overflow-hidden px-6 py-6 md:px-8 md:py-8 shadow-[0_20px_45px_rgba(31,41,55,0.35)] bg-gradient-to-br from-[#7C5CFF] via-[#8F6BFF] to-[#FF9AD4] text-white"
+        className="rounded-3xl relative overflow-hidden px-6 py-6 md:px-8 md:py-8 shadow-[0_20px_45px_rgba(31,41,55,0.35)] bg-gradient-to-br from-[#7C5CFF] via-[#8F6BFF] to-[#FF9AD4] text-white"
       >
         <div className="pointer-events-none absolute -right-20 -bottom-24 w-72 h-72 rounded-full bg-white/15 blur-3xl" />
         <div className="relative flex flex-col gap-6">
@@ -159,7 +159,7 @@ const DailyFocus: React.FC = () => {
         </div>
       </motion.div>
 
-      {/* Weekly Activity (Takes up 1 column) */}
+      {/* Weekly / Monthly Activity */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
