@@ -49,3 +49,14 @@
     background-color: var(--color-background-dark);
   }
 }
+
+@layer utilities {
+  .bg-dot-grid {
+    --dot-color: rgba(0, 0, 0, 0.04);
+    background-image: radial-gradient(var(--dot-color) 1px, transparent 1.5px);
+    background-size: 24px 24px;
+  }
+  .dark .bg-dot-grid {
+    --dot-color: rgba(230, 237, 243, 0.06);
+  }
+}
