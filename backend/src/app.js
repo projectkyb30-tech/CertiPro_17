@@ -8,6 +8,7 @@ const { billingRouter } = require('./routes/billing');
 const { adminRouter } = require('./routes/admin');
 const { uploadRouter } = require('./routes/upload');
 const { webhookRouter } = require('./routes/webhook');
+const { authRouter } = require('./routes/auth');
 const { captureException } = require('./lib/monitoring');
 
 process.on('uncaughtException', (err) => {
@@ -42,6 +43,7 @@ const createApp = () => {
   app.use('/api', webhookRouter);
   app.use(express.json());
   app.use('/api/', apiLimiter);
+  app.use('/api', authRouter);
   app.use('/api', purchasesRouter);
   app.use('/api', billingRouter);
   app.use('/api/admin', adminRouter);

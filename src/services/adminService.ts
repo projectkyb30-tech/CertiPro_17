@@ -1,11 +1,6 @@
 
-import { supabase } from './supabase';
 import { fetchWithRetry } from '../utils/fetchUtils';
-
-const getAuthToken = async () => {
-  const { data: { session } } = await supabase.auth.getSession();
-  return session?.access_token || null;
-};
+import { getStoredAccessToken } from './authService';
 
 const apiBase = import.meta.env.VITE_API_URL || '/api';
 
@@ -19,7 +14,7 @@ export interface AdminStats {
 
 export const adminService = {
   async getStats(): Promise<AdminStats> {
-    const token = await getAuthToken();
+    const token = getStoredAccessToken();
     if (!token) throw new Error('Not authenticated');
 
     const response = await fetchWithRetry(`${apiBase}/admin/stats`, {
@@ -37,7 +32,7 @@ export const adminService = {
   },
 
   async listUsers(page = 1, limit = 10) {
-    const token = await getAuthToken();
+    const token = getStoredAccessToken();
     if (!token) throw new Error('Not authenticated');
 
     const response = await fetchWithRetry(`${apiBase}/admin/users?page=${page}&limit=${limit}`, {

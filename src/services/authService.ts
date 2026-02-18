@@ -2,6 +2,36 @@
 import { supabase } from './supabase';
 import { UserProfile } from '../types';
 import { Capacitor } from '@capacitor/core';
+import { fetchWithRetry } from '../utils/fetchUtils';
+
+const apiBase = import.meta.env.VITE_API_URL || '/api';
+
+export const getStoredAccessToken = (): string | null => {
+  try {
+    const keys = Object.keys(localStorage);
+    for (const key of keys) {
+      if (!key.startsWith('sb-') || !key.endsWith('auth-token')) continue;
+      const raw = localStorage.getItem(key);
+      if (!raw) continue;
+      try {
+        const parsed = JSON.parse(raw);
+        const token =
+          parsed?.access_token ||
+          parsed?.currentSession?.access_token ||
+          parsed?.session?.access_token;
+        if (typeof token === 'string' && token.length > 0) {
+          return token;
+        }
+      } catch {
+        // ignore JSON parse errors and continue
+      }
+    }
+  } catch {
+    // Access to localStorage might fail in some environments
+    return null;
+  }
+  return null;
+};
 
 export const authService = {
   /**
@@ -171,11 +201,26 @@ export const authService = {
 
 
   async getCurrentUser(): Promise<UserProfile | null> {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session?.user) return null;
+    const token = getStoredAccessToken();
+    if (!token) return null;
 
-    const role = session.user.app_metadata?.role || session.user.user_metadata?.role;
-    return this.getUserProfile(session.user.id, session.user.email!, role);
+    const response = await fetchWithRetry(`${apiBase}/auth/me`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) {
+      if (response.status === 401) {
+        return null;
+      }
+      const result = await response.json().catch(() => null);
+      const message = result?.error || 'Failed to fetch current user';
+      throw new Error(message);
+    }
+
+    const payload = await response.json();
+    return payload.data as UserProfile;
   },
 
   async updateProfile(updates: Partial<UserProfile>): Promise<UserProfile> {

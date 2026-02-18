@@ -23,6 +23,7 @@ function App() {
 
   useEffect(() => {
     checkSession();
+    fetchCourses();
 
     // Handle Deep Links for OAuth
     CapApp.addListener('appUrlOpen', async (data: { url: string }) => {
