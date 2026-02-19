@@ -119,7 +119,7 @@ const CoursePlayer: React.FC = () => {
           width: isSidebarOpen ? 320 : 0,
           opacity: isSidebarOpen ? 1 : 0
         }}
-        className={`fixed md:relative z-30 h-full bg-gray-50 dark:bg-[#151618] border-r border-gray-200 dark:border-gray-800 flex flex-col overflow-hidden`}
+        className={`fixed md:relative z-30 h-full bg-gray-50 dark:bg-[#1A1B1D] border-r border-gray-200 dark:border-gray-800 flex flex-col overflow-hidden`}
       >
         <div className="p-4 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between shrink-0 h-16">
           <button onClick={() => navigate(ROUTES.LESSONS)} className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary transition-colors">
@@ -232,7 +232,7 @@ const CoursePlayer: React.FC = () => {
         </div>
 
         {/* Footer Navigation */}
-        <footer className="h-20 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#151618] px-6 flex items-center justify-between shrink-0">
+        <footer className="h-20 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1A1B1D] px-6 flex items-center justify-between shrink-0">
           <button 
             onClick={handlePrevLesson}
             disabled={currentModuleIndex === 0 && currentLessonIndex === 0}

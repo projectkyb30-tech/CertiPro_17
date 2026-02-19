@@ -19,16 +19,14 @@ const Home: React.FC = () => {
   return (
     <div className="space-y-8">
       <section>
-        <Card className="border-none bg-transparent shadow-none p-0">
-          <CardHeader className="px-0 pt-0 space-y-2">
-            <CardTitle className="text-3xl font-bold flex items-center gap-3 text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
-              Salut, {user?.fullName || 'Student'}!
-            </CardTitle>
-            <CardDescription className="text-sm md:text-base">
-              Continuă să înveți și să progresezi spre certificare.
-            </CardDescription>
-          </CardHeader>
-        </Card>
+        <div className="w-full rounded-xl border border-[var(--color-border)] dark:border-[var(--color-border-dark)] bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] px-4 py-4 md:px-6 md:py-6">
+          <h1 className="text-2xl md:text-3xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
+            Salut, {user?.fullName || 'Student'}!
+          </h1>
+          <p className="mt-2 text-sm md:text-base text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
+            Continuă să înveți și să progresezi spre certificare.
+          </p>
+        </div>
       </section>
 
       <section id="daily-focus">

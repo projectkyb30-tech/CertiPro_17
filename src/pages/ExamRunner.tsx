@@ -146,7 +146,7 @@ const ExamRunner: React.FC = () => {
   if (error) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-surface dark:bg-[#1A1B1D]">
-        <div className="text-center p-8 bg-white dark:bg-[#151618] rounded-xl shadow-lg">
+        <div className="text-center p-8 bg-white dark:bg-[#1A1B1D] rounded-xl shadow-lg">
           <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
           <p className="text-gray-900 dark:text-white mb-4">{error}</p>
           <button onClick={() => navigate(ROUTES.EXAM_CENTER)} className="text-primary hover:underline">
@@ -163,7 +163,7 @@ const ExamRunner: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#1A1B1D] flex flex-col">
       {/* Header */}
-      <header className="bg-white dark:bg-[#151618] border-b border-gray-200 dark:border-gray-800 p-4 sticky top-0 z-10">
+      <header className="bg-white dark:bg-[#1A1B1D] border-b border-gray-200 dark:border-gray-800 p-4 sticky top-0 z-10">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
             <h1 className="text-lg font-bold text-gray-900 dark:text-white">
@@ -232,7 +232,7 @@ const ExamRunner: React.FC = () => {
       </main>
 
       {/* Footer Controls */}
-      <footer className="bg-white dark:bg-[#151618] border-t border-gray-200 dark:border-gray-800 p-4">
+      <footer className="bg-white dark:bg-[#1A1B1D] border-t border-gray-200 dark:border-gray-800 p-4">
         <div className="max-w-5xl mx-auto flex justify-between items-center">
           <button
             onClick={() => setCurrentQuestionIndex(prev => Math.max(0, prev - 1))}
