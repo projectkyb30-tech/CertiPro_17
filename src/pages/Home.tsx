@@ -5,7 +5,6 @@ import DailyFocus from '../features/dashboard/components/DailyFocus';
 import CourseCard from '../features/courses/components/CourseCard';
 import { useUserStore } from '../store/useUserStore';
 import { useCourseStore } from '../store/useCourseStore';
-import { SkeletonCard } from '../shared/ui/Skeleton';
 import Card, { CardHeader, CardTitle, CardContent } from '../shared/ui/Card';
 import Button from '../shared/ui/Button';
 
