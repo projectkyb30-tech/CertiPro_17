@@ -16,4 +16,12 @@ const uploadLimiter = rateLimit({
   message: { error: 'Upload limit exceeded. Please try again in an hour.' }
 });
 
-module.exports = { apiLimiter, uploadLimiter };
+const authLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 5, // Limit each IP to 5 auth attempts per minute (brute-force protection)
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many authentication attempts. Please try again in a minute.' }
+});
+
+module.exports = { apiLimiter, uploadLimiter, authLimiter };

@@ -24,6 +24,7 @@ const Success = React.lazy(() => import('../pages/Success'));
 const AdminDashboard = React.lazy(() => import('../pages/AdminDashboard'));
 const AuthCallback = React.lazy(() => import('../pages/AuthCallback'));
 const Logout = React.lazy(() => import('../pages/Logout'));
+const BackgroundPlayground = React.lazy(() => import('../pages/BackgroundPlayground'));
 
 import { AdminDevTools } from '../shared/components/AdminDevTools';
 
@@ -111,6 +112,7 @@ const AppRoutes = () => {
         />
         <Route path={ROUTES.ONBOARDING} element={<Onboarding />} />
         <Route path={ROUTES.TERMS} element={<Terms />} />
+        <Route path="/backgrounds-playground" element={<BackgroundPlayground />} />
         
         {/* Auth Callback Route - Handles OAuth redirects */}
         <Route 

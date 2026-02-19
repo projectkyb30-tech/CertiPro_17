@@ -1,8 +1,36 @@
+# Dependencies
+node_modules/
+dist/
+
+# Environment
 .env
 .env.local
 backend/.env
 backend/.env.local
-node_modules
-dist
 
-.vercel
+# IDE
+.idea/
+.vscode/
+
+# Build artifacts
+*.tsbuildinfo
+*.log
+
+# Vercel
+.vercel/
+
+# Test outputs
+playwright-report/
+test-results/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Debug outputs (should never be committed)
+*.txt
+!README.md
+!USER_MANUAL.md
+!API_DOCS.md
+!CONTRIBUTING.md
+!CHANGELOG.md

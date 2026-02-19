@@ -1,7 +1,8 @@
 const express = require('express');
 const helmet = require('helmet');
 const { corsMiddleware } = require('./middleware/cors');
-const { apiLimiter } = require('./middleware/rateLimit');
+const { apiLimiter, authLimiter } = require('./middleware/rateLimit');
+const { sanitizeInput } = require('./middleware/sanitize');
 const { logger } = require('./middleware/logger');
 const { purchasesRouter } = require('./routes/purchases');
 const { billingRouter } = require('./routes/billing');
@@ -29,12 +30,32 @@ const createApp = () => {
   // Security Headers
   app.use(helmet({
     crossOriginResourcePolicy: { policy: "cross-origin" },
-    contentSecurityPolicy: false, // Handled by frontend or specifically configured if needed
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "https://js.stripe.com"],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+        fontSrc: ["'self'", "https://fonts.gstatic.com"],
+        imgSrc: ["'self'", "data:", "https://api.dicebear.com", "https://*.supabase.co"],
+        connectSrc: ["'self'", "https://*.supabase.co", "https://api.stripe.com", process.env.FRONTEND_URL].filter(Boolean),
+        frameSrc: ["'self'", "https://js.stripe.com"],
+        objectSrc: ["'none'"],
+        upgradeInsecureRequests: [],
+      },
+    },
+    referrerPolicy: { policy: 'strict-origin-when-cross-origin' },
+    permissionsPolicy: {
+      features: {
+        camera: ["'none'"],
+        microphone: ["'none'"],
+        geolocation: ["'none'"],
+      },
+    },
   }));
 
   app.use(logger);
   app.use(corsMiddleware);
-  
+
   // Health Check
   app.get('/health', (req, res) => {
     res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
@@ -42,7 +63,9 @@ const createApp = () => {
 
   app.use('/api', webhookRouter);
   app.use(express.json());
+  app.use(sanitizeInput);
   app.use('/api/', apiLimiter);
+  app.use('/api/auth', authLimiter);
   app.use('/api', authRouter);
   app.use('/api', purchasesRouter);
   app.use('/api', billingRouter);

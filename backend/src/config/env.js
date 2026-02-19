@@ -8,7 +8,10 @@ dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 const required = [
   'SUPABASE_URL',
-  'SUPABASE_SERVICE_ROLE_KEY'
+  'SUPABASE_SERVICE_ROLE_KEY',
+  'STRIPE_SECRET_KEY',
+  'STRIPE_WEBHOOK_SECRET',
+  'FRONTEND_URL'
 ];
 
 const missing = required.filter((key) => !process.env[key]);

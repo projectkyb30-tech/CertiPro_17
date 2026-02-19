@@ -13,10 +13,10 @@ const corsMiddleware = cors({
     }
 
     if (allowedOrigins.length === 0) {
-      console.warn(
-        'CORS middleware: no ALLOWED_ORIGINS or FRONTEND_URL configured, allowing all origins'
+      console.error(
+        'CORS middleware: no ALLOWED_ORIGINS or FRONTEND_URL configured — blocking request. Set ALLOWED_ORIGINS or FRONTEND_URL env var.'
       );
-      return callback(null, true);
+      return callback(new Error('CORS not configured: no allowed origins specified'));
     }
 
     if (allowedOrigins.includes(origin)) {

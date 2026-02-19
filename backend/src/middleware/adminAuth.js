@@ -8,9 +8,10 @@ const requireAdmin = async (req, res, next) => {
       return res.status(401).json({ error: 'User not authenticated' });
     }
 
-    // Check if user has admin role in metadata
-    // DO NOT use email-based checks as they are insecure and easily spoofed
-    const isAdmin = user.app_metadata?.role === 'admin' || user.user_metadata?.is_admin === true;
+    // Check if user has admin role in app_metadata ONLY
+    // SECURITY: user_metadata is writable by the client, so NEVER use it for authorization
+    // Only app_metadata (set via service_role key or Supabase dashboard) is trustworthy
+    const isAdmin = user.app_metadata?.role === 'admin';
 
     if (!isAdmin) {
       return res.status(403).json({ error: 'Access denied: Admins only' });

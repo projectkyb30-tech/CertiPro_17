@@ -7,6 +7,9 @@ if (!supabaseUrl || !supabaseAnonKey) {
   console.error('Supabase credentials missing! Check .env file.');
 }
 
-export const supabase: any = (supabaseUrl && supabaseAnonKey)
+type SupabaseInstance = ReturnType<typeof createSupabaseClient>;
+
+export const supabase: SupabaseInstance = (supabaseUrl && supabaseAnonKey)
   ? createSupabaseClient(supabaseUrl, supabaseAnonKey)
-  : ({} as any);
+  : ({} as SupabaseInstance);
+

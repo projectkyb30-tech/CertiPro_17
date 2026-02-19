@@ -104,7 +104,7 @@ export const authService = {
     });
 
     if (error) throw error;
-    if (!data.user) throw new Error('Verificare eșuată');
+    if (!data.user) throw new Error('OTP_VERIFICATION_FAILED');
 
     const role = data.user.app_metadata?.role || data.user.user_metadata?.role;
     return this.getUserProfile(data.user.id, email, role);
@@ -124,9 +124,9 @@ export const authService = {
   // Method to login with Google using a fixed redirect URL for Vercel
   async loginWithGoogle(): Promise<void> {
     const isNative = Capacitor.isNativePlatform();
-    const redirectTo = isNative 
-      ? 'com.certipro.app://auth/callback' 
-      : 'https://certi-pro-skfa.vercel.app/auth/callback';
+    const redirectTo = isNative
+      ? 'com.certipro.app://auth/callback'
+      : `${window.location.origin}/auth/callback`;
 
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
@@ -137,7 +137,7 @@ export const authService = {
     });
 
     if (error) throw error;
-    
+
     if (data?.url) {
       // Open the browser for OAuth
       window.location.assign(data.url);
@@ -146,8 +146,8 @@ export const authService = {
 
   async loginWithApple(): Promise<void> {
     const isNative = Capacitor.isNativePlatform();
-    const redirectTo = isNative 
-      ? 'com.certipro.app://auth/callback' 
+    const redirectTo = isNative
+      ? 'com.certipro.app://auth/callback'
       : `${window.location.origin}/auth/callback`;
 
     const { data, error } = await supabase.auth.signInWithOAuth({
@@ -159,7 +159,7 @@ export const authService = {
     });
 
     if (error) throw error;
-    
+
     if (data?.url) {
       window.location.assign(data.url);
     }
@@ -170,14 +170,15 @@ export const authService = {
       // First try normal global signout
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
-    } catch (error: any) {
+    } catch (error: unknown) {
       // Suppress network abort errors which happen if we redirect too fast
-      const isNetworkAbort = error.message?.includes('network') || error.message?.includes('aborted') || error.message?.includes('Failed to fetch');
-      
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      const isNetworkAbort = errorMessage.includes('network') || errorMessage.includes('aborted') || errorMessage.includes('Failed to fetch');
+
       if (!isNetworkAbort) {
         console.warn('Global logout failed, clearing local session anyway:', error);
       }
-      
+
       // Fallback: Clear all localStorage items related to Supabase
       // Note: Supabase default key is usually 'sb-<projectId>-auth-token'
       // We clear all known Supabase-like keys to be safe
@@ -224,7 +225,6 @@ export const authService = {
   },
 
   async updateProfile(updates: Partial<UserProfile>): Promise<UserProfile> {
-    console.log('authService.updateProfile called with:', updates);
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) throw new Error('Not authenticated');
 
@@ -239,14 +239,14 @@ export const authService = {
     if (updates.xp !== undefined) dbUpdates.xp = updates.xp;
     if (updates.lessonsCompletedToday !== undefined) dbUpdates.lessons_completed_today = updates.lessonsCompletedToday;
     if (updates.avatarUrl) dbUpdates.avatar_url = updates.avatarUrl;
-    
+
     // Always update updated_at
     dbUpdates.updated_at = new Date().toISOString();
 
     // Ensure ID and Email are present for UPSERT (in case profile doesn't exist yet)
     dbUpdates.id = user.id;
     if (!dbUpdates.email) {
-        dbUpdates.email = user.email;
+      dbUpdates.email = user.email;
     }
 
     console.log('Sending upsert to Supabase:', dbUpdates);
@@ -259,11 +259,9 @@ export const authService = {
       .single();
 
     if (error) {
-      console.error('Supabase upsert error:', error);
       throw error;
     }
 
-    console.log('Supabase upsert success:', data);
     return this.mapProfileToUser(data);
   },
 
@@ -329,7 +327,7 @@ export const authService = {
       avatarUrl: dbProfile.avatar_url,
       createdAt: dbProfile.created_at || new Date().toISOString(),
       updatedAt: dbProfile.updated_at || new Date().toISOString(),
-      role: (authRole === 'admin' || dbProfile.email?.includes('admin_override')) ? 'admin' : 'user',
+      role: authRole === 'admin' ? 'admin' : 'user',
     };
   }
 };

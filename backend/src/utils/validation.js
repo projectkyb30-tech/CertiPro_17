@@ -3,19 +3,17 @@ const { z } = require('zod');
 // Middleware factory
 const validate = (schema) => (req, res, next) => {
   try {
-    // Validate body, query, or params based on schema structure if needed
-    // Here we primarily validate req.body
+    // Validate req.body against schema
     schema.parse(req.body);
     next();
   } catch (err) {
-    console.log('Caught error in validation:', err.name);
     if (err instanceof z.ZodError || err.name === 'ZodError') {
-       const errors = err.errors || err.issues || [];
-       return res.status(400).json({ 
-         error: 'Validation failed', 
-         details: errors.map(e => ({ path: e.path ? e.path.join('.') : 'unknown', message: e.message })) 
-       });
-     }
+      const errors = err.errors || err.issues || [];
+      return res.status(400).json({
+        error: 'Validation failed',
+        details: errors.map(e => ({ path: e.path ? e.path.join('.') : 'unknown', message: e.message }))
+      });
+    }
     console.error('Validation unexpected error:', err);
     next(err);
   }
