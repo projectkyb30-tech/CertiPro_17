@@ -103,7 +103,7 @@ const Home: React.FC = () => {
           </CardHeader>
           <CardContent className="px-0 pt-0 flex-1 flex flex-col">
             {isLoading ? (
-              <div className="space-y-3 flex-1 flex flex-col">
+              <div className="space-y-3 h-[240px] flex flex-col">
                 {Array.from({ length: 3 }).map((_, index) => (
                   <motion.div
                     key={`skeleton-${index}`}
@@ -153,23 +153,26 @@ const Home: React.FC = () => {
                   ))}
                 </div>
 
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="flex flex-col items-center text-center gap-4 px-6 py-5 max-w-sm mx-auto">
-                    <div className="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
-                      <Lock className="w-7 h-7" />
+                <div className="absolute inset-0 flex flex-col justify-center">
+                  <div className="flex-1" />
+                  <div className="flex items-center justify-center">
+                    <div className="flex flex-col items-center text-center gap-4 px-6 py-5 max-w-sm mx-auto">
+                      <div className="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
+                        <Lock className="w-7 h-7" />
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-sm font-semibold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
+                          Cursurile tale sunt blocate momentan
+                        </p>
+                      </div>
+                      <Button
+                        variant="default"
+                        size="md"
+                        className="mt-1 rounded-full px-6"
+                      >
+                        Deblochează cursurile
+                      </Button>
                     </div>
-                    <div className="space-y-1">
-                      <p className="text-sm font-semibold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
-                        Cursurile tale sunt blocate momentan
-                      </p>
-                    </div>
-                    <Button
-                      variant="default"
-                      size="md"
-                      className="mt-1 rounded-full px-6"
-                    >
-                      Deblochează cursurile
-                    </Button>
                   </div>
                 </div>
               </div>
