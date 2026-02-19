@@ -33,7 +33,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         <Header user={user} />
         
         {/* Main content with padding bottom for mobile nav */}
-        <main className="flex-1 p-6 md:p-8 max-w-7xl mx-auto w-full pb-24 md:pb-8 bg-dot-grid rounded-[var(--radius-xl)]">
+        <main className="flex-1 p-6 md:p-8 max-w-7xl mx-auto w-full pb-24 md:pb-8">
           {children}
         </main>
       </div>
