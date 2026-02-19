@@ -103,7 +103,7 @@ const Home: React.FC = () => {
           </CardHeader>
           <CardContent className="px-0 pt-0 flex-1 flex flex-col">
             {isLoading ? (
-              <div className="space-y-3">
+              <div className="space-y-3 max-h-[260px] overflow-hidden">
                 {Array.from({ length: 3 }).map((_, index) => (
                   <motion.div
                     key={`skeleton-${index}`}
