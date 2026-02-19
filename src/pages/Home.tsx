@@ -148,19 +148,17 @@ const Home: React.FC = () => {
                 </div>
 
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-full h-full rounded-3xl bg-gradient-to-b from-white/85 via-white/80 to-white/85 dark:from-black/65 dark:via-black/70 dark:to-black/70 flex items-center justify-center">
-                    <div className="flex flex-col items-center text-center gap-3 px-6 max-w-sm mx-auto">
-                      <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 text-primary">
-                        <Lock className="w-5 h-5" />
-                      </div>
-                      <div className="space-y-1">
-                        <p className="text-sm font-semibold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
-                          Cursurile tale sunt blocate momentan
-                        </p>
-                        <p className="text-xs text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
-                          Deblochează un curs din catalog pentru a-ți vedea aici progresul și conținutul complet.
-                        </p>
-                      </div>
+                  <div className="flex flex-col items-center text-center gap-3 px-6 py-5 max-w-sm mx-auto rounded-2xl bg-[var(--color-card)]/92 dark:bg-[var(--color-card-dark)]/92 border border-[var(--color-border)]/80 dark:border-[var(--color-border-dark)]/80 shadow-md">
+                    <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 text-primary">
+                      <Lock className="w-5 h-5" />
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-sm font-semibold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
+                        Cursurile tale sunt blocate momentan
+                      </p>
+                      <p className="text-xs text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
+                        Deblochează un curs din catalog pentru a-ți vedea aici progresul și conținutul complet.
+                      </p>
                     </div>
                   </div>
                 </div>
