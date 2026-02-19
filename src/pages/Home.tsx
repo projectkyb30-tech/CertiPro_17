@@ -102,22 +102,22 @@ const Home: React.FC = () => {
           </CardHeader>
           <CardContent className="px-0 pt-0 flex-1 flex flex-col">
             {isLoading ? (
-              <div className="h-[220px] flex flex-col gap-3">
+              <div className="h-[240px] flex flex-col gap-3">
                 {Array.from({ length: 3 }).map((_, index) => (
                   <div
                     key={`skeleton-mini-${index}`}
-                    className="flex-1 flex items-center justify-between rounded-2xl bg-[var(--color-surface)] dark:bg-[var(--color-surface-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] px-4 py-4"
+                    className="flex-1 flex items-center justify-between rounded-2xl bg-[var(--color-surface)] dark:bg-[var(--color-surface-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] px-4 py-4 animate-pulse"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="h-10 w-10 rounded-2xl bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
+                      <div className="h-10 w-10 rounded-2xl bg-gray-200 dark:bg-gray-700" />
                       <div className="space-y-1">
-                        <div className="h-3 w-32 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
-                        <div className="h-2.5 w-40 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
+                        <div className="h-3 w-32 rounded-full bg-gray-200 dark:bg-gray-700" />
+                        <div className="h-2.5 w-40 rounded-full bg-gray-200 dark:bg-gray-700" />
                       </div>
                     </div>
                     <div className="h-full flex flex-col items-end justify-center space-y-2">
-                      <div className="h-3 w-16 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
-                      <div className="h-2 w-10 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
+                      <div className="h-3 w-16 rounded-full bg-gray-200 dark:bg-gray-700" />
+                      <div className="h-2 w-10 rounded-full bg-gray-200 dark:bg-gray-700" />
                     </div>
                   </div>
                 ))}
