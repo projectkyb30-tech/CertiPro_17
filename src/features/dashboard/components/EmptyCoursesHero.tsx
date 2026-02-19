@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import { ROUTES } from '../../../routes/paths';
 import '../../../styles/emptyCoursesHero.css';
 
-export const getEmptyCoursesHeroMotionProps = (prefersReducedMotion: boolean) =>
+export const getEmptyCoursesHeroMotionProps = (prefersReducedMotion: boolean | null) =>
   prefersReducedMotion
     ? {}
     : {
         initial: { opacity: 0, y: 16 },
         animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.6, ease: 'easeOut', delay: 0.2 },
+        transition: { duration: 0.6, delay: 0.2 },
       };
 
 const LockIcon: React.FC = () => (
@@ -77,4 +77,3 @@ const EmptyCoursesHero: React.FC = () => {
 };
 
 export default EmptyCoursesHero;
-
