@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, TrendingUp, GraduationCap } from 'lucide-react';
+import { Calendar, TrendingUp } from 'lucide-react';
 import { useDashboardStats } from '../hooks/useDashboardStats';
 import Skeleton from '../../../shared/ui/Skeleton';
 
