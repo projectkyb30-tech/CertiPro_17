@@ -20,9 +20,9 @@
 
   /* Dark mode surfaces */
   --color-background-dark: #000000;
-  --color-surface-dark: #111827;
-  --color-card-dark: #111827;
-  --color-border-dark: #1f2933;
+  --color-surface-dark: #1A1B1D;
+  --color-card-dark: #1A1B1D;
+  --color-border-dark: #30363D;
 
   /* Text */
   --color-foreground: #111827;
@@ -32,7 +32,7 @@
 
   /* Popovers / inputs */
   --color-popover: #ffffff;
-  --color-popover-dark: #111827;
+  --color-popover-dark: #1A1B1D;
   --color-input: #e5e7eb;
   --color-input-dark: #1f2933;
 
