@@ -93,15 +93,15 @@ const Home: React.FC = () => {
 
       <section
         id="dashboard-main"
-        className="grid grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.4fr)] gap-6"
+        className="grid grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.4fr)] gap-6 items-start"
       >
-        <Card className="border-none bg-transparent shadow-none p-0">
+        <Card className="border-none bg-transparent shadow-none p-0 flex flex-col h-full">
           <CardHeader className="px-0 pt-0 pb-4 flex items-center justify-between">
             <CardTitle className="text-xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
               Cursurile Tale
             </CardTitle>
           </CardHeader>
-          <CardContent className="px-0 pt-0">
+          <CardContent className="px-0 pt-0 flex-1 flex flex-col">
             {isLoading ? (
               <div className="space-y-3">
                 {Array.from({ length: 3 }).map((_, index) => (
@@ -128,9 +128,9 @@ const Home: React.FC = () => {
                 </div>
               </div>
             ) : purchasedCourses.length === 0 ? (
-              <div className="relative overflow-hidden rounded-3xl bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] p-5 shadow-sm min-h-[260px] flex items-stretch">
-                <div className="w-full space-y-3 opacity-60 blur-[1.5px] pointer-events-none select-none">
-                  {Array.from({ length: 3 }).map((_, index) => (
+              <div className="relative overflow-hidden rounded-3xl bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] p-5 shadow-sm flex-1 flex items-stretch">
+                <div className="w-full space-y-3 opacity-60 blur-[1.5px] pointer-events-none select-none flex flex-col">
+                  {Array.from({ length: 4 }).map((_, index) => (
                     <div
                       key={index}
                       className="flex items-center justify-between rounded-2xl bg-[var(--color-surface)] dark:bg-[var(--color-surface-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] px-4 py-3"
@@ -140,9 +140,13 @@ const Home: React.FC = () => {
                         <div className="space-y-1">
                           <div className="h-3 w-32 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
                           <div className="h-2.5 w-40 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
+                          <div className="h-2 w-24 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
                         </div>
                       </div>
-                      <div className="h-3 w-16 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
+                      <div className="space-y-1 items-end flex flex-col">
+                        <div className="h-3 w-16 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
+                        <div className="h-2 w-10 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -180,7 +184,7 @@ const Home: React.FC = () => {
           </CardContent>
         </Card>
 
-        <div className="space-y-6">
+        <div className="space-y-6 flex flex-col h-full">
           <Card className="border-none bg-transparent shadow-none p-0">
             <CardHeader className="px-0 pt-0 pb-4 flex items-center justify-between">
               <CardTitle className="text-lg font-semibold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
