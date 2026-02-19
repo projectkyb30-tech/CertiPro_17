@@ -18,7 +18,7 @@ const Home: React.FC = () => {
   );
 
   return (
-    <div className="space-y-8 bg-dot-grid rounded-[var(--radius-xl)] p-2 md:p-3 lg:p-4">
+    <div className="space-y-8">
       <section>
         <Card className="border-none bg-transparent shadow-none p-0">
           <CardHeader className="px-0 pt-0 space-y-2">
