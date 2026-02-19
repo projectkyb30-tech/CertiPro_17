@@ -1,13 +1,8 @@
 import React from 'react';
 import { ThemeToggle } from '../shared/ui/ThemeToggle';
-import { UserProfile } from '../types';
 import { GraduationCap } from 'lucide-react';
 
-interface HeaderProps {
-  user: UserProfile;
-}
-
-const Header: React.FC<HeaderProps> = ({ user }) => {
+const Header: React.FC = () => {
   return (
     <header className="sticky top-0 z-20 w-full bg-[var(--color-card)]/80 dark:bg-[var(--color-card-dark)]/80 backdrop-blur-md border-b border-[var(--color-border)] dark:border-[var(--color-border-dark)] transition-colors duration-300">
       <div className="flex items-center justify-between px-6 py-4">
