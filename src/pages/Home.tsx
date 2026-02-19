@@ -103,18 +103,24 @@ const Home: React.FC = () => {
           </CardHeader>
           <CardContent className="px-0 pt-0 flex-1 flex flex-col">
             {isLoading ? (
-              <div className="space-y-3 h-[240px] flex flex-col">
+              <div className="h-[220px] flex flex-col gap-3">
                 {Array.from({ length: 3 }).map((_, index) => (
-                  <motion.div
-                    key={`skeleton-${index}`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="flex-1"
+                  <div
+                    key={`skeleton-mini-${index}`}
+                    className="flex-1 flex items-center justify-between rounded-2xl bg-[var(--color-surface)] dark:bg-[var(--color-surface-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] px-4 py-4"
                   >
-                    <SkeletonCard />
-                  </motion.div>
+                    <div className="flex items-center gap-3">
+                      <div className="h-10 w-10 rounded-2xl bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
+                      <div className="space-y-1">
+                        <div className="h-3 w-32 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
+                        <div className="h-2.5 w-40 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
+                      </div>
+                    </div>
+                    <div className="h-full flex flex-col items-end justify-center space-y-2">
+                      <div className="h-3 w-16 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
+                      <div className="h-2 w-10 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
+                    </div>
+                  </div>
                 ))}
               </div>
             ) : error ? (
@@ -153,26 +159,23 @@ const Home: React.FC = () => {
                   ))}
                 </div>
 
-                <div className="absolute inset-0 flex flex-col justify-center">
-                  <div className="flex-1" />
-                  <div className="flex items-center justify-center">
-                    <div className="flex flex-col items-center text-center gap-4 px-6 py-5 max-w-sm mx-auto">
-                      <div className="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
-                        <Lock className="w-7 h-7" />
-                      </div>
-                      <div className="space-y-1">
-                        <p className="text-sm font-semibold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
-                          Cursurile tale sunt blocate momentan
-                        </p>
-                      </div>
-                      <Button
-                        variant="default"
-                        size="md"
-                        className="mt-1 rounded-full px-6"
-                      >
-                        Deblochează cursurile
-                      </Button>
+                <div className="absolute inset-0 grid place-items-center">
+                  <div className="pointer-events-auto flex flex-col items-center text-center gap-4 px-6 py-5 max-w-sm mx-auto">
+                    <div className="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
+                      <Lock className="w-7 h-7" />
                     </div>
+                    <div className="space-y-1">
+                      <p className="text-sm font-semibold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
+                        Cursurile tale sunt blocate momentan
+                      </p>
+                    </div>
+                    <Button
+                      variant="default"
+                      size="md"
+                      className="mt-1 rounded-full px-6"
+                    >
+                      Deblochează cursurile
+                    </Button>
                   </div>
                 </div>
               </div>
