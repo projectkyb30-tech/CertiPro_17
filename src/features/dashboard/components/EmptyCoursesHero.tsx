@@ -20,7 +20,7 @@ const LockIcon: React.FC = () => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <circle cx="24" cy="29" r="2" fill="#E5E7EB" />
+    <circle cx="24" cy="29" r="2" fill="var(--color-border)" />
   </svg>
 );
 
@@ -46,7 +46,7 @@ const EmptyCoursesHero: React.FC = () => {
 
       <Link
         to={ROUTES.COURSES}
-        className="inline-flex items-center justify-center px-5 py-2.5 bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-medium rounded-lg shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+        className="inline-flex items-center justify-center px-5 py-2.5 bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white text-sm font-medium rounded-lg shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
         aria-label="Vezi toate cursurile"
       >
         Vezi toate cursurile

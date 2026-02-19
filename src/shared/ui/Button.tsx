@@ -16,15 +16,15 @@ const base =
 
 const variants: Record<ButtonVariant, string> = {
   default:
-    'bg-[var(--color-primary)] text-white hover:opacity-95',
+    'bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover)]',
   secondary:
-    'bg-[var(--color-muted)] text-[var(--color-foreground)] dark:bg-[var(--color-muted-dark)] dark:text-[var(--color-foreground-dark)] hover:opacity-95',
+    'bg-[var(--color-surface)] text-[var(--color-foreground)] dark:bg-[var(--color-surface-dark)] dark:text-[var(--color-foreground-dark)]',
   ghost:
-    'bg-transparent text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] hover:bg-[var(--color-muted)] dark:hover:bg-[var(--color-muted-dark)]',
+    'bg-transparent text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] hover:bg-[var(--color-surface)] dark:hover:bg-[var(--color-surface-dark)]',
   outline:
-    'bg-transparent border border-[var(--color-border)] dark:border-[var(--color-border-dark)] text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] hover:bg-[var(--color-muted)] dark:hover:bg-[var(--color-muted-dark)]',
+    'bg-transparent border border-[var(--color-border)] dark:border-[var(--color-border-dark)] text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] hover:bg-[var(--color-surface)] dark:hover:bg-[var(--color-surface-dark)]',
   destructive:
-    'bg-red-600 text-white hover:bg-red-700',
+    'bg-[var(--color-destructive)] text-white hover:bg-[var(--color-destructive-hover)]',
 };
 
 const sizes: Record<ButtonSize, string> = {

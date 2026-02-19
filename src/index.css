@@ -3,29 +3,47 @@
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #0066FF;
-  --color-primary-dark: #0052CC;
-  --color-primary-light: #3385FF;
-  --color-surface: #F8F9FA;
+  /* Primary (Brand Blue) */
+  --color-primary: #1d5afe;
+  --color-primary-hover: #1543c4;
+  --color-primary-light: #1d5afe;
+
+  /* Destructive */
+  --color-destructive: #ef4444;
+  --color-destructive-hover: #b91c1c;
+
+  /* Light mode surfaces */
+  --color-background: #ffffff;
+  --color-surface: #f3f4f6;
+  --color-card: #ffffff;
+  --color-border: #e5e7eb;
+
+  /* Dark mode surfaces */
   --color-background-dark: #000000;
-  --color-background: #FFFFFF;
-  --color-foreground: #0F172A;
-  --color-foreground-dark: #E6EDF3;
-  --color-muted: #F3F4F6;
-  --color-muted-dark: #1A1B1D;
-  --color-muted-foreground: #6B7280;
-  --color-muted-foreground-dark: #8B949E;
-  --color-card: #FFFFFF;
-  --color-card-dark: #1A1B1D;
-  --color-card-foreground: #0F172A;
-  --color-card-foreground-dark: #E6EDF3;
-  --color-popover: #FFFFFF;
-  --color-popover-dark: #1A1B1D;
-  --color-border: #E5E7EB;
-  --color-border-dark: #30363D;
-  --color-input: #E5E7EB;
-  --color-input-dark: #2A2C31;
-  --color-ring: #0066FF;
+  --color-surface-dark: #111827;
+  --color-card-dark: #111827;
+  --color-border-dark: #1f2933;
+
+  /* Text */
+  --color-foreground: #111827;
+  --color-foreground-dark: #f9fafb;
+  --color-muted-foreground: #6b7280;
+  --color-muted-foreground-dark: #9ca3af;
+
+  /* Popovers / inputs */
+  --color-popover: #ffffff;
+  --color-popover-dark: #111827;
+  --color-input: #e5e7eb;
+  --color-input-dark: #1f2933;
+
+  /* Focus ring */
+  --color-ring: #1d5afe;
+
+  /* Brand / chart colors */
+  --color-google-blue: #4285f4;
+  --color-google-green: #34a853;
+  --color-google-yellow: #fbbc05;
+  --color-google-red: #ea4335;
   --radius-sm: 0.375rem;
   --radius: 0.5rem;
   --radius-lg: 0.75rem;
@@ -40,7 +58,7 @@
     @apply antialiased;
     font-family: var(--font-sans);
     color: var(--color-foreground);
-    background-color: var(--color-surface);
+    background-color: var(--color-background);
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 

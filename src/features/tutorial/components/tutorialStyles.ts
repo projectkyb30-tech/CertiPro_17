@@ -8,10 +8,10 @@ export const getJoyrideStyles = (theme: string): Styles => ({
   beaconOuter: {},
   options: {
     zIndex: 10000,
-    primaryColor: '#0066FF',
-    textColor: theme === 'dark' ? '#E6EDF3' : '#333',
-    backgroundColor: theme === 'dark' ? '#1A1B1D' : '#fff',
-    arrowColor: theme === 'dark' ? '#1A1B1D' : '#fff',
+    primaryColor: 'var(--color-primary)',
+    textColor: theme === 'dark' ? 'var(--color-foreground-dark)' : 'var(--color-foreground)',
+    backgroundColor: theme === 'dark' ? 'var(--color-card-dark)' : 'var(--color-card)',
+    arrowColor: theme === 'dark' ? 'var(--color-card-dark)' : 'var(--color-card)',
     beaconSize: 36,
     overlayColor: 'rgba(0, 0, 0, 0.5)',
     spotlightShadow: '0 0 0 9999px rgba(0, 0, 0, 0.5)'
@@ -21,19 +21,19 @@ export const getJoyrideStyles = (theme: string): Styles => ({
     padding: '20px',
   },
   buttonNext: {
-    backgroundColor: '#0066FF',
+    backgroundColor: 'var(--color-primary)',
     borderRadius: '8px',
-    color: '#fff',
+    color: '#ffffff',
     fontWeight: 'bold',
     outline: 'none',
   },
   buttonBack: {
-    color: theme === 'dark' ? '#aaa' : '#666',
+    color: theme === 'dark' ? 'var(--color-muted-foreground-dark)' : 'var(--color-muted-foreground)',
     marginRight: 10,
   },
   buttonClose: {},
   buttonSkip: {
-    color: theme === 'dark' ? '#aaa' : '#666',
+    color: theme === 'dark' ? 'var(--color-muted-foreground-dark)' : 'var(--color-muted-foreground)',
   },
   overlay: {},
   overlayLegacy: {},

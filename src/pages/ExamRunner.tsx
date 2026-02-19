@@ -145,11 +145,11 @@ const ExamRunner: React.FC = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-surface dark:bg-[#1A1B1D]">
-        <div className="text-center p-8 bg-white dark:bg-[#1A1B1D] rounded-xl shadow-lg">
-          <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
-          <p className="text-gray-900 dark:text-white mb-4">{error}</p>
-          <button onClick={() => navigate(ROUTES.EXAM_CENTER)} className="text-primary hover:underline">
+      <div className="min-h-screen flex items-center justify-center bg-surface dark:bg-[var(--color-background-dark)]">
+        <div className="text-center p-8 bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] rounded-xl shadow-lg border border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
+          <AlertCircle className="w-12 h-12 text-[var(--color-destructive)] mx-auto mb-4" />
+          <p className="text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] mb-4">{error}</p>
+          <button onClick={() => navigate(ROUTES.EXAM_CENTER)} className="text-[var(--color-primary)] hover:underline">
             Back to Exam Center
           </button>
         </div>
@@ -161,27 +161,27 @@ const ExamRunner: React.FC = () => {
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-[#1A1B1D] flex flex-col">
+    <div className="min-h-screen bg-[var(--color-background)] dark:bg-[var(--color-background-dark)] flex flex-col">
       {/* Header */}
-      <header className="bg-white dark:bg-[#1A1B1D] border-b border-gray-200 dark:border-gray-800 p-4 sticky top-0 z-10">
+      <header className="bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] border-b border-[var(--color-border)] dark:border-[var(--color-border-dark)] p-4 sticky top-0 z-10">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <h1 className="text-lg font-bold text-gray-900 dark:text-white">
+            <h1 className="text-lg font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
               Exam Session
             </h1>
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-mono text-gray-600 dark:text-gray-400">
+            <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-[var(--color-surface)] dark:bg-[var(--color-surface-dark)] rounded-full text-sm font-mono text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
               <Clock size={16} />
               {formatTime(timeLeft)}
             </div>
           </div>
           
           <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-500">
+            <span className="text-sm text-[var(--color-muted-foreground)]">
               Question {currentQuestionIndex + 1} of {questions.length}
             </span>
-            <div className="w-32 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+            <div className="w-32 h-2 bg-[var(--color-surface)] dark:bg-[var(--color-surface-dark)] rounded-full overflow-hidden">
               <div 
-                className="h-full bg-primary transition-all duration-300"
+                className="h-full bg-[var(--color-primary)] transition-all duration-300"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -197,9 +197,9 @@ const ExamRunner: React.FC = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
-            className="bg-white dark:bg-[#151618] rounded-2xl p-6 sm:p-10 shadow-sm border border-gray-100 dark:border-gray-800"
+            className="bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] rounded-2xl p-6 sm:p-10 shadow-sm border border-[var(--color-border)] dark:border-[var(--color-border-dark)]"
           >
-            <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white mb-8">
+            <h2 className="text-xl sm:text-2xl font-semibold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] mb-8">
               {currentQuestion.text}
             </h2>
 
@@ -212,16 +212,16 @@ const ExamRunner: React.FC = () => {
                     onClick={() => handleOptionSelect(currentQuestion.id, option.id)}
                     className={`w-full text-left p-4 rounded-xl border-2 transition-all flex items-center justify-between group
                       ${isSelected 
-                        ? 'border-primary bg-primary/5 dark:bg-primary/10' 
-                        : 'border-gray-100 dark:border-gray-800 hover:border-primary/50 dark:hover:border-primary/50'
+                        ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/5 dark:bg-[var(--color-primary)]/10' 
+                        : 'border-[var(--color-border)] dark:border-[var(--color-border-dark)] hover:border-[var(--color-primary)]/50 dark:hover:border-[var(--color-primary)]/50'
                       }
                     `}
                   >
-                    <span className={`text-base ${isSelected ? 'text-primary font-medium' : 'text-gray-600 dark:text-gray-300'}`}>
+                    <span className={`text-base ${isSelected ? 'text-[var(--color-primary)] font-medium' : 'text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]'}`}>
                       {option.text}
                     </span>
                     {isSelected && (
-                      <CheckCircle className="text-primary w-5 h-5" />
+                      <CheckCircle className="text-[var(--color-primary)] w-5 h-5" />
                     )}
                   </button>
                 );
@@ -232,12 +232,12 @@ const ExamRunner: React.FC = () => {
       </main>
 
       {/* Footer Controls */}
-      <footer className="bg-white dark:bg-[#1A1B1D] border-t border-gray-200 dark:border-gray-800 p-4">
+      <footer className="bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)] p-4">
         <div className="max-w-5xl mx-auto flex justify-between items-center">
           <button
             onClick={() => setCurrentQuestionIndex(prev => Math.max(0, prev - 1))}
             disabled={currentQuestionIndex === 0}
-            className="px-6 py-2.5 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="px-6 py-2.5 rounded-lg text-[var(--color-muted-foreground)] hover:bg-[var(--color-surface)] dark:hover:bg-[var(--color-surface-dark)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             Previous
           </button>
@@ -246,7 +246,7 @@ const ExamRunner: React.FC = () => {
             <button
               onClick={handleSubmit}
               disabled={isSubmitting}
-              className="px-8 py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium flex items-center gap-2 shadow-lg shadow-green-600/20 transition-all"
+              className="px-8 py-2.5 bg-[var(--color-destructive)] hover:bg-[var(--color-destructive-hover)] text-white rounded-lg font-medium flex items-center gap-2 shadow-lg shadow-[var(--color-destructive)]/20 transition-all"
             >
               {isSubmitting ? 'Submitting...' : 'Finish Exam'}
               <Check size={18} />
@@ -254,7 +254,7 @@ const ExamRunner: React.FC = () => {
           ) : (
             <button
               onClick={() => setCurrentQuestionIndex(prev => Math.min(questions.length - 1, prev + 1))}
-              className="px-8 py-2.5 bg-primary hover:bg-primary-dark text-white rounded-lg font-medium flex items-center gap-2 shadow-lg shadow-primary/25 transition-all"
+              className="px-8 py-2.5 bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white rounded-lg font-medium flex items-center gap-2 shadow-lg shadow-[var(--color-primary)]/25 transition-all"
             >
               Next Question
               <ChevronRight size={18} />

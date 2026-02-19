@@ -49,12 +49,12 @@ const CoursePlayer: React.FC = () => {
 
   if (!course || !course.modules || course.modules.length === 0) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-surface dark:bg-[#1A1B1D] text-gray-500">
+      <div className="min-h-screen flex items-center justify-center bg-surface dark:bg-[var(--color-background-dark)] text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
         <div className="text-center p-6">
           <p className="mb-4">Cursul nu a fost găsit sau nu are conținut.</p>
           <button 
             onClick={() => navigate('/lessons')} 
-            className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
+            className="px-4 py-2 bg-[var(--color-primary)] text-white rounded-lg hover:bg-[var(--color-primary-hover)] transition-colors"
           >
             Înapoi la Lecții
           </button>
@@ -98,7 +98,7 @@ const CoursePlayer: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen bg-white dark:bg-[#1A1B1D] overflow-hidden transition-colors duration-300">
+    <div className="flex h-screen bg-[var(--color-background)] dark:bg-[var(--color-background-dark)] overflow-hidden transition-colors duration-300">
       {/* Mobile Sidebar Overlay */}
       <AnimatePresence>
         {isSidebarOpen && (
@@ -119,14 +119,14 @@ const CoursePlayer: React.FC = () => {
           width: isSidebarOpen ? 320 : 0,
           opacity: isSidebarOpen ? 1 : 0
         }}
-        className={`fixed md:relative z-30 h-full bg-gray-50 dark:bg-[#1A1B1D] border-r border-gray-200 dark:border-gray-800 flex flex-col overflow-hidden`}
+        className={`fixed md:relative z-30 h-full bg-[var(--color-surface)] dark:bg-[var(--color-surface-dark)] border-r border-[var(--color-border)] dark:border-[var(--color-border-dark)] flex flex-col overflow-hidden`}
       >
         <div className="p-4 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between shrink-0 h-16">
-          <button onClick={() => navigate(ROUTES.LESSONS)} className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary transition-colors">
+          <button onClick={() => navigate(ROUTES.LESSONS)} className="flex items-center gap-2 text-sm font-medium text-[var(--color-muted-foreground)] hover:text-[var(--color-primary)] transition-colors">
             <ChevronLeft size={16} />
             Înapoi la Hartă
           </button>
-          <button onClick={() => setIsSidebarOpen(false)} className="md:hidden p-2 text-gray-500">
+          <button onClick={() => setIsSidebarOpen(false)} className="md:hidden p-2 text-[var(--color-muted-foreground)]">
             <X size={20} />
           </button>
         </div>
@@ -134,7 +134,7 @@ const CoursePlayer: React.FC = () => {
         <div className="flex-1 overflow-y-auto p-4 space-y-6 custom-scrollbar">
           {course.modules.map((module, mIndex) => (
             <div key={module.id}>
-              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 px-2">
+              <h3 className="text-xs font-bold text-[var(--color-muted-foreground)] uppercase tracking-wider mb-3 px-2">
                 {module.title}
               </h3>
               <div className="space-y-1">
@@ -159,19 +159,19 @@ const CoursePlayer: React.FC = () => {
                       }}
                       className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-left transition-all
                         ${isActive 
-                          ? 'bg-white dark:bg-[#1A1B1D] text-primary shadow-sm border border-gray-100 dark:border-gray-800' 
+                          ? 'bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] text-[var(--color-primary)] shadow-sm border border-[var(--color-border)] dark:border-[var(--color-border-dark)]' 
                           : (!isUnlocked && !isCompleted)
-                            ? 'text-gray-400 dark:text-gray-600 cursor-not-allowed opacity-60'
-                            : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/50'
+                            ? 'text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] cursor-not-allowed opacity-60'
+                            : 'text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] hover:bg-[var(--color-surface)] dark:hover:bg-[var(--color-surface-dark)]'
                         }
                       `}
                     >
                       {isCompleted ? (
-                        <CheckCircle size={16} className="text-emerald-500 shrink-0" />
+                        <CheckCircle size={16} className="text-[var(--color-primary)] shrink-0" />
                       ) : isActive ? (
-                        <PlayCircle size={16} className="text-primary shrink-0 animate-pulse" />
+                        <PlayCircle size={16} className="text-[var(--color-primary)] shrink-0 animate-pulse" />
                       ) : (
-                        <Circle size={16} className="text-gray-300 dark:text-gray-600 shrink-0" />
+                        <Circle size={16} className="text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] shrink-0" />
                       )}
                       
                       <span className={`truncate ${isActive ? 'font-medium' : ''}`}>
@@ -187,24 +187,24 @@ const CoursePlayer: React.FC = () => {
       </motion.aside>
 
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col min-w-0 bg-white dark:bg-[#1A1B1D]">
+      <main className="flex-1 flex flex-col min-w-0 bg-[var(--color-card)] dark:bg-[var(--color-card-dark)]">
         {/* Top Bar */}
-        <header className="h-16 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-4 shrink-0 bg-white/80 dark:bg-[#1A1B1D]/80 backdrop-blur-sm sticky top-0 z-10">
+        <header className="h-16 border-b border-[var(--color-border)] dark:border-[var(--color-border-dark)] flex items-center justify-between px-4 shrink-0 bg-[var(--color-card)]/80 dark:bg-[var(--color-card-dark)]/80 backdrop-blur-sm sticky top-0 z-10">
           <div className="flex items-center gap-4">
             <button 
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-              className="p-2 -ml-2 text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+              className="p-2 -ml-2 text-[var(--color-muted-foreground)] hover:text-[var(--color-primary)] hover:bg-[var(--color-surface)] dark:hover:bg-[var(--color-surface-dark)] rounded-lg transition-colors"
             >
               <Menu size={20} />
             </button>
-            <h1 className="text-lg font-bold text-gray-900 dark:text-white truncate max-w-[200px] sm:max-w-md">
+            <h1 className="text-lg font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] truncate max-w-[200px] sm:max-w-md">
               {currentLesson?.title}
             </h1>
           </div>
           
           <div className="flex items-center gap-4">
             {/* Progress or Actions */}
-            <div className="hidden sm:flex items-center gap-2 text-sm text-gray-500">
+            <div className="hidden sm:flex items-center gap-2 text-sm text-[var(--color-muted-foreground)]">
               <span>{currentLesson?.duration}</span>
             </div>
           </div>
@@ -220,7 +220,7 @@ const CoursePlayer: React.FC = () => {
               {!currentContent && currentLesson?.type !== 'react' && currentLesson?.type !== 'presentation' ? (
                  <div className="flex flex-col items-center justify-center py-12 space-y-4">
                    <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary"></div>
-                   <p className="text-gray-400 animate-pulse">Se încarcă conținutul securizat...</p>
+                   <p className="text-[var(--color-muted-foreground)] animate-pulse">Se încarcă conținutul securizat...</p>
                  </div>
               ) : (
                 <div className="mt-6">
@@ -232,11 +232,11 @@ const CoursePlayer: React.FC = () => {
         </div>
 
         {/* Footer Navigation */}
-        <footer className="h-20 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1A1B1D] px-6 flex items-center justify-between shrink-0">
+        <footer className="h-20 border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)] bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] px-6 flex items-center justify-between shrink-0">
           <button 
             onClick={handlePrevLesson}
             disabled={currentModuleIndex === 0 && currentLessonIndex === 0}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)] hover:bg-[var(--color-surface)] dark:hover:bg-[var(--color-surface-dark)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             <ChevronLeft className="w-5 h-5" />
             <span className="hidden sm:inline">Lecția Anterioară</span>
@@ -244,7 +244,7 @@ const CoursePlayer: React.FC = () => {
 
           <button 
             onClick={handleNextLesson}
-            className="flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-xl font-semibold shadow-lg shadow-primary/20 transition-all transform active:scale-95"
+            className="flex items-center gap-2 px-6 py-3 bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white rounded-xl font-semibold shadow-lg shadow-[var(--color-primary)]/20 transition-all transform active:scale-95"
           >
             <span className="hidden sm:inline">
               {(currentModuleIndex === course.modules!.length - 1 && currentLessonIndex === currentModule.lessons.length - 1)
