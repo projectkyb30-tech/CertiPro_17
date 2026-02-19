@@ -5,7 +5,7 @@ import CourseCard from '../features/courses/components/CourseCard';
 import { useUserStore } from '../store/useUserStore';
 import { useCourseStore } from '../store/useCourseStore';
 import { SkeletonCard } from '../shared/ui/Skeleton';
-import Card, { CardHeader, CardTitle, CardDescription, CardContent } from '../shared/ui/Card';
+import Card, { CardHeader, CardTitle, CardContent } from '../shared/ui/Card';
 import EmptyCoursesHero from '../features/dashboard/components/EmptyCoursesHero';
 
 const Home: React.FC = () => {
