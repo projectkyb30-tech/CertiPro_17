@@ -129,7 +129,7 @@ const Home: React.FC = () => {
               </div>
             ) : purchasedCourses.length === 0 ? (
               <div className="relative overflow-hidden rounded-3xl bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] p-5 shadow-sm flex-1 flex items-stretch">
-                <div className="w-full h-full opacity-60 blur-[1.5px] pointer-events-none select-none flex flex-col gap-3">
+                <div className="w-full h-full opacity-90 blur-[0.5px] pointer-events-none select-none flex flex-col gap-3">
                   {Array.from({ length: 3 }).map((_, index) => (
                     <div
                       key={index}
@@ -153,18 +153,22 @@ const Home: React.FC = () => {
                 </div>
 
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="flex flex-col items-center text-center gap-3 px-6 py-5 max-w-sm mx-auto rounded-2xl bg-[var(--color-card)]/92 dark:bg-[var(--color-card-dark)]/92 border border-[var(--color-border)]/80 dark:border-[var(--color-border-dark)]/80 shadow-md">
-                    <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 text-primary">
-                      <Lock className="w-5 h-5" />
+                  <div className="flex flex-col items-center text-center gap-4 px-6 py-5 max-w-sm mx-auto">
+                    <div className="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
+                      <Lock className="w-7 h-7" />
                     </div>
                     <div className="space-y-1">
                       <p className="text-sm font-semibold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
                         Cursurile tale sunt blocate momentan
                       </p>
-                      <p className="text-xs text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
-                        Deblochează un curs din catalog pentru a-ți vedea aici progresul și conținutul complet.
-                      </p>
                     </div>
+                    <Button
+                      variant="default"
+                      size="md"
+                      className="mt-1 rounded-full px-6"
+                    >
+                      Deblochează cursurile
+                    </Button>
                   </div>
                 </div>
               </div>
