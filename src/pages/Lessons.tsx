@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import LearningMap from '../features/courses/components/LearningMap';
 import { useCourseStore } from '../store/useCourseStore';
-import { BookOpen, Lock, Loader2 } from 'lucide-react';
+import { BookOpen, Lock } from 'lucide-react';
 import Skeleton from '../shared/ui/Skeleton';
 import Card, { CardHeader, CardTitle, CardDescription, CardContent } from '../shared/ui/Card';
+import LoadingDots from '../shared/ui/LoadingDots';
 
 const Lessons: React.FC = () => {
   const { courses, isLoading } = useCourseStore();
@@ -69,7 +70,7 @@ const Lessons: React.FC = () => {
                   >
                     <span>{course.title}</span>
                     {course.isProcessing ? (
-                      <Loader2 size={14} className="text-primary animate-spin" />
+                      <LoadingDots />
                     ) : course.isLocked ? (
                       <Lock size={14} className="text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]" />
                     ) : null}

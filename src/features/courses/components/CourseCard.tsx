@@ -5,9 +5,10 @@ import { Course } from '../../../types';
 import { ROUTES } from '../../../routes/paths';
 import { useUserStore } from '../../../store/useUserStore';
 import { billingApi } from '../../billing/api/billingApi';
-import { Terminal, Database, Globe, Lock, ArrowRight, Clock, BookOpen, ShieldCheck, Loader2 } from 'lucide-react';
+import { Terminal, Database, Globe, Lock, ArrowRight, Clock, BookOpen, ShieldCheck } from 'lucide-react';
 import Card, { CardContent } from '../../../shared/ui/Card';
 import Button from '../../../shared/ui/Button';
+import LoadingDots from '../../../shared/ui/LoadingDots';
 
 interface CourseCardProps {
   course: Course;
@@ -142,12 +143,12 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
               >
                 {course.isProcessing ? (
                   <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <LoadingDots />
                     Verifică Activarea
                   </>
                 ) : isProcessing ? (
                   <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <LoadingDots />
                     Se procesează...
                   </>
                 ) : (

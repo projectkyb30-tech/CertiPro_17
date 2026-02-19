@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUserStore } from '../store/useUserStore';
 import { ROUTES } from '../routes/paths';
+import LoadingDots from '../shared/ui/LoadingDots';
 
 const Logout: React.FC = () => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ const Logout: React.FC = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-[var(--color-background)] dark:bg-[var(--color-background-dark)]">
       <div className="text-center space-y-4">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+        <LoadingDots />
         <p className="text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">Se deconectează...</p>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { ROUTES } from '../routes/paths';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Menu, X, PlayCircle, CheckCircle, Circle } from 'lucide-react';
 import { SkeletonPlayer } from '../shared/ui/Skeleton';
+import LoadingDots from '../shared/ui/LoadingDots';
 
 import { LessonRenderer } from '../features/courses/components/LessonRenderer';
 
@@ -214,12 +215,10 @@ const CoursePlayer: React.FC = () => {
         <div className="flex-1 overflow-y-auto p-4 sm:p-8 custom-scrollbar">
           <div className="max-w-4xl mx-auto">
             <div className="prose dark:prose-invert max-w-none">
-              {/* Content Placeholder */}
               <h2>{currentLesson?.title}</h2>
-              
               {!currentContent && currentLesson?.type !== 'react' && currentLesson?.type !== 'presentation' ? (
                  <div className="flex flex-col items-center justify-center py-12 space-y-4">
-                   <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary"></div>
+                   <LoadingDots />
                    <p className="text-[var(--color-muted-foreground)] animate-pulse">Se încarcă conținutul securizat...</p>
                  </div>
               ) : (

@@ -7,6 +7,7 @@ import { billingApi } from '../features/billing/api/billingApi';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Check, Lock, ArrowLeft, CreditCard } from 'lucide-react';
 import { SkeletonCheckout } from '../shared/ui/Skeleton';
+import LoadingDots from '../shared/ui/LoadingDots';
 
 const Checkout: React.FC = () => {
   const { courseId } = useParams<{ courseId: string }>();
@@ -150,11 +151,9 @@ const Checkout: React.FC = () => {
                         className="w-full py-4 bg-primary hover:bg-primary-dark text-white rounded-xl font-bold text-lg shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                       >
                         {isProcessing ? (
-                          <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          <LoadingDots />
                         ) : (
-                          <>
-                            Plătește €{course.price.toFixed(2)}
-                          </>
+                          <>Plătește €{course.price.toFixed(2)}</>
                         )}
                       </button>
                   </div>

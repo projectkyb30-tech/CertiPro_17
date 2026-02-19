@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '../services/supabase';
 import { useUserStore } from '../store/useUserStore';
 import { ROUTES } from '../routes/paths';
+import LoadingDots from '../shared/ui/LoadingDots';
 import type { AuthChangeEvent, Session } from '@supabase/supabase-js';
 
 const AuthCallback: React.FC = () => {
@@ -64,10 +65,7 @@ const AuthCallback: React.FC = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[var(--color-background)] dark:bg-[var(--color-background-dark)]">
       <div className="flex flex-col items-center gap-6 p-8 text-center">
-        <div className="relative">
-          <div className="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
-          <div className="absolute inset-0 bg-primary/10 blur-xl rounded-full"></div>
-        </div>
+        <LoadingDots />
         <div className="space-y-2">
           <h2 className="text-xl font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
             Se finalizează autentificarea

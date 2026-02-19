@@ -7,6 +7,7 @@ import { NoteEditor } from './NoteEditor';
 import { Note } from '../types';
 import { BookOpen, Layout, Plus } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
+import LoadingDots from '../../../shared/ui/LoadingDots';
 
 export const Planner = () => {
   const { courses, fetchCourses } = useCourseStore();
@@ -35,7 +36,11 @@ export const Planner = () => {
   };
 
   if (isLoading) {
-    return <div className="flex justify-center items-center h-64"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>;
+    return (
+      <div className="flex justify-center items-center h-64">
+        <LoadingDots />
+      </div>
+    );
   }
 
   if (!user) {

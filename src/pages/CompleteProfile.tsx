@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Phone, ChevronDown, ArrowRight, ArrowLeft, Check, Loader2, RefreshCw } from 'lucide-react';
+import { User, Phone, ChevronDown, ArrowRight, ArrowLeft, Check, RefreshCw } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import Input from '../shared/ui/Input';
 import { useUserStore } from '../store/useUserStore';
 import { ROUTES } from '../routes/paths';
 import { COUNTRY_CODES, detectCountry } from '../shared/data/countries';
 import { UserProfile } from '../types';
+import LoadingDots from '../shared/ui/LoadingDots';
 
 type CountryCode = (typeof COUNTRY_CODES)[number];
 
@@ -527,7 +528,7 @@ const CompleteProfileContent: React.FC = () => {
                     disabled={loading}
                     className="flex-1 bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2"
                   >
-                    {loading ? <Loader2 className="animate-spin" /> : t('profile_wizard.step5.confirm')}
+                    {loading ? <LoadingDots /> : t('profile_wizard.step5.confirm')}
                   </button>
                 </div>
               </div>
