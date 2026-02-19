@@ -102,11 +102,11 @@ const Home: React.FC = () => {
           </CardHeader>
           <CardContent className="px-0 pt-0 flex-1 flex flex-col">
             {isLoading ? (
-              <div className="h-[240px] flex flex-col gap-3">
+              <div className="flex-1 flex flex-col gap-3">
                 {Array.from({ length: 3 }).map((_, index) => (
                   <div
                     key={`skeleton-mini-${index}`}
-                    className="flex-1 flex items-center justify-between rounded-2xl bg-[var(--color-surface)] dark:bg-[var(--color-surface-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] px-4 py-4 animate-pulse"
+                    className="flex-1 flex items-center justify-between rounded-2xl bg-white dark:bg-[#1A1B1D] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] px-4 py-4 animate-pulse"
                   >
                     <div className="flex items-center gap-3">
                       <div className="h-10 w-10 rounded-2xl bg-gray-200 dark:bg-gray-700" />
