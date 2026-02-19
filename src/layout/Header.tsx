@@ -1,5 +1,4 @@
 import React from 'react';
-import { ThemeToggle } from '../shared/ui/ThemeToggle';
 import { GraduationCap } from 'lucide-react';
 
 const Header: React.FC = () => {
@@ -16,13 +15,8 @@ const Header: React.FC = () => {
           </span>
         </div>
 
-        {/* Spacer for Desktop to push content to right */}
+        {/* Spacer for Desktop to keep height, but fără banner pe dreapta */}
         <div className="hidden md:block" />
-
-        {/* Right: Theme */}
-        <div id="header-profile" className="flex items-center gap-4">
-          <ThemeToggle />
-        </div>
       </div>
     </header>
   );

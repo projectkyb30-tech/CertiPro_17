@@ -103,7 +103,7 @@ const Home: React.FC = () => {
           </CardHeader>
           <CardContent className="px-0 pt-0 flex-1 flex flex-col">
             {isLoading ? (
-              <div className="space-y-3 max-h-[260px] overflow-hidden">
+              <div className="space-y-3 flex-1 flex flex-col">
                 {Array.from({ length: 3 }).map((_, index) => (
                   <motion.div
                     key={`skeleton-${index}`}
@@ -111,6 +111,7 @@ const Home: React.FC = () => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.25 }}
+                    className="flex-1"
                   >
                     <SkeletonCard />
                   </motion.div>
