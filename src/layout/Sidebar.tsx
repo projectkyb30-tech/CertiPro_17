@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { ROUTES } from '../routes/paths';
-import { 
-  Home, 
-  BookOpen, 
+import {
+  Home,
+  BookOpen,
   Layers,
-  Settings, 
-  LogOut, 
+  Settings,
+  LogOut,
   GraduationCap,
   ClipboardList,
 } from 'lucide-react';
@@ -14,7 +14,7 @@ import { useUserStore } from '../store/useUserStore';
 
 const Sidebar: React.FC = () => {
   const navigate = useNavigate();
-  useUserStore();
+  const { user } = useUserStore();
 
   const handleLogout = async () => {
     navigate(ROUTES.LOGOUT);
@@ -63,6 +63,37 @@ const Sidebar: React.FC = () => {
           </NavLink>
         ))}
       </nav>
+
+      {/* Profile Mini Card */}
+      <div className="px-4 pb-2">
+        <button
+          type="button"
+          onClick={() => navigate(ROUTES.PROFILE)}
+          className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl bg-[var(--color-surface)] dark:bg-[var(--color-surface-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] hover:bg-primary/5 dark:hover:bg-primary/10 transition-all duration-200"
+        >
+          <div className="w-10 h-10 rounded-xl bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)] overflow-hidden border border-[var(--color-border)] dark:border-[var(--color-border-dark)] shadow-sm flex items-center justify-center">
+            {user?.avatarUrl ? (
+              <img
+                src={user.avatarUrl}
+                alt={user.fullName || 'User'}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <span className="text-sm font-semibold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
+                {(user?.fullName || 'U').charAt(0)}
+              </span>
+            )}
+          </div>
+          <div className="flex flex-col items-start overflow-hidden">
+            <span className="text-sm font-semibold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] truncate max-w-[150px]">
+              {user?.fullName || 'User'}
+            </span>
+            <span className="text-xs text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
+              Level {user ? Math.floor(user.xp / 1000) + 1 : 1} Student
+            </span>
+          </div>
+        </button>
+      </div>
 
       {/* Footer / Logout */}
       <div className="p-4 border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
