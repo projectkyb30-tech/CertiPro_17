@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, ChevronLeft, ChevronRight, Lock } from 'lucide-react';
 import DailyFocus from '../features/dashboard/components/DailyFocus';
 import CourseCard from '../features/courses/components/CourseCard';
 import { useUserStore } from '../store/useUserStore';
 import { useCourseStore } from '../store/useCourseStore';
 import { SkeletonCard } from '../shared/ui/Skeleton';
 import Card, { CardHeader, CardTitle, CardContent } from '../shared/ui/Card';
-import EmptyCoursesHero from '../features/dashboard/components/EmptyCoursesHero';
 import Button from '../shared/ui/Button';
 
 const buildMonthMatrix = (date: Date) => {
@@ -129,7 +128,43 @@ const Home: React.FC = () => {
                 </div>
               </div>
             ) : purchasedCourses.length === 0 ? (
-              <EmptyCoursesHero />
+              <div className="relative overflow-hidden rounded-3xl bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] p-5 shadow-sm min-h-[260px] flex items-stretch">
+                <div className="w-full space-y-3 opacity-60 blur-[1.5px] pointer-events-none select-none">
+                  {Array.from({ length: 3 }).map((_, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center justify-between rounded-2xl bg-[var(--color-surface)] dark:bg-[var(--color-surface-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] px-4 py-3"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="h-10 w-10 rounded-2xl bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
+                        <div className="space-y-1">
+                          <div className="h-3 w-32 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
+                          <div className="h-2.5 w-40 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
+                        </div>
+                      </div>
+                      <div className="h-3 w-16 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-full h-full rounded-3xl bg-gradient-to-b from-white/85 via-white/80 to-white/85 dark:from-black/65 dark:via-black/70 dark:to-black/70 flex items-center justify-center">
+                    <div className="flex flex-col items-center text-center gap-3 px-6 max-w-sm mx-auto">
+                      <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 text-primary">
+                        <Lock className="w-5 h-5" />
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-sm font-semibold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
+                          Cursurile tale sunt blocate momentan
+                        </p>
+                        <p className="text-xs text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
+                          Deblochează un curs din catalog pentru a-ți vedea aici progresul și conținutul complet.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             ) : (
               <div className="space-y-3">
                 {purchasedCourses.map((course) => (
