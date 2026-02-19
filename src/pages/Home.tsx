@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Search } from 'lucide-react';
+import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import DailyFocus from '../features/dashboard/components/DailyFocus';
 import CourseCard from '../features/courses/components/CourseCard';
 import { useUserStore } from '../store/useUserStore';
@@ -9,6 +9,33 @@ import { SkeletonCard } from '../shared/ui/Skeleton';
 import Card, { CardHeader, CardTitle, CardContent } from '../shared/ui/Card';
 import EmptyCoursesHero from '../features/dashboard/components/EmptyCoursesHero';
 import Button from '../shared/ui/Button';
+
+const buildMonthMatrix = (date: Date) => {
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const firstDay = new Date(year, month, 1);
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const startOffset = (firstDay.getDay() + 6) % 7;
+  const weeks: (number | null)[][] = [];
+  let day = 1 - startOffset;
+
+  while (day <= daysInMonth) {
+    const week: (number | null)[] = [];
+    for (let i = 0; i < 7; i++) {
+      if (day < 1 || day > daysInMonth) {
+        week.push(null);
+      } else {
+        week.push(day);
+      }
+      day++;
+    }
+    weeks.push(week);
+  }
+
+  const monthLabel = date.toLocaleString('ro-RO', { month: 'long', year: 'numeric' });
+
+  return { weeks, monthLabel, year, month };
+};
 
 const Home: React.FC = () => {
   const { courses, isLoading, error } = useCourseStore();
@@ -19,6 +46,9 @@ const Home: React.FC = () => {
   );
 
   const primaryCourse = purchasedCourses[0];
+  const [calendarDate, setCalendarDate] = useState(() => new Date());
+  const { weeks, monthLabel } = buildMonthMatrix(calendarDate);
+  const today = new Date();
 
   return (
     <div className="space-y-8">
@@ -126,8 +156,81 @@ const Home: React.FC = () => {
             </CardHeader>
             <CardContent className="px-0 pt-0">
               <div className="rounded-3xl bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] p-5 shadow-sm">
-                <p className="text-sm text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
-                  Integrarea cu calendarul tău va fi disponibilă în curând. Până atunci, poți urmări progresul direct din cursuri și examene.
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <p className="text-xs font-medium uppercase tracking-wide text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
+                      Luna curentă
+                    </p>
+                    <p className="text-sm font-semibold text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)]">
+                      {monthLabel}
+                    </p>
+                  </div>
+                  <div className="inline-flex items-center rounded-full bg-[var(--color-surface)] dark:bg-[var(--color-surface-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setCalendarDate((prev) => new Date(prev.getFullYear(), prev.getMonth() - 1, 1))
+                      }
+                      className="p-1.5 text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)]"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setCalendarDate((prev) => new Date(prev.getFullYear(), prev.getMonth() + 1, 1))
+                      }
+                      className="p-1.5 text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)]"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="grid grid-cols-7 gap-1 text-[10px] font-medium text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
+                    {['L', 'Ma', 'Mi', 'J', 'V', 'S', 'D'].map((label) => (
+                      <div key={label} className="flex items-center justify-center h-6">
+                        {label}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="grid grid-cols-7 gap-1 text-xs">
+                    {weeks.map((week, wi) =>
+                      week.map((day, di) => {
+                        if (!day) {
+                          return (
+                            <div
+                              key={`${wi}-${di}`}
+                              className="h-8 flex items-center justify-center text-[var(--color-muted-foreground)]/40 dark:text-[var(--color-muted-foreground-dark)]/40"
+                            />
+                          );
+                        }
+
+                        const isToday =
+                          day === today.getDate() &&
+                          calendarDate.getMonth() === today.getMonth() &&
+                          calendarDate.getFullYear() === today.getFullYear();
+
+                        return (
+                          <div
+                            key={`${wi}-${di}`}
+                            className={`h-8 flex items-center justify-center rounded-full text-xs cursor-default ${
+                              isToday
+                                ? 'bg-[var(--color-primary)] text-white font-semibold'
+                                : 'text-[var(--color-foreground)] dark:text-[var(--color-foreground-dark)] hover:bg-[var(--color-surface)] dark:hover:bg-[var(--color-surface-dark)]'
+                            }`}
+                          >
+                            {day}
+                          </div>
+                        );
+                      })
+                    )}
+                  </div>
+                </div>
+
+                <p className="mt-4 text-xs text-[var(--color-muted-foreground)] dark:text-[var(--color-muted-foreground-dark)]">
+                  Integrarea cu calendarul tău va fi extinsă în versiunile următoare. Deocamdată, poți urmări progresul direct din cursuri și examene.
                 </p>
               </div>
             </CardContent>
