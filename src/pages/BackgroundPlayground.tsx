@@ -16,7 +16,7 @@ const BACKGROUNDS = [
 
 const BackgroundPlayground: React.FC = () => {
   const [selectedId, setSelectedId] = useState<string>('dot-grid');
-  const { theme, setTheme, toggleTheme } = useThemeStore();
+  const { theme, setTheme } = useThemeStore();
 
   const selected = BACKGROUNDS.find(bg => bg.id === selectedId) ?? BACKGROUNDS[0];
 
