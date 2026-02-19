@@ -129,11 +129,11 @@ const Home: React.FC = () => {
               </div>
             ) : purchasedCourses.length === 0 ? (
               <div className="relative overflow-hidden rounded-3xl bg-[var(--color-card)] dark:bg-[var(--color-card-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] p-5 shadow-sm flex-1 flex items-stretch">
-                <div className="w-full space-y-3 opacity-60 blur-[1.5px] pointer-events-none select-none flex flex-col">
-                  {Array.from({ length: 4 }).map((_, index) => (
+                <div className="w-full h-full opacity-60 blur-[1.5px] pointer-events-none select-none flex flex-col gap-3">
+                  {Array.from({ length: 3 }).map((_, index) => (
                     <div
                       key={index}
-                      className="flex items-center justify-between rounded-2xl bg-[var(--color-surface)] dark:bg-[var(--color-surface-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] px-4 py-3"
+                      className="flex-1 flex items-center justify-between rounded-2xl bg-[var(--color-surface)] dark:bg-[var(--color-surface-dark)] border border-[var(--color-border)] dark:border-[var(--color-border-dark)] px-4 py-4"
                     >
                       <div className="flex items-center gap-3">
                         <div className="h-10 w-10 rounded-2xl bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
@@ -143,9 +143,10 @@ const Home: React.FC = () => {
                           <div className="h-2 w-24 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
                         </div>
                       </div>
-                      <div className="space-y-1 items-end flex flex-col">
+                      <div className="h-full flex flex-col items-end justify-center space-y-2">
                         <div className="h-3 w-16 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
                         <div className="h-2 w-10 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
+                        <div className="h-1.5 w-12 rounded-full bg-[var(--color-muted)] dark:bg-[var(--color-muted-dark)]" />
                       </div>
                     </div>
                   ))}
