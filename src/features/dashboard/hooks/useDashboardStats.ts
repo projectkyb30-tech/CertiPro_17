@@ -134,12 +134,14 @@ export const useDashboardStats = () => {
         // Instead of fetching thousands of rows, we get a single lightweight JSON
         const data = await dashboardApi.getDashboardStats() as DashboardStatsResponse | null;
         if (data) {
-             // Helper to add height property
-             const addHeight = (arr: DashboardGraphPoint[]) => {
-                 const max = Math.max(...arr.map(i => i.value), 1);
-                 return arr.map(i => ({
+             const normalizeGraph = (arr?: DashboardGraphPoint[] | null) =>
+                 Array.isArray(arr) ? arr : [];
+             const addHeight = (arr?: DashboardGraphPoint[] | null) => {
+                 const safe = normalizeGraph(arr);
+                 const max = Math.max(...safe.map(i => i.value), 1);
+                 return safe.map(i => ({
                      ...i,
-                     height: `${Math.max((i.value / max) * 100, 5)}%` // Min 5% height
+                     height: `${Math.max((i.value / max) * 100, 5)}%`
                  }));
              };
 
@@ -161,9 +163,9 @@ export const useDashboardStats = () => {
                 // xp: data.xp, 
                 // streak: data.streak,
                 stats: {
-                    week: { total: `${data.lessons_today} lecții`, average: 'Zilnic' }, // Simplified mapping
-                    month: { total: `${data.month_graph.reduce((acc, item) => acc + item.value, 0)} lecții`, average: 'Săptămânal' },
-                    all: { total: `${data.all_graph.reduce((acc, item) => acc + item.value, 0)} lecții`, average: 'Lunar' }
+                    week: { total: `${data.lessons_today} lecții`, average: 'Zilnic' },
+                    month: { total: `${normalizeGraph(data.month_graph).reduce((acc, item) => acc + item.value, 0)} lecții`, average: 'Săptămânal' },
+                    all: { total: `${normalizeGraph(data.all_graph).reduce((acc, item) => acc + item.value, 0)} lecții`, average: 'Lunar' }
                 }
              };
              setStats(nextStats);
