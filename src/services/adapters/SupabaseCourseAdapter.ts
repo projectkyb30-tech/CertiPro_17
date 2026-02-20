@@ -291,20 +291,6 @@ export class SupabaseCourseAdapter implements CourseAdapter {
    */
   async getLessonContent(lessonId: string): Promise<string | null> {
     try {
-      // Use the secure RPC helper (or query lesson_contents directly if RLS is set up)
-      // Since we implemented RLS on lesson_contents, we can just select from it.
-      // But we also created 'get_secure_lesson_content' RPC for convenience.
-      // Let's use the RPC as it encapsulates the logic cleanly.
-      
-      /* 
-         NOTE: If using direct table access with RLS:
-         const { data, error } = await supabase
-           .from('lesson_contents')
-           .select('content')
-           .eq('lesson_id', lessonId)
-           .single();
-      */
-
       const { data, error } = await supabase.rpc('get_secure_lesson_content', { 
         p_lesson_id: lessonId 
       });
@@ -314,7 +300,7 @@ export class SupabaseCourseAdapter implements CourseAdapter {
         return null;
       }
 
-      return data; // The text content
+      return data;
     } catch (error) {
       console.error('Error in getLessonContent:', error);
       return null;
