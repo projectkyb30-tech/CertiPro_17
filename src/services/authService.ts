@@ -4,6 +4,20 @@ import { UserProfile } from '../types';
 import { Capacitor } from '@capacitor/core';
 
 
+const withTimeout = async <T,>(promise: PromiseLike<T>, ms: number, label: string): Promise<T> => {
+  let timer: ReturnType<typeof setTimeout> | null = null;
+  try {
+    return await new Promise<T>((resolve, reject) => {
+      timer = setTimeout(() => {
+        reject(new Error(`${label} timed out`));
+      }, ms);
+      promise.then(resolve, reject);
+    });
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+};
+
 export const authService = {
   /**
    * Log in with email and password
@@ -174,25 +188,26 @@ export const authService = {
 
   async getCurrentUser(): Promise<UserProfile | null> {
     try {
-      // 1. Get session from Supabase client (handles auto-refresh)
-      const { data, error } = await supabase.auth.getSession();
+      console.error('[AuthService] getCurrentUser:start');
+      const { data, error } = await withTimeout(supabase.auth.getSession(), 8000, 'auth.getSession');
       
       if (error) {
-        console.warn('Supabase getSession error:', error.message);
+        console.error('[AuthService] getCurrentUser:session_error', { message: error.message });
         return null;
       }
 
       if (!data.session?.user) {
+        console.error('[AuthService] getCurrentUser:no_session');
         return null;
       }
 
       const user = data.session.user;
       const role = user.app_metadata?.role || user.user_metadata?.role;
 
-      // 2. Fetch full profile from DB
+      console.error('[AuthService] getCurrentUser:session_ok', { userId: user.id });
       return this.getUserProfile(user.id, user.email!, role);
     } catch (err) {
-      console.error('getCurrentUser failed:', err);
+      console.error('[AuthService] getCurrentUser:failed', err);
       return null;
     }
   },
@@ -240,14 +255,19 @@ export const authService = {
 
   // Helper to fetch profile
   async getUserProfile(userId: string, email: string, role?: string): Promise<UserProfile> {
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .single();
+    console.error('[AuthService] getUserProfile:start', { userId });
+    const { data, error } = await withTimeout(
+      supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', userId)
+        .single(),
+      8000,
+      'profiles.select'
+    );
 
     if (error || !data) {
-      console.warn('Profile not found in DB, using temporary session profile.');
+      console.error('[AuthService] getUserProfile:not_found', { userId });
       // Return a temporary object derived from auth data ONLY. 
       // Do NOT attempt to insert into DB (violates RLS).
       const now = new Date().toISOString();
@@ -269,6 +289,7 @@ export const authService = {
       };
     }
 
+    console.error('[AuthService] getUserProfile:success', { userId });
     return this.mapProfileToUser(data, role);
   },
 

@@ -33,6 +33,20 @@ type ModuleRow = {
   lessons?: LessonRow[] | null;
 };
 
+const withTimeout = async <T,>(promise: PromiseLike<T>, ms: number, label: string): Promise<T> => {
+  let timer: ReturnType<typeof setTimeout> | null = null;
+  try {
+    return await new Promise<T>((resolve, reject) => {
+      timer = setTimeout(() => {
+        reject(new Error(`${label} timed out`));
+      }, ms);
+      promise.then(resolve, reject);
+    });
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+};
+
 const toLessonType = (value: string): LessonType => {
   if (value === 'video' || value === 'quiz' || value === 'code' || value === 'presentation' || value === 'react') {
     return value;
@@ -54,43 +68,49 @@ export class SupabaseCourseAdapter implements CourseAdapter {
    */
   async getAllCourses(): Promise<Course[]> {
     try {
-      // 1. Fetch courses first (public data)
-      const { data: coursesData, error: coursesError } = await supabase
-        .from('courses')
-        .select('id, title, description, icon, total_lessons, duration_hours, price, is_published')
-        .eq('is_published', true)
-        .order('price', { ascending: true });
+      console.error('[CourseAdapter] getAllCourses:start');
+      const { data: coursesData, error: coursesError } = await withTimeout(
+        supabase
+          .from('courses')
+          .select('id, title, description, icon, total_lessons, duration_hours, price, is_published')
+          .eq('is_published', true)
+          .order('price', { ascending: true }),
+        8000,
+        'courses.select'
+      );
 
       if (coursesError) throw coursesError;
       if (!coursesData) return [];
+      console.error('[CourseAdapter] getAllCourses:courses_ok', { count: coursesData.length });
 
-      // 2. Try to get current user session
       let user: { id: string } | null = null;
       try {
-        // Use getSession() which is safer and doesn't always trigger a network call
-        const { data } = await supabase.auth.getSession();
+        const { data } = await withTimeout(supabase.auth.getSession(), 6000, 'auth.getSession');
         user = data.session?.user ?? null;
+        console.error('[CourseAdapter] getAllCourses:session_ok', { hasUser: !!user });
       } catch (authError) {
-        console.warn('Supabase auth session check failed:', authError);
-        // Continue as guest
+        console.error('[CourseAdapter] getAllCourses:session_error', authError);
       }
 
-      // 3. Fetch user-specific data only if user exists
       const enrollmentMap = new Map<string, { progress: number }>();
       const purchaseSet = new Set<string>();
 
       if (user) {
         try {
-          const [enrollmentsRes, purchasesRes] = await Promise.all([
-            supabase
-              .from('enrollments')
-              .select('course_id, progress_percent')
-              .eq('user_id', user.id),
-            supabase
-              .from('user_purchases')
-              .select('course_id')
-              .eq('user_id', user.id)
-          ]);
+          const [enrollmentsRes, purchasesRes] = await withTimeout(
+            Promise.all([
+              supabase
+                .from('enrollments')
+                .select('course_id, progress_percent')
+                .eq('user_id', user.id),
+              supabase
+                .from('user_purchases')
+                .select('course_id')
+                .eq('user_id', user.id)
+            ]),
+            8000,
+            'user_course_data'
+          );
 
           if (enrollmentsRes.data) {
             enrollmentsRes.data.forEach((e) => {
@@ -104,13 +124,12 @@ export class SupabaseCourseAdapter implements CourseAdapter {
             });
           }
         } catch (userDataError) {
-          console.error('Failed to fetch user specific course data:', userDataError);
-          // Don't crash the whole app, just show courses as locked
+          console.error('[CourseAdapter] getAllCourses:user_data_error', userDataError);
         }
       }
 
-      // 4. Map to Course interface
       const courses = (coursesData || []) as CourseRow[];
+      console.error('[CourseAdapter] getAllCourses:map', { count: courses.length, hasUser: !!user });
       return courses.map((c) => {
         const enrollment = enrollmentMap.get(c.id);
         const hasPurchased = purchaseSet.has(c.id);

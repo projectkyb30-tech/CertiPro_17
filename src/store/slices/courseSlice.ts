@@ -81,7 +81,7 @@ export const createCourseSlice: StateCreator<CourseSlice> = (set, get) => ({
     try {
       // Add a safety timeout to prevent infinite loading state
       const timeoutPromise = new Promise<never>((_, reject) =>
-        setTimeout(() => reject(new Error('Request timed out')), 15000)
+        setTimeout(() => reject(new Error('Courses request timed out')), 15000)
       );
 
       const coursesPromise = courseService.getAllCourses();
