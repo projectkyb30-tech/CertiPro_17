@@ -2,7 +2,6 @@ import { Suspense, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Toaster } from 'sonner';
 import { useThemeStore } from './store/useThemeStore';
-import { useCourseStore } from './store/useCourseStore';
 import ErrorBoundary from './shared/components/ErrorBoundary';
 import AppRoutes from './routes/AppRoutes';
 import { supabase } from './services/supabase';
@@ -19,7 +18,6 @@ const PageLoader = () => (
 
 function App() {
   const { theme } = useThemeStore();
-  const { fetchCourses } = useCourseStore();
   const { checkSession, user } = useUserStore();
 
   useEffect(() => {
