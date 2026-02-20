@@ -35,14 +35,19 @@ export const createCourseSlice: StateCreator<CourseSlice> = (set, get) => ({
     const state = get();
     const currentUserId = (state as { user?: { id?: string } | null }).user?.id ?? null;
     
+    // console.log('[CourseSlice] Fetching courses...', { currentUserId, options, hasCourses: state.courses.length > 0 });
+
     // 1. Reset if user changed
+    // NOTE: We intentionally clear courses if the user ID changes to avoid showing old user data.
     if (state.lastUserId !== currentUserId) {
+      // console.log('[CourseSlice] User changed, resetting courses.');
       set({
-        courses: [],
+        courses: [], // CLEAR COURSES ON USER CHANGE
         lessonContentCache: {},
         coursesFetchedAt: null,
         courseDetailsFetchedAt: {},
-        lastUserId: currentUserId
+        lastUserId: currentUserId,
+        isCourseLoading: true // Ensure loading state is true when resetting
       });
     }
 
@@ -52,24 +57,28 @@ export const createCourseSlice: StateCreator<CourseSlice> = (set, get) => ({
     const isStale = Date.now() - lastFetchedAt > COURSES_STALE_MS;
     const shouldForce = options?.force === true;
 
-    // Prevent concurrent fetches or redundant fetches
-    if (state.isCourseLoading && !shouldForce) return;
+    // If we have data, it's fresh, and we are not forced -> STOP.
+    // BUT if we just cleared the courses (hasCourses is false), we MUST proceed.
+    if (!shouldForce && hasCourses && !isStale) {
+        // If we are already loading, just return to avoid double fetch
+        if (state.isCourseLoading) return;
+        // console.log('[CourseSlice] Courses are fresh, skipping fetch.');
+        return;
+    }
     
-    // If we have an error, stop (unless forced). This prevents loops.
-    if (!shouldForce && state.courseError) return;
-
-    // If we have data and it's fresh, stop.
-    if (!shouldForce && hasCourses && !isStale) return;
+    // If we have an error and not forced, stop.
+    if (!shouldForce && state.courseError) {
+        // console.log('[CourseSlice] Previous error exists, skipping fetch.');
+        return;
+    }
 
     // 3. Start Loading
-    if (!hasCourses) {
-      set({ isCourseLoading: true, courseError: null });
-    } else {
-      set({ courseError: null });
-    }
+    // console.log('[CourseSlice] Starting fetch from API...');
+    set({ isCourseLoading: true, courseError: null });
 
     try {
       const courses = await courseService.getAllCourses();
+      // console.log('[CourseSlice] Fetch success, courses:', courses.length);
       set({
         courses: courses || [],
         isCourseLoading: false,
