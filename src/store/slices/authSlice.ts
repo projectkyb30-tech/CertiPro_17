@@ -31,7 +31,7 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
 
   checkSession: async () => {
     const state = get();
-    console.info('[Auth] checkSession:start', { hasUser: !!state.user });
+    console.error('[Auth] checkSession:start', { hasUser: !!state.user });
     if (!state.user) {
       set({ isAuthLoading: true });
     } else {
@@ -53,14 +53,14 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
           user,
           isAuthLoading: false
         });
-        console.info('[Auth] checkSession:resolved', { userId: user.id });
+        console.error('[Auth] checkSession:resolved', { userId: user.id });
       } else {
         set({
           isAuthenticated: false,
           user: null,
           isAuthLoading: false
         });
-        console.info('[Auth] checkSession:resolved', { userId: null });
+        console.error('[Auth] checkSession:resolved', { userId: null });
       }
       await refetchCoursesForCurrentUser();
     } catch {
@@ -69,7 +69,7 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
         user: null,
         isAuthLoading: false
       });
-      console.info('[Auth] checkSession:error');
+      console.error('[Auth] checkSession:error');
       await refetchCoursesForCurrentUser();
     }
   },

@@ -6,10 +6,13 @@ import ErrorBoundary from './shared/components/ErrorBoundary';
 import AppRoutes from './routes/AppRoutes';
 import { supabase } from './services/supabase';
 import { useUserStore } from './store/useUserStore';
+import { useCourseStore } from './store/useCourseStore';
 import { setUser } from './shared/monitoring';
 import { SkeletonPage } from './shared/ui/Skeleton';
 import { App as CapApp } from '@capacitor/app';
 import type { AuthChangeEvent } from '@supabase/supabase-js';
+
+console.error('[Build] CertiPro app loaded');
 
 // Loading fallback
 const PageLoader = () => (
@@ -18,10 +21,11 @@ const PageLoader = () => (
 
 function App() {
   const { theme } = useThemeStore();
-  const { checkSession, user } = useUserStore();
+  const { checkSession, user, isLoading: isAuthLoading } = useUserStore();
+  const { isLoading: isCourseLoading, courses, error: courseError } = useCourseStore();
 
   useEffect(() => {
-    console.info('[App] init:checkSession');
+    console.error('[App] init:checkSession');
     checkSession();
     // Note: We don't call fetchCourses() here manually anymore because checkSession()
     // triggers it internally once the user is resolved. This prevents double-fetching
@@ -44,7 +48,7 @@ function App() {
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event: AuthChangeEvent) => {
-      console.info('[App] authStateChange', { event });
+      console.error('[App] authStateChange', { event });
       if (['SIGNED_IN', 'TOKEN_REFRESHED', 'SIGNED_OUT'].includes(event)) {
         await checkSession();
       }
@@ -58,6 +62,26 @@ function App() {
   useEffect(() => {
     setUser(user ? { id: user.id } : null);
   }, [user]);
+
+  useEffect(() => {
+    if (!isAuthLoading) return;
+    const timer = window.setTimeout(() => {
+      console.error('[Auth] loading_timeout', { userId: user?.id ?? null });
+    }, 8000);
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [isAuthLoading, user]);
+
+  useEffect(() => {
+    if (!isCourseLoading) return;
+    const timer = window.setTimeout(() => {
+      console.error('[CourseSlice] loading_timeout', { count: courses.length, courseError });
+    }, 8000);
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [isCourseLoading, courses.length, courseError]);
 
   useEffect(() => {
     // Apply theme on app mount
