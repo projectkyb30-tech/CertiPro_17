@@ -108,19 +108,6 @@ export class SupabaseCourseAdapter implements CourseAdapter {
           // Don't crash the whole app, just show courses as locked
         }
       }
-        
-        if (enrollmentsRes.data) {
-          enrollmentsRes.data.forEach((e: { course_id: string; progress_percent: number }) => {
-            enrollmentMap.set(e.course_id, { progress: e.progress_percent });
-          });
-        }
-
-        if (purchasesRes.data) {
-          purchasesRes.data.forEach((p: { course_id: string }) => {
-            purchaseSet.add(p.course_id);
-          });
-        }
-      }
 
       // 4. Map to Course interface
       const courses = (coursesData || []) as CourseRow[];
