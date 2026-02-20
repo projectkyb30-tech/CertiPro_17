@@ -21,7 +21,7 @@ function App() {
   const { checkSession, user } = useUserStore();
 
   useEffect(() => {
-    // Initial session check
+    console.info('[App] init:checkSession');
     checkSession();
     // Note: We don't call fetchCourses() here manually anymore because checkSession()
     // triggers it internally once the user is resolved. This prevents double-fetching
@@ -44,11 +44,10 @@ function App() {
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event: AuthChangeEvent) => {
-      // Only react to events that change the session state significantly
+      console.info('[App] authStateChange', { event });
       if (['SIGNED_IN', 'TOKEN_REFRESHED', 'SIGNED_OUT'].includes(event)) {
         await checkSession();
       }
-      // Note: We ignore INITIAL_SESSION here because we already called checkSession() manually on mount.
     });
 
     return () => {

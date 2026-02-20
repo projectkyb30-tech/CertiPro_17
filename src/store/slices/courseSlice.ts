@@ -35,7 +35,7 @@ export const createCourseSlice: StateCreator<CourseSlice> = (set, get) => ({
     const state = get();
     const currentUserId = (state as { user?: { id?: string } | null }).user?.id ?? null;
     
-    // console.log('[CourseSlice] Fetching courses...', { currentUserId, options, hasCourses: state.courses.length > 0 });
+    console.info('[CourseSlice] fetchCourses:start', { currentUserId, options, hasCourses: state.courses.length > 0 });
 
     // 1. Reset if user changed
     // NOTE: We intentionally clear courses if the user ID changes to avoid showing old user data.
@@ -60,21 +60,23 @@ export const createCourseSlice: StateCreator<CourseSlice> = (set, get) => ({
     // If we have data, it's fresh, and we are not forced -> STOP.
     // BUT if we just cleared the courses (hasCourses is false), we MUST proceed.
     if (!shouldForce && hasCourses && !isStale) {
-        // If we are already loading, just return to avoid double fetch
-        if (state.isCourseLoading) return;
-        // console.log('[CourseSlice] Courses are fresh, skipping fetch.');
+        if (state.isCourseLoading) {
+          set({ isCourseLoading: false });
+        }
+        console.info('[CourseSlice] fetchCourses:skip_fresh', { isCourseLoading: get().isCourseLoading, isStale, hasCourses });
         return;
     }
     
     // If we have an error and not forced, stop.
     if (!shouldForce && state.courseError) {
-        // console.log('[CourseSlice] Previous error exists, skipping fetch.');
+        console.info('[CourseSlice] fetchCourses:skip_error', { courseError: state.courseError });
+        set({ isCourseLoading: false });
         return;
     }
 
     // 3. Start Loading
-    // console.log('[CourseSlice] Starting fetch from API...');
     set({ isCourseLoading: true, courseError: null });
+    console.info('[CourseSlice] fetchCourses:loading_true');
 
     try {
       // Add a safety timeout to prevent infinite loading state
@@ -86,7 +88,7 @@ export const createCourseSlice: StateCreator<CourseSlice> = (set, get) => ({
       
       const courses = await Promise.race([coursesPromise, timeoutPromise]);
       
-      // console.log('[CourseSlice] Fetch success, courses:', courses.length);
+      console.info('[CourseSlice] fetchCourses:success', { count: (courses || []).length });
       set({
         courses: courses || [],
         isCourseLoading: false,
@@ -101,6 +103,7 @@ export const createCourseSlice: StateCreator<CourseSlice> = (set, get) => ({
 
       if (isAbortError) {
         set({ isCourseLoading: false });
+        console.info('[CourseSlice] fetchCourses:abort');
         return;
       }
 

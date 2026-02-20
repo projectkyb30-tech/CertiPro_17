@@ -31,9 +31,7 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
 
   checkSession: async () => {
     const state = get();
-    // 1. Optimistic check: If we have a user in state (from persistence), 
-    // keep them logged in but assume loading is false to show UI immediately.
-    // We only set loading=true if we really have NO idea who the user is.
+    console.info('[Auth] checkSession:start', { hasUser: !!state.user });
     if (!state.user) {
       set({ isAuthLoading: true });
     } else {
@@ -43,13 +41,11 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
     const refetchCoursesForCurrentUser = async () => {
       const store = get() as AuthSlice & StoreWithCourses;
       if (typeof store.fetchCourses === 'function') {
-        // Force course reload to sync with new user state
         await store.fetchCourses({ force: true });
       }
     };
 
     try {
-      // 2. Silent validation in background
       const user = await authService.getCurrentUser();
       if (user) {
         set({
@@ -57,24 +53,23 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
           user,
           isAuthLoading: false
         });
+        console.info('[Auth] checkSession:resolved', { userId: user.id });
       } else {
-        // Only clear if server explicitly says "Token Invalid"
         set({
           isAuthenticated: false,
           user: null,
           isAuthLoading: false
         });
+        console.info('[Auth] checkSession:resolved', { userId: null });
       }
       await refetchCoursesForCurrentUser();
     } catch {
-      // If network fails, keep the persisted user if possible (Offline Mode support)
-      // or clear if it was a hard auth error.
-      // For safety, we clear if we can't verify.
       set({
         isAuthenticated: false,
         user: null,
         isAuthLoading: false
       });
+      console.info('[Auth] checkSession:error');
       await refetchCoursesForCurrentUser();
     }
   },
