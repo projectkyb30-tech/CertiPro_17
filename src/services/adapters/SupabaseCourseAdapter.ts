@@ -81,27 +81,36 @@ export class SupabaseCourseAdapter implements CourseAdapter {
           'courses.select'
         );
 
-      let coursesData: unknown;
+      let coursesData: CourseRow[] | null = null;
       let coursesError: unknown = null;
 
-      try {
-        const result = await fetchOnce();
-        // @ts-expect-error Supabase typed response
+      const runFetch = async () => {
+        const result = (await fetchOnce()) as { data: CourseRow[] | null; error: unknown };
         coursesData = result.data;
-        // @ts-expect-error Supabase typed response
         coursesError = result.error;
+      };
+
+      try {
+        await runFetch();
       } catch (error) {
         const isTimeout = error instanceof Error && error.message.includes('timed out');
         if (!isTimeout) {
           throw error;
         }
         console.error('[CourseAdapter] getAllCourses:timeout_retry', error);
-        const result = await fetchOnce();
-        // @ts-expect-error Supabase typed response
-        coursesData = result.data;
-        // @ts-expect-error Supabase typed response
-        coursesError = result.error;
+        await runFetch();
       }
+
+      if (coursesError) throw coursesError;
+      if (!coursesData) return [];
+      const typedCourses = (coursesData ?? []) as CourseRow[];
+      if (import.meta.env.DEV) {
+        console.log('[CourseAdapter] getAllCourses:courses_ok', { count: typedCourses.length });
+      }
+
+      let user: { id: string } | null = null;
+      try {
+        const { data } = await withTimeout(supabase.auth.getSession(), 6000, 'auth.getSession');
         user = data.session?.user ?? null;
         if (import.meta.env.DEV) {
           console.log('[CourseAdapter] getAllCourses:session_ok', { hasUser: !!user });
@@ -146,7 +155,7 @@ export class SupabaseCourseAdapter implements CourseAdapter {
         }
       }
 
-      const courses = (coursesData || []) as CourseRow[];
+      const courses = typedCourses;
       if (import.meta.env.DEV) {
         console.log('[CourseAdapter] getAllCourses:map', { count: courses.length, hasUser: !!user });
       }
