@@ -2,9 +2,7 @@
 import { supabase } from './supabase';
 import { UserProfile } from '../types';
 import { Capacitor } from '@capacitor/core';
-import { fetchWithRetry } from '../utils/fetchUtils';
 
-const apiBase = import.meta.env.VITE_API_URL || '/api';
 
 export const authService = {
   /**
