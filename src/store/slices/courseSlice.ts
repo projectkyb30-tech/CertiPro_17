@@ -77,7 +77,15 @@ export const createCourseSlice: StateCreator<CourseSlice> = (set, get) => ({
     set({ isCourseLoading: true, courseError: null });
 
     try {
-      const courses = await courseService.getAllCourses();
+      // Add a safety timeout to prevent infinite loading state
+      const timeoutPromise = new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error('Request timed out')), 15000)
+      );
+
+      const coursesPromise = courseService.getAllCourses();
+      
+      const courses = await Promise.race([coursesPromise, timeoutPromise]);
+      
       // console.log('[CourseSlice] Fetch success, courses:', courses.length);
       set({
         courses: courses || [],

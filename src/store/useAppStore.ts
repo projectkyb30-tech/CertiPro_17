@@ -54,6 +54,12 @@ export const useAppStore = create<AppState>()(
         tutorialStepIndex: state.tutorialStepIndex,
         // Theme
         theme: state.theme,
+        // Courses (Cache)
+        courses: state.courses,
+        coursesFetchedAt: state.coursesFetchedAt,
+        courseDetailsFetchedAt: state.courseDetailsFetchedAt,
+        lastUserId: state.lastUserId,
+        lessonContentCache: state.lessonContentCache,
       }),
     }
   )
