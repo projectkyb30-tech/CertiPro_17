@@ -31,13 +31,13 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
 
   checkSession: async () => {
     const state = get();
-    if (!state.user) {
-      set({ isAuthLoading: true });
-    }
+    // Always start with loading true to prevent flicker
+    set({ isAuthLoading: true });
 
     const refetchCoursesForCurrentUser = async () => {
       const store = get() as AuthSlice & StoreWithCourses;
       if (typeof store.fetchCourses === 'function') {
+        // Force course reload to sync with new user state
         await store.fetchCourses({ force: true });
       }
     };
