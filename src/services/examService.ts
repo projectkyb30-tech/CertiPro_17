@@ -52,7 +52,9 @@ export const examService = {
       if (examsError) throw examsError;
       if (!examsData) return [];
 
-      const { data: { user } } = await supabase.auth.getUser();
+      const { data: { session } } = await supabase.auth.getSession();
+      const user = session?.user;
+
       if (!user) return []; // Should handle no user better, but for now empty
 
       // 2. Fetch user attempts

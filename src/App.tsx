@@ -23,8 +23,11 @@ function App() {
   const { checkSession, user } = useUserStore();
 
   useEffect(() => {
+    // Initial session check
     checkSession();
-    fetchCourses();
+    // Note: We don't call fetchCourses() here manually anymore because checkSession()
+    // triggers it internally once the user is resolved. This prevents double-fetching
+    // and race conditions where fetchCourses() runs before the user is loaded.
 
     // Handle Deep Links for OAuth
     CapApp.addListener('appUrlOpen', async (data: { url: string }) => {
@@ -43,15 +46,17 @@ function App() {
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event: AuthChangeEvent) => {
-      if (['INITIAL_SESSION', 'SIGNED_IN', 'TOKEN_REFRESHED', 'SIGNED_OUT'].includes(event)) {
+      // Only react to events that change the session state significantly
+      if (['SIGNED_IN', 'TOKEN_REFRESHED', 'SIGNED_OUT'].includes(event)) {
         await checkSession();
       }
+      // Note: We ignore INITIAL_SESSION here because we already called checkSession() manually on mount.
     });
 
     return () => {
       subscription.unsubscribe();
     };
-  }, [checkSession, fetchCourses]);
+  }, [checkSession]);
 
   useEffect(() => {
     setUser(user ? { id: user.id } : null);

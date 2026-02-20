@@ -67,8 +67,8 @@ export class SupabaseCourseAdapter implements CourseAdapter {
       // 2. Try to get current user, but never fail hard on lock / auth storage issues
       let user: { id: string } | null = null;
       try {
-        const { data } = await supabase.auth.getUser();
-        user = data.user ?? null;
+        const { data } = await supabase.auth.getSession();
+        user = data.session?.user ?? null;
       } catch (authError: any) {
         const message = authError?.message ?? String(authError);
         const isLockError =
