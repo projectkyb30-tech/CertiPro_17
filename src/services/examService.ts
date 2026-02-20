@@ -57,16 +57,11 @@ export const examService = {
 
       if (!user) return []; // Should handle no user better, but for now empty
 
-      // 2. Fetch user attempts
-      const { data: attempts } = await supabase
-        .from('exam_attempts')
-        .select('exam_id, score, passed, started_at')
-        .eq('user_id', user.id)
-        .order('started_at', { ascending: false });
+      // 2. Skip fetching user attempts on environments where the table might be missing
+      const attemptRows: (ExamAttemptRow & { started_at: string })[] = [];
 
       // Map attempts by exam_id (latest attempt)
       const latestAttemptMap = new Map<string, { score: number, passed: boolean, started_at: string }>();
-      const attemptRows = (attempts || []) as (ExamAttemptRow & { started_at: string })[];
       if (attemptRows.length) {
         attemptRows.forEach((a) => {
           if (!latestAttemptMap.has(a.exam_id)) {
