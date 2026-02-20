@@ -30,7 +30,6 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
   authError: null,
 
   checkSession: async () => {
-    const state = get();
     // Always start with loading true to prevent flicker
     set({ isAuthLoading: true });
 
