@@ -6,33 +6,6 @@ import { fetchWithRetry } from '../utils/fetchUtils';
 
 const apiBase = import.meta.env.VITE_API_URL || '/api';
 
-export const getStoredAccessToken = (): string | null => {
-  try {
-    const keys = Object.keys(localStorage);
-    for (const key of keys) {
-      if (!key.startsWith('sb-') || !key.endsWith('auth-token')) continue;
-      const raw = localStorage.getItem(key);
-      if (!raw) continue;
-      try {
-        const parsed = JSON.parse(raw);
-        const token =
-          parsed?.access_token ||
-          parsed?.currentSession?.access_token ||
-          parsed?.session?.access_token;
-        if (typeof token === 'string' && token.length > 0) {
-          return token;
-        }
-      } catch {
-        // ignore JSON parse errors and continue
-      }
-    }
-  } catch {
-    // Access to localStorage might fail in some environments
-    return null;
-  }
-  return null;
-};
-
 export const authService = {
   /**
    * Log in with email and password
@@ -202,26 +175,28 @@ export const authService = {
 
 
   async getCurrentUser(): Promise<UserProfile | null> {
-    const token = getStoredAccessToken();
-    if (!token) return null;
-
-    const response = await fetchWithRetry(`${apiBase}/auth/me`, {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
-
-    if (!response.ok) {
-      if (response.status === 401) {
+    try {
+      // 1. Get session from Supabase client (handles auto-refresh)
+      const { data, error } = await supabase.auth.getSession();
+      
+      if (error) {
+        console.warn('Supabase getSession error:', error.message);
         return null;
       }
-      const result = await response.json().catch(() => null);
-      const message = result?.error || 'Failed to fetch current user';
-      throw new Error(message);
-    }
 
-    const payload = await response.json();
-    return payload.data as UserProfile;
+      if (!data.session?.user) {
+        return null;
+      }
+
+      const user = data.session.user;
+      const role = user.app_metadata?.role || user.user_metadata?.role;
+
+      // 2. Fetch full profile from DB
+      return this.getUserProfile(user.id, user.email!, role);
+    } catch (err) {
+      console.error('getCurrentUser failed:', err);
+      return null;
+    }
   },
 
   async updateProfile(updates: Partial<UserProfile>): Promise<UserProfile> {
