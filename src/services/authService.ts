@@ -249,7 +249,7 @@ export const authService = {
       dbUpdates.email = user.email;
     }
 
-    console.log('Sending upsert to Supabase:', dbUpdates);
+    // console.log('Sending upsert to Supabase:', dbUpdates);
 
     // Use upsert instead of update to handle cases where the profile row might be missing
     const { data, error } = await supabase
@@ -300,20 +300,7 @@ export const authService = {
   },
 
   // Mapper: DB (snake_case) -> App (CamelCase)
-  mapProfileToUser(dbProfile: {
-    id: string;
-    full_name?: string | null;
-    email?: string | null;
-    phone?: string | null;
-    bio?: string | null;
-    birth_date?: string | null;
-    streak?: number | null;
-    xp?: number | null;
-    lessons_completed_today?: number | null;
-    avatar_url?: string | null;
-    created_at?: string | null;
-    updated_at?: string | null;
-  }, authRole?: string): UserProfile {
+  mapProfileToUser(dbProfile: any, authRole?: string): UserProfile {
     return {
       id: dbProfile.id,
       fullName: dbProfile.full_name || dbProfile.email?.split('@')[0] || 'User',

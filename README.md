@@ -62,6 +62,32 @@ src/
 *   **Tutorial Interactiv:** Ghid pas-cu-pas pentru noii utilizatori (folosind `react-joyride`).
 *   **Suport Offline:** Arhitectură pregătită pentru PWA/Mobile.
 
+## 🧪 Testare
+
+Aplicația folosește **Vitest** pentru testarea unitară și **React Testing Library** pentru testarea componentelor.
+
+### Rulare Teste
+
+- **Rulare toate testele:**
+  ```bash
+  npm run test:run
+  ```
+
+- **Rulare teste în mod watch (interactiv):**
+  ```bash
+  npm test
+  ```
+
+- **Rulare teste cu interfață UI:**
+  ```bash
+  npm run test:ui
+  ```
+
+- **Generare raport de acoperire (Coverage):**
+  ```bash
+  npm run test:coverage
+  ```
+
 ## 🤝 Contribuție
 
 1.  Asigură-te că respecți structura de directoare existentă.

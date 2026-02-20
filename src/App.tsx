@@ -1,5 +1,6 @@
 import { Suspense, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Toaster } from 'sonner';
 import { useThemeStore } from './store/useThemeStore';
 import { useCourseStore } from './store/useCourseStore';
 import ErrorBoundary from './shared/components/ErrorBoundary';
@@ -65,6 +66,7 @@ function App() {
 
   return (
     <Router>
+      <Toaster position="top-right" richColors closeButton theme={theme as 'light' | 'dark'} />
       <ErrorBoundary>
         <Suspense fallback={<PageLoader />}>
           <AppRoutes />

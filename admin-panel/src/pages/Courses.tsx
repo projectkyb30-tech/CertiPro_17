@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Plus, Search, FileText, Loader2, Trash2, Edit } from 'lucide-react';
 import { adminApi } from '../services/api';
+import { toast } from 'sonner';
 
 export const Courses = () => {
   const navigate = useNavigate();
@@ -34,9 +35,10 @@ export const Courses = () => {
     if (confirm('Ești sigur că vrei să ștergi acest curs?')) {
       try {
         await adminApi.deleteCourse(id);
+        toast.success('Curs șters cu succes');
         setCourses(courses.filter(c => c.id !== id));
       } catch (err) {
-        alert('Eroare la ștergere');
+        toast.error('Eroare la ștergere');
       }
     }
   };

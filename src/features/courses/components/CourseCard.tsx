@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 import { Course } from '../../../types';
 import { ROUTES } from '../../../routes/paths';
 import { useUserStore } from '../../../store/useUserStore';
@@ -36,7 +37,9 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
     // Handling Locked State
     if (course.isLocked) {
       if (!user) {
-        alert('Te rugăm să te autentifici pentru a cumpăra cursul.');
+        toast.error('Autentificare necesară', {
+          description: 'Te rugăm să te autentifici pentru a cumpăra cursul.'
+        });
         return;
       }
 
@@ -52,14 +55,20 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
            });
            
            if (result.data.success) {
-             alert('Contul a fost actualizat cu succes! Reîmprospătează pagina.');
-             window.location.reload();
+             toast.success('Plată confirmată!', {
+               description: 'Contul a fost actualizat. Se reîncarcă pagina...'
+             });
+             setTimeout(() => window.location.reload(), 1500);
            } else {
-             alert(result.data.message || 'Nu s-a putut verifica plata.');
+             toast.error('Eroare verificare', {
+               description: result.data.message || 'Nu s-a putut verifica plata.'
+             });
            }
         } catch (error) {
            console.error('Sync error:', error);
-           alert('Eroare la verificare. Încearcă din nou.');
+           toast.error('Eroare sistem', {
+             description: 'Încearcă din nou mai târziu.'
+           });
         } finally {
           setIsProcessing(false);
         }
@@ -78,12 +87,16 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
         if (data.url) {
           window.location.href = data.url;
         } else {
-          alert('Inițiere eșuată');
+          toast.error('Eroare inițiere', {
+            description: 'Nu s-a putut genera link-ul de plată.'
+          });
           setIsProcessing(false);
         }
       } catch (error) {
         console.error('Purchase error:', error);
-        alert('Eroare de conexiune la serverul de plăți.');
+        toast.error('Eroare conexiune', {
+          description: 'Nu putem contacta serverul de plăți.'
+        });
         setIsProcessing(false);
       }
     } else {

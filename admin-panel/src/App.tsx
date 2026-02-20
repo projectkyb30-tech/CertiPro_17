@@ -19,26 +19,31 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   return <>{children}</>;
 };
 
+import { Toaster } from 'sonner';
+
 function App() {
   return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      
-      <Route path="/" element={
-        <ProtectedRoute>
-          <DashboardLayout />
-        </ProtectedRoute>
-      }>
-        <Route index element={<Dashboard />} />
-        <Route path="courses" element={<Courses />} />
-        <Route path="courses/:id/edit" element={<CourseEditor />} />
-        <Route path="courses/new" element={<CourseEditor />} />
-        <Route path="users" element={<Users />} />
-        <Route path="stats" element={<div className="p-4">Detailed Stats (Coming Soon)</div>} />
-        <Route path="settings" element={<div className="p-4">Settings (Coming Soon)</div>} />
-      </Route>
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+    <>
+      <Toaster position="top-right" richColors closeButton />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        
+        <Route path="/" element={
+          <ProtectedRoute>
+            <DashboardLayout />
+          </ProtectedRoute>
+        }>
+          <Route index element={<Dashboard />} />
+          <Route path="courses" element={<Courses />} />
+          <Route path="courses/:id/edit" element={<CourseEditor />} />
+          <Route path="courses/new" element={<CourseEditor />} />
+          <Route path="users" element={<Users />} />
+          <Route path="stats" element={<div className="p-4">Detailed Stats (Coming Soon)</div>} />
+          <Route path="settings" element={<div className="p-4">Settings (Coming Soon)</div>} />
+        </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
   );
 }
 

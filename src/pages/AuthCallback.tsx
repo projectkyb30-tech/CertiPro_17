@@ -24,17 +24,14 @@ const AuthCallback: React.FC = () => {
         }
 
         if (session) {
-          console.log('Session found, updating user state...');
           // Update the global state with the new session
           await checkSession();
           // Redirect to home
           navigate(ROUTES.HOME, { replace: true });
         } else {
-          console.log('No session yet, listening for auth state changes...');
           // If no session, listen for the SIGNED_IN event
           const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event: AuthChangeEvent, session: Session | null) => {
             if (event === 'SIGNED_IN' && session) {
-              console.log('User signed in via event, updating state...');
               await checkSession();
               subscription.unsubscribe();
               navigate(ROUTES.HOME, { replace: true });

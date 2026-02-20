@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { adminApi } from '../services/api';
 import { Trash, User as UserIcon } from 'lucide-react';
+import { toast } from 'sonner';
 
 export const Users = () => {
   const [users, setUsers] = useState<any[]>([]);
@@ -26,9 +27,12 @@ export const Users = () => {
     if (!confirm('Sigur dorești să ștergi acest utilizator?')) return;
     try {
       await adminApi.deleteUser(id);
+      toast.success('Utilizator șters cu succes');
       loadUsers();
     } catch (err) {
-      alert('Eroare la ștergere');
+      toast.error('Eroare la ștergere', {
+        description: 'Verifică consola pentru detalii'
+      });
     }
   };
 
@@ -36,10 +40,11 @@ export const Users = () => {
     if (!confirm(`Sigur dorești să ștergi ${selectedIds.length} utilizatori?`)) return;
     try {
       await adminApi.bulkDeleteUsers(selectedIds);
+      toast.success(`${selectedIds.length} utilizatori șterși`);
       setSelectedIds([]);
       loadUsers();
     } catch (err) {
-      alert('Eroare la ștergere multiplă');
+      toast.error('Eroare la ștergere multiplă');
     }
   };
 
@@ -56,9 +61,10 @@ export const Users = () => {
   const handleRoleUpdate = async (id: string, newRole: string) => {
     try {
       await adminApi.updateUser(id, { role: newRole });
+      toast.success('Rol actualizat');
       loadUsers();
     } catch (err) {
-      alert('Eroare la actualizare');
+      toast.error('Eroare la actualizare');
     }
   };
 
