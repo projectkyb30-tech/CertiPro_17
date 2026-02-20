@@ -24,12 +24,21 @@ export const billingApi = {
       body: JSON.stringify(params),
     });
 
-    const data = await response.json();
-    if (!response.ok) {
-      throw new Error(data.error || 'Failed to init checkout');
+    const payload = await response.json();
+
+    if (!response.ok || payload?.success === false) {
+      const message =
+        (payload && (payload.error || payload.message)) ||
+        'Failed to init checkout';
+      throw new Error(message);
     }
 
-    return data as { url?: string };
+    const url = payload?.url ?? payload?.data?.url;
+    if (!url) {
+      throw new Error('No checkout URL received');
+    }
+
+    return { url } as { url: string };
   },
   async verifyPayment(sessionId: string) {
     const token = await getAuthToken();
