@@ -116,6 +116,18 @@ export const createCourseSlice: StateCreator<CourseSlice> = (set, get) => ({
         return;
       }
 
+      const hasCachedCourses = get().courses.length > 0;
+      const isTimeout =
+        error instanceof Error && error.message.includes('Courses request timed out');
+
+      if (isTimeout && hasCachedCourses) {
+        set({
+          isCourseLoading: false,
+          courseError: null
+        });
+        return;
+      }
+
       set({
         courseError: error instanceof Error ? error.message : 'Failed to fetch courses',
         isCourseLoading: false

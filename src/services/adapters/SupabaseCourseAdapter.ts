@@ -69,25 +69,39 @@ export class SupabaseCourseAdapter implements CourseAdapter {
   async getAllCourses(): Promise<Course[]> {
     try {
       console.error('[CourseAdapter] getAllCourses:start');
-      const { data: coursesData, error: coursesError } = await withTimeout(
-        supabase
-          .from('courses')
-          .select('id, title, description, icon, total_lessons, duration_hours, price, is_published')
-          .eq('is_published', true)
-          .order('price', { ascending: true }),
-        8000,
-        'courses.select'
-      );
 
-      if (coursesError) throw coursesError;
-      if (!coursesData) return [];
-      if (import.meta.env.DEV) {
-        console.log('[CourseAdapter] getAllCourses:courses_ok', { count: coursesData.length });
-      }
+      const fetchOnce = () =>
+        withTimeout(
+          supabase
+            .from('courses')
+            .select('id, title, description, icon, total_lessons, duration_hours, price, is_published')
+            .eq('is_published', true)
+            .order('price', { ascending: true }),
+          15000,
+          'courses.select'
+        );
 
-      let user: { id: string } | null = null;
+      let coursesData: unknown;
+      let coursesError: unknown = null;
+
       try {
-        const { data } = await withTimeout(supabase.auth.getSession(), 6000, 'auth.getSession');
+        const result = await fetchOnce();
+        // @ts-expect-error Supabase typed response
+        coursesData = result.data;
+        // @ts-expect-error Supabase typed response
+        coursesError = result.error;
+      } catch (error) {
+        const isTimeout = error instanceof Error && error.message.includes('timed out');
+        if (!isTimeout) {
+          throw error;
+        }
+        console.error('[CourseAdapter] getAllCourses:timeout_retry', error);
+        const result = await fetchOnce();
+        // @ts-expect-error Supabase typed response
+        coursesData = result.data;
+        // @ts-expect-error Supabase typed response
+        coursesError = result.error;
+      }
         user = data.session?.user ?? null;
         if (import.meta.env.DEV) {
           console.log('[CourseAdapter] getAllCourses:session_ok', { hasUser: !!user });
