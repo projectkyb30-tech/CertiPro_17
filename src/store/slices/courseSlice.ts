@@ -35,7 +35,9 @@ export const createCourseSlice: StateCreator<CourseSlice> = (set, get) => ({
     const state = get();
     const currentUserId = (state as { user?: { id?: string } | null }).user?.id ?? null;
     
-    console.error('[CourseSlice] fetchCourses:start', { currentUserId, options, hasCourses: state.courses.length > 0 });
+    if (import.meta.env.DEV) {
+      console.log('[CourseSlice] fetchCourses:start', { currentUserId, options, hasCourses: state.courses.length > 0 });
+    }
 
     // 1. Reset if user changed
     // NOTE: We intentionally clear courses if the user ID changes to avoid showing old user data.
@@ -63,20 +65,26 @@ export const createCourseSlice: StateCreator<CourseSlice> = (set, get) => ({
         if (state.isCourseLoading) {
           set({ isCourseLoading: false });
         }
-        console.error('[CourseSlice] fetchCourses:skip_fresh', { isCourseLoading: get().isCourseLoading, isStale, hasCourses });
+        if (import.meta.env.DEV) {
+          console.log('[CourseSlice] fetchCourses:skip_fresh', { isCourseLoading: get().isCourseLoading, isStale, hasCourses });
+        }
         return;
     }
     
     // If we have an error and not forced, stop.
     if (!shouldForce && state.courseError) {
-        console.error('[CourseSlice] fetchCourses:skip_error', { courseError: state.courseError });
+        if (import.meta.env.DEV) {
+          console.log('[CourseSlice] fetchCourses:skip_error', { courseError: state.courseError });
+        }
         set({ isCourseLoading: false });
         return;
     }
 
     // 3. Start Loading
     set({ isCourseLoading: true, courseError: null });
-    console.error('[CourseSlice] fetchCourses:loading_true');
+    if (import.meta.env.DEV) {
+      console.log('[CourseSlice] fetchCourses:loading_true');
+    }
 
     try {
       // Add a safety timeout to prevent infinite loading state
@@ -87,8 +95,9 @@ export const createCourseSlice: StateCreator<CourseSlice> = (set, get) => ({
       const coursesPromise = courseService.getAllCourses();
       
       const courses = await Promise.race([coursesPromise, timeoutPromise]);
-      
-      console.error('[CourseSlice] fetchCourses:success', { count: (courses || []).length });
+      if (import.meta.env.DEV) {
+        console.log('[CourseSlice] fetchCourses:success', { count: (courses || []).length });
+      }
       set({
         courses: courses || [],
         isCourseLoading: false,

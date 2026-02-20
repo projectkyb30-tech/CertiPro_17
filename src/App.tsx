@@ -25,7 +25,9 @@ function App() {
   const { isLoading: isCourseLoading, courses, error: courseError } = useCourseStore();
 
   useEffect(() => {
-    console.error('[App] init:checkSession');
+    if (import.meta.env.DEV) {
+      console.log('[App] init:checkSession');
+    }
     checkSession();
     // Note: We don't call fetchCourses() here manually anymore because checkSession()
     // triggers it internally once the user is resolved. This prevents double-fetching
@@ -48,7 +50,9 @@ function App() {
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event: AuthChangeEvent) => {
-      console.error('[App] authStateChange', { event });
+      if (import.meta.env.DEV) {
+        console.log('[App] authStateChange', { event });
+      }
       if (['SIGNED_IN', 'TOKEN_REFRESHED', 'SIGNED_OUT'].includes(event)) {
         await checkSession();
       }

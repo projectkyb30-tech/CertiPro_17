@@ -33,13 +33,17 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
 
   checkSession: async () => {
     if (checkSessionInFlight) {
-      console.error('[Auth] checkSession:skip_inflight');
+      if (import.meta.env.DEV) {
+        console.log('[Auth] checkSession:skip_inflight');
+      }
       return checkSessionInFlight;
     }
 
     const run = (async () => {
       const state = get();
-      console.error('[Auth] checkSession:start', { hasUser: !!state.user });
+      if (import.meta.env.DEV) {
+        console.log('[Auth] checkSession:start', { hasUser: !!state.user });
+      }
       if (!state.user) {
         set({ isAuthLoading: true });
       } else {
@@ -61,7 +65,9 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
             user,
             isAuthLoading: false
           });
-          console.error('[Auth] checkSession:resolved', { userId: user.id });
+        if (import.meta.env.DEV) {
+          console.log('[Auth] checkSession:resolved', { userId: user.id });
+        }
           await refetchCoursesForCurrentUser({ force: true });
         } else {
           set({
@@ -69,7 +75,9 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
             user: null,
             isAuthLoading: false
           });
-          console.error('[Auth] checkSession:resolved', { userId: null });
+        if (import.meta.env.DEV) {
+          console.log('[Auth] checkSession:resolved', { userId: null });
+        }
           await refetchCoursesForCurrentUser({ force: true });
         }
       } catch (error) {
@@ -80,7 +88,9 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
             isAuthLoading: false,
             authError: 'Auth timeout'
           });
-          console.error('[Auth] checkSession:timeout_keep_user');
+          if (import.meta.env.DEV) {
+            console.log('[Auth] checkSession:timeout_keep_user');
+          }
           await refetchCoursesForCurrentUser({ force: false });
           return;
         }
@@ -90,7 +100,7 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
           user: null,
           isAuthLoading: false
         });
-        console.error('[Auth] checkSession:error');
+        console.error('[Auth] checkSession:error', error);
         await refetchCoursesForCurrentUser({ force: true });
       }
     })();

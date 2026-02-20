@@ -197,14 +197,18 @@ export const authService = {
       }
 
       if (!data.session?.user) {
-        console.error('[AuthService] getCurrentUser:no_session');
+        if (import.meta.env.DEV) {
+          console.log('[AuthService] getCurrentUser:no_session');
+        }
         return null;
       }
 
       const user = data.session.user;
       const role = user.app_metadata?.role || user.user_metadata?.role;
 
-      console.error('[AuthService] getCurrentUser:session_ok', { userId: user.id });
+      if (import.meta.env.DEV) {
+        console.log('[AuthService] getCurrentUser:session_ok', { userId: user.id });
+      }
       return this.getUserProfile(user.id, user.email!, role);
     } catch (err) {
       console.error('[AuthService] getCurrentUser:failed', err);
@@ -258,7 +262,9 @@ export const authService = {
 
   // Helper to fetch profile
   async getUserProfile(userId: string, email: string, role?: string): Promise<UserProfile> {
-    console.error('[AuthService] getUserProfile:start', { userId });
+    if (import.meta.env.DEV) {
+      console.log('[AuthService] getUserProfile:start', { userId });
+    }
     const { data, error } = await withTimeout(
       supabase
         .from('profiles')
@@ -270,7 +276,7 @@ export const authService = {
     );
 
     if (error || !data) {
-      console.error('[AuthService] getUserProfile:not_found', { userId });
+      console.error('[AuthService] getUserProfile:not_found', { userId, error });
       // Return a temporary object derived from auth data ONLY. 
       // Do NOT attempt to insert into DB (violates RLS).
       const now = new Date().toISOString();

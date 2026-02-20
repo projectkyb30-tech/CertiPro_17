@@ -81,13 +81,17 @@ export class SupabaseCourseAdapter implements CourseAdapter {
 
       if (coursesError) throw coursesError;
       if (!coursesData) return [];
-      console.error('[CourseAdapter] getAllCourses:courses_ok', { count: coursesData.length });
+      if (import.meta.env.DEV) {
+        console.log('[CourseAdapter] getAllCourses:courses_ok', { count: coursesData.length });
+      }
 
       let user: { id: string } | null = null;
       try {
         const { data } = await withTimeout(supabase.auth.getSession(), 6000, 'auth.getSession');
         user = data.session?.user ?? null;
-        console.error('[CourseAdapter] getAllCourses:session_ok', { hasUser: !!user });
+        if (import.meta.env.DEV) {
+          console.log('[CourseAdapter] getAllCourses:session_ok', { hasUser: !!user });
+        }
       } catch (authError) {
         console.error('[CourseAdapter] getAllCourses:session_error', authError);
       }
@@ -129,7 +133,9 @@ export class SupabaseCourseAdapter implements CourseAdapter {
       }
 
       const courses = (coursesData || []) as CourseRow[];
-      console.error('[CourseAdapter] getAllCourses:map', { count: courses.length, hasUser: !!user });
+      if (import.meta.env.DEV) {
+        console.log('[CourseAdapter] getAllCourses:map', { count: courses.length, hasUser: !!user });
+      }
       return courses.map((c) => {
         const enrollment = enrollmentMap.get(c.id);
         const hasPurchased = purchaseSet.has(c.id);
