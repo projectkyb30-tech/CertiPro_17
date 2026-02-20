@@ -208,6 +208,9 @@ export const authService = {
       return this.getUserProfile(user.id, user.email!, role);
     } catch (err) {
       console.error('[AuthService] getCurrentUser:failed', err);
+      if (err instanceof Error && err.message.includes('timed out')) {
+        throw err;
+      }
       return null;
     }
   },

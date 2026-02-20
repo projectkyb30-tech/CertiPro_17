@@ -23,6 +23,8 @@ export interface AuthSlice {
   checkSession: () => Promise<void>;
 }
 
+let checkSessionInFlight: Promise<void> | null = null;
+
 export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
   user: null,
   isAuthenticated: false,
@@ -30,6 +32,12 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
   authError: null,
 
   checkSession: async () => {
+    if (checkSessionInFlight) {
+      console.error('[Auth] checkSession:skip_inflight');
+      return checkSessionInFlight;
+    }
+
+    const run = (async () => {
     const state = get();
     console.error('[Auth] checkSession:start', { hasUser: !!state.user });
     if (!state.user) {
@@ -63,7 +71,18 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
         console.error('[Auth] checkSession:resolved', { userId: null });
       }
       await refetchCoursesForCurrentUser();
-    } catch {
+    } catch (error) {
+      const isTimeout = error instanceof Error && error.message.includes('timed out');
+      if (isTimeout && state.user) {
+        set({
+          isAuthenticated: true,
+          isAuthLoading: false,
+          authError: 'Auth timeout'
+        });
+        console.error('[Auth] checkSession:timeout_keep_user');
+        return;
+      }
+
       set({
         isAuthenticated: false,
         user: null,
@@ -71,6 +90,14 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
       });
       console.error('[Auth] checkSession:error');
       await refetchCoursesForCurrentUser();
+    }
+    })();
+
+    checkSessionInFlight = run;
+    try {
+      await run;
+    } finally {
+      checkSessionInFlight = null;
     }
   },
 
