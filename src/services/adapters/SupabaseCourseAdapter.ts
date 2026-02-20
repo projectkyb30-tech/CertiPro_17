@@ -190,62 +190,55 @@ export class SupabaseCourseAdapter implements CourseAdapter {
       let currentProgress = 0;
       const completedLessonIds = new Set<string>();
 
-      // 3. Try to get current user, but avoid failing hard on lock / storage issues
+      // 3. Try to get current user session
       let user: { id: string } | null = null;
       try {
-        const { data } = await supabase.auth.getUser();
-        user = data.user ?? null;
-      } catch (authError: any) {
-        const message = authError?.message ?? String(authError);
-        const isLockError =
-          typeof message === 'string' &&
-          message.includes('Navigator LockManager lock');
-
-        if (isLockError) {
-          console.warn(`Supabase auth lock error while fetching course ${courseId}, continuing without user context:`, authError);
-        } else {
-          console.error(`Supabase auth error while fetching course ${courseId}:`, authError);
-        }
-
+        const { data } = await supabase.auth.getSession();
+        user = data.session?.user ?? null;
+      } catch (authError) {
+        console.warn(`Supabase auth session check failed while fetching course ${courseId}:`, authError);
         user = null;
       }
 
       if (user) {
         const lessonIds = modulesRows.flatMap((m) => (m.lessons || []).map((l) => l.id));
 
-        const [enrollmentRes, purchaseRes, progressRes] = await Promise.all([
-          supabase
-            .from('enrollments')
-            .select('progress_percent')
-            .eq('user_id', user.id)
-            .eq('course_id', courseId)
-            .maybeSingle(),
-          supabase
-            .from('user_purchases')
-            .select('id')
-            .eq('user_id', user.id)
-            .eq('course_id', courseId)
-            .eq('status', 'paid')
-            .maybeSingle(),
-          lessonIds.length > 0 
-            ? supabase
-                .from('user_progress')
-                .select('lesson_id')
-                .eq('user_id', user.id)
-                .eq('is_completed', true)
-                .in('lesson_id', lessonIds)
-            : Promise.resolve({ data: [] })
-        ]);
-        
-        if (enrollmentRes.data) {
-          isEnrolled = true;
-          currentProgress = enrollmentRes.data.progress_percent;
-        } else if (purchaseRes.data) {
-          isProcessing = true;
-        }
+        try {
+          const [enrollmentRes, purchaseRes, progressRes] = await Promise.all([
+            supabase
+              .from('enrollments')
+              .select('progress_percent')
+              .eq('user_id', user.id)
+              .eq('course_id', courseId)
+              .maybeSingle(),
+            supabase
+              .from('user_purchases')
+              .select('id')
+              .eq('user_id', user.id)
+              .eq('course_id', courseId)
+              .maybeSingle(),
+            lessonIds.length > 0 
+              ? supabase
+                  .from('user_progress')
+                  .select('lesson_id')
+                  .eq('user_id', user.id)
+                  .eq('is_completed', true)
+                  .in('lesson_id', lessonIds)
+              : Promise.resolve({ data: [] })
+          ]);
+          
+          if (enrollmentRes.data) {
+            isEnrolled = true;
+            currentProgress = enrollmentRes.data.progress_percent;
+          } else if (purchaseRes.data) {
+            isProcessing = true;
+          }
 
-        if (progressRes.data) {
-          (progressRes.data as { lesson_id: string }[]).forEach((p) => completedLessonIds.add(p.lesson_id));
+          if (progressRes.data) {
+            (progressRes.data as { lesson_id: string }[]).forEach((p) => completedLessonIds.add(p.lesson_id));
+          }
+        } catch (userDataError) {
+          console.error(`Failed to fetch user specific data for course ${courseId}:`, userDataError);
         }
       }
 
