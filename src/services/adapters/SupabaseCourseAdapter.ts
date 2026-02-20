@@ -54,7 +54,7 @@ export class SupabaseCourseAdapter implements CourseAdapter {
    */
   async getAllCourses(): Promise<Course[]> {
     try {
-      // 1. Fetch courses first
+      // 1. Fetch courses first (public data)
       const { data: coursesData, error: coursesError } = await supabase
         .from('courses')
         .select('id, title, description, icon, total_lessons, duration_hours, price, is_published')
@@ -64,42 +64,50 @@ export class SupabaseCourseAdapter implements CourseAdapter {
       if (coursesError) throw coursesError;
       if (!coursesData) return [];
 
-      // 2. Try to get current user, but never fail hard on lock / auth storage issues
+      // 2. Try to get current user session
       let user: { id: string } | null = null;
       try {
+        // Use getSession() which is safer and doesn't always trigger a network call
         const { data } = await supabase.auth.getSession();
         user = data.session?.user ?? null;
-      } catch (authError: any) {
-        const message = authError?.message ?? String(authError);
-        const isLockError =
-          typeof message === 'string' &&
-          message.includes('Navigator LockManager lock');
-
-        if (isLockError) {
-          console.warn('Supabase auth lock error while fetching courses, continuing without user context:', authError);
-        } else {
-          console.error('Supabase auth error while fetching courses:', authError);
-        }
-
-        user = null;
+      } catch (authError) {
+        console.warn('Supabase auth session check failed:', authError);
+        // Continue as guest
       }
 
+      // 3. Fetch user-specific data only if user exists
       const enrollmentMap = new Map<string, { progress: number }>();
       const purchaseSet = new Set<string>();
 
-      // 3. If user exists, fetch secondary data in parallel
       if (user) {
-        const [enrollmentsRes, purchasesRes] = await Promise.all([
-          supabase
-            .from('enrollments')
-            .select('course_id, progress_percent')
-            .eq('user_id', user.id),
-          supabase
-            .from('user_purchases')
-            .select('course_id')
-            .eq('user_id', user.id)
-            .eq('status', 'paid')
-        ]);
+        try {
+          const [enrollmentsRes, purchasesRes] = await Promise.all([
+            supabase
+              .from('enrollments')
+              .select('course_id, progress_percent')
+              .eq('user_id', user.id),
+            supabase
+              .from('user_purchases')
+              .select('course_id')
+              .eq('user_id', user.id)
+          ]);
+
+          if (enrollmentsRes.data) {
+            enrollmentsRes.data.forEach((e) => {
+              enrollmentMap.set(e.course_id, { progress: e.progress_percent });
+            });
+          }
+
+          if (purchasesRes.data) {
+            purchasesRes.data.forEach((p) => {
+              purchaseSet.add(p.course_id);
+            });
+          }
+        } catch (userDataError) {
+          console.error('Failed to fetch user specific course data:', userDataError);
+          // Don't crash the whole app, just show courses as locked
+        }
+      }
         
         if (enrollmentsRes.data) {
           enrollmentsRes.data.forEach((e: { course_id: string; progress_percent: number }) => {
