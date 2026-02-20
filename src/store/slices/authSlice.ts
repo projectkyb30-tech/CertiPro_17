@@ -38,59 +38,61 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
     }
 
     const run = (async () => {
-    const state = get();
-    console.error('[Auth] checkSession:start', { hasUser: !!state.user });
-    if (!state.user) {
-      set({ isAuthLoading: true });
-    } else {
-      set({ isAuthenticated: true, isAuthLoading: false });
-    }
-
-    const refetchCoursesForCurrentUser = async () => {
-      const store = get() as AuthSlice & StoreWithCourses;
-      if (typeof store.fetchCourses === 'function') {
-        await store.fetchCourses({ force: true });
-      }
-    };
-
-    try {
-      const user = await authService.getCurrentUser();
-      if (user) {
-        set({
-          isAuthenticated: true,
-          user,
-          isAuthLoading: false
-        });
-        console.error('[Auth] checkSession:resolved', { userId: user.id });
+      const state = get();
+      console.error('[Auth] checkSession:start', { hasUser: !!state.user });
+      if (!state.user) {
+        set({ isAuthLoading: true });
       } else {
+        set({ isAuthenticated: true, isAuthLoading: false });
+      }
+
+      const refetchCoursesForCurrentUser = async (options?: { force?: boolean }) => {
+        const store = get() as AuthSlice & StoreWithCourses;
+        if (typeof store.fetchCourses === 'function') {
+          await store.fetchCourses(options);
+        }
+      };
+
+      try {
+        const user = await authService.getCurrentUser();
+        if (user) {
+          set({
+            isAuthenticated: true,
+            user,
+            isAuthLoading: false
+          });
+          console.error('[Auth] checkSession:resolved', { userId: user.id });
+          await refetchCoursesForCurrentUser({ force: true });
+        } else {
+          set({
+            isAuthenticated: false,
+            user: null,
+            isAuthLoading: false
+          });
+          console.error('[Auth] checkSession:resolved', { userId: null });
+          await refetchCoursesForCurrentUser({ force: true });
+        }
+      } catch (error) {
+        const isTimeout = error instanceof Error && error.message.includes('timed out');
+        if (isTimeout && state.user) {
+          set({
+            isAuthenticated: true,
+            isAuthLoading: false,
+            authError: 'Auth timeout'
+          });
+          console.error('[Auth] checkSession:timeout_keep_user');
+          await refetchCoursesForCurrentUser({ force: false });
+          return;
+        }
+
         set({
           isAuthenticated: false,
           user: null,
           isAuthLoading: false
         });
-        console.error('[Auth] checkSession:resolved', { userId: null });
+        console.error('[Auth] checkSession:error');
+        await refetchCoursesForCurrentUser({ force: true });
       }
-      await refetchCoursesForCurrentUser();
-    } catch (error) {
-      const isTimeout = error instanceof Error && error.message.includes('timed out');
-      if (isTimeout && state.user) {
-        set({
-          isAuthenticated: true,
-          isAuthLoading: false,
-          authError: 'Auth timeout'
-        });
-        console.error('[Auth] checkSession:timeout_keep_user');
-        return;
-      }
-
-      set({
-        isAuthenticated: false,
-        user: null,
-        isAuthLoading: false
-      });
-      console.error('[Auth] checkSession:error');
-      await refetchCoursesForCurrentUser();
-    }
     })();
 
     checkSessionInFlight = run;
