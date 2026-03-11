@@ -92,7 +92,7 @@ export const createCourseSlice: StateCreator<CourseSlice> = (set, get) => ({
         setTimeout(() => reject(new Error('Courses request timed out')), 15000)
       );
 
-      const coursesPromise = courseService.getAllCourses(currentUserId);
+      const coursesPromise = courseService.getAllCourses();
       
       const courses = await Promise.race([coursesPromise, timeoutPromise]);
       if (import.meta.env.DEV) {
@@ -137,7 +137,6 @@ export const createCourseSlice: StateCreator<CourseSlice> = (set, get) => ({
 
   fetchCourseDetails: async (courseId, options) => {
     const state = get();
-    const currentUserId = (state as { user?: { id?: string } | null }).user?.id ?? null;
     const existingCourse = state.courses.find((c) => c.id === courseId);
     const hasModules = !!existingCourse?.modules?.length;
     const lastFetchedAt = state.courseDetailsFetchedAt[courseId] ?? 0;
@@ -148,7 +147,7 @@ export const createCourseSlice: StateCreator<CourseSlice> = (set, get) => ({
 
     set({ isCourseLoading: !hasModules, courseError: null });
     try {
-      const course = await courseService.getCourseById(courseId, currentUserId);
+      const course = await courseService.getCourseById(courseId);
       if (course) {
         set((state) => ({
           courses: state.courses.some((c) => c.id === courseId)

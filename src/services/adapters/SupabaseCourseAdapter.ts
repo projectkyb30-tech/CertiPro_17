@@ -66,74 +66,107 @@ export class SupabaseCourseAdapter implements CourseAdapter {
    * Fetches all published courses from the database.
    * Includes dynamic 'isLocked' status based on the current user's enrollments.
    */
-  async getAllCourses(userId?: string | null): Promise<Course[]> {
+  async getAllCourses(): Promise<Course[]> {
     try {
-      if (import.meta.env.DEV) {
-        console.log('[CourseAdapter] getAllCourses:start', { userId });
+      console.error('[CourseAdapter] getAllCourses:start');
+
+      const fetchOnce = () =>
+        withTimeout(
+          supabase
+            .from('courses')
+            .select('id, title, description, icon, total_lessons, duration_hours, price, is_published')
+            .eq('is_published', true)
+            .order('price', { ascending: true }),
+          15000,
+          'courses.select'
+        );
+
+      let coursesData: CourseRow[] | null = null;
+      let coursesError: unknown = null;
+
+      const runFetch = async () => {
+        const result = (await fetchOnce()) as { data: CourseRow[] | null; error: unknown };
+        coursesData = result.data;
+        coursesError = result.error;
+      };
+
+      try {
+        await runFetch();
+      } catch (error) {
+        const isTimeout = error instanceof Error && error.message.includes('timed out');
+        if (!isTimeout) {
+          throw error;
+        }
+        console.error('[CourseAdapter] getAllCourses:timeout_retry', error);
+        await runFetch();
       }
 
-      // 1. Prepare parallel fetches
-      const coursesPromise = withTimeout(
-        supabase
-          .from('courses')
-          .select('id, title, description, icon, total_lessons, duration_hours, price, is_published')
-          .eq('is_published', true)
-          .order('price', { ascending: true }),
-        10000,
-        'courses.select'
-      );
+      if (coursesError) throw coursesError;
+      if (!coursesData) return [];
+      const typedCourses = (coursesData ?? []) as CourseRow[];
+      if (import.meta.env.DEV) {
+        console.log('[CourseAdapter] getAllCourses:courses_ok', { count: typedCourses.length });
+      }
 
-      const enrollmentsPromise = userId 
-        ? withTimeout(
-            supabase
-              .from('enrollments')
-              .select('course_id, progress_percent')
-              .eq('user_id', userId),
-            8000,
-            'enrollments.select'
-          )
-        : Promise.resolve({ data: [] });
-
-      const purchasesPromise = userId
-        ? withTimeout(
-            supabase
-              .from('user_purchases')
-              .select('course_id')
-              .eq('user_id', userId),
-            8000,
-            'purchases.select'
-          )
-        : Promise.resolve({ data: [] });
-
-      // 2. Execute all in parallel
-      const [coursesRes, enrollmentsRes, purchasesRes] = await Promise.all([
-        coursesPromise,
-        enrollmentsPromise,
-        purchasesPromise
-      ]);
-
-      if (coursesRes.error) throw coursesRes.error;
-      const typedCourses = (coursesRes.data ?? []) as CourseRow[];
+      let user: { id: string } | null = null;
+      try {
+        const { data } = await withTimeout(supabase.auth.getSession(), 6000, 'auth.getSession');
+        user = data.session?.user ?? null;
+        if (import.meta.env.DEV) {
+          console.log('[CourseAdapter] getAllCourses:session_ok', { hasUser: !!user });
+        }
+      } catch (authError) {
+        console.error('[CourseAdapter] getAllCourses:session_error', authError);
+      }
 
       const enrollmentMap = new Map<string, { progress: number }>();
       const purchaseSet = new Set<string>();
 
-      if (enrollmentsRes.data) {
-        enrollmentsRes.data.forEach((e: any) => {
-          enrollmentMap.set(e.course_id, { progress: e.progress_percent });
-        });
+      if (user) {
+        try {
+          const [enrollmentsRes, purchasesRes] = await withTimeout(
+            Promise.all([
+              supabase
+                .from('enrollments')
+                .select('course_id, progress_percent')
+                .eq('user_id', user.id),
+              supabase
+                .from('user_purchases')
+                .select('course_id')
+                .eq('user_id', user.id)
+            ]),
+            8000,
+            'user_course_data'
+          );
+
+          if (enrollmentsRes.data) {
+            enrollmentsRes.data.forEach((e) => {
+              enrollmentMap.set(e.course_id, { progress: e.progress_percent });
+            });
+          }
+
+          if (purchasesRes.data) {
+            purchasesRes.data.forEach((p) => {
+              purchaseSet.add(p.course_id);
+            });
+          }
+        } catch (userDataError) {
+          console.error('[CourseAdapter] getAllCourses:user_data_error', userDataError);
+        }
       }
 
-      if (purchasesRes.data) {
-        purchasesRes.data.forEach((p: any) => {
-          purchaseSet.add(p.course_id);
-        });
+      const courses = typedCourses;
+      if (import.meta.env.DEV) {
+        console.log('[CourseAdapter] getAllCourses:map', { count: courses.length, hasUser: !!user });
       }
-
-      return typedCourses.map((c) => {
+      return courses.map((c) => {
         const enrollment = enrollmentMap.get(c.id);
         const hasPurchased = purchaseSet.has(c.id);
         const isEnrolled = !!enrollment;
+        
+        // Logic:
+        // isLocked: strictly based on enrollment (because RLS enforces it).
+        // isProcessing: purchased but not enrolled (trigger failure/delay).
         const isProcessing = hasPurchased && !isEnrolled;
 
         return {
@@ -145,14 +178,15 @@ export class SupabaseCourseAdapter implements CourseAdapter {
           durationHours: c.duration_hours,
           price: c.price,
           isPublished: c.is_published,
-          isLocked: !isEnrolled,
+          isLocked: !isEnrolled, // Strict RLS alignment
           isProcessing: isProcessing,
           progress: enrollment ? enrollment.progress : 0,
-          modules: []
+          modules: [] // Modules are lazy-loaded in getCourseById
         };
       });
+
     } catch (error) {
-      console.error('[CourseAdapter] getAllCourses:failed', error);
+      console.error('Error fetching courses:', error);
       throw error;
     }
   }
@@ -161,44 +195,20 @@ export class SupabaseCourseAdapter implements CourseAdapter {
    * Fetches a specific course by ID, including its modules and lessons.
    * Verifies access rights (isLocked) based on enrollment.
    */
-  async getCourseById(courseId: string, userId?: string | null): Promise<Course | undefined> {
+  async getCourseById(courseId: string): Promise<Course | undefined> {
     try {
-      // 1. Fetch core course data, modules and user status in parallel
-      const coursePromise = supabase
-        .from('courses')
-        .select('*')
-        .eq('id', courseId)
-        .single();
-
-      const modulesPromise = supabase
-        .from('modules')
-        .select('id, course_id, title, order, lessons (id, module_id, title, type, duration, summary, is_free, order)')
-        .eq('course_id', courseId)
-        .order('order', { ascending: true });
-
-      const enrollmentPromise = userId
-        ? supabase
-            .from('enrollments')
-            .select('progress_percent')
-            .eq('user_id', userId)
-            .eq('course_id', courseId)
-            .maybeSingle()
-        : Promise.resolve({ data: null });
-
-      const purchasePromise = userId
-        ? supabase
-            .from('user_purchases')
-            .select('id')
-            .eq('user_id', userId)
-            .eq('course_id', courseId)
-            .maybeSingle()
-        : Promise.resolve({ data: null });
-
-      const [courseRes, modulesRes, enrollmentRes, purchaseRes] = await Promise.all([
-        coursePromise,
-        modulesPromise,
-        enrollmentPromise,
-        purchasePromise
+      // 1. Fetch course details and modules in parallel
+      const [courseRes, modulesRes] = await Promise.all([
+        supabase
+          .from('courses')
+          .select('*')
+          .eq('id', courseId)
+          .single(),
+        supabase
+          .from('modules')
+          .select('id, course_id, title, order, lessons (id, module_id, title, type, duration, summary, is_free, order)')
+          .eq('course_id', courseId)
+          .order('order', { ascending: true })
       ]);
 
       const { data: courseData, error: courseError } = courseRes;
@@ -208,26 +218,62 @@ export class SupabaseCourseAdapter implements CourseAdapter {
       if (modulesError) throw modulesError;
 
       const modulesRows = (modulesData || []) as ModuleRow[];
-      
-      // 2. Fetch progress if user is enrolled
-      let isEnrolled = !!enrollmentRes.data;
-      let isProcessing = !isEnrolled && !!purchaseRes.data;
-      let currentProgress = enrollmentRes.data?.progress_percent ?? 0;
+
+      // 2. Check enrollment status, progress, and purchase in parallel
+      let isEnrolled = false;
+      let isProcessing = false;
+      let currentProgress = 0;
       const completedLessonIds = new Set<string>();
 
-      if (isEnrolled && userId) {
+      // 3. Try to get current user session
+      let user: { id: string } | null = null;
+      try {
+        const { data } = await supabase.auth.getSession();
+        user = data.session?.user ?? null;
+      } catch (authError) {
+        console.warn(`Supabase auth session check failed while fetching course ${courseId}:`, authError);
+        user = null;
+      }
+
+      if (user) {
         const lessonIds = modulesRows.flatMap((m) => (m.lessons || []).map((l) => l.id));
-        if (lessonIds.length > 0) {
-          const { data: progressData } = await supabase
-            .from('user_progress')
-            .select('lesson_id')
-            .eq('user_id', userId)
-            .eq('is_completed', true)
-            .in('lesson_id', lessonIds);
+
+        try {
+          const [enrollmentRes, purchaseRes, progressRes] = await Promise.all([
+            supabase
+              .from('enrollments')
+              .select('progress_percent')
+              .eq('user_id', user.id)
+              .eq('course_id', courseId)
+              .maybeSingle(),
+            supabase
+              .from('user_purchases')
+              .select('id')
+              .eq('user_id', user.id)
+              .eq('course_id', courseId)
+              .maybeSingle(),
+            lessonIds.length > 0 
+              ? supabase
+                  .from('user_progress')
+                  .select('lesson_id')
+                  .eq('user_id', user.id)
+                  .eq('is_completed', true)
+                  .in('lesson_id', lessonIds)
+              : Promise.resolve({ data: [] })
+          ]);
           
-          if (progressData) {
-            (progressData as { lesson_id: string }[]).forEach((p) => completedLessonIds.add(p.lesson_id));
+          if (enrollmentRes.data) {
+            isEnrolled = true;
+            currentProgress = enrollmentRes.data.progress_percent;
+          } else if (purchaseRes.data) {
+            isProcessing = true;
           }
+
+          if (progressRes.data) {
+            (progressRes.data as { lesson_id: string }[]).forEach((p) => completedLessonIds.add(p.lesson_id));
+          }
+        } catch (userDataError) {
+          console.error(`Failed to fetch user specific data for course ${courseId}:`, userDataError);
         }
       }
 

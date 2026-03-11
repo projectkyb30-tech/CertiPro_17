@@ -65,25 +65,20 @@ export const createAuthSlice: StateCreator<AuthSlice> = (set, get) => ({
             user,
             isAuthLoading: false
           });
-          if (import.meta.env.DEV) {
-            console.log('[Auth] checkSession:resolved', { userId: user.id });
-          }
-          // Optimization: Trigger course fetch but don't block the auth resolution
-          refetchCoursesForCurrentUser({ force: true }).catch(err => 
-            console.error('[Auth] Course refetch failed:', err)
-          );
+        if (import.meta.env.DEV) {
+          console.log('[Auth] checkSession:resolved', { userId: user.id });
+        }
+          await refetchCoursesForCurrentUser({ force: true });
         } else {
           set({
             isAuthenticated: false,
             user: null,
             isAuthLoading: false
           });
-          if (import.meta.env.DEV) {
-            console.log('[Auth] checkSession:resolved', { userId: null });
-          }
-          refetchCoursesForCurrentUser({ force: true }).catch(err =>
-            console.error('[Auth] Course refetch failed (anonymous):', err)
-          );
+        if (import.meta.env.DEV) {
+          console.log('[Auth] checkSession:resolved', { userId: null });
+        }
+          await refetchCoursesForCurrentUser({ force: true });
         }
       } catch (error) {
         const isTimeout = error instanceof Error && error.message.includes('timed out');
