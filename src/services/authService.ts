@@ -189,7 +189,7 @@ export const authService = {
   async getCurrentUser(): Promise<UserProfile | null> {
     try {
       console.error('[AuthService] getCurrentUser:start');
-      const { data, error } = await withTimeout(supabase.auth.getSession(), 8000, 'auth.getSession');
+      const { data, error } = await supabase.auth.getSession();
       
       if (error) {
         console.error('[AuthService] getCurrentUser:session_error', { message: error.message });
